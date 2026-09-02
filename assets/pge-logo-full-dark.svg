@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 130" width="520" height="130">
+  <defs>
+    <style>
+      .gold-fill { fill: #B69964; }
+      .white-fill { fill: #FFFFFF; }
+      .navy-stroke { stroke: #252E47; }
+      .brand-title { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 26px; letter-spacing: 2px; }
+      .brand-tagline { font-family: 'Alex Brush', 'Pinyon Script', cursive; font-size: 24px; fill: #F7F4ED; }
+    </style>
+  </defs>
+
+  <!-- LOGO MARK FOR DARK BACKGROUNDS -->
+  <g transform="translate(10, 5)">
+    <!-- Outer Ring -->
+    <circle cx="60" cy="60" r="54" fill="none" stroke="#FFFFFF" stroke-width="3" />
+    <circle cx="60" cy="60" r="46" fill="none" stroke="#B69964" stroke-width="2" />
+    
+    <!-- Compass Points -->
+    <!-- North -->
+    <polygon points="60,3 65,16 60,13" class="gold-fill" />
+    <polygon points="60,3 55,16 60,13" class="white-fill" />
+    <!-- South -->
+    <polygon points="60,117 65,104 60,107" class="gold-fill" />
+    <polygon points="60,117 55,104 60,107" class="white-fill" />
+    <!-- East -->
+    <polygon points="117,60 104,65 107,60" class="gold-fill" />
+    <polygon points="117,60 104,55 107,60" class="white-fill" />
+    <!-- West -->
+    <polygon points="3,60 16,65 13,60" class="gold-fill" />
+    <polygon points="3,60 16,55 13,60" class="white-fill" />
+    
+    <!-- Ordinal Points -->
+    <polygon points="98,22 92,30 90,26" class="gold-fill" />
+    <polygon points="22,98 30,92 26,90" class="gold-fill" />
+    <polygon points="98,98 90,92 92,90" class="white-fill" />
+    <polygon points="22,22 30,28 26,30" class="white-fill" />
+
+    <!-- Globe Inner Fill -->
+    <circle cx="60" cy="60" r="38" fill="#252E47" stroke="#B69964" stroke-width="1.5" />
+    
+    <!-- Globe Lines -->
+    <ellipse cx="60" cy="60" rx="38" ry="18" fill="none" stroke="#B69964" stroke-width="1" stroke-dasharray="2,2" opacity="0.6" />
+    <ellipse cx="60" cy="60" rx="20" ry="38" fill="none" stroke="#B69964" stroke-width="1" stroke-dasharray="2,2" opacity="0.6" />
+    <line x1="22" y1="60" x2="98" y2="60" stroke="#FFFFFF" stroke-width="1" opacity="0.5" />
+
+    <!-- Maple Leaf in Center -->
+    <g transform="translate(60, 60) scale(0.95)">
+      <path d="M0,-24 L3,-15 L9,-17 L6,-10 L14,-11 L11,-4 L18,1 L11,4 L12,11 L6,8 L4,15 L0,11 L-4,15 L-6,8 L-12,11 L-11,4 L-18,1 L-18,1 L-11,-4 L-14,-11 L-6,-10 L-9,-17 L-3,-15 Z" fill="#F7F4ED" />
+      <rect x="-1.5" y="10" width="3" height="11" fill="#F7F4ED" rx="1" />
+    </g>
+
+    <!-- Orbital Ring -->
+    <path d="M 18,72 A 46,26 -25 1,0 102,48" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" />
+    <path d="M 18,72 A 46,26 -25 1,0 102,48" fill="none" stroke="#B69964" stroke-width="1.5" stroke-linecap="round" />
+  </g>
+
+  <!-- BRAND NAME & TAGLINE -->
+  <text x="145" y="52" class="white-fill brand-title">PREMIUM GLOBAL <tspan fill="#B69964">EXPEDITIONS</tspan></text>
+  <text x="148" y="88" class="brand-tagline">Where Dreams Become A Reality</text>
+</svg>

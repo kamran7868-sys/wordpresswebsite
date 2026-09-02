@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Global Expeditions Inc. (PGE) — Where Dreams Become A Reality</title>
+  <meta name="description"
+    content="Premium Canadian-based global travel company and tour operator creating exceptional journeys, bespoke holidays, international tours, cruises, flights, and luxury accommodations.">
+
+  <!-- GOOGLE FONTS (Brand Guide 2026: Cormorant Garamond, Montserrat, Alex Brush) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- MAIN BRAND STYLESHEET -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ==========================================================================
+       SECTION 1: TOP UTILITY BAR
+       Elementor Container: #utility-bar | Background: Expedition Navy (#252E47)
+       ========================================================================== -->
+  <section class="top-utility-bar" id="utility-bar">
+    <div class="container utility-bar-inner">
+      <nav class="utility-links" aria-label="Quick Travel Services">
+        <a href="#travel-categories" data-tab="flights-panel" class="utility-link-item">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" />
+          </svg>
+          <span>Flights</span>
+        </a>
+        <span class="utility-sep">|</span>
+        <a href="#travel-categories" data-tab="hotels-panel" class="utility-link-item">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z" />
+          </svg>
+          <span>Hotels</span>
+        </a>
+        <span class="utility-sep">|</span>
+        <a href="#travel-categories" data-tab="cruises-panel" class="utility-link-item">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M20 21c-1.39 0-2.78-.47-4-1.32-2.44 1.71-5.56 1.71-8 0C6.78 20.53 5.39 21 4 21H2v2h2c1.86 0 3.71-.58 5.27-1.72 2.75 1.99 6.72 1.99 9.47 0C20.29 22.42 22.14 23 24 23h2v-2h-2c-1.39 0-2.78-.47-4-1.32zM3.95 19H20l1.9-6H2.05l1.9 6zM13 4h-2v4h2V4z" />
+          </svg>
+          <span>Cruises</span>
+        </a>
+        <span class="utility-sep">|</span>
+        <a href="#travel-categories" data-tab="packages-panel" class="utility-link-item">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" />
+          </svg>
+          <span>Holiday Packages</span>
+        </a>
+        <span class="utility-sep">|</span>
+        <a href="#travel-categories" data-tab="packages-panel" class="utility-link-item">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+          </svg>
+          <span>Tours &amp; Experiences</span>
+        </a>
+        <span class="utility-sep">|</span>
+        <a href="#flight-inquiry-form" class="utility-link-item">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.04 3H5.81l1.04-3zM19 17H5v-4h14v4z" />
+          </svg>
+          <span>Car Rentals</span>
+        </a>
+        <span class="utility-sep">|</span>
+        <a href="#contact-section" class="utility-link-item">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
+          </svg>
+          <span>Other</span>
+        </a>
+      </nav>
+      <div class="utility-contact">
+        <a href="tel:18005557431" class="utility-contact-item">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+          </svg>
+          <span>+1 (800) 555-PGE1</span>
+        </a>
+        <span class="utility-contact-sep">|</span>
+        <a href="mailto:concierge@pgeexpeditions.ca" class="utility-contact-item">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+          </svg>
+          <span>concierge@pgeexpeditions.ca</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 2: MAIN NAVIGATION HEADER
+       Elementor Container: #main-header | Sticky Nav on Scroll
+       ========================================================================== -->
+  <header class="main-header" id="main-header">
+    <div class="container header-inner">
+
+      <!-- LOGO (Light version on Dark Navy Header) -->
+      <a href="index.html" class="brand-logo-wrap" aria-label="Premium Global Expeditions Home">
+        <img src="assets/pge-logo-full-dark.svg" alt="Premium Global Expeditions Inc." class="brand-logo-img">
+      </a>
+
+      <!-- MAIN NAVIGATION MENU -->
+      <nav class="nav-menu" id="mainNavMenu" aria-label="Primary Navigation">
+        <a href="#hero-section" class="nav-link active">Home</a>
+        <a href="#intro-section" class="nav-link">About Us</a>
+        <a href="#travel-categories" class="nav-link">Packages</a>
+        <a href="#cta-section" class="nav-link">Get In Touch</a>
+      </nav>
+
+      <!-- NAVIGATION ACTIONS -->
+      <div class="nav-actions">
+        <a href="#cta-section" class="btn-primary">Plan Your Journey</a>
+        <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
+          <svg viewBox="0 0 24 24">
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+         SECTION 3: HERO SECTION (CINEMATIC CAROUSEL)
+         Elementor Container: #hero-section | Dark Gradient Overlay
+         ========================================================================== -->
+    <section class="hero-section" id="hero-section">
+
+      <!-- BACKGROUND SLIDER TRACK -->
+      <div class="hero-slider-track">
+
+        <!-- Slide 1: Canadian Rockies -->
+        <div class="hero-slide active">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1920&auto=format&fit=crop"
+            alt="Majestic Canadian Rockies and Banff Emerald Lake" class="hero-slide-bg">
+        </div>
+
+        <!-- Slide 2: Nile River Cruise, Egypt -->
+        <div class="hero-slide">
+          <img src="https://images.unsplash.com/photo-1539650116574-8efeb43e2750?q=80&w=1920&auto=format&fit=crop"
+            alt="Ancient Egyptian Nile Luxury Expedition" class="hero-slide-bg">
+        </div>
+
+        <!-- Slide 3: Sri Lanka & Southeast Asia Coastal Retreat -->
+        <div class="hero-slide">
+          <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1920&auto=format&fit=crop"
+            alt="Pristine Tropical Coastal Sanctuary" class="hero-slide-bg">
+        </div>
+
+      </div>
+
+      <!-- PGE DARK NAVY OVERLAY GRADIENT -->
+      <div class="hero-overlay"></div>
+
+      <!-- HERO HERO CONTENT -->
+      <div class="container hero-content-wrap">
+        <span class="hero-tagline-script">Where Dreams Become A Reality</span>
+        <h1 class="hero-main-title">PREMIUM GLOBAL EXPEDITIONS</h1>
+        <p class="hero-subheading">Your Journey Begins Here — Bespoke Journeys, Curated Cruises &amp; Tailored Flights
+          Worldwide</p>
+        <div class="hero-actions">
+          <a href="#cta-section" class="btn-primary">Plan Your Journey</a>
+        </div>
+      </div>
+
+      <!-- HERO CAROUSEL CONTROLS -->
+      <div class="hero-controls">
+        <button class="hero-nav-arrow" id="heroPrevBtn" aria-label="Previous Slide">
+          <svg viewBox="0 0 24 24">
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+          </svg>
+        </button>
+
+        <div class="hero-dots" id="heroDots">
+          <button class="dot-btn active" aria-label="Go to slide 1"></button>
+          <button class="dot-btn" aria-label="Go to slide 2"></button>
+          <button class="dot-btn" aria-label="Go to slide 3"></button>
+        </div>
+
+        <button class="hero-nav-arrow" id="heroNextBtn" aria-label="Next Slide">
+          <svg viewBox="0 0 24 24">
+            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+          </svg>
+        </button>
+      </div>
+
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 4: INTRO SECTION
+         Elementor Container: #intro-section | Background: Expedition Ivory (#F7F4ED)
+         ========================================================================== -->
+    <section class="intro-section" id="intro-section">
+      <div class="container">
+        <div class="intro-grid">
+
+          <!-- LEFT COLUMN: BRAND STORY -->
+          <div class="intro-content">
+            <span class="section-tagline">Canadian Gateway to the World</span>
+            <h2 class="section-title">Refined Global Travel, Crafted with Personal Care</h2>
+            <hr class="gold-rule">
+            <p class="intro-paragraph">
+              Premium Global Expeditions is a Canadian based global travel company creating exceptional journeys across
+              the world. From bespoke holidays and international tours to flights, cruises and premium accommodations,
+              we bring together global reach and trusted local expertise to make every journey seamless and memorable.
+            </p>
+
+            <div class="intro-pillars">
+              <div class="pillar-card">
+                <div class="pillar-icon">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                  </svg>
+                </div>
+                <div class="pillar-content">
+                  <h3 class="pillar-title">Premium</h3>
+                  <p class="pillar-desc">Refined, attentive, considered in every detail.</p>
+                </div>
+              </div>
+              <div class="pillar-card">
+                <div class="pillar-icon">
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" />
+                    <path
+                      d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                  </svg>
+                </div>
+                <div class="pillar-content">
+                  <h3 class="pillar-title">Global</h3>
+                  <p class="pillar-desc">Connected, knowledgeable, borderless reach.</p>
+                </div>
+              </div>
+              <div class="pillar-card">
+                <div class="pillar-icon">
+                  <svg viewBox="0 0 24 24">
+                    <polygon points="12 2 19 21 12 17 5 21 12 2" />
+                  </svg>
+                </div>
+                <div class="pillar-content">
+                  <h3 class="pillar-title">Expeditions</h3>
+                  <p class="pillar-desc">Curious, purposeful, unforgettable moments.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN: SUPPORTING CINEMATIC IMAGE CARD -->
+          <div class="intro-image-wrap">
+            <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1200&auto=format&fit=crop"
+              alt="Cinematic travel journey" class="intro-main-img">
+            <div class="intro-floating-card">
+              <span class="floating-card-num">100%</span>
+              <p class="floating-card-label">Tailored Canadian Expertise &amp; Worldwide Destination Management</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 5: QUICK STATS STRIP
+         Elementor Container: #stats-section | Background: Expedition Navy (#252E47)
+         ========================================================================== -->
+    <section class="stats-section" id="stats-section">
+      <div class="container">
+        <div class="stats-grid">
+
+          <div class="stat-item">
+            <div class="stat-number" data-target="15" data-suffix="+">0+</div>
+            <div class="stat-label">Years of Service</div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-number" data-target="85" data-suffix="+">0+</div>
+            <div class="stat-label">Destinations Curated</div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-number" data-target="12500" data-suffix="+" data-format="comma">0+</div>
+            <div class="stat-label">Happy Travellers</div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-number" data-target="250" data-suffix="+">0+</div>
+            <div class="stat-label">DMC Partners</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 6: TRAVEL CATEGORIES SECTION
+         Elementor Container: #travel-categories | Background: Expedition Ivory (#F7F4ED)
+         ========================================================================== -->
+    <section class="categories-section" id="travel-categories">
+      <div class="container">
+
+        <div class="categories-header">
+          <span class="section-tagline">Curated Offerings</span>
+          <h2 class="section-title">Explore Our Travel Categories</h2>
+          <hr class="gold-rule center">
+          <p class="section-lead" style="margin: 0 auto;">Select your preferred category to discover bespoke holiday
+            packages, ocean &amp; river cruises, flight bookings, and luxury 5-star accommodations.</p>
+        </div>
+
+        <!-- MAIN CATEGORY TABS -->
+        <div class="category-tabs-nav" role="tablist">
+          <button class="tab-btn active" data-target="packages-panel" role="tab">All Inclusive Holiday Packages</button>
+          <button class="tab-btn" data-target="cruises-panel" role="tab">Cruises</button>
+          <button class="tab-btn" data-target="flights-panel" role="tab">Airline Ticketing</button>
+          <button class="tab-btn" data-target="hotels-panel" role="tab">Hotels</button>
+        </div>
+
+        <!-- ================= PANEL A: HOLIDAY PACKAGES ================= -->
+        <div class="category-panel active" id="packages-panel">
+
+          <!-- Sub-group filter pills -->
+          <div class="subgroup-filter-nav">
+            <span class="subgroup-filter-label">Filter Region:</span>
+            <button class="subgroup-pill active" data-group="all">All Regions</button>
+            <button class="subgroup-pill" data-group="canada">Canada</button>
+            <button class="subgroup-pill" data-group="asia-middleeast">Sri Lanka, Egypt &amp; Thailand</button>
+            <button class="subgroup-pill" data-group="indochina-eurasia">Vietnam, Nepal &amp; Turkey</button>
+          </div>
+
+          <div class="cards-grid">
+
+            <!-- Canada -->
+            <article class="card-item" data-group="canada">
+              <div class="card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1503614472-8c93d56e92ce?q=80&w=800&auto=format&fit=crop"
+                  alt="Rocky Mountaineer Express" class="card-img">
+                <span class="card-tag">Canada</span>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Rocky Mountaineer Luxury Express</h3>
+                <p class="card-text">Experience the majestic Canadian Rockies in glass-domed luxury carriages from
+                  Vancouver to Banff.</p>
+                <div class="card-footer">
+                  <span class="card-footer-info">8 Days / 7 Nights</span>
+                  <a href="#cta-section" class="card-btn-action">Explore Package</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Sri Lanka, Egypt, Thailand -->
+            <article class="card-item" data-group="asia-middleeast">
+              <div class="card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=800&auto=format&fit=crop"
+                  alt="Wonders of Ancient Egypt" class="card-img">
+                <span class="card-tag">Egypt</span>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Pharaohs &amp; Pyramids Odyssey</h3>
+                <p class="card-text">Private guided exploration of Cairo Pyramids, Luxor temples, and Red Sea luxury
+                  beach sanctuary.</p>
+                <div class="card-footer">
+                  <span class="card-footer-info">10 Days / 9 Nights</span>
+                  <a href="#cta-section" class="card-btn-action">Explore Package</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="card-item" data-group="asia-middleeast">
+              <div class="card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=800&auto=format&fit=crop"
+                  alt="Thailand Islands" class="card-img">
+                <span class="card-tag">Thailand</span>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Island Hopping &amp; Villa Escape</h3>
+                <p class="card-text">Bespoke private luxury retreat across Phuket, Koh Samui, and Chiang Mai elephant
+                  sanctuaries.</p>
+                <div class="card-footer">
+                  <span class="card-footer-info">12 Days / 11 Nights</span>
+                  <a href="#cta-section" class="card-btn-action">Explore Package</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="card-item" data-group="asia-middleeast">
+              <div class="card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=800&auto=format&fit=crop"
+                  alt="Sri Lanka Heritage" class="card-img">
+                <span class="card-tag">Sri Lanka</span>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Pearl of the Indian Ocean</h3>
+                <p class="card-text">Cultural triangle of Sigiriya, tea plantation estates in Nuwara Eliya, and southern
+                  coastal safaris.</p>
+                <div class="card-footer">
+                  <span class="card-footer-info">9 Days / 8 Nights</span>
+                  <a href="#cta-section" class="card-btn-action">Explore Package</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Vietnam, Nepal, Turkey -->
+            <article class="card-item" data-group="indochina-eurasia">
+              <div class="card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1608848461950-0fe51dfc41cb?q=80&w=800&auto=format&fit=crop"
+                  alt="Cappadocia Turkey" class="card-img">
+                <span class="card-tag">Turkey</span>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Grand Ottoman &amp; Cappadocia Ballooning</h3>
+                <p class="card-text">Istanbul Bosphorus cruises, ancient Ephesus ruins, and magical hot air balloon
+                  rides over cave suites.</p>
+                <div class="card-footer">
+                  <span class="card-footer-info">11 Days / 10 Nights</span>
+                  <a href="#cta-section" class="card-btn-action">Explore Package</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="card-item" data-group="indochina-eurasia">
+              <div class="card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=800&auto=format&fit=crop"
+                  alt="Ha Long Bay Vietnam" class="card-img">
+                <span class="card-tag">Vietnam</span>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Ha Long Bay &amp; Imperial Heritage</h3>
+                <p class="card-text">Private junk boat cruising through emerald limestone pillars, Hoi An lantern town,
+                  and Hanoi culture.</p>
+                <div class="card-footer">
+                  <span class="card-footer-info">10 Days / 9 Nights</span>
+                  <a href="#cta-section" class="card-btn-action">Explore Package</a>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- ================= PANEL B: CRUISES ================= -->
+        <div class="category-panel" id="cruises-panel">
+
+          <div class="subgroup-filter-nav">
+            <span class="subgroup-filter-label">Cruise Region:</span>
+            <button class="subgroup-pill active" data-group="all">All Voyages</button>
+            <button class="subgroup-pill" data-group="alaska-singapore">Alaskan &amp; Singaporean</button>
+            <button class="subgroup-pill" data-group="nile-australia">Nile &amp; Australian</button>
+          </div>
+
+          <div class="cards-grid">
+
+            <!-- Alaskan Cruise, Singaporean Cruise -->
+            <article class="card-item" data-group="alaska-singapore">
+              <div class="card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1548574505-5e239809ee19?q=80&w=1000&auto=format&fit=crop"
+                  alt="Alaskan Cruise Liner in Fjord Glaciers" class="card-img">
+                <span class="card-tag">Alaskan Cruise</span>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Inside Passage Glacier Voyage</h3>
+                <p class="card-text">Sail through pristine fjords, calving glaciers, and whale sanctuaries aboard 5-star
+                  luxury liners.</p>
+                <div class="card-footer">
+                  <span class="card-footer-info">7 Nights Ocean Voyage</span>
+                  <a href="#cta-section" class="card-btn-action">View Voyage</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="card-item" data-group="alaska-singapore">
+              <div class="card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1000&auto=format&fit=crop"
+                  alt="Singaporean Luxury Cruise Ship" class="card-img">
+                <span class="card-tag">Singaporean Cruise</span>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Southeast Asian Spice Route Expedition</h3>
+                <p class="card-text">Embark from Singapore to Phuket, Penang, and Langkawi with Michelin-starred dining
+                  on board.</p>
+                <div class="card-footer">
+                  <span class="card-footer-info">6 Nights Spice Route</span>
+                  <a href="#cta-section" class="card-btn-action">View Voyage</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Nile Cruise, Australian Cruise -->
+            <article class="card-item" data-group="nile-australia">
+              <div class="card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1539650116574-8efeb43e2750?q=80&w=1000&auto=format&fit=crop"
+                  alt="Nile River Sunset Cruise" class="card-img">
+                <span class="card-tag">Nile Cruise</span>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Pharaohs River Expedition on the Nile</h3>
+                <p class="card-text">Glide from Luxor to Aswan stopping at Kom Ombo and Edfu temples with Egyptologist
+                  guides.</p>
+                <div class="card-footer">
+                  <span class="card-footer-info">5 Nights River Cruise</span>
+                  <a href="#cta-section" class="card-btn-action">View Voyage</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="card-item" data-group="nile-australia">
+              <div class="card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?q=80&w=1000&auto=format&fit=crop"
+                  alt="Australian Barrier Reef Cruise" class="card-img">
+                <span class="card-tag">Australian Cruise</span>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Great Barrier Reef &amp; Southern Ocean Voyage</h3>
+                <p class="card-text">Sydney Harbour departures visiting Whitsunday Islands, Tasmania fjords, and coral
+                  reefs.</p>
+                <div class="card-footer">
+                  <span class="card-footer-info">10 Nights Barrier Reef</span>
+                  <a href="#cta-section" class="card-btn-action">View Voyage</a>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- ================= PANEL C: AIRLINE TICKETING ================= -->
+        <div class="category-panel" id="flights-panel">
+          <div class="flight-inquiry-container">
+
+            <div class="flight-info-side">
+              <span class="section-tagline" style="color: var(--color-gold);">Tailored Flight Concierge</span>
+              <h3
+                style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-ivory);">
+                Airline Ticketing &amp; Bespoke Routing</h3>
+              <p style="font-size: 0.95rem; line-height: 1.7; color: rgba(247,244,237,0.85); margin-bottom: 2rem;">
+                Our Canadian flight specialists secure preferred international rates, multi-city itineraries, business
+                class upgrades, and seamless global connections across major world carriers.
+              </p>
+              <div
+                style="font-size: 0.85rem; color: var(--color-gold); display: flex; flex-direction: column; gap: 0.75rem;">
+                <div>✓ Direct IATA &amp; Global Airline Contracting</div>
+                <div>✓ 24/7 Canadian Travel Support &amp; Flight Re-routing</div>
+                <div>✓ Flexible Fare Rules &amp; Special Group Fares</div>
+              </div>
+            </div>
+
+            <!-- AIRLINE TICKETING INQUIRY FORM -->
+            <div class="flight-form-side">
+              <h4
+                style="font-family: var(--font-display); font-size: 1.6rem; color: var(--color-navy); margin-bottom: 1.5rem;">
+                Airline Ticketing Inquiry</h4>
+
+              <form id="flightInquiryForm" class="form-grid">
+
+                <div class="form-group">
+                  <label class="form-label" for="fullName">Full Name *</label>
+                  <input type="text" id="fullName" class="form-control" placeholder="e.g. Eleanor Vance" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="emailAddr">Email Address *</label>
+                  <input type="email" id="emailAddr" class="form-control" placeholder="eleanor@example.com" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="phoneNum">Phone / WhatsApp *</label>
+                  <input type="tel" id="phoneNum" class="form-control" placeholder="+1 (555) 000-0000" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="tripType">Trip Type *</label>
+                  <select id="tripType" class="form-control" required>
+                    <option value="round-trip">Round Trip</option>
+                    <option value="one-way">One Way</option>
+                    <option value="multi-city">Multi-City / Bespoke Route</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="depCity">Departure City / Airport *</label>
+                  <input type="text" id="depCity" class="form-control" placeholder="e.g. YVR - Vancouver or Toronto YYZ"
+                    required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="destCity">Destination City / Airport *</label>
+                  <input type="text" id="destCity" class="form-control" placeholder="e.g. CMB - Colombo or CAI - Cairo"
+                    required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="depDate">Departure Date *</label>
+                  <input type="date" id="depDate" class="form-control" required>
+                </div>
+
+                <div class="form-group" id="returnDateGroup">
+                  <label class="form-label" for="retDate">Return Date</label>
+                  <input type="date" id="retDate" class="form-control">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="passengers">Travellers *</label>
+                  <select id="passengers" class="form-control">
+                    <option value="1">1 Adult</option>
+                    <option value="2">2 Adults</option>
+                    <option value="family">Family (2 Adults + Children)</option>
+                    <option value="group">Group (5+ Passengers)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="cabinClass">Cabin Class *</label>
+                  <select id="cabinClass" class="form-control">
+                    <option value="economy">Economy Class</option>
+                    <option value="premium-econ">Premium Economy</option>
+                    <option value="business">Business Class</option>
+                    <option value="first">First Class</option>
+                  </select>
+                </div>
+
+                <div class="form-group full-width">
+                  <label class="form-label" for="preferredAirline">Preferred Airline (Optional)</label>
+                  <input type="text" id="preferredAirline" class="form-control"
+                    placeholder="e.g. Air Canada, Emirates, Qatar Airways">
+                </div>
+
+                <div class="form-group full-width">
+                  <div class="form-checkbox-group">
+                    <input type="checkbox" id="datesFlexible" checked>
+                    <label for="datesFlexible">My travel dates are flexible (+/- 3 days for best fares)</label>
+                  </div>
+                </div>
+
+                <div class="form-group full-width">
+                  <label class="form-label" for="specialRequests">Special Requests / Preferences</label>
+                  <textarea id="specialRequests" class="form-control" rows="2"
+                    placeholder="Mention seat preferences, meal options, or stopover requests..."></textarea>
+                </div>
+
+                <div class="form-group full-width" style="margin-top: 0.5rem;">
+                  <button type="submit" class="btn-primary" style="width: 100%;">Request Flight Options</button>
+                </div>
+
+              </form>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ================= PANEL D: HOTELS ================= -->
+        <div class="category-panel" id="hotels-panel">
+
+          <div class="subgroup-filter-nav">
+            <span class="subgroup-filter-label">Hotel Destinations:</span>
+            <button class="subgroup-pill active" data-group="all">All Luxury Properties</button>
+            <button class="subgroup-pill" data-group="hotel-g1">Canada, Sri Lanka, Egypt &amp; Thailand</button>
+            <button class="subgroup-pill" data-group="hotel-g2">Vietnam, Nepal &amp; Turkey</button>
+          </div>
+
+          <div class="cards-grid">
+
+            <!-- Canada, Sri Lanka, Egypt, Thailand -->
+            <article class="card-item" data-group="hotel-g1">
+              <div class="card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop"
+                  alt="Banff Springs Hotel" class="card-img">
+                <span class="card-tag">Canada</span>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Fairmont Banff Springs &amp; Chateau Lake Louise</h3>
+                <p class="card-text">Historic castle sanctuary offering world-class spa, fine dining, and panoramic
+                  alpine views.</p>
+                <div class="card-footer">
+                  <span class="card-footer-info">5-Star Luxury Resort</span>
+                  <a href="#cta-section" class="card-btn-action">Reserve Stay</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="card-item" data-group="hotel-g1">
+              <div class="card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=800&auto=format&fit=crop"
+                  alt="Phuket Beach Villa" class="card-img">
+                <span class="card-tag">Thailand</span>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Amanpuri &amp; Banyan Tree Villa Suites</h3>
+                <p class="card-text">Private infinity pool beachfront villas overlooking the turquoise Andaman Ocean in
+                  Phuket.</p>
+                <div class="card-footer">
+                  <span class="card-footer-info">5-Star Pool Villas</span>
+                  <a href="#cta-section" class="card-btn-action">Reserve Stay</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="card-item" data-group="hotel-g1">
+              <div class="card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=800&auto=format&fit=crop"
+                  alt="Cairo Nile Hotel" class="card-img">
+                <span class="card-tag">Egypt</span>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Four Seasons Cairo at First Residence</h3>
+                <p class="card-text">Bespoke Nile-front hotel featuring private balcony views of the Pyramids and
+                  ancient Cairo skyline.</p>
+                <div class="card-footer">
+                  <span class="card-footer-info">5-Star Premier Suite</span>
+                  <a href="#cta-section" class="card-btn-action">Reserve Stay</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Vietnam, Nepal, Turkey -->
+            <article class="card-item" data-group="hotel-g2">
+              <div class="card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1565031491910-e57fac031c41?q=80&w=800&auto=format&fit=crop"
+                  alt="Cappadocia Cave Hotel" class="card-img">
+                <span class="card-tag">Turkey</span>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Museum Hotel &amp; Cave Suites Cappadocia</h3>
+                <p class="card-text">Authentic restored cave hotel with heated outdoor terrace pools overlooking fairy
+                  chimneys.</p>
+                <div class="card-footer">
+                  <span class="card-footer-info">Bespoke Heritage Suite</span>
+                  <a href="#cta-section" class="card-btn-action">Reserve Stay</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="card-item" data-group="hotel-g2">
+              <div class="card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=800&auto=format&fit=crop"
+                  alt="Da Nang Resort Vietnam" class="card-img">
+                <span class="card-tag">Vietnam</span>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">InterContinental Danang Sun Peninsula Resort</h3>
+                <p class="card-text">Bill Bensley-designed luxury cliffside sanctuary perched on Son Tra Peninsula's
+                  private bay.</p>
+                <div class="card-footer">
+                  <span class="card-footer-info">5-Star Oceanfront Resort</span>
+                  <a href="#cta-section" class="card-btn-action">Reserve Stay</a>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 7: CALL-TO-ACTION SECTION
+         Elementor Container: #cta-section | Background: Expedition Navy (#252E47)
+         ========================================================================== -->
+    <section class="cta-section" id="cta-section">
+      <div class="container">
+        <div class="cta-box">
+          <span class="section-tagline" style="color: var(--color-gold);">Start Planning Today</span>
+          <h2 class="cta-title">Let's Plan Your Next Journey</h2>
+          <hr class="gold-rule center">
+          <p class="cta-desc">
+            From flights and cruises to bespoke holidays and unforgettable experiences, our team is here to make your
+            travel plans seamless. Get in touch with Premium Global Expeditions and let us bring your travel aspirations
+            to life.
+          </p>
+          <a href="#flight-inquiry-form" class="btn-primary" id="getInTouchBtn">Get In Touch!</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       SECTION 8: FOOTER SECTION
+       Elementor Container: #footer-section | Background: Midnight (#121525)
+       ========================================================================== -->
+  <footer class="footer-section" id="footer-section" id="contact-section">
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <!-- COLUMN 1: BRAND LOGO & TAGLINE -->
+        <div class="footer-brand-col">
+          <img src="assets/pge-logo-full-dark.svg" alt="Premium Global Expeditions" class="footer-logo">
+          <div class="footer-tagline-script">Where Dreams Become A Reality</div>
+          <p class="footer-about-text">
+            Premium Global Expeditions Inc. is a registered Canadian tour operator providing bespoke global holidays,
+            flights, cruises, and luxury travel services.
+          </p>
+          <div class="social-links">
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/PremiumGlobalExpeditions" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Follow us on Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/premiumglobalexpeditions" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Follow us on Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/company/premium-global-expeditions" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Connect on LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- COLUMN 2: QUICK LINKS -->
+        <div class="footer-links-col">
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links-list">
+            <li><a href="#hero-section"><span class="footer-link-arrow">&rsaquo;</span> Home</a></li>
+            <li><a href="#intro-section"><span class="footer-link-arrow">&rsaquo;</span> About Us</a></li>
+            <li><a href="#travel-categories"><span class="footer-link-arrow">&rsaquo;</span> Packages</a></li>
+            <li><a href="#cta-section"><span class="footer-link-arrow">&rsaquo;</span> Get In Touch</a></li>
+          </ul>
+        </div>
+
+        <!-- COLUMN 3: TOP DESTINATIONS -->
+        <div class="footer-links-col">
+          <h4 class="footer-title">Top Destinations</h4>
+          <ul class="footer-links-list">
+            <li><a href="#travel-categories" class="footer-dest-link" data-tab="packages-panel" data-group="canada"><span class="footer-link-pin">&#9679;</span> Canadian Rockies &amp; Banff</a></li>
+            <li><a href="#travel-categories" class="footer-dest-link" data-tab="packages-panel" data-group="asia-middleeast"><span class="footer-link-pin">&#9679;</span> Ancient Egypt &amp; Nile Expedition</a></li>
+            <li><a href="#travel-categories" class="footer-dest-link" data-tab="packages-panel" data-group="asia-middleeast"><span class="footer-link-pin">&#9679;</span> Sri Lanka &amp; Indian Ocean</a></li>
+            <li><a href="#travel-categories" class="footer-dest-link" data-tab="packages-panel" data-group="asia-middleeast"><span class="footer-link-pin">&#9679;</span> Thailand Beach &amp; Culture</a></li>
+            <li><a href="#travel-categories" class="footer-dest-link" data-tab="packages-panel" data-group="indochina-eurasia"><span class="footer-link-pin">&#9679;</span> Cappadocia &amp; Turkey</a></li>
+            <li><a href="#travel-categories" class="footer-dest-link" data-tab="cruises-panel" data-group="alaska-singapore"><span class="footer-link-pin">&#9679;</span> Alaskan Glacier Cruise</a></li>
+          </ul>
+        </div>
+
+        <!-- COLUMN 4: CANADIAN CONTACT INFO -->
+        <div class="footer-contact-col">
+          <h4 class="footer-title">Get In Touch</h4>
+          <ul class="footer-contact-info">
+            <li>
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+              </svg>
+              <span>Headquarters: Toronto, ON &amp; Vancouver, BC, Canada</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+              </svg>
+              <span><a href="tel:+14165557431" style="color:inherit; text-decoration:none;">+1 (416) 555-7431</a></span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+              </svg>
+              <span>Email: concierge@pgeexpeditions.ca</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Premium Global Expeditions Inc. All rights reserved. Registered Canadian Tour Operator.</div>
+        <div>Designed strictly according to Official Brand Guide 2026</div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP BUTTON -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to Top">
+    <svg viewBox="0 0 24 24">
+      <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+    </svg>
+  </button>
+
+  <!-- MODAL FEEDBACK FOR FLIGHT INQUIRY SUBMISSION -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-card">
+      <span class="section-tagline" style="color: var(--color-gold); font-size: 1.5rem;">Inquiry Received</span>
+      <h3 style="font-family: var(--font-display); font-size: 2rem; color: var(--color-navy); margin-bottom: 0.75rem;">
+        Thank You for Choosing PGE!</h3>
+      <p style="font-size: 0.95rem; color: var(--color-slate); line-height: 1.6; margin-bottom: 1.75rem;">
+        Your flight inquiry has been sent to our Canadian travel specialists. We will review your travel preferences and
+        send customized flight options within 24 hours.
+      </p>
+      <button class="btn-primary" id="modalCloseBtn">Return to Site</button>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT CONTROLLER -->
+  <script src="script.js"></script>
+</body>
+
+</html>
