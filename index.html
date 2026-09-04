@@ -150,19 +150,19 @@
         <!-- Slide 1: Canadian Rockies -->
         <div class="hero-slide active">
           <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1920&auto=format&fit=crop"
-            alt="Majestic Canadian Rockies and Banff Emerald Lake" class="hero-slide-bg">
+            alt="Majestic Canadian Rockies and Banff Emerald Lake" class="hero-slide-bg" width="1920" height="1080" fetchpriority="high">
         </div>
 
         <!-- Slide 2: Nile River Cruise, Egypt -->
         <div class="hero-slide">
           <img src="https://images.unsplash.com/photo-1539650116574-8efeb43e2750?q=80&w=1920&auto=format&fit=crop"
-            alt="Ancient Egyptian Nile Luxury Expedition" class="hero-slide-bg">
+            alt="Ancient Egyptian Nile Luxury Expedition" class="hero-slide-bg" width="1920" height="1080" loading="lazy">
         </div>
 
         <!-- Slide 3: Sri Lanka & Southeast Asia Coastal Retreat -->
         <div class="hero-slide">
           <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1920&auto=format&fit=crop"
-            alt="Pristine Tropical Coastal Sanctuary" class="hero-slide-bg">
+            alt="Pristine Tropical Coastal Sanctuary" class="hero-slide-bg" width="1920" height="1080" loading="lazy">
         </div>
 
       </div>
@@ -266,7 +266,7 @@
           <!-- RIGHT COLUMN: SUPPORTING CINEMATIC IMAGE CARD -->
           <div class="intro-image-wrap">
             <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1200&auto=format&fit=crop"
-              alt="Cinematic travel journey" class="intro-main-img">
+              alt="Cinematic travel journey" class="intro-main-img" width="1200" height="800" loading="lazy">
             <div class="intro-floating-card">
               <span class="floating-card-num">100%</span>
               <p class="floating-card-label">Tailored Canadian Expertise &amp; Worldwide Destination Management</p>
@@ -335,22 +335,30 @@
         <!-- ================= PANEL A: HOLIDAY PACKAGES ================= -->
         <div class="category-panel active" id="packages-panel">
 
-          <!-- Sub-group filter pills -->
+          <!-- Sub-group filter dropdown -->
           <div class="subgroup-filter-nav">
-            <span class="subgroup-filter-label">Filter Region:</span>
-            <button class="subgroup-pill active" data-group="all">All Regions</button>
-            <button class="subgroup-pill" data-group="canada">Canada</button>
-            <button class="subgroup-pill" data-group="asia-middleeast">Sri Lanka, Egypt &amp; Thailand</button>
-            <button class="subgroup-pill" data-group="indochina-eurasia">Vietnam, Nepal &amp; Turkey</button>
+            <label class="subgroup-filter-label" for="regionFilterSelect">Filter by Region:</label>
+            <div class="select-dropdown-wrap">
+              <select id="regionFilterSelect" class="subgroup-select-filter" aria-label="Filter packages by region">
+                <option value="all">All Regions</option>
+                <option value="north-america">North America — Canada</option>
+                <option value="south-asia">South Asia — Sri Lanka, Nepal</option>
+                <option value="middle-east">Middle East &amp; North Africa — Egypt, Turkey</option>
+                <option value="southeast-asia">Southeast Asia — Vietnam, Thailand</option>
+              </select>
+              <svg class="select-arrow" viewBox="0 0 24 24">
+                <path d="M7 10l5 5 5-5z" />
+              </svg>
+            </div>
           </div>
 
           <div class="cards-grid">
 
             <!-- Canada -->
-            <article class="card-item" data-group="canada">
+            <article class="card-item" data-group="north-america">
               <div class="card-img-wrap">
                 <img src="https://images.unsplash.com/photo-1503614472-8c93d56e92ce?q=80&w=800&auto=format&fit=crop"
-                  alt="Rocky Mountaineer Express" class="card-img">
+                  alt="Rocky Mountaineer Express" class="card-img" width="800" height="600" loading="lazy">
                 <span class="card-tag">Canada</span>
               </div>
               <div class="card-body">
@@ -364,11 +372,11 @@
               </div>
             </article>
 
-            <!-- Sri Lanka, Egypt, Thailand -->
-            <article class="card-item" data-group="asia-middleeast">
+            <!-- Egypt -->
+            <article class="card-item" data-group="middle-east">
               <div class="card-img-wrap">
                 <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=800&auto=format&fit=crop"
-                  alt="Wonders of Ancient Egypt" class="card-img">
+                  alt="Wonders of Ancient Egypt" class="card-img" width="800" height="600" loading="lazy">
                 <span class="card-tag">Egypt</span>
               </div>
               <div class="card-body">
@@ -382,10 +390,11 @@
               </div>
             </article>
 
-            <article class="card-item" data-group="asia-middleeast">
+            <!-- Thailand -->
+            <article class="card-item" data-group="southeast-asia">
               <div class="card-img-wrap">
                 <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=800&auto=format&fit=crop"
-                  alt="Thailand Islands" class="card-img">
+                  alt="Thailand Islands" class="card-img" width="800" height="600" loading="lazy">
                 <span class="card-tag">Thailand</span>
               </div>
               <div class="card-body">
@@ -399,10 +408,11 @@
               </div>
             </article>
 
-            <article class="card-item" data-group="asia-middleeast">
+            <!-- Sri Lanka -->
+            <article class="card-item" data-group="south-asia">
               <div class="card-img-wrap">
                 <img src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=800&auto=format&fit=crop"
-                  alt="Sri Lanka Heritage" class="card-img">
+                  alt="Sri Lanka Heritage" class="card-img" width="800" height="600" loading="lazy">
                 <span class="card-tag">Sri Lanka</span>
               </div>
               <div class="card-body">
@@ -416,11 +426,11 @@
               </div>
             </article>
 
-            <!-- Vietnam, Nepal, Turkey -->
-            <article class="card-item" data-group="indochina-eurasia">
+            <!-- Turkey -->
+            <article class="card-item" data-group="middle-east">
               <div class="card-img-wrap">
                 <img src="https://images.unsplash.com/photo-1608848461950-0fe51dfc41cb?q=80&w=800&auto=format&fit=crop"
-                  alt="Cappadocia Turkey" class="card-img">
+                  alt="Cappadocia Turkey" class="card-img" width="800" height="600" loading="lazy">
                 <span class="card-tag">Turkey</span>
               </div>
               <div class="card-body">
@@ -434,10 +444,11 @@
               </div>
             </article>
 
-            <article class="card-item" data-group="indochina-eurasia">
+            <!-- Vietnam -->
+            <article class="card-item" data-group="southeast-asia">
               <div class="card-img-wrap">
                 <img src="https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=800&auto=format&fit=crop"
-                  alt="Ha Long Bay Vietnam" class="card-img">
+                  alt="Ha Long Bay Vietnam" class="card-img" width="800" height="600" loading="lazy">
                 <span class="card-tag">Vietnam</span>
               </div>
               <div class="card-body">
@@ -457,11 +468,19 @@
         <!-- ================= PANEL B: CRUISES ================= -->
         <div class="category-panel" id="cruises-panel">
 
+          <!-- Cruise filter dropdown -->
           <div class="subgroup-filter-nav">
-            <span class="subgroup-filter-label">Cruise Region:</span>
-            <button class="subgroup-pill active" data-group="all">All Voyages</button>
-            <button class="subgroup-pill" data-group="alaska-singapore">Alaskan &amp; Singaporean</button>
-            <button class="subgroup-pill" data-group="nile-australia">Nile &amp; Australian</button>
+            <label class="subgroup-filter-label" for="cruiseFilterSelect">Cruise Region:</label>
+            <div class="select-dropdown-wrap">
+              <select id="cruiseFilterSelect" class="subgroup-select-filter" aria-label="Filter cruises by region">
+                <option value="all">All Voyages</option>
+                <option value="alaska-singapore">Alaskan &amp; Singaporean</option>
+                <option value="nile-australia">Nile &amp; Australian</option>
+              </select>
+              <svg class="select-arrow" viewBox="0 0 24 24">
+                <path d="M7 10l5 5 5-5z" />
+              </svg>
+            </div>
           </div>
 
           <div class="cards-grid">
@@ -666,11 +685,19 @@
         <!-- ================= PANEL D: HOTELS ================= -->
         <div class="category-panel" id="hotels-panel">
 
+          <!-- Hotel filter dropdown -->
           <div class="subgroup-filter-nav">
-            <span class="subgroup-filter-label">Hotel Destinations:</span>
-            <button class="subgroup-pill active" data-group="all">All Luxury Properties</button>
-            <button class="subgroup-pill" data-group="hotel-g1">Canada, Sri Lanka, Egypt &amp; Thailand</button>
-            <button class="subgroup-pill" data-group="hotel-g2">Vietnam, Nepal &amp; Turkey</button>
+            <label class="subgroup-filter-label" for="hotelFilterSelect">Hotel Destinations:</label>
+            <div class="select-dropdown-wrap">
+              <select id="hotelFilterSelect" class="subgroup-select-filter" aria-label="Filter hotels by destination">
+                <option value="all">All Luxury Properties</option>
+                <option value="hotel-g1">Canada, Sri Lanka, Egypt &amp; Thailand</option>
+                <option value="hotel-g2">Vietnam, Nepal &amp; Turkey</option>
+              </select>
+              <svg class="select-arrow" viewBox="0 0 24 24">
+                <path d="M7 10l5 5 5-5z" />
+              </svg>
+            </div>
           </div>
 
           <div class="cards-grid">

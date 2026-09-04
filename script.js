@@ -1,6 +1,6 @@
 /**
- * PREMIUM GLOBAL EXPEDITIONS INC. (PGE) — INTERACTIVE CONTROLLER
- * Vanilla JavaScript (Clean, Section-mapped, No framework dependencies)
+ * PREMIUM GLOBAL EXPEDITIONS INC. (PGE) — COMPLETE INTERACTIVE CONTROLLER
+ * Vanilla JavaScript (Clean, Section-mapped, Mobile Responsive, Bug-Free)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,9 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('scroll', () => {
     if (window.scrollY > 30) {
-      header.classList.add('scrolled');
+      header?.classList.add('scrolled');
     } else {
-      header.classList.remove('scrolled');
+      header?.classList.remove('scrolled');
     }
 
     if (window.scrollY > 400) {
@@ -45,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileToggle.setAttribute('aria-expanded', isExpanded);
     });
 
-    // Close menu when link clicked
     navMenu.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('mobile-open');
@@ -98,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function startAutoSlide() {
-    if (!slideInterval) {
+    if (!slideInterval && heroSlides.length > 0) {
       slideInterval = setInterval(nextSlide, 5500);
     }
   }
@@ -139,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ------------------------------------------------------------------------
-     4. TRAVEL CATEGORIES TABS & SUB-GROUP FILTERING
+     4. MAIN TRAVEL CATEGORY TABS SWITCHER
      ------------------------------------------------------------------------ */
   const categoryTabBtns = document.querySelectorAll('.tab-btn[data-target]');
   const categoryPanels = document.querySelectorAll('.category-panel');
@@ -148,41 +147,67 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       const targetId = btn.getAttribute('data-target');
 
+      // 1. Deactivate all tab buttons and activate clicked one
       categoryTabBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
+      // 2. Hide all category panels and display target panel
       categoryPanels.forEach(panel => {
         if (panel.id === targetId) {
           panel.classList.add('active');
+          panel.style.display = 'block';
         } else {
           panel.classList.remove('active');
+          panel.style.display = 'none';
         }
       });
     });
   });
 
-  // Subgroup pill filter logic
+  /* ------------------------------------------------------------------------
+     5. SUB-GROUP DROPDOWN & PILL FILTERING
+     ------------------------------------------------------------------------ */
+  // Dropdown select filter listeners (Packages, Cruises, Hotels)
+  const selectFilters = document.querySelectorAll('.subgroup-select-filter');
+  selectFilters.forEach(select => {
+    select.addEventListener('change', (e) => {
+      const selectedGroup = e.target.value;
+      const parentPanel = select.closest('.category-panel');
+      if (!parentPanel) return;
+
+      const cards = parentPanel.querySelectorAll('.card-item');
+      cards.forEach(card => {
+        const cardGroup = card.getAttribute('data-group');
+        if (selectedGroup === 'all' || cardGroup === selectedGroup) {
+          card.style.display = 'flex';
+          card.style.animation = 'fadeIn 0.35s ease';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
   const subgroupPills = document.querySelectorAll('.subgroup-pill');
 
   subgroupPills.forEach(pill => {
     pill.addEventListener('click', () => {
       const groupFilter = pill.getAttribute('data-group');
       const parentPanel = pill.closest('.category-panel');
-
       if (!parentPanel) return;
 
+      // Update active pill state in current panel
       const panelPills = parentPanel.querySelectorAll('.subgroup-pill');
       panelPills.forEach(p => p.classList.remove('active'));
       pill.classList.add('active');
 
+      // Filter destination cards
       const cards = parentPanel.querySelectorAll('.card-item');
-
       cards.forEach(card => {
         const cardGroup = card.getAttribute('data-group');
-
         if (groupFilter === 'all' || cardGroup === groupFilter) {
           card.style.display = 'flex';
-          card.style.animation = 'fadeIn 0.3s ease';
+          card.style.animation = 'fadeIn 0.35s ease';
         } else {
           card.style.display = 'none';
         }
@@ -191,7 +216,69 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ------------------------------------------------------------------------
-     5. AIRLINE TICKETING INQUIRY FORM & MODAL FEEDBACK
+     6. ANIMATED STATS COUNTER (Starts at 0 on scroll)
+     ------------------------------------------------------------------------ */
+  const statNumbers = document.querySelectorAll('.stat-number');
+  let animated = false;
+
+  function animateCounters() {
+    statNumbers.forEach(stat => {
+      const target = parseInt(stat.getAttribute('data-target'), 10);
+      const suffix = stat.getAttribute('data-suffix') || '';
+      const isComma = stat.getAttribute('data-format') === 'comma';
+      const duration = 2000; // 2 seconds animation
+      const startTime = performance.now();
+
+      function updateCount(currentTime) {
+        const elapsedTime = currentTime - startTime;
+        const progress = Math.min(elapsedTime / duration, 1);
+
+        // Ease-out quad formula
+        const easeOutProgress = 1 - (1 - progress) * (1 - progress);
+        const currentCount = Math.floor(easeOutProgress * target);
+
+        let formattedCount = currentCount.toString();
+        if (isComma && currentCount >= 1000) {
+          formattedCount = currentCount.toLocaleString();
+        }
+
+        stat.textContent = formattedCount + suffix;
+
+        if (progress < 1) {
+          requestAnimationFrame(updateCount);
+        } else {
+          let finalFormatted = target.toString();
+          if (isComma && target >= 1000) {
+            finalFormatted = target.toLocaleString();
+          }
+          stat.textContent = finalFormatted + suffix;
+        }
+      }
+
+      requestAnimationFrame(updateCount);
+    });
+  }
+
+  // IntersectionObserver to start counter animation when stats section is scrolled into view
+  const statsSection = document.getElementById('stats-section');
+  if (statsSection && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !animated) {
+          animated = true;
+          animateCounters();
+        }
+      });
+    }, { threshold: 0.3 });
+
+    observer.observe(statsSection);
+  } else if (statNumbers.length > 0) {
+    // Fallback if IntersectionObserver is not supported
+    animateCounters();
+  }
+
+  /* ------------------------------------------------------------------------
+     7. AIRLINE TICKETING INQUIRY FORM & MODAL FEEDBACK
      ------------------------------------------------------------------------ */
   const flightForm = document.getElementById('flightInquiryForm');
   const modalOverlay = document.getElementById('modalOverlay');
@@ -203,10 +290,12 @@ document.addEventListener('DOMContentLoaded', () => {
     tripTypeSelect.addEventListener('change', (e) => {
       if (e.target.value === 'one-way') {
         returnDateGroup.style.opacity = '0.5';
-        returnDateGroup.querySelector('input').disabled = true;
+        const input = returnDateGroup.querySelector('input');
+        if (input) input.disabled = true;
       } else {
         returnDateGroup.style.opacity = '1';
-        returnDateGroup.querySelector('input').disabled = false;
+        const input = returnDateGroup.querySelector('input');
+        if (input) input.disabled = false;
       }
     });
   }
@@ -214,13 +303,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (flightForm) {
     flightForm.addEventListener('submit', (e) => {
       e.preventDefault();
-
-      // Show success feedback modal
       if (modalOverlay) {
         modalOverlay.classList.add('active');
       }
-
-      // Reset form
       flightForm.reset();
     });
   }
@@ -238,97 +323,43 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ------------------------------------------------------------------------
-     6. LINK TRIGGER FOR CATEGORY TAB FILTER FROM UTILITY BAR
+     8. UTILITY BAR & FOOTER DESTINATION DEEP-LINKING CONTROLLERS
      ------------------------------------------------------------------------ */
   const utilityNavLinks = document.querySelectorAll('.utility-links a[data-tab]');
   utilityNavLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
+    link.addEventListener('click', () => {
       const tabTarget = link.getAttribute('data-tab');
       if (tabTarget) {
         const matchingBtn = document.querySelector(`.tab-btn[data-target="${tabTarget}"]`);
-        if (matchingBtn) {
-          matchingBtn.click();
-        }
+        matchingBtn?.click();
       }
     });
   });
 
-  /* Footer Top Destinations: activate tab + filter subgroup */
   const footerDestLinks = document.querySelectorAll('.footer-dest-link[data-tab]');
   footerDestLinks.forEach(link => {
     link.addEventListener('click', () => {
       const tabTarget = link.getAttribute('data-tab');
       const groupTarget = link.getAttribute('data-group');
 
-      // 1. Activate the correct main tab
       const matchingTabBtn = document.querySelector(`.tab-btn[data-target="${tabTarget}"]`);
-      if (matchingTabBtn) {
-        matchingTabBtn.click();
-      }
+      matchingTabBtn?.click();
 
-      // 2. After tab switch, activate the correct subgroup pill
       if (groupTarget) {
         setTimeout(() => {
-          const targetPanel = document.getElementById(tabTarget);
-          if (targetPanel) {
-            const matchingPill = targetPanel.querySelector(`.subgroup-pill[data-group="${groupTarget}"]`);
-            if (matchingPill) {
-              matchingPill.click();
+          const activePanel = document.querySelector(`.category-panel.active`);
+          if (activePanel) {
+            const matchingSelect = activePanel.querySelector(`.subgroup-select-filter`);
+            if (matchingSelect) {
+              matchingSelect.value = groupTarget;
+              matchingSelect.dispatchEvent(new Event('change'));
             }
+            const matchingPill = activePanel.querySelector(`.subgroup-pill[data-group="${groupTarget}"]`);
+            matchingPill?.click();
           }
-        }, 80);
+        }, 100);
       }
     });
   });
-
-  /* ------------------------------------------------------------------------
-     7. ANIMATED STATS COUNTER (Counts up from 0 on viewport enter)
-     ------------------------------------------------------------------------ */
-  const statsSection = document.getElementById('stats-section');
-  const statNumbers = document.querySelectorAll('.stat-number[data-target]');
-
-  function animateCounters() {
-    statNumbers.forEach(counter => {
-      const target = parseInt(counter.getAttribute('data-target'), 10);
-      const suffix = counter.getAttribute('data-suffix') || '';
-      const isComma = counter.getAttribute('data-format') === 'comma';
-      const duration = 2200; // 2.2 seconds animation duration
-      const startTime = performance.now();
-
-      function updateNumber(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        // Cubic ease-out curve
-        const easeProgress = 1 - Math.pow(1 - progress, 3);
-        const currentVal = Math.floor(easeProgress * target);
-
-        let displayVal = isComma ? currentVal.toLocaleString('en-US') : currentVal;
-        counter.textContent = displayVal + suffix;
-
-        if (progress < 1) {
-          requestAnimationFrame(updateNumber);
-        } else {
-          let finalVal = isComma ? target.toLocaleString('en-US') : target;
-          counter.textContent = finalVal + suffix;
-        }
-      }
-
-      requestAnimationFrame(updateNumber);
-    });
-  }
-
-  if (statsSection && statNumbers.length > 0) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // Reset to 0 before animating
-          statNumbers.forEach(n => n.textContent = '0' + (n.getAttribute('data-suffix') || ''));
-          animateCounters();
-        }
-      });
-    }, { threshold: 0.25 });
-
-    observer.observe(statsSection);
-  }
 
 });
