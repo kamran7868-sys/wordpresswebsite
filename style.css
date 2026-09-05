@@ -1719,3 +1719,87 @@ textarea {
 .e-con.footer-section {
   background-color: var(--color-midnight) !important;
 }
+
+/* --------------------------------------------------------------------------
+   13. ABOUT US & SUB-PAGE SPECIFIC STYLES
+   -------------------------------------------------------------------------- */
+.subpage-hero-section {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  min-height: 320px;
+  background-color: var(--color-midnight);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.subpage-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-breadcrumb {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+/* Brand Quote Section */
+.brand-quote-section {
+  background: linear-gradient(135deg, var(--color-midnight) 0%, var(--color-navy) 100%);
+  color: var(--color-ivory);
+  padding: 6rem 1.5rem;
+  text-align: center;
+  position: relative;
+  border-top: 1px solid rgba(182, 153, 100, 0.25);
+  border-bottom: 1px solid rgba(182, 153, 100, 0.25);
+}
+
+.quote-box {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.quote-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  font-weight: 600;
+  color: var(--color-ivory);
+  letter-spacing: 1px;
+  margin-bottom: 0.75rem;
+}
+
+.quote-tagline-script {
+  font-family: var(--font-script);
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  color: var(--color-gold);
+  font-weight: 400;
+  display: block;
+}
+
+/* About Intro Copy Readability */
+.about-intro-copy {
+  max-width: 720px; /* ~65-75 chars per line optimal readability */
+}
+
+.about-intro-copy p {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--color-navy);
+  margin-bottom: 1.5rem;
+}
+
+.about-intro-copy p:last-child {
+  margin-bottom: 0;
+}

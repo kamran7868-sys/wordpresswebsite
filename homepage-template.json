@@ -1,0 +1,575 @@
+{
+  "version": "0.4",
+  "title": "PGE Homepage Template",
+  "type": "page",
+  "page_settings": {},
+  "content": [
+    {
+      "id": "a1b2c3d",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+        "_css_classes": "hero-section",
+        "container_type": "flex",
+        "content_width": "full",
+        "background_background": "slideshow",
+        "background_slideshow_gallery": [
+          { "url": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1920&auto=format&fit=crop" },
+          { "url": "https://images.unsplash.com/photo-1539650116574-8efeb43e2750?q=80&w=1920&auto=format&fit=crop" },
+          { "url": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1920&auto=format&fit=crop" }
+        ]
+      },
+      "elements": [
+        {
+          "id": "b4c5d6e",
+          "elType": "container",
+          "isInner": true,
+          "settings": {
+            "_css_classes": "container hero-content-wrap",
+            "flex_direction": "column",
+            "align_items": "center",
+            "justify_content": "center"
+          },
+          "elements": [
+            {
+              "id": "c7d8e9f",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "_css_classes": "hero-tagline-script",
+                "title": "Where Dreams Become A Reality",
+                "header_size": "span"
+              }
+            },
+            {
+              "id": "d1e2f3a",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "_css_classes": "hero-main-title",
+                "title": "PREMIUM GLOBAL EXPEDITIONS",
+                "header_size": "h1"
+              }
+            },
+            {
+              "id": "e4f5a6b",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "_css_classes": "hero-subheading",
+                "editor": "Your Journey Begins Here — Bespoke Journeys, Curated Cruises &amp; Tailored Flights Worldwide"
+              }
+            },
+            {
+              "id": "f7a8b9c",
+              "elType": "widget",
+              "widgetType": "button",
+              "settings": {
+                "_css_classes": "btn-primary",
+                "text": "Plan Your Journey",
+                "link": {
+                  "url": "#cta-section"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a2b3c4d",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+        "_css_classes": "intro-section",
+        "container_type": "flex",
+        "content_width": "boxed",
+        "background_background": "classic",
+        "background_color": "#F7F4ED"
+      },
+      "elements": [
+        {
+          "id": "b5c6d7e",
+          "elType": "container",
+          "isInner": true,
+          "settings": {
+            "_css_classes": "container intro-grid",
+            "container_type": "flex",
+            "flex_direction": "row"
+          },
+          "elements": [
+            {
+              "id": "c8d9e0f",
+              "elType": "container",
+              "isInner": true,
+              "settings": {
+                "_css_classes": "intro-content"
+              },
+              "elements": [
+                {
+                  "id": "d2e3f4a",
+                  "elType": "widget",
+                  "widgetType": "heading",
+                  "settings": {
+                    "_css_classes": "section-tagline",
+                    "title": "Canadian Gateway to the World",
+                    "header_size": "span"
+                  }
+                },
+                {
+                  "id": "e5f6a7b",
+                  "elType": "widget",
+                  "widgetType": "heading",
+                  "settings": {
+                    "_css_classes": "section-title",
+                    "title": "Refined Global Travel, Crafted with Personal Care",
+                    "header_size": "h2"
+                  }
+                },
+                {
+                  "id": "f8a9b0c",
+                  "elType": "widget",
+                  "widgetType": "divider",
+                  "settings": {
+                    "_css_classes": "gold-rule",
+                    "color": "#B69964",
+                    "weight": 2
+                  }
+                },
+                {
+                  "id": "a1c2e3f",
+                  "elType": "widget",
+                  "widgetType": "text-editor",
+                  "settings": {
+                    "_css_classes": "intro-paragraph",
+                    "editor": "Premium Global Expeditions is a Canadian based global travel company creating exceptional journeys across the world. From bespoke holidays and international tours to flights, cruises and premium accommodations, we bring together global reach and trusted local expertise to make every journey seamless and memorable."
+                  }
+                },
+                {
+                  "id": "b4d5e6f",
+                  "elType": "container",
+                  "isInner": true,
+                  "settings": {
+                    "_css_classes": "intro-pillars"
+                  },
+                  "elements": [
+                    {
+                      "id": "c7e8f9a",
+                      "elType": "container",
+                      "isInner": true,
+                      "settings": {
+                        "_css_classes": "pillar-card"
+                      },
+                      "elements": [
+                        {
+                          "id": "d0a1b2c",
+                          "elType": "widget",
+                          "widgetType": "heading",
+                          "settings": {
+                            "_css_classes": "pillar-title",
+                            "title": "Premium",
+                            "header_size": "h3"
+                          }
+                        },
+                        {
+                          "id": "e3f4a5b",
+                          "elType": "widget",
+                          "widgetType": "text-editor",
+                          "settings": {
+                            "_css_classes": "pillar-desc",
+                            "editor": "Refined, attentive, considered in every detail."
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "f6a7b8c",
+                      "elType": "container",
+                      "isInner": true,
+                      "settings": {
+                        "_css_classes": "pillar-card"
+                      },
+                      "elements": [
+                        {
+                          "id": "a9b0c1d",
+                          "elType": "widget",
+                          "widgetType": "heading",
+                          "settings": {
+                            "_css_classes": "pillar-title",
+                            "title": "Global",
+                            "header_size": "h3"
+                          }
+                        },
+                        {
+                          "id": "b2c3d4e",
+                          "elType": "widget",
+                          "widgetType": "text-editor",
+                          "settings": {
+                            "_css_classes": "pillar-desc",
+                            "editor": "Connected, knowledgeable, borderless reach."
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "c5d6e7f",
+                      "elType": "container",
+                      "isInner": true,
+                      "settings": {
+                        "_css_classes": "pillar-card"
+                      },
+                      "elements": [
+                        {
+                          "id": "d8e9f0a",
+                          "elType": "widget",
+                          "widgetType": "heading",
+                          "settings": {
+                            "_css_classes": "pillar-title",
+                            "title": "Expeditions",
+                            "header_size": "h3"
+                          }
+                        },
+                        {
+                          "id": "e1f2a3c",
+                          "elType": "widget",
+                          "widgetType": "text-editor",
+                          "settings": {
+                            "_css_classes": "pillar-desc",
+                            "editor": "Curious, purposeful, unforgettable moments."
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "f4a5b6d",
+              "elType": "container",
+              "isInner": true,
+              "settings": {
+                "_css_classes": "intro-image-wrap"
+              },
+              "elements": [
+                {
+                  "id": "a7b8c9f",
+                  "elType": "widget",
+                  "widgetType": "image",
+                  "settings": {
+                    "_css_classes": "intro-main-img",
+                    "image": {
+                      "url": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1200&auto=format&fit=crop",
+                      "alt": "Cinematic travel journey"
+                    }
+                  }
+                },
+                {
+                  "id": "b0c1d2e",
+                  "elType": "widget",
+                  "widgetType": "text-editor",
+                  "settings": {
+                    "_css_classes": "intro-floating-card-wrap",
+                    "editor": "<div class=\"intro-floating-card\"><span class=\"floating-card-num\">100%</span><p class=\"floating-card-label\">Tailored Canadian Expertise &amp; Worldwide Destination Management</p></div>"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c3d4e5f",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+        "_css_classes": "stats-section",
+        "container_type": "flex",
+        "content_width": "full",
+        "background_background": "classic",
+        "background_color": "#252E47"
+      },
+      "elements": [
+        {
+          "id": "d6e7f8a",
+          "elType": "container",
+          "isInner": true,
+          "settings": {
+            "_css_classes": "container stats-grid",
+            "container_type": "flex",
+            "flex_direction": "row"
+          },
+          "elements": [
+            {
+              "id": "e9f0a1b",
+              "elType": "widget",
+              "widgetType": "counter",
+              "settings": {
+                "_css_classes": "stat-item",
+                "starting_number": 0,
+                "ending_number": 15,
+                "suffix": "+",
+                "title": "Years of Service"
+              }
+            },
+            {
+              "id": "f2a3b4c",
+              "elType": "widget",
+              "widgetType": "counter",
+              "settings": {
+                "_css_classes": "stat-item",
+                "starting_number": 0,
+                "ending_number": 85,
+                "suffix": "+",
+                "title": "Destinations Curated"
+              }
+            },
+            {
+              "id": "a5b6c7d",
+              "elType": "widget",
+              "widgetType": "counter",
+              "settings": {
+                "_css_classes": "stat-item",
+                "starting_number": 0,
+                "ending_number": 12500,
+                "suffix": "+",
+                "title": "Happy Travellers"
+              }
+            },
+            {
+              "id": "b8c9d0e",
+              "elType": "widget",
+              "widgetType": "counter",
+              "settings": {
+                "_css_classes": "stat-item",
+                "starting_number": 0,
+                "ending_number": 250,
+                "suffix": "+",
+                "title": "DMC Partners"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c1d2e3a",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+        "_css_classes": "categories-section",
+        "container_type": "flex",
+        "content_width": "boxed",
+        "background_background": "classic",
+        "background_color": "#F7F4ED"
+      },
+      "elements": [
+        {
+          "id": "d4e5f6b",
+          "elType": "container",
+          "isInner": true,
+          "settings": {
+            "_css_classes": "container"
+          },
+          "elements": [
+            {
+              "id": "e7f8a9c",
+              "elType": "container",
+              "isInner": true,
+              "settings": {
+                "_css_classes": "categories-header"
+              },
+              "elements": [
+                {
+                  "id": "f0a1b2c",
+                  "elType": "widget",
+                  "widgetType": "heading",
+                  "settings": {
+                    "_css_classes": "section-tagline",
+                    "title": "Curated Offerings",
+                    "header_size": "span"
+                  }
+                },
+                {
+                  "id": "a3b4c5d",
+                  "elType": "widget",
+                  "widgetType": "heading",
+                  "settings": {
+                    "_css_classes": "section-title",
+                    "title": "Explore Our Travel Categories",
+                    "header_size": "h2"
+                  }
+                },
+                {
+                  "id": "b6c7d8e",
+                  "elType": "widget",
+                  "widgetType": "divider",
+                  "settings": {
+                    "_css_classes": "gold-rule center",
+                    "color": "#B69964",
+                    "weight": 2
+                  }
+                },
+                {
+                  "id": "c9d0e1f",
+                  "elType": "widget",
+                  "widgetType": "text-editor",
+                  "settings": {
+                    "_css_classes": "section-lead",
+                    "editor": "Select your preferred category to discover bespoke holiday packages, ocean &amp; river cruises, flight bookings, and luxury 5-star accommodations."
+                  }
+                }
+              ]
+            },
+            {
+              "id": "d2e3f4b",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "_css_classes": "category-tabs-nav-wrap",
+                "editor": "<div class=\"category-tabs-nav\" role=\"tablist\"><button class=\"tab-btn active\" data-target=\"packages-panel\" role=\"tab\">All Inclusive Holiday Packages</button><button class=\"tab-btn\" data-target=\"cruises-panel\" role=\"tab\">Cruises</button><button class=\"tab-btn\" data-target=\"flights-panel\" role=\"tab\">Airline Ticketing</button><button class=\"tab-btn\" data-target=\"hotels-panel\" role=\"tab\">Hotels</button></div>"
+              }
+            },
+            {
+              "id": "e5f6a7c",
+              "elType": "container",
+              "isInner": true,
+              "settings": {
+                "_css_classes": "category-panel active",
+                "id": "packages-panel"
+              },
+              "elements": [
+                {
+                  "id": "f8a9b0d",
+                  "elType": "widget",
+                  "widgetType": "text-editor",
+                  "settings": {
+                    "_css_classes": "subgroup-filter-nav-wrap",
+                    "editor": "<div class=\"subgroup-filter-nav\"><label class=\"subgroup-filter-label\" for=\"regionFilterSelect\">Filter by Region:</label><div class=\"select-dropdown-wrap\"><select id=\"regionFilterSelect\" class=\"subgroup-select-filter\" aria-label=\"Filter packages by region\"><option value=\"all\">All Regions</option><option value=\"north-america\">North America — Canada</option><option value=\"south-asia\">South Asia — Sri Lanka, Nepal</option><option value=\"middle-east\">Middle East &amp; North Africa — Egypt, Turkey</option><option value=\"southeast-asia\">Southeast Asia — Vietnam, Thailand</option></select><svg class=\"select-arrow\" viewBox=\"0 0 24 24\"><path d=\"M7 10l5 5 5-5z\"/></svg></div></div>"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "cruises_panel_elem",
+              "elType": "container",
+              "isInner": true,
+              "settings": {
+                "_css_classes": "category-panel",
+                "id": "cruises-panel"
+              },
+              "elements": [
+                {
+                  "id": "cruise_select_wrap",
+                  "elType": "widget",
+                  "widgetType": "text-editor",
+                  "settings": {
+                    "_css_classes": "subgroup-filter-nav-wrap",
+                    "editor": "<div class=\"subgroup-filter-nav\"><label class=\"subgroup-filter-label\" for=\"cruiseFilterSelect\">Cruise Region:</label><div class=\"select-dropdown-wrap\"><select id=\"cruiseFilterSelect\" class=\"subgroup-select-filter\" aria-label=\"Filter cruises by region\"><option value=\"all\">All Voyages</option><option value=\"alaska-singapore\">Alaskan &amp; Singaporean</option><option value=\"nile-australia\">Nile &amp; Australian</option></select><svg class=\"select-arrow\" viewBox=\"0 0 24 24\"><path d=\"M7 10l5 5 5-5z\"/></svg></div></div>"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "hotels_panel_elem",
+              "elType": "container",
+              "isInner": true,
+              "settings": {
+                "_css_classes": "category-panel",
+                "id": "hotels-panel"
+              },
+              "elements": [
+                {
+                  "id": "hotel_select_wrap",
+                  "elType": "widget",
+                  "widgetType": "text-editor",
+                  "settings": {
+                    "_css_classes": "subgroup-filter-nav-wrap",
+                    "editor": "<div class=\"subgroup-filter-nav\"><label class=\"subgroup-filter-label\" for=\"hotelFilterSelect\">Hotel Destinations:</label><div class=\"select-dropdown-wrap\"><select id=\"hotelFilterSelect\" class=\"subgroup-select-filter\" aria-label=\"Filter hotels by destination\"><option value=\"all\">All Luxury Properties</option><option value=\"hotel-g1\">Canada, Sri Lanka, Egypt &amp; Thailand</option><option value=\"hotel-g2\">Vietnam, Nepal &amp; Turkey</option></select><svg class=\"select-arrow\" viewBox=\"0 0 24 24\"><path d=\"M7 10l5 5 5-5z\"/></svg></div></div>"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e0f1a2b",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+        "_css_classes": "cta-section",
+        "container_type": "flex",
+        "content_width": "full",
+        "background_background": "classic",
+        "background_color": "#252E47"
+      },
+      "elements": [
+        {
+          "id": "f3a4b5c",
+          "elType": "container",
+          "isInner": true,
+          "settings": {
+            "_css_classes": "container cta-box",
+            "align_items": "center"
+          },
+          "elements": [
+            {
+              "id": "a6b7c8d",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "_css_classes": "section-tagline",
+                "title": "Start Planning Today",
+                "header_size": "span"
+              }
+            },
+            {
+              "id": "b9c0d1e",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "_css_classes": "cta-title",
+                "title": "Let's Plan Your Next Journey",
+                "header_size": "h2"
+              }
+            },
+            {
+              "id": "c2d3e4f",
+              "elType": "widget",
+              "widgetType": "divider",
+              "settings": {
+                "_css_classes": "gold-rule center",
+                "color": "#B69964",
+                "weight": 2
+              }
+            },
+            {
+              "id": "d5e6f7a",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "_css_classes": "cta-desc",
+                "editor": "From flights and cruises to bespoke holidays and unforgettable experiences, our team is here to make your travel plans seamless. Get in touch with Premium Global Expeditions and let us bring your travel aspirations to life."
+              }
+            },
+            {
+              "id": "e8f9a0b",
+              "elType": "widget",
+              "widgetType": "button",
+              "settings": {
+                "_css_classes": "btn-primary",
+                "text": "Get In Touch!",
+                "link": {
+                  "url": "#flight-inquiry-form"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Premium Global Expeditions Inc.</title>
+  <meta name="description"
+    content="Learn about Premium Global Expeditions Inc. (PGE) — a premium Canadian-based global travel company and tour operator dedicated to curating extraordinary journeys worldwide.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Master Brand Stylesheet & Dedicated About Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="about.css">
+</head>
+
+<body>
+
+  <!-- ==========================================================================
+       SECTION 1: TOP UTILITY BAR (Identical to Home Page)
+       ========================================================================== -->
+  <section class="top-utility-bar" id="utility-bar">
+    <div class="container utility-bar-inner">
+      <nav class="utility-links" aria-label="Quick Travel Services">
+        <a href="index.html#travel-categories" class="utility-link-item">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" />
+          </svg>
+          <span>Flights</span>
+        </a>
+        <span class="utility-sep">|</span>
+        <a href="index.html#travel-categories" class="utility-link-item">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z" />
+          </svg>
+          <span>Hotels</span>
+        </a>
+        <span class="utility-sep">|</span>
+        <a href="index.html#travel-categories" class="utility-link-item">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M20 21c-1.39 0-2.78-.47-4-1.32-2.44 1.71-5.56 1.71-8 0C6.78 20.53 5.39 21 4 21H2v2h2c1.86 0 3.71-.58 5.27-1.72 2.75 1.99 6.72 1.99 9.47 0C20.29 22.42 22.14 23 24 23h2v-2h-2c-1.39 0-2.78-.47-4-1.32zM3.95 19H20l1.9-6H2.05l1.9 6zM13 4h-2v4h2V4z" />
+          </svg>
+          <span>Cruises</span>
+        </a>
+        <span class="utility-sep">|</span>
+        <a href="index.html#travel-categories" class="utility-link-item">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" />
+          </svg>
+          <span>Holiday Packages</span>
+        </a>
+        <span class="utility-sep">|</span>
+        <a href="index.html#travel-categories" class="utility-link-item">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+          </svg>
+          <span>Tours &amp; Experiences</span>
+        </a>
+        <span class="utility-sep">|</span>
+        <a href="index.html#flight-inquiry-form" class="utility-link-item">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.04 3H5.81l1.04-3zM19 17H5v-4h14v4z" />
+          </svg>
+          <span>Car Rentals</span>
+        </a>
+        <span class="utility-sep">|</span>
+        <a href="#cta-section" class="utility-link-item">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
+          </svg>
+          <span>Other</span>
+        </a>
+      </nav>
+
+      <div class="utility-contact">
+        <a href="tel:18005557431" class="utility-contact-item">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+          </svg>
+          <span>+1 (416) 555-7431</span>
+        </a>
+        <span class="utility-contact-sep">|</span>
+        <a href="mailto:concierge@pgeexpeditions.ca" class="utility-contact-item">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+          </svg>
+          <span>concierge@pgeexpeditions.ca</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 2: MAIN NAVIGATION HEADER (Identical to Home Page, "About Us" active)
+       ========================================================================== -->
+  <header class="main-header" id="main-header">
+    <div class="container header-inner">
+
+      <!-- LOGO -->
+      <a href="index.html" class="brand-logo-wrap" aria-label="Premium Global Expeditions Home">
+        <img src="assets/pge-logo-full-dark.svg" alt="Premium Global Expeditions Inc." class="brand-logo-img">
+      </a>
+
+      <!-- MAIN NAVIGATION MENU -->
+      <nav class="nav-menu" id="mainNavMenu" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link active">About Us</a>
+        <a href="index.html#travel-categories" class="nav-link">Packages</a>
+        <a href="#cta-section" class="nav-link">Get In Touch</a>
+      </nav>
+
+      <!-- NAVIGATION ACTIONS -->
+      <div class="nav-actions">
+        <a href="#cta-section" class="btn-primary">Plan Your Journey</a>
+        <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
+          <svg viewBox="0 0 24 24">
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+         SECTION 3: PAGE HEADER / HERO BANNER
+         ========================================================================== -->
+    <section class="subpage-hero-section" id="about-hero">
+      <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1920&q=80"
+        alt="Cinematic luxury travel destination view" class="subpage-hero-bg">
+      <div class="hero-overlay"></div>
+
+      <div class="container hero-container" style="position: relative; z-index: 3;">
+        <div class="hero-content text-center" style="max-width: 800px; margin: 0 auto; text-align: center;">
+          <span class="hero-breadcrumb">About Us</span>
+          <h1 class="hero-title">PREMIUM GLOBAL EXPEDITIONS</h1>
+          <p class="hero-subtitle-script" style="margin-bottom: 0;">Where Dreams Become A Reality</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 4: ABOUT US INTRO SECTION (Ivory background)
+         ========================================================================== -->
+    <section class="section about-intro-section" id="about-intro">
+      <div class="container">
+        <div class="grid grid-2 align-center gap-4">
+
+          <!-- Column 1: Body Copy -->
+          <div class="about-intro-copy">
+            <span class="about-eyebrow">Canadian Excellence &bull; Global Expertise</span>
+            <h2 class="about-intro-heading">About Us</h2>
+            <div class="heading-gold-accent"></div>
+
+            <p class="lead-paragraph"><strong>Premium Global Expeditions Inc.</strong> is a Canadian-based global travel company and tour operator
+              dedicated to transforming extraordinary travel aspirations into unforgettable journeys.</p>
+
+            <p>We curate exceptional travel experiences through bespoke holiday packages, international tours, luxury
+              cruises, airline ticketing, premium accommodations, iconic attractions, and seamless travel arrangements,
+              thoughtfully tailored to the unique needs and preferences of every traveller.</p>
+
+            <p>Through our distinguished network of Destination Management Companies (DMCs), trusted local tour operators and
+              strategic international partners, we unite global reach with authentic local expertise. The result is a
+              collection of journeys defined by excellence, authenticity and meticulous attention to detail.</p>
+
+            <p>Guided by our commitment to exceptional service, integrity and innovation, we strive to strengthen the
+              connection between Canada and the world. Our vision is to establish Premium Global Expeditions as a trusted
+              global travel brand for discerning travellers seeking meaningful, seamless and extraordinary experiences.</p>
+
+            <!-- Trust Highlights -->
+            <div class="about-trust-highlights">
+              <div class="trust-item">
+                <div class="trust-icon-check">&check;</div>
+                <span>100% Bespoke Travel Tailoring</span>
+              </div>
+              <div class="trust-item">
+                <div class="trust-icon-check">&check;</div>
+                <span>Strategic DMC Partnerships Worldwide</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2: Supporting Image with Floating Badge -->
+          <div class="about-intro-media">
+            <div class="media-frame">
+              <img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=1200&q=80"
+                alt="Canadian-based global travel company luxury expedition">
+            </div>
+            
+            <!-- Floating Accent Badge -->
+            <div class="media-floating-badge">
+              <span class="badge-tag">CANADIAN GATEWAY</span>
+              <p class="badge-title">Where Dreams Become A Reality.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 5: BRAND PILLARS SECTION (Cloud Mist background)
+         ========================================================================== -->
+    <section class="section brand-pillars-section" id="pillars" style="background-color: var(--color-cloud-mist);">
+      <div class="container">
+        <div class="section-header text-center" style="max-width: 650px; margin: 0 auto 3.5rem; text-align: center;">
+          <h2 class="section-heading">The Pillars of PGE</h2>
+          <p class="section-subheading">Our core foundation built upon Canadian trust and global reach</p>
+          <div class="section-divider-line" style="margin: 1.25rem auto 0; background-color: var(--color-gold); width: 60px; height: 3px;"></div>
+        </div>
+
+        <div class="grid grid-3 gap-3">
+          <!-- Pillar 1: PREMIUM -->
+          <div class="pillar-card">
+            <span class="pillar-num">01 / CORE VALUE</span>
+            <div class="pillar-icon-box">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .55-.45 1-1 1H6c-.55 0-1-.45-1-1v-1h14v1z"/>
+              </svg>
+            </div>
+            <h3 class="pillar-title">PREMIUM</h3>
+            <p class="pillar-desc">Refined &bull; Attentive &bull; Considered</p>
+          </div>
+
+          <!-- Pillar 2: GLOBAL -->
+          <div class="pillar-card">
+            <span class="pillar-num">02 / GLOBAL REACH</span>
+            <div class="pillar-icon-box">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+              </svg>
+            </div>
+            <h3 class="pillar-title">GLOBAL</h3>
+            <p class="pillar-desc">Connected &bull; Knowledgeable &bull; Borderless</p>
+          </div>
+
+          <!-- Pillar 3: EXPEDITIONS -->
+          <div class="pillar-card">
+            <span class="pillar-num">03 / EXPERIENCE</span>
+            <div class="pillar-icon-box">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13l-2 6 6 2-2-6-2-2z"/>
+              </svg>
+            </div>
+            <h3 class="pillar-title">EXPEDITIONS</h3>
+            <p class="pillar-desc">Curious &bull; Purposeful &bull; Memorable</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 6: BRAND STATEMENT / QUOTE SECTION (Navy background)
+         ========================================================================== -->
+    <section class="brand-quote-section" id="quote">
+      <div class="container">
+        <div class="quote-box">
+          <div class="section-divider-line" style="margin: 0 auto 2rem; background-color: var(--color-gold); width: 80px; height: 2px;"></div>
+          <h2 class="quote-title">Premium Global Expeditions</h2>
+          <span class="quote-tagline-script">~ Where Dreams Become a Reality. ~</span>
+          <div class="section-divider-line" style="margin: 2rem auto 0; background-color: var(--color-gold); width: 80px; height: 2px;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 7: QUICK STATS STRIP (Identical to Home Page)
+         ========================================================================== -->
+    <section class="stats-section" id="stats-section">
+      <div class="container stats-inner">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number" data-target="15">0</div>
+            <div class="stat-label">Years of Trusted Service</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-target="85">0</div>
+            <div class="stat-label">Destinations Curated</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-target="12500">0</div>
+            <div class="stat-label">Happy Travellers</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-target="250">0</div>
+            <div class="stat-label">DMC Partners Worldwide</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 8: CALL-TO-ACTION SECTION (Identical to Home Page)
+         ========================================================================== -->
+    <section class="cta-section" id="cta-section">
+      <div class="container cta-inner">
+        <h2 class="cta-heading">Let's Plan Your Next Journey</h2>
+        <p class="cta-description">From flights and cruises to bespoke holidays and unforgettable experiences, our team is
+          here to make your travel plans seamless. Get in touch with Premium Global Expeditions and let us bring your
+          travel aspirations to life.</p>
+        <a href="#cta-section" class="btn-primary btn-large">Get In Touch!</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       SECTION 9: FOOTER SECTION (EXACT MATCH TO HOME PAGE)
+       ========================================================================== -->
+  <footer class="footer-section" id="footer-section">
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <!-- COLUMN 1: BRAND LOGO & TAGLINE -->
+        <div class="footer-brand-col">
+          <img src="assets/pge-logo-full-dark.svg" alt="Premium Global Expeditions" class="footer-logo">
+          <div class="footer-tagline-script">Where Dreams Become A Reality</div>
+          <p class="footer-about-text">
+            Premium Global Expeditions Inc. is a registered Canadian tour operator providing bespoke global holidays,
+            flights, cruises, and luxury travel services.
+          </p>
+          <div class="social-links">
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/PremiumGlobalExpeditions" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Follow us on Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/premiumglobalexpeditions" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Follow us on Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/company/premium-global-expeditions" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Connect on LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- COLUMN 2: QUICK LINKS -->
+        <div class="footer-links-col">
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html"><span class="footer-link-arrow">&rsaquo;</span> Home</a></li>
+            <li><a href="about.html"><span class="footer-link-arrow">&rsaquo;</span> About Us</a></li>
+            <li><a href="index.html#travel-categories"><span class="footer-link-arrow">&rsaquo;</span> Packages</a></li>
+            <li><a href="#cta-section"><span class="footer-link-arrow">&rsaquo;</span> Get In Touch</a></li>
+          </ul>
+        </div>
+
+        <!-- COLUMN 3: TOP DESTINATIONS -->
+        <div class="footer-links-col">
+          <h4 class="footer-title">Top Destinations</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html#travel-categories" class="footer-dest-link"><span class="footer-link-pin">&#9679;</span> Canadian Rockies &amp; Banff</a></li>
+            <li><a href="index.html#travel-categories" class="footer-dest-link"><span class="footer-link-pin">&#9679;</span> Ancient Egypt &amp; Nile Expedition</a></li>
+            <li><a href="index.html#travel-categories" class="footer-dest-link"><span class="footer-link-pin">&#9679;</span> Sri Lanka &amp; Indian Ocean</a></li>
+            <li><a href="index.html#travel-categories" class="footer-dest-link"><span class="footer-link-pin">&#9679;</span> Thailand Beach &amp; Culture</a></li>
+            <li><a href="index.html#travel-categories" class="footer-dest-link"><span class="footer-link-pin">&#9679;</span> Cappadocia &amp; Turkey</a></li>
+            <li><a href="index.html#travel-categories" class="footer-dest-link"><span class="footer-link-pin">&#9679;</span> Alaskan Glacier Cruise</a></li>
+          </ul>
+        </div>
+
+        <!-- COLUMN 4: CANADIAN CONTACT INFO -->
+        <div class="footer-contact-col">
+          <h4 class="footer-title">Get In Touch</h4>
+          <ul class="footer-contact-info">
+            <li>
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+              </svg>
+              <span>Headquarters: Toronto, ON &amp; Vancouver, BC, Canada</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+              </svg>
+              <span><a href="tel:+14165557431" style="color:inherit; text-decoration:none;">+1 (416) 555-7431</a></span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+              </svg>
+              <span>Email: concierge@pgeexpeditions.ca</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Premium Global Expeditions Inc. All rights reserved. Registered Canadian Tour Operator.</div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP BUTTON -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to Top">
+    <svg viewBox="0 0 24 24">
+      <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+    </svg>
+  </button>
+
+  <!-- JAVASCRIPT CONTROLLER (Shared with Home Page) -->
+  <script src="script.js"></script>
+</body>
+
+</html>
