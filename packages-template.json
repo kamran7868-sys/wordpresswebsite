@@ -1,0 +1,155 @@
+{
+  "version": "0.4",
+  "title": "PGE Packages Page - Native Elementor Template",
+  "type": "page",
+  "content": [
+    {
+      "id": "pk01001",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+        "content_width": "full",
+        "min_height": { "unit": "px", "size": 380 },
+        "background_background": "classic",
+        "background_image": { "url": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80" },
+        "background_position": "center center",
+        "background_size": "cover",
+        "css_classes": "subpage-hero-section"
+      },
+      "elements": [
+        {
+          "id": "pk01002",
+          "elType": "widget",
+          "widgetType": "heading",
+          "settings": {
+            "title": "Packages",
+            "header_size": "h6",
+            "title_color": "#B69964",
+            "align": "center",
+            "css_classes": "hero-breadcrumb"
+          }
+        },
+        {
+          "id": "pk01003",
+          "elType": "widget",
+          "widgetType": "heading",
+          "settings": {
+            "title": "PREMIUM GLOBAL EXPEDITIONS",
+            "header_size": "h1",
+            "title_color": "#F7F4ED",
+            "align": "center",
+            "css_classes": "hero-title"
+          }
+        },
+        {
+          "id": "pk01004",
+          "elType": "widget",
+          "widgetType": "text-editor",
+          "settings": {
+            "editor": "<p class=\"hero-subtitle-script\" style=\"text-align: center; color: #B69964;\">Where Dreams Become A Reality</p><p style=\"text-align: center; color: #DFD3BD;\">Explore Our Curated Journeys &amp; Travel Services</p>"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pk02001",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+        "content_width": "boxed",
+        "padding": { "unit": "px", "top": 90, "bottom": 90, "left": 20, "right": 20 },
+        "background_color": "#F7F4ED",
+        "css_classes": "section"
+      },
+      "elements": [
+        {
+          "id": "pk02002",
+          "elType": "widget",
+          "widgetType": "heading",
+          "settings": {
+            "title": "All Inclusive Holiday Packages",
+            "header_size": "h2",
+            "title_color": "#252E47",
+            "align": "center",
+            "css_classes": "section-heading"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pk03001",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+        "content_width": "boxed",
+        "padding": { "unit": "px", "top": 90, "bottom": 90, "left": 20, "right": 20 },
+        "background_color": "#E9ECF2",
+        "css_classes": "section"
+      },
+      "elements": [
+        {
+          "id": "pk03002",
+          "elType": "widget",
+          "widgetType": "heading",
+          "settings": {
+            "title": "Luxury Cruises",
+            "header_size": "h2",
+            "title_color": "#252E47",
+            "align": "center",
+            "css_classes": "section-heading"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pk04001",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+        "content_width": "boxed",
+        "padding": { "unit": "px", "top": 90, "bottom": 90, "left": 20, "right": 20 },
+        "background_color": "#F7F4ED",
+        "css_classes": "section"
+      },
+      "elements": [
+        {
+          "id": "pk04002",
+          "elType": "widget",
+          "widgetType": "heading",
+          "settings": {
+            "title": "Airline Ticketing",
+            "header_size": "h2",
+            "title_color": "#252E47",
+            "align": "center",
+            "css_classes": "section-heading"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pk05001",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+        "content_width": "boxed",
+        "padding": { "unit": "px", "top": 90, "bottom": 90, "left": 20, "right": 20 },
+        "background_color": "#E9ECF2",
+        "css_classes": "section"
+      },
+      "elements": [
+        {
+          "id": "pk05002",
+          "elType": "widget",
+          "widgetType": "heading",
+          "settings": {
+            "title": "Hotels & Resorts",
+            "header_size": "h2",
+            "title_color": "#252E47",
+            "align": "center",
+            "css_classes": "section-heading"
+          }
+        }
+      ]
+    }
+  ]
+}

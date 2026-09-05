@@ -168,14 +168,21 @@ document.addEventListener('DOMContentLoaded', () => {
      5. SUB-GROUP DROPDOWN & PILL FILTERING
      ------------------------------------------------------------------------ */
   // Dropdown select filter listeners (Packages, Cruises, Hotels)
-  const selectFilters = document.querySelectorAll('.subgroup-select-filter');
+  const selectFilters = document.querySelectorAll('.subgroup-select-filter, .pkg-section-filter');
   selectFilters.forEach(select => {
     select.addEventListener('change', (e) => {
       const selectedGroup = e.target.value;
-      const parentPanel = select.closest('.category-panel');
-      if (!parentPanel) return;
+      const targetGridId = select.getAttribute('data-section');
+      
+      let cards;
+      if (targetGridId) {
+        const targetGrid = document.getElementById(targetGridId);
+        cards = targetGrid ? targetGrid.querySelectorAll('.card-item') : [];
+      } else {
+        const parentPanel = select.closest('.category-panel, .section');
+        cards = parentPanel ? parentPanel.querySelectorAll('.card-item') : [];
+      }
 
-      const cards = parentPanel.querySelectorAll('.card-item');
       cards.forEach(card => {
         const cardGroup = card.getAttribute('data-group');
         if (selectedGroup === 'all' || cardGroup === selectedGroup) {
@@ -280,26 +287,87 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ------------------------------------------------------------------------
      7. AIRLINE TICKETING INQUIRY FORM & MODAL FEEDBACK
      ------------------------------------------------------------------------ */
-  const flightForm = document.getElementById('flightInquiryForm');
+  const flightForm = document.getElementById('flightInquiryForm') || document.getElementById('packagesFlightForm');
   const modalOverlay = document.getElementById('modalOverlay');
   const modalCloseBtn = document.getElementById('modalCloseBtn');
   const tripTypeSelect = document.getElementById('tripType');
+  const tripTypeRadios = document.querySelectorAll('input[name="tripType"]');
   const returnDateGroup = document.getElementById('returnDateGroup');
+  const returnDateInput = returnDateGroup?.querySelector('input');
 
+  // Handle select dropdown tripType (Home Page)
   if (tripTypeSelect && returnDateGroup) {
     tripTypeSelect.addEventListener('change', (e) => {
       if (e.target.value === 'one-way') {
-        returnDateGroup.style.opacity = '0.5';
-        const input = returnDateGroup.querySelector('input');
-        if (input) input.disabled = true;
+        returnDateGroup.style.opacity = '0.4';
+        if (returnDateInput) returnDateInput.disabled = true;
       } else {
         returnDateGroup.style.opacity = '1';
-        const input = returnDateGroup.querySelector('input');
-        if (input) input.disabled = false;
+        if (returnDateInput) returnDateInput.disabled = false;
       }
     });
   }
 
+  // Handle radio pill tripType (Packages Page)
+  if (tripTypeRadios.length > 0 && returnDateGroup) {
+    tripTypeRadios.forEach(radio => {
+      radio.addEventListener('change', (e) => {
+        if (e.target.value === 'one-way' || e.target.value === 'multi-city') {
+          returnDateGroup.style.opacity = '0.4';
+          returnDateGroup.style.pointerEvents = 'none';
+          if (returnDateInput) {
+            returnDateInput.disabled = true;
+            returnDateInput.required = false;
+          }
+        } else {
+          returnDateGroup.style.opacity = '1';
+          returnDateGroup.style.pointerEvents = 'auto';
+          if (returnDateInput) {
+            returnDateInput.disabled = false;
+            returnDateInput.required = true;
+          }
+        }
+      });
+    });
+  }
+
+  // Counter Buttons (+ / -) for Adults, Children, Infants
+  const counterBtns = document.querySelectorAll('.counter-btn');
+  counterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const action = btn.getAttribute('data-action');
+      const targetId = btn.getAttribute('data-target');
+      const targetValueSpan = document.getElementById(targetId);
+      if (!targetValueSpan) return;
+
+      let count = parseInt(targetValueSpan.textContent, 10) || 0;
+      if (action === 'increment') {
+        count++;
+      } else if (action === 'decrement') {
+        const minVal = targetId === 'adultsCount' ? 1 : 0;
+        if (count > minVal) count--;
+      }
+      targetValueSpan.textContent = count;
+    });
+  });
+
+  // Preferred Airline "No Preference" Checkbox
+  const noPrefAirline = document.getElementById('noPrefAirline');
+  const preferredAirlineInput = document.getElementById('preferredAirline');
+  if (noPrefAirline && preferredAirlineInput) {
+    noPrefAirline.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        preferredAirlineInput.value = '';
+        preferredAirlineInput.placeholder = 'No Preference (Find Best Available)';
+        preferredAirlineInput.disabled = true;
+      } else {
+        preferredAirlineInput.placeholder = 'e.g. Air Canada, Emirates, Qatar Airways';
+        preferredAirlineInput.disabled = false;
+      }
+    });
+  }
+
+  // Form Submit Handler
   if (flightForm) {
     flightForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -307,6 +375,11 @@ document.addEventListener('DOMContentLoaded', () => {
         modalOverlay.classList.add('active');
       }
       flightForm.reset();
+      if (returnDateGroup) {
+        returnDateGroup.style.opacity = '1';
+        returnDateGroup.style.pointerEvents = 'auto';
+        if (returnDateInput) returnDateInput.disabled = false;
+      }
     });
   }
 
@@ -323,7 +396,34 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ------------------------------------------------------------------------
-     8. UTILITY BAR & FOOTER DESTINATION DEEP-LINKING CONTROLLERS
+     8. PACKAGES PAGE QUICK-NAV PILL SCROLL OBSERVER
+     ------------------------------------------------------------------------ */
+  const quickNavPills = document.querySelectorAll('.quicknav-pill');
+  if (quickNavPills.length > 0) {
+    quickNavPills.forEach(pill => {
+      pill.addEventListener('click', (e) => {
+        const targetSectionId = pill.getAttribute('data-target');
+        const targetSection = document.getElementById(targetSectionId);
+        if (targetSection) {
+          e.preventDefault();
+          const headerOffset = 150;
+          const elementPosition = targetSection.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+
+          quickNavPills.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+        }
+      });
+    });
+  }
+
+  /* ------------------------------------------------------------------------
+     9. UTILITY BAR & FOOTER DESTINATION DEEP-LINKING CONTROLLERS
      ------------------------------------------------------------------------ */
   const utilityNavLinks = document.querySelectorAll('.utility-links a[data-tab]');
   utilityNavLinks.forEach(link => {
