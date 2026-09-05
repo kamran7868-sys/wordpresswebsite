@@ -109,7 +109,7 @@
                       "widgetType": "text-editor",
                       "settings": {
                         "_css_classes": "footer-links-list-wrap",
-                        "editor": "<ul class=\"footer-links-list\"><li><a href=\"#hero-section\"><span class=\"footer-link-arrow\">&rsaquo;</span> Home</a></li><li><a href=\"#intro-section\"><span class=\"footer-link-arrow\">&rsaquo;</span> About Us</a></li><li><a href=\"#travel-categories\"><span class=\"footer-link-arrow\">&rsaquo;</span> Packages</a></li><li><a href=\"#cta-section\"><span class=\"footer-link-arrow\">&rsaquo;</span> Get In Touch</a></li></ul>"
+                        "editor": "<ul class=\"footer-links-list\"><li><a href=\"#hero-section\"><span class=\"footer-link-arrow\">&rsaquo;</span> Home</a></li><li><a href=\"#intro-section\"><span class=\"footer-link-arrow\">&rsaquo;</span> About Us</a></li><li><a href=\"packages.html\"><span class=\"footer-link-arrow\">&rsaquo;</span> Packages</a></li><li><a href=\"#cta-section\"><span class=\"footer-link-arrow\">&rsaquo;</span> Get In Touch</a></li></ul>"
                       }
                     }
                   ]

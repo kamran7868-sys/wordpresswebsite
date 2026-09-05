@@ -429,16 +429,31 @@
 
 /* --------------------------------------------------------------------------
    5. RESPONSIVE BREAKPOINTS FOR PACKAGES PAGE
+   Matches master style.css breakpoints (1024 / 768 / 480) for consistency
+   across Mobile, Tablet & Desktop.
    -------------------------------------------------------------------------- */
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
   .packages-quicknav-strip {
-    top: 70px;
-    padding: 0.85rem 0;
+    top: 84px;
+    padding: 1rem 0;
   }
 
   .quicknav-pill {
-    padding: 0.5rem 1rem;
+    padding: 0.6rem 1.1rem;
     font-size: 0.82rem;
+  }
+
+  .quicknav-pill svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .subgroup-title {
+    font-size: 1.4rem;
+  }
+
+  .air-form-container {
+    padding: 2.25rem 1.75rem;
   }
 
   .form-grid-2,
@@ -446,30 +461,156 @@
     grid-template-columns: 1fr;
   }
 
-  .air-form-container {
-    padding: 2rem 1.5rem;
+  #packages-hero {
+    height: 400px;
+    min-height: 340px;
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
+  .packages-quicknav-strip {
+    top: 84px;
+    padding: 0.7rem 0;
+  }
+
   .quicknav-container {
     justify-content: flex-start;
     overflow-x: auto;
     padding-bottom: 0.3rem;
     white-space: nowrap;
+    gap: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .quicknav-container::-webkit-scrollbar {
+    display: none;
   }
 
   .quicknav-pill {
     flex-shrink: 0;
+    padding: 0.55rem 1.1rem;
+    font-size: 0.78rem;
+  }
+
+  .subgroup-wrapper {
+    margin-bottom: 2.5rem;
+  }
+
+  .subgroup-header {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .subgroup-title {
+    font-size: 1.3rem;
+  }
+
+  .subgroup-tag {
+    font-size: 0.68rem;
+    letter-spacing: 1px;
+  }
+
+  .pkg-card-body {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .pkg-card-title {
+    font-size: 1.35rem;
+  }
+
+  .pkg-card-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.85rem;
+  }
+
+  .btn-view-pkg {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .air-form-container {
+    padding: 1.75rem 1.25rem;
   }
 
   .form-step-card {
     padding: 1.25rem 1rem;
   }
 
+  .form-step-header {
+    flex-wrap: wrap;
+  }
+
+  .step-title {
+    font-size: 1.2rem;
+  }
+
   .radio-pill-group {
     flex-direction: column;
     gap: 0.5rem;
+  }
+
+  .counter-widget {
+    width: 100%;
+  }
+
+  .form-submit-wrap .btn-form-submit {
+    width: 100%;
+  }
+
+  #packages-hero {
+    height: 340px;
+    min-height: 300px;
+  }
+
+  #packages-hero .hero-title {
+    font-size: clamp(1.7rem, 7vw, 2.4rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .packages-quicknav-strip {
+    top: 84px;
+    padding: 0.6rem 0;
+  }
+
+  .quicknav-pill {
+    font-size: 0.74rem;
+    padding: 0.5rem 0.9rem;
+  }
+
+  .subgroup-title {
+    font-size: 1.15rem;
+  }
+
+  .air-form-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .form-step-card {
+    padding: 1.1rem 0.85rem;
+  }
+
+  .step-title {
+    font-size: 1.1rem;
+  }
+
+  .step-num-badge {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+  }
+
+  #packages-hero {
+    height: 300px;
+    min-height: 280px;
+  }
+
+  #packages-hero .hero-title {
+    letter-spacing: 2px !important;
+    font-size: clamp(1.5rem, 7.5vw, 2rem) !important;
+    margin-bottom: 0.5rem !important;
   }
 }
 
@@ -505,4 +646,103 @@
 
 #packages-hero .hero-subtitle-script {
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* --------------------------------------------------------------------------
+   9. MOBILE-FIRST OVERRIDES FOR INLINE-STYLED SECTIONS (Packages Page)
+   Ensures the packages page matches Home & About mobile behaviour exactly.
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  #packages-hero {
+    height: 340px !important;
+    min-height: 300px !important;
+  }
+
+  #packages-hero .hero-subtitle-script {
+    font-size: 1.7rem !important;
+  }
+
+  #packages-hero .hero-tagline-lead {
+    font-size: 1rem !important;
+  }
+
+  #packages-section,
+  #cruises-section,
+  #air-ticketing-section,
+  #hotels-section {
+    padding: 3.5rem 0 !important;
+  }
+
+  #packages-section .categories-header,
+  #cruises-section .categories-header,
+  #air-ticketing-section .categories-header,
+  #hotels-section .categories-header {
+    margin-bottom: 2.25rem !important;
+  }
+
+  .flight-info-side {
+    padding: 2.25rem 1.5rem !important;
+  }
+
+  .flight-form-side {
+    padding: 2.25rem 1.5rem !important;
+  }
+
+  .flight-info-side > h3 {
+    font-size: 1.8rem !important;
+  }
+
+  .flight-form-side > h4 {
+    font-size: 1.35rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #packages-hero {
+    height: 300px !important;
+    min-height: 280px !important;
+  }
+
+  #packages-hero .hero-subtitle-script {
+    font-size: 1.45rem !important;
+  }
+
+  #packages-hero .hero-tagline-lead {
+    font-size: 0.92rem !important;
+  }
+
+  #packages-hero .hero-breadcrumb {
+    font-size: 0.75rem !important;
+  }
+
+  #packages-hero .hero-title {
+    margin-bottom: 0.5rem !important;
+  }
+
+  #packages-section,
+  #cruises-section,
+  #air-ticketing-section,
+  #hotels-section {
+    padding: 2.75rem 0 !important;
+  }
+
+  .flight-info-side,
+  .flight-form-side {
+    padding: 1.75rem 1.1rem !important;
+  }
+
+  .flight-info-side > h3 {
+    font-size: 1.55rem !important;
+  }
+
+  .flight-info-side p {
+    font-size: 0.88rem !important;
+  }
+
+  #packages-section .section-title,
+  #cruises-section .section-title,
+  #air-ticketing-section .section-title,
+  #hotels-section .section-title {
+    font-size: 2rem !important;
+  }
 }

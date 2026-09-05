@@ -94,7 +94,7 @@
               "widgetType": "text-editor",
               "settings": {
                 "_css_classes": "nav-menu-wrap",
-                "editor": "<nav class=\"nav-menu\" id=\"mainNavMenu\"><a href=\"#hero-section\" class=\"nav-link active\">Home</a><a href=\"#intro-section\" class=\"nav-link\">About Us</a><a href=\"#travel-categories\" class=\"nav-link\">Packages</a><a href=\"#cta-section\" class=\"nav-link\">Get In Touch</a></nav>"
+                "editor": "<nav class=\"nav-menu\" id=\"mainNavMenu\"><a href=\"#hero-section\" class=\"nav-link active\">Home</a><a href=\"#intro-section\" class=\"nav-link\">About Us</a><a href=\"packages.html\" class=\"nav-link\">Packages</a><a href=\"#cta-section\" class=\"nav-link\">Get In Touch</a></nav>"
               }
             },
             {
