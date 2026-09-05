@@ -506,7 +506,7 @@ textarea {
 
 .hero-main-title {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
   font-weight: 600;
   letter-spacing: 3px;
   line-height: 1.15;
@@ -733,7 +733,7 @@ textarea {
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   text-align: center;
 }
