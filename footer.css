@@ -1,0 +1,157 @@
+/* ==========================================================================
+   PREMIUM GLOBAL EXPEDITIONS INC. (PGE) — FOOTER STYLESHEET
+   Global Footer, Social Icons, Link Columns, Contact Column & Copyright Strip
+   ========================================================================== */
+
+.footer-section {
+  background-color: var(--color-midnight);
+  color: rgba(247, 244, 237, 0.85);
+  padding: 5rem 0 2rem 0;
+  border-top: 2px solid var(--color-gold);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 3rem;
+  margin-bottom: 3.5rem;
+}
+
+.footer-logo {
+  height: 52px;
+  width: auto;
+  margin-bottom: 1rem;
+}
+
+.footer-tagline-script {
+  font-family: var(--font-script);
+  font-size: 1.6rem;
+  color: var(--color-gold);
+  margin-bottom: 1.25rem;
+}
+
+.footer-about-text {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: rgba(247, 244, 237, 0.75);
+  margin-bottom: 1.5rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 0.85rem;
+}
+
+.social-icon-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(182, 153, 100, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.social-icon-btn:hover {
+  background-color: var(--color-gold);
+  color: var(--color-midnight);
+  transform: translateY(-3px);
+}
+
+.social-icon-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.footer-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-ivory);
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.footer-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 35px;
+  height: 2px;
+  background-color: var(--color-gold);
+}
+
+.footer-links-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.footer-links-list a {
+  color: rgba(247, 244, 237, 0.75);
+  text-decoration: none;
+  font-size: 0.88rem;
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.footer-links-list a:hover {
+  color: var(--color-gold);
+}
+
+.footer-link-arrow {
+  color: var(--color-gold);
+  font-weight: bold;
+}
+
+.footer-contact-info {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 0.88rem;
+}
+
+.footer-contact-info li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.footer-contact-info svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--color-gold);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(247, 244, 237, 0.1);
+  padding-top: 1.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: rgba(247, 244, 237, 0.5);
+}
+
+@media (max-width: 991px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}

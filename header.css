@@ -1,0 +1,201 @@
+/* ==========================================================================
+   PREMIUM GLOBAL EXPEDITIONS INC. (PGE) — HEADER STYLESHEET
+   Global Header, Top Utility Bar, Navbar & Mobile Navigation Drawer
+   ========================================================================== */
+
+/* TOP UTILITY BAR */
+.top-utility-bar {
+  background-color: var(--color-midnight);
+  color: rgba(247, 244, 237, 0.85);
+  font-size: 0.8rem;
+  height: var(--utility-bar-height);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(182, 153, 100, 0.2);
+}
+
+.top-utility-bar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.utility-info {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.utility-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.utility-icon {
+  width: 14px;
+  height: 14px;
+  fill: var(--color-gold);
+}
+
+.utility-cta {
+  color: var(--color-gold);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.utility-cta:hover {
+  color: var(--color-ivory);
+}
+
+/* MAIN HEADER NAV */
+.header-nav {
+  background-color: var(--color-navy);
+  height: var(--header-height);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(18, 21, 37, 0.15);
+  display: flex;
+  align-items: center;
+}
+
+.header-nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.brand-logo {
+  height: 48px;
+  width: auto;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+  list-style: none;
+}
+
+.nav-link {
+  color: var(--color-ivory);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  padding: 0.5rem 0;
+  transition: color 0.25s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-gold);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-gold);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.header-cta-btn {
+  padding: 0.65rem 1.4rem;
+  font-size: 0.8rem;
+}
+
+/* MOBILE NAV TOGGLE & DRAWER */
+.mobile-nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.burger-icon {
+  width: 26px;
+  height: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.burger-bar {
+  height: 2px;
+  width: 100%;
+  background-color: var(--color-ivory);
+  transition: var(--transition-fast);
+}
+
+.mobile-menu-drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 300px;
+  height: 100vh;
+  background-color: var(--color-midnight);
+  z-index: 1001;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.4s ease;
+}
+
+.mobile-menu-drawer.open {
+  right: 0;
+}
+
+.mobile-drawer-close {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  color: var(--color-gold);
+  font-size: 1.8rem;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.mobile-nav-menu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobile-nav-link {
+  color: var(--color-ivory);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 991px) {
+  .nav-menu, .header-cta-btn {
+    display: none;
+  }
+  .mobile-nav-toggle {
+    display: block;
+  }
+}
