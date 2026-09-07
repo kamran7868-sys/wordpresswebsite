@@ -1,11 +1,10 @@
 /* ==========================================================================
-   PREMIUM GLOBAL EXPEDITIONS INC. (PGE) — EXPLORE PACKAGES / PACKAGE DETAIL CSS
-   Official Brand Guide 2026 Compliant | Elementor Widget & Container Ready
+   PREMIUM GLOBAL EXPEDITIONS INC. (PGE) — STAY DETAIL CSS
+   Strictly Mirrors Explore Packages Fonts, Colors, Paddings & Brand System 2026
+   Elementor Container & Loop Template Ready
    ========================================================================== */
 
-/* Base Grid, Header, Footer & Global Reset loaded via <link rel="stylesheet" href="style.css"> */
-
-/* Brand Design Tokens Alias Verification */
+/* 1. Brand Design Tokens (Strict Brand Guide 2026 & Explore Packages Alignment) */
 :root {
   --expedition-navy: #252E47;
   --color-navy: #252E47;
@@ -13,6 +12,7 @@
   --heritage-gold: #B69964;
   --color-gold: #B69964;
   --color-gold-hover: #9E8250;
+  --color-gold-light: rgba(182, 153, 100, 0.25);
 
   --midnight: #121525;
   --color-midnight: #121525;
@@ -35,7 +35,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   1. BREADCRUMBS STRIP
+   2. BREADCRUMBS STRIP — IDENTICAL TO EXPLORE PACKAGES
    -------------------------------------------------------------------------- */
 .breadcrumb-bar {
   background-color: var(--color-ivory);
@@ -59,11 +59,13 @@
   align-items: center;
   gap: 0.5rem;
   color: var(--color-navy);
+  font-family: var(--font-body);
   font-weight: 500;
 }
 
 .breadcrumb-item a {
   color: var(--color-navy);
+  text-decoration: none;
   transition: var(--transition-fast);
 }
 
@@ -82,9 +84,10 @@
 }
 
 /* --------------------------------------------------------------------------
-   2. PACKAGE HERO SECTION
+   3. HERO SECTION — EXACT EXPLORE PACKAGES LAYOUT, FONTS & COLORS
    -------------------------------------------------------------------------- */
-.package-hero {
+.package-hero,
+.stay-hero {
   background-color: var(--color-navy);
   color: var(--color-ivory);
   padding: 4.5rem 0 4rem;
@@ -92,23 +95,26 @@
   overflow: hidden;
 }
 
-.hero-lineart-bg {
+.hero-lineart-bg,
+.stay-hero-lineart-bg {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   pointer-events: none;
-  opacity: 0.22;
+  opacity: 0.25;
   z-index: 1;
 }
 
-.package-hero .container {
+.package-hero .container,
+.stay-hero .container {
   position: relative;
   z-index: 2;
 }
 
-.package-hero-grid {
+.package-hero-grid,
+.stay-hero-grid {
   display: grid;
   grid-template-columns: 1fr 440px;
   gap: 3.5rem;
@@ -116,27 +122,32 @@
 }
 
 @media (max-width: 991px) {
-  .package-hero-grid {
+  .package-hero-grid,
+  .stay-hero-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  .package-hero-graphic-wrap {
+  .package-hero-graphic-wrap,
+  .stay-hero-graphic-wrap {
     display: none;
   }
 }
 
-.package-tags-row {
+.package-tags-row,
+.stay-tags-row {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
   margin-bottom: 1.25rem;
 }
 
-.package-tag-pill {
+.package-tag-pill,
+.stay-tag-pill {
   display: inline-block;
   padding: 0.35rem 1.1rem;
   border: 1px solid var(--color-gold);
   border-radius: 50px;
+  font-family: var(--font-body);
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -146,7 +157,8 @@
   backdrop-filter: blur(4px);
 }
 
-.package-hero-title {
+.package-hero-title,
+.stay-hero-title {
   font-family: var(--font-display);
   font-size: clamp(2.4rem, 4.5vw, 3.8rem);
   font-weight: 600;
@@ -157,15 +169,21 @@
   text-transform: uppercase;
 }
 
-.package-hero-duration {
-  font-family: var(--font-script);
-  font-size: clamp(1.8rem, 3vw, 2.5rem);
+/* Rate & Duration Line (Serif Italic matching attached Explore Packages screenshot) */
+.package-hero-duration,
+.stay-hero-rate {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-style: italic;
+  font-weight: 500;
   color: var(--color-gold);
   margin-bottom: 1.25rem;
   display: block;
 }
 
-.package-hero-desc {
+.package-hero-desc,
+.stay-hero-desc {
+  font-family: var(--font-body);
   font-size: 1.05rem;
   line-height: 1.75;
   color: rgba(247, 244, 237, 0.9);
@@ -173,7 +191,8 @@
   margin-bottom: 2rem;
 }
 
-.package-hero-actions {
+.package-hero-actions,
+.stay-hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 1.25rem;
@@ -188,6 +207,7 @@
   border: 1px solid var(--color-ivory);
   border-radius: var(--radius-sm);
   color: var(--color-ivory);
+  font-family: var(--font-body);
   font-size: 0.88rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -205,7 +225,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   3. FEATURE ICONS STRIP
+   4. FEATURE ICONS STRIP — EXACT EXPLORE PACKAGES SLATE STRIP
    -------------------------------------------------------------------------- */
 .feature-icons-strip {
   background-color: var(--color-slate);
@@ -249,6 +269,7 @@
 }
 
 .feature-strip-label {
+  font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -258,14 +279,16 @@
 }
 
 /* --------------------------------------------------------------------------
-   4. ITINERARY OVERVIEW SECTION
+   5. STAY OVERVIEW SECTION — EXACT EXPLORE PACKAGES TWO-COLUMN LAYOUT
    -------------------------------------------------------------------------- */
-.package-itinerary-section {
+.package-itinerary-section,
+.stay-overview-section {
   background-color: var(--color-ivory);
   padding: 5rem 0;
 }
 
-.itinerary-layout-grid {
+.itinerary-layout-grid,
+.stay-layout-grid {
   display: grid;
   grid-template-columns: 1fr 380px;
   gap: 3.5rem;
@@ -273,19 +296,22 @@
 }
 
 @media (max-width: 1023px) {
-  .itinerary-layout-grid {
+  .itinerary-layout-grid,
+  .stay-layout-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
 }
 
-/* Day-by-Day Timeline */
-.itinerary-main-col {
+.itinerary-main-col,
+.stay-main-col {
   width: 100%;
 }
 
-.itinerary-eyebrow {
+.itinerary-eyebrow,
+.stay-eyebrow {
   color: var(--color-gold);
+  font-family: var(--font-body);
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.15em;
@@ -294,7 +320,8 @@
   margin-bottom: 0.35rem;
 }
 
-.itinerary-main-title {
+.itinerary-main-title,
+.stay-main-title {
   font-family: var(--font-display);
   font-size: 2.8rem;
   font-weight: 600;
@@ -303,32 +330,41 @@
   line-height: 1.15;
 }
 
-.day-cards-timeline {
+/* Room Cards Timeline (Transparent Ivory Background, Dividers & Navy Badges) */
+.day-cards-timeline,
+.room-cards-container {
   display: flex;
   flex-direction: column;
   gap: 1.75rem;
 }
 
-.day-card {
+.day-card,
+.room-card {
   display: flex;
   gap: 1.75rem;
   align-items: flex-start;
   padding-bottom: 1.75rem;
   border-bottom: 1px solid rgba(44, 64, 88, 0.12);
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
 }
 
-.day-card:last-child {
+.day-card:last-child,
+.room-card:last-child {
   border-bottom: none;
   padding-bottom: 0;
 }
 
 @media (max-width: 576px) {
-  .day-card {
+  .day-card,
+  .room-card {
     gap: 1.25rem;
   }
 }
 
-.day-badge {
+.day-badge,
+.room-badge {
   width: 95px;
   min-height: 105px;
   background-color: var(--color-navy);
@@ -343,7 +379,8 @@
   box-shadow: 0 4px 12px rgba(18, 21, 37, 0.08);
 }
 
-.day-badge-num {
+.day-badge-num,
+.room-badge-num {
   font-family: var(--font-display);
   font-size: 2.2rem;
   font-weight: 700;
@@ -352,7 +389,9 @@
   margin-bottom: 0.15rem;
 }
 
-.day-badge-label {
+.day-badge-label,
+.room-badge-label {
+  font-family: var(--font-body);
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.15em;
@@ -362,18 +401,21 @@
   margin-bottom: 0.5rem;
 }
 
-.day-badge-icon {
+.day-badge-icon,
+.room-badge-icon {
   width: 20px;
   height: 20px;
   fill: var(--color-gold);
 }
 
-.day-content {
+.day-content,
+.room-content {
   flex: 1;
   padding-top: 0.25rem;
 }
 
-.day-title {
+.day-title,
+.room-title {
   font-family: var(--font-display);
   font-size: 1.55rem;
   font-weight: 600;
@@ -382,14 +424,18 @@
   line-height: 1.25;
 }
 
-.day-desc {
+.day-desc,
+.room-desc {
+  font-family: var(--font-body);
   font-size: 0.96rem;
   line-height: 1.7;
   color: rgba(37, 46, 71, 0.88);
   margin-bottom: 0.75rem;
 }
 
-.day-meta {
+.day-meta,
+.room-meta {
+  font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -397,7 +443,9 @@
   color: var(--color-gold);
 }
 
-.itinerary-footnote {
+.itinerary-footnote,
+.stay-footnote {
+  font-family: var(--font-body);
   font-size: 0.82rem;
   color: rgba(44, 64, 88, 0.7);
   line-height: 1.6;
@@ -407,9 +455,10 @@
 }
 
 /* --------------------------------------------------------------------------
-   5. STICKY SIDEBAR COLUMN
+   6. STICKY SIDEBAR COLUMN & CARDS — EXACT EXPLORE PACKAGES STYLES
    -------------------------------------------------------------------------- */
-.itinerary-sidebar-col {
+.itinerary-sidebar-col,
+.stay-sidebar-col {
   width: 100%;
 }
 
@@ -444,6 +493,7 @@
 }
 
 .sidebar-card-title {
+  font-family: var(--font-body);
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.15em;
@@ -474,6 +524,7 @@
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
+  font-family: var(--font-body);
   font-size: 0.9rem;
   line-height: 1.5;
   color: rgba(247, 244, 237, 0.92);
@@ -491,6 +542,7 @@
   display: flex;
   align-items: flex-start;
   gap: 0.85rem;
+  font-family: var(--font-body);
   font-size: 0.9rem;
   line-height: 1.5;
   color: var(--color-navy);
@@ -505,25 +557,26 @@
   margin-top: 2px;
 }
 
-/* Sidebar Graphic Panel (Editorial Decorative) */
+/* Sidebar Editorial Graphic Panel */
 .sidebar-graphic-panel {
   background-color: var(--color-midnight);
   border-radius: var(--radius-md);
-  padding: 2rem;
+  padding: 0;
   text-align: center;
   position: relative;
   overflow: hidden;
-  min-height: 210px;
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid rgba(182, 153, 100, 0.15);
+  box-shadow: 0 8px 24px rgba(18, 21, 37, 0.06);
 }
 
 .sidebar-graphic-svg {
   width: 100%;
-  max-width: 280px;
-  height: auto;
+  height: 100%;
+  display: block;
 }
 
 /* Mini 2x2 Graphics Grid */
@@ -556,10 +609,11 @@
 }
 
 /* --------------------------------------------------------------------------
-   6. COMPREHENSIVE RESPONSIVE ENHANCEMENTS (DESKTOP, TABLET, MOBILE)
+   7. COMPREHENSIVE RESPONSIVE ENHANCEMENTS (DESKTOP, TABLET, MOBILE)
    -------------------------------------------------------------------------- */
 @media (max-width: 1023px) {
-  .itinerary-layout-grid {
+  .itinerary-layout-grid,
+  .stay-layout-grid {
     grid-template-columns: 1fr;
     gap: 2.75rem;
   }
@@ -568,27 +622,32 @@
     position: static;
   }
 
-  .package-itinerary-section {
+  .package-itinerary-section,
+  .stay-itinerary-section {
     padding: 3.5rem 0;
   }
 }
 
 @media (max-width: 768px) {
-  .package-hero {
+  .package-hero,
+  .stay-hero {
     padding: 3.5rem 0 3rem;
   }
 
-  .package-hero-title {
+  .package-hero-title,
+  .stay-hero-title {
     font-size: clamp(2rem, 6.5vw, 3rem);
   }
 
-  .package-hero-desc {
+  .package-hero-desc,
+  .stay-hero-desc {
     font-size: 0.98rem;
     line-height: 1.7;
     margin-bottom: 1.5rem;
   }
 
-  .itinerary-main-title {
+  .itinerary-main-title,
+  .stay-main-title {
     font-size: 2.2rem;
     margin-bottom: 1.75rem;
   }
@@ -604,38 +663,46 @@
 }
 
 @media (max-width: 576px) {
-  .package-hero {
+  .package-hero,
+  .stay-hero {
     padding: 2.75rem 0 2.25rem;
   }
 
-  .package-tags-row {
+  .package-tags-row,
+  .stay-tags-row {
     gap: 0.4rem;
     margin-bottom: 1rem;
   }
 
-  .package-tag-pill {
+  .package-tag-pill,
+  .stay-tag-pill {
     padding: 0.3rem 0.85rem;
     font-size: 0.68rem;
   }
 
-  .package-hero-title {
+  .package-hero-title,
+  .stay-hero-title {
     font-size: clamp(1.8rem, 7.5vw, 2.4rem);
     letter-spacing: 0.5px;
   }
 
-  .package-hero-duration {
+  .package-hero-duration,
+  .stay-hero-duration {
     font-size: 1.6rem;
     margin-bottom: 1rem;
   }
 
-  .package-hero-actions {
+  .package-hero-actions,
+  .stay-hero-actions {
     flex-direction: column;
     width: 100%;
     gap: 0.85rem;
   }
 
   .package-hero-actions .btn-primary,
-  .package-hero-actions .btn-secondary-outline {
+  .package-hero-actions .btn-secondary-outline,
+  .stay-hero-actions .btn-primary,
+  .stay-hero-actions .btn-secondary-outline {
     width: 100%;
     text-align: center;
     justify-content: center;

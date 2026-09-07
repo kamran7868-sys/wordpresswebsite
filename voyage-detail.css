@@ -1,6 +1,7 @@
 /* ==========================================================================
-   PREMIUM GLOBAL EXPEDITIONS INC. (PGE) — EXPLORE PACKAGES / PACKAGE DETAIL CSS
+   PREMIUM GLOBAL EXPEDITIONS INC. (PGE) — VOYAGE DETAIL CSS
    Official Brand Guide 2026 Compliant | Elementor Widget & Container Ready
+   Matching exact Explore Packages styling, paddings, and color combination
    ========================================================================== */
 
 /* Base Grid, Header, Footer & Global Reset loaded via <link rel="stylesheet" href="style.css"> */
@@ -258,7 +259,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   4. ITINERARY OVERVIEW SECTION
+   4. ITINERARY OVERVIEW SECTION (EXPLORE PACKAGES MATCHING STYLING & PADDING)
    -------------------------------------------------------------------------- */
 .package-itinerary-section {
   background-color: var(--color-ivory);
@@ -315,6 +316,9 @@
   align-items: flex-start;
   padding-bottom: 1.75rem;
   border-bottom: 1px solid rgba(44, 64, 88, 0.12);
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
 }
 
 .day-card:last-child {

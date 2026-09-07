@@ -15,8 +15,10 @@
     href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap"
     rel="stylesheet">
 
-  <!-- DEDICATED EXPLORE PACKAGES STYLESHEET -->
+  <!-- MAIN BRAND STYLESHEET, EXPLORE PACKAGES & STAY DETAIL STYLESHEETS -->
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="explore-packages.css">
+  <link rel="stylesheet" href="stay-detail.css">
 </head>
 
 <body>
@@ -105,7 +107,7 @@
 
       <!-- LOGO -->
       <a href="index.html" class="brand-logo-wrap" aria-label="Premium Global Expeditions Home">
-        <img src="assets/pge-logo-full-dark.svg" alt="Premium Global Expeditions Inc." class="brand-logo-img">
+        <img src="assets/pge-logo-full-dark.svg" alt="Premium Global Expeditions Inc." class="brand-logo-img" width="220" height="48" decoding="async">
       </a>
 
       <!-- MAIN NAVIGATION MENU (No item has .active class as this is an orphan/hidden detail page) -->
@@ -113,7 +115,7 @@
         <a href="index.html" class="nav-link">Home</a>
         <a href="about.html" class="nav-link">About Us</a>
         <a href="packages.html" class="nav-link">Packages</a>
-        <a href="#cta-section" class="nav-link">Get In Touch</a>
+        <a href="contact.html" class="nav-link">Get In Touch</a>
       </nav>
 
       <!-- NAVIGATION ACTIONS -->
@@ -133,7 +135,7 @@
 
 
     <!-- ==========================================================================
-         SECTION 4: PACKAGE HERO SECTION
+         SECTION 4: PACKAGE HERO SECTION (EXACT ATTACHED DESIGN & TEXT)
          Elementor Container: #package-hero | Background: Expedition Navy (#252E47)
          ========================================================================== -->
     <section class="package-hero" id="package-hero">
@@ -297,9 +299,10 @@
                 <div class="day-badge">
                   <span class="day-badge-num">1</span>
                   <span class="day-badge-label">DAY</span>
-                  <svg class="day-badge-icon" viewBox="0 0 24 24">
+                  <svg class="day-badge-icon" viewBox="0 0 24 24" fill="none" stroke="#B69964" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <path
-                      d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                      d="M17.8 19.2L16 11l3.5-3.5C21 6 21 4 19.5 2.5c-1.5-1.5-3.5-1.5-5 0L11 6 2.8 4.2c-.5-.1-.9.2-1 .7-.1.4.1.8.4 1l5.8 4.7L6 14.5l-2.5-.5c-.4-.1-.8.1-1 .4-.2.4-.1.8.2 1.1l2.5 2 2 2.5c.3.3.7.4 1.1.2.3-.2.5-.6.4-1l-.5-2.5 3.9-2 4.7 5.8c.2.3.6.5 1 .4.5-.1.8-.5.7-1z" />
                   </svg>
                 </div>
                 <div class="day-content">
@@ -318,9 +321,13 @@
                 <div class="day-badge">
                   <span class="day-badge-num">2</span>
                   <span class="day-badge-label">DAY</span>
-                  <svg class="day-badge-icon" viewBox="0 0 24 24">
-                    <path
-                      d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.04 3H5.81l1.04-3zM19 17H5v-4h14v4z" />
+                  <svg class="day-badge-icon" viewBox="0 0 24 24" fill="none" stroke="#B69964" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="4" y="4" width="16" height="13" rx="2.5" />
+                    <line x1="4" y1="10" x2="20" y2="10" />
+                    <circle cx="8" cy="14" r="1.2" fill="#B69964" />
+                    <circle cx="16" cy="14" r="1.2" fill="#B69964" />
+                    <path d="M6 17v2M18 17v2" />
                   </svg>
                 </div>
                 <div class="day-content">
@@ -338,9 +345,13 @@
                 <div class="day-badge">
                   <span class="day-badge-num">3</span>
                   <span class="day-badge-label">DAY</span>
-                  <svg class="day-badge-icon" viewBox="0 0 24 24">
-                    <path
-                      d="M12 2c-4 0-8 .5-8 4v9.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h12v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-4-4-8-4zm0 2c3.71 0 5.8 0 6 2H6c.2-2 2.29-2 6-2zm6 7H6V8h12v3zm-9.5 6c-.83 0-1.5-.67-1.5-1.5S7.67 12 8.5 12s1.5.67 1.5 1.5S9.33 15 8.5 15zm7 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
+                  <svg class="day-badge-icon" viewBox="0 0 24 24" fill="none" stroke="#B69964" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="5" y="3" width="14" height="14" rx="2.5" />
+                    <line x1="5" y1="9" x2="19" y2="9" />
+                    <circle cx="8.5" cy="13.5" r="1.2" fill="#B69964" />
+                    <circle cx="15.5" cy="13.5" r="1.2" fill="#B69964" />
+                    <path d="M7 17l-2 3M17 17l2 3" />
                   </svg>
                 </div>
                 <div class="day-content">
@@ -358,9 +369,13 @@
                 <div class="day-badge">
                   <span class="day-badge-num">4</span>
                   <span class="day-badge-label">DAY</span>
-                  <svg class="day-badge-icon" viewBox="0 0 24 24">
-                    <path
-                      d="M12 2c-4 0-8 .5-8 4v9.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h12v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-4-4-8-4zm0 2c3.71 0 5.8 0 6 2H6c.2-2 2.29-2 6-2zm6 7H6V8h12v3zm-9.5 6c-.83 0-1.5-.67-1.5-1.5S7.67 12 8.5 12s1.5.67 1.5 1.5S9.33 15 8.5 15zm7 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
+                  <svg class="day-badge-icon" viewBox="0 0 24 24" fill="none" stroke="#B69964" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="5" y="3" width="14" height="14" rx="2.5" />
+                    <line x1="5" y1="9" x2="19" y2="9" />
+                    <circle cx="8.5" cy="13.5" r="1.2" fill="#B69964" />
+                    <circle cx="15.5" cy="13.5" r="1.2" fill="#B69964" />
+                    <path d="M7 17l-2 3M17 17l2 3" />
                   </svg>
                 </div>
                 <div class="day-content">
@@ -471,66 +486,87 @@
                 <span class="sidebar-card-title">TOUR HIGHLIGHTS</span>
                 <ul class="highlights-list">
                   <li class="highlight-item">
-                    <svg class="highlight-icon" viewBox="0 0 24 24">
-                      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                    <svg class="highlight-icon" viewBox="0 0 16 16" fill="none" stroke="#B69964" stroke-width="1.8"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M2.5 8.5l3.5 3.5 7.5-8" />
                     </svg>
                     <span>Two-day GoldLeaf glass-dome rail journey, Vancouver to Banff</span>
                   </li>
                   <li class="highlight-item">
-                    <svg class="highlight-icon" viewBox="0 0 24 24">
-                      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                    <svg class="highlight-icon" viewBox="0 0 16 16" fill="none" stroke="#B69964" stroke-width="1.8"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M2.5 8.5l3.5 3.5 7.5-8" />
                     </svg>
                     <span>Guided sightseeing in Vancouver, Banff and Lake Louise</span>
                   </li>
                   <li class="highlight-item">
-                    <svg class="highlight-icon" viewBox="0 0 24 24">
-                      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                    <svg class="highlight-icon" viewBox="0 0 16 16" fill="none" stroke="#B69964" stroke-width="1.8"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M2.5 8.5l3.5 3.5 7.5-8" />
                     </svg>
                     <span>Overnight rail-side hospitality in Kamloops</span>
                   </li>
                   <li class="highlight-item">
-                    <svg class="highlight-icon" viewBox="0 0 24 24">
-                      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                    <svg class="highlight-icon" viewBox="0 0 16 16" fill="none" stroke="#B69964" stroke-width="1.8"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M2.5 8.5l3.5 3.5 7.5-8" />
                     </svg>
                     <span>Scenic drive along the Bow Valley Parkway</span>
                   </li>
                   <li class="highlight-item">
-                    <svg class="highlight-icon" viewBox="0 0 24 24">
-                      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                    <svg class="highlight-icon" viewBox="0 0 16 16" fill="none" stroke="#B69964" stroke-width="1.8"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M2.5 8.5l3.5 3.5 7.5-8" />
                     </svg>
                     <span>Luxury alpine accommodation in Banff</span>
                   </li>
                   <li class="highlight-item">
-                    <svg class="highlight-icon" viewBox="0 0 24 24">
-                      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                    <svg class="highlight-icon" viewBox="0 0 16 16" fill="none" stroke="#B69964" stroke-width="1.8"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M2.5 8.5l3.5 3.5 7.5-8" />
                     </svg>
                     <span>Private transfers throughout in an air-conditioned vehicle</span>
                   </li>
                   <li class="highlight-item">
-                    <svg class="highlight-icon" viewBox="0 0 24 24">
-                      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                    <svg class="highlight-icon" viewBox="0 0 16 16" fill="none" stroke="#B69964" stroke-width="1.8"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M2.5 8.5l3.5 3.5 7.5-8" />
                     </svg>
                     <span>Expert local guides and onboard rail hosts</span>
                   </li>
                 </ul>
               </div>
 
-              <!-- SIDEBAR CARD B: DECORATIVE EDITORIAL GRAPHIC PANEL -->
+              <!-- SIDEBAR CARD B: DECORATIVE EDITORIAL GRAPHIC PANEL (EXACT MEDIA 1788768752725 VECTOR) -->
               <div class="sidebar-graphic-panel">
-                <svg class="sidebar-graphic-svg" viewBox="0 0 280 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Mountain Ridge & Sunrise Line Art -->
-                  <path d="M10 120 L80 40 L150 100 L210 30 L270 120 Z" fill="#2C4058" opacity="0.3" />
-                  <path d="M10 120 L80 40 L150 100 L210 30 L270 120" stroke="#B69964" stroke-width="2" />
-                  <!-- Mountain Caps -->
-                  <polygon points="80,40 88,55 72,55" fill="#F7F4ED" opacity="0.8" />
-                  <polygon points="210,30 220,48 200,48" fill="#F7F4ED" opacity="0.8" />
-                  <!-- Sunrise Orb -->
-                  <circle cx="115" cy="85" r="22" fill="#B69964" opacity="0.9" />
-                  <!-- Horizon & Trees -->
-                  <line x1="0" y1="120" x2="280" y2="120" stroke="#B69964" stroke-width="1.5" />
-                  <polygon points="230,120 234,105 238,120" fill="#252E47" />
-                  <polygon points="242,120 246,100 250,120" fill="#252E47" />
-                  <polygon points="254,120 257,110 260,120" fill="#252E47" />
+                <svg class="sidebar-graphic-svg" viewBox="0 0 380 200" fill="none" xmlns="http://www.w3.org/2000/svg"
+                  preserveAspectRatio="none">
+                  <!-- Deep Midnight Sky Background -->
+                  <rect width="380" height="200" fill="#1C2335" />
+
+                  <!-- Mountain Ridge (Gold Line Art) -->
+                  <path d="M-10 145 L70 65 L150 145 L245 55 L320 140 L380 85 L400 145" stroke="#B69964"
+                    stroke-width="2" stroke-linejoin="round" />
+
+                  <!-- Mountain Snow Caps -->
+                  <polygon points="70,65 77,78 63,78" fill="#F7F4ED" />
+                  <polygon points="245,55 253,70 237,70" fill="#F7F4ED" />
+
+                  <!-- Golden Sun/Moon Semicircle Resting in Valley on Horizon -->
+                  <path d="M152 145 A20 20 0 0 1 192 145 Z" fill="#C2A46C" />
+
+                  <!-- Foreground Dark Ground Bar -->
+                  <rect x="0" y="145" width="380" height="55" fill="#141826" />
+                  <line x1="0" y1="145" x2="380" y2="145" stroke="#B69964" stroke-width="1" opacity="0.35" />
+
+                  <!-- Pine Tree Silhouettes (Left Foreground) -->
+                  <polygon points="32,126 37,145 27,145" fill="#1B2234" />
+                  <polygon points="48,118 54,145 42,145" fill="#1B2234" />
+
+                  <!-- Pine Tree Silhouettes (Right Foreground) -->
+                  <polygon points="305,124 311,145 299,145" fill="#1B2234" />
+                  <polygon points="324,116 331,145 317,145" fill="#1B2234" />
+                  <polygon points="340,128 345,145 335,145" fill="#1B2234" />
                 </svg>
               </div>
 
@@ -589,7 +625,7 @@
                   <li class="include-item">
                     <svg class="include-icon" viewBox="0 0 24 24">
                       <path
-                        d="M7.5 11C9.43 11 11 9.43 11 7.5S9.43 4 7.5 4 4 5.57 4 7.5 5.57 11 7.5 11zm0-5C8.33 6 9 6.67 9 7.5S8.33 9 7.5 9 6 8.33 6 7.5 6.67 6 7.5 6zm9 14c1.93 0 3.5-1.57 3.5-3.5S18.43 13 16.5 13 13 14.57 13 16.5s1.57 3.5 3.5 3.5zm0-5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM4.03 18.59L18.59 4.03l1.41 1.41L5.44 20l-1.41-1.41z" />
+                        d="M7.5 11C9.43 11 11 9.43 11 7.5S9.43 4 7.5 4 4 5.57 4 7.5 5.57 11 7.5 11zm0-5C8.33 6 9 6.67 9 7.5S8.33 9 7.5 9 6 8.33 6 7.5 6.67 6 7.5 6.67 6 7.5 6zm9 14c1.93 0 3.5-1.57 3.5-3.5S18.43 13 16.5 13 13 14.57 13 16.5s1.57 3.5 3.5 3.5zm0-5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM4.03 18.59L18.59 4.03l1.41 1.41L5.44 20l-1.41-1.41z" />
                     </svg>
                     <span>All service charges and taxes</span>
                   </li>
@@ -655,14 +691,14 @@
       <div class="container">
         <div class="cta-box">
           <span class="section-tagline" style="color: var(--color-gold);">Start Planning Today</span>
-          <h2 class="cta-title">Ready to Begin This Journey?</h2>
+          <h2 class="cta-title">Let's Plan Your Next Journey</h2>
           <hr class="gold-rule center">
           <p class="cta-desc">
             From flights and cruises to bespoke holidays and unforgettable experiences, our team is here to make your
             travel plans seamless. Get in touch with Premium Global Expeditions and let us bring your travel aspirations
             to life.
           </p>
-          <a href="#cta-section" class="btn-primary" id="getInTouchBtn">Request This Package</a>
+          <a href="contact.html" class="btn-primary" id="getInTouchBtn">Get In Touch!</a>
         </div>
       </div>
     </section>
@@ -680,7 +716,7 @@
 
         <!-- COLUMN 1: BRAND LOGO & TAGLINE -->
         <div class="footer-brand-col">
-          <img src="assets/pge-logo-full-dark.svg" alt="Premium Global Expeditions" class="footer-logo">
+          <img src="assets/pge-logo-full-dark.svg" alt="Premium Global Expeditions" class="footer-logo" width="220" height="48" loading="lazy" decoding="async">
           <div class="footer-tagline-script">Where Dreams Become A Reality</div>
           <p class="footer-about-text">
             Premium Global Expeditions Inc. is a registered Canadian tour operator providing bespoke global holidays,
@@ -719,7 +755,7 @@
             <li><a href="index.html"><span class="footer-link-arrow">&rsaquo;</span> Home</a></li>
             <li><a href="about.html"><span class="footer-link-arrow">&rsaquo;</span> About Us</a></li>
             <li><a href="packages.html"><span class="footer-link-arrow">&rsaquo;</span> Packages</a></li>
-            <li><a href="#cta-section"><span class="footer-link-arrow">&rsaquo;</span> Get In Touch</a></li>
+            <li><a href="contact.html"><span class="footer-link-arrow">&rsaquo;</span> Get In Touch</a></li>
           </ul>
         </div>
 
@@ -790,15 +826,15 @@
       <h4 style="font-family: var(--font-display); font-size: 2rem; color: var(--color-navy); margin-bottom: 0.75rem;">
         Thank You for Choosing PGE!</h4>
       <p style="font-size: 0.95rem; color: var(--color-slate); line-height: 1.6; margin-bottom: 1.75rem;">
-        Your package inquiry for Rocky Mountaineer Luxury Express has been received by our Canadian travel specialists.
+        Your inquiry for Rocky Mountaineer Luxury Express has been received by our Canadian travel specialists.
         We will review your travel preferences and get in touch within 24 hours.
       </p>
       <button class="btn-primary" id="modalCloseBtn">Return to Package</button>
     </div>
   </div>
 
-  <!-- DEDICATED EXPLORE PACKAGES JAVASCRIPT -->
-  <script src="explore-packages.js"></script>
+  <!-- MAIN INTERACTIVE CONTROLLER (Unified Central Script) -->
+  <script src="script.js" defer></script>
 </body>
 
 </html>
