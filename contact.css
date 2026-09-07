@@ -43,17 +43,13 @@
 
 #contact-hero .hero-breadcrumb {
   font-family: var(--font-body);
-  font-size: 0.82rem;
-  font-weight: 700;
+  font-size: 0.85rem;
+  font-weight: 600;
   color: var(--color-gold);
   text-transform: uppercase;
   letter-spacing: 2.5px;
   display: inline-block;
-  margin-bottom: 0.6rem;
-  padding: 0.35rem 1rem;
-  background: rgba(182, 153, 100, 0.12);
-  border: 1px solid rgba(182, 153, 100, 0.3);
-  border-radius: 20px;
+  margin-bottom: 0.75rem;
 }
 
 #contact-hero .hero-title {
@@ -188,15 +184,16 @@
 .contact-select,
 .contact-textarea {
   width: 100%;
+  box-sizing: border-box;
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 16px; /* Explicit 16px prevents iOS Safari auto-zoom */
   color: var(--color-navy);
   background-color: var(--color-ivory);
   border: 1.5px solid rgba(37, 46, 71, 0.18);
   border-radius: 8px;
   padding: 0.85rem 1.1rem;
   min-height: 48px;
-  transition: all 0.3s ease;
+  transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .contact-input:focus,
@@ -382,6 +379,8 @@
   color: var(--color-ivory);
   text-decoration: none;
   transition: color 0.3s ease;
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
 .info-val a:hover {
@@ -463,8 +462,8 @@
 
 @media (max-width: 991px) {
   #contact-hero {
-    height: 380px;
-    min-height: 320px;
+    height: 360px;
+    min-height: 300px;
   }
 
   .contact-grid {
@@ -484,12 +483,12 @@
 
 @media (max-width: 768px) {
   #contact-hero {
-    height: 340px;
-    min-height: 290px;
+    height: 320px;
+    min-height: 280px;
   }
 
   .contact-intro-section {
-    padding: 3.5rem 0 1.75rem;
+    padding: 3rem 0 1.5rem;
   }
 
   .contact-intro-title {
@@ -512,13 +511,14 @@
 
 @media (max-width: 576px) {
   #contact-hero {
-    height: 300px;
-    min-height: 260px;
+    height: 290px;
+    min-height: 250px;
   }
 
+  #contact-hero .hero-breadcrumb,
   .contact-hero .hero-breadcrumb {
-    font-size: 0.72rem;
-    padding: 0.3rem 0.85rem;
+    font-size: 0.76rem;
+    letter-spacing: 2px;
   }
 
   .contact-hero .hero-title {
@@ -531,7 +531,7 @@
   }
 
   .contact-intro-section {
-    padding: 2.75rem 0 1.25rem;
+    padding: 2.5rem 0 1.25rem;
   }
 
   .contact-form-row {
@@ -549,7 +549,7 @@
   }
 
   .contact-sidebar-card {
-    padding: 1.75rem 1.15rem;
+    padding: 1.6rem 1.15rem;
     border-radius: 12px;
   }
 
@@ -559,7 +559,8 @@
 
   .btn-contact-submit {
     padding: 1rem 1.5rem;
-    font-size: 0.92rem;
+    min-height: 50px;
+    font-size: 0.95rem;
     letter-spacing: 0.5px;
   }
 
@@ -568,16 +569,135 @@
   }
 
   .info-icon-box {
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
   }
 
   .info-icon-box svg {
-    width: 17px;
-    height: 17px;
+    width: 18px;
+    height: 18px;
   }
 
   .map-frame-wrapper {
-    height: 200px;
+    height: 190px;
+  }
+}
+
+/* Small Smartphones (Max 480px) */
+@media (max-width: 480px) {
+  #contact-hero {
+    height: 270px;
+    min-height: 230px;
+  }
+
+  #contact-hero .hero-title {
+    font-size: clamp(1.5rem, 6.5vw, 1.95rem);
+    letter-spacing: 1px;
+  }
+
+  #contact-hero .hero-subtitle-script {
+    font-size: clamp(1.4rem, 5.5vw, 1.75rem);
+  }
+
+  .contact-form-card {
+    padding: 1.35rem 1rem;
+    border-radius: 10px;
+  }
+
+  .contact-form-heading {
+    font-size: 1.45rem;
+  }
+
+  .contact-form-subtext {
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  .contact-label {
+    font-size: 0.78rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .contact-input,
+  .contact-select,
+  .contact-textarea {
+    font-size: 16px;
+    padding: 0.75rem 0.9rem;
+    min-height: 46px;
+  }
+
+  .contact-textarea {
+    min-height: 110px;
+  }
+
+  .contact-sidebar-card {
+    padding: 1.35rem 1rem;
+    border-radius: 10px;
+  }
+
+  .sidebar-card-title {
+    font-size: 1.35rem;
+  }
+
+  .sidebar-card-subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .info-label {
+    font-size: 0.7rem;
+  }
+
+  .info-val {
+    font-size: 0.88rem;
+  }
+
+  .trust-badge-line {
+    padding: 0.7rem 0.85rem;
+    font-size: 0.8rem;
+  }
+
+  .map-frame-wrapper {
+    height: 170px;
+  }
+
+  .modal-card {
+    padding: 1.75rem 1.15rem;
+    width: 92%;
+    margin: 0 auto;
+    max-width: 360px;
+  }
+}
+
+/* Extra Compact Phones (Max 375px) */
+@media (max-width: 375px) {
+  .contact-form-card,
+  .contact-sidebar-card {
+    padding: 1.2rem 0.85rem;
+  }
+
+  .btn-contact-submit {
+    padding: 0.9rem 1.2rem;
+    font-size: 0.88rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. PAGE SPEED & ACCESSIBILITY OPTIMIZATIONS
+   -------------------------------------------------------------------------- */
+.cta-section,
+.footer-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 400px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

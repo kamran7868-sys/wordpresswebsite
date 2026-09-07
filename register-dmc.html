@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Get In Touch — Premium Global Expeditions Inc. (PGE)</title>
+  <title>Register as a DMC — Premium Global Expeditions Inc. (PGE)</title>
   <meta name="description"
-    content="Get in touch with Premium Global Expeditions Inc. Send us a message or call our Canadian travel concierge team for bespoke holidays, flights, cruises, and luxury accommodations.">
+    content="Register as a Destination Management Company (DMC), local tour operator, or international partner with Premium Global Expeditions Inc. Expand your global reach with a premier Canadian travel provider.">
 
   <!-- GOOGLE FONTS (Brand Guide 2026: Cormorant Garamond, Montserrat, Alex Brush) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,9 +15,9 @@
     href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap"
     rel="stylesheet">
 
-  <!-- MAIN BRAND STYLESHEET & CONTACT PAGE STYLESHEET -->
+  <!-- MAIN BRAND STYLESHEET & DEDICATED DMC STYLESHEET -->
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="contact.css">
+  <link rel="stylesheet" href="register-dmc.css">
 </head>
 
 <body>
@@ -69,7 +69,7 @@
           <span>Cruises</span>
         </a>
         <span class="utility-sep">|</span>
-        <a href="#contact-form-section" class="utility-link-item">
+        <a href="contact.html" class="utility-link-item">
           <svg viewBox="0 0 24 24">
             <path
               d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.04 3H5.81l1.04-3zM19 17H5v-4h14v4z" />
@@ -98,7 +98,7 @@
   </section>
 
   <!-- ==========================================================================
-       SECTION 2: MAIN NAVIGATION HEADER
+       SECTION 2: MAIN NAVIGATION HEADER (B2B Landing Page — No Active Item)
        Elementor Container: #main-header | Sticky Nav on Scroll
        ========================================================================== -->
   <header class="main-header" id="main-header">
@@ -114,12 +114,12 @@
         <a href="index.html" class="nav-link">Home</a>
         <a href="about.html" class="nav-link">About Us</a>
         <a href="packages.html" class="nav-link">Packages</a>
-        <a href="contact.html" class="nav-link active">Get In Touch</a>
+        <a href="contact.html" class="nav-link">Get In Touch</a>
       </nav>
 
       <!-- NAVIGATION ACTIONS -->
       <div class="nav-actions">
-        <a href="register-dmc.html" class="btn-primary">Register as a DMC Partner</a>
+        <a href="#dmc-form-section" class="btn-primary">Register as a DMC Partner</a>
         <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
           <svg viewBox="0 0 24 24">
             <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
@@ -133,209 +133,186 @@
   <main>
     <!-- ==========================================================================
          SECTION 3: PAGE HEADER / HERO BANNER
-         Elementor Container: #contact-hero | Navy Gradient Overlay
+         Elementor Container: #dmc-hero | Navy Gradient Overlay & Global Lines
          ========================================================================== -->
-    <section class="subpage-hero-section" id="contact-hero">
-      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1920&auto=format&fit=crop"
-        srcset="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=640&auto=format&fit=crop 640w,
-                https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1024&auto=format&fit=crop 1024w,
-                https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1920&auto=format&fit=crop 1920w"
-        sizes="100vw"
-        alt="Premium Global Expeditions Travel Concierge &amp; Destinations" class="subpage-hero-bg" width="1920" height="420" fetchpriority="high" decoding="async">
+    <section class="subpage-hero-section" id="dmc-hero">
+      
+      <!-- SUBTLE VECTOR GLOBAL NETWORK MOTIF (B2B Collaboration Theme) -->
+      <svg class="dmc-hero-vector-bg" viewBox="0 0 1440 460" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <circle cx="200" cy="230" r="180" stroke="#B69964" stroke-width="1.2" stroke-dasharray="4 6" opacity="0.3" />
+        <circle cx="200" cy="230" r="110" stroke="#B69964" stroke-width="0.8" opacity="0.25" />
+        <circle cx="1240" cy="200" r="160" stroke="#B69964" stroke-width="1.2" stroke-dasharray="5 7" opacity="0.3" />
+        
+        <!-- Connected Great-Circle Arc Paths -->
+        <path d="M120 300 C 350 80, 800 120, 1320 220" stroke="#B69964" stroke-width="1.5" stroke-linecap="round" opacity="0.4" />
+        <path d="M200 230 C 500 350, 950 80, 1240 200" stroke="#F7F4ED" stroke-width="1" stroke-dasharray="3 5" opacity="0.3" />
+        <path d="M400 380 C 650 180, 900 280, 1100 140" stroke="#B69964" stroke-width="1" opacity="0.35" />
+        
+        <!-- Global Nodes -->
+        <circle cx="200" cy="230" r="5" fill="#B69964" />
+        <circle cx="500" cy="180" r="3.5" fill="#F7F4ED" />
+        <circle cx="720" cy="150" r="4.5" fill="#B69964" />
+        <circle cx="980" cy="240" r="3.5" fill="#F7F4ED" />
+        <circle cx="1240" cy="200" r="5.5" fill="#B69964" />
+      </svg>
+
       <div class="hero-overlay"></div>
 
-      <div class="container hero-container" style="position: relative; z-index: 3;">
-        <div class="hero-content text-center" style="max-width: 860px; margin: 0 auto; text-align: center;">
-          <span class="hero-breadcrumb">Get In Touch</span>
-          <h1 class="hero-title">PREMIUM GLOBAL EXPEDITIONS</h1>
-          <p class="hero-subtitle-script">Where Dreams Become A Reality</p>
+      <div class="container">
+        <div class="dmc-hero-content">
+          <span class="hero-breadcrumb">Register as a DMC</span>
+          <h1 class="dmc-hero-title">PREMIUM GLOBAL EXPEDITIONS</h1>
+          <span class="dmc-hero-script">Where Dreams Become A Reality</span>
+          <p class="dmc-hero-subline">Partner With Us to Bring the World to Canadian Travellers</p>
         </div>
       </div>
     </section>
 
     <!-- ==========================================================================
          SECTION 4: INTRO TEXT SECTION
-         Elementor Container: #contact-intro | Background: Expedition Ivory (#F7F4ED)
+         Elementor Container: #dmc-intro | Background: Expedition Ivory (#F7F4ED)
          ========================================================================== -->
-    <section class="contact-intro-section" id="contact-intro">
+    <section class="dmc-intro-section" id="dmc-intro">
       <div class="container">
-        <div class="contact-intro-box">
-          <span class="section-tagline" style="color: var(--color-gold);">We Are Here To Assist You</span>
-          <h2 class="contact-intro-title">Get In Touch!</h2>
+        <div class="dmc-intro-box">
+          <span class="dmc-intro-tagline">B2B Partnership Program</span>
+          <h2 class="dmc-intro-title">Register as a DMC Partner</h2>
           <hr class="gold-rule center" style="margin-bottom: 1.5rem;">
-          <p class="contact-intro-text">
-            Have a question or ready to start planning your next journey? Send us a message and our team will be happy to assist you.
+          <p class="dmc-intro-text">
+            Tell us about your company so we can explore working together. We partner with trusted Destination Management Companies, local tour operators, and international partners who share our commitment to excellence, authenticity, and meticulous attention to detail.
           </p>
         </div>
       </div>
     </section>
 
     <!-- ==========================================================================
-       SECTION 5: CONTACT FORM & SIDEBAR GRID SECTION
-       Elementor Container: #contact-form-section | 2-Column Split Layout
-       ========================================================================== -->
-    <section class="contact-main-section" id="contact-form-section">
+         SECTION 5: REGISTRATION FORM SECTION (Elementor Form Ready)
+         Elementor Container: #dmc-form-section | 100% Matches Attached Mockup
+         ========================================================================== -->
+    <section class="dmc-form-section" id="dmc-form-section">
       <div class="container">
-        <div class="contact-grid">
+        <div class="dmc-form-wrapper">
 
-          <!-- LEFT COLUMN: CONTACT FORM CARD -->
-          <div class="contact-form-card">
-            <div class="contact-form-header">
-              <h3 class="contact-form-heading">Contact Form</h3>
-              <p class="contact-form-subtext">
-                Have a question or ready to start planning your next journey? Send us a message and our team will be happy to assist you.
-              </p>
+          <!-- FORM CARD CONTAINER -->
+          <div class="dmc-form-card" id="dmcFormCard">
+            
+            <!-- FORM HEADER -->
+            <div class="dmc-form-header">
+              <h3 class="dmc-card-title">Register as a DMC partner</h3>
+              <p class="dmc-card-sub">Tell us about your company so we can explore working together.</p>
             </div>
 
-            <form id="pgeContactForm" novalidate>
+            <!-- REGISTRATION FORM -->
+            <form class="dmc-form" id="pgeDmcForm" novalidate>
 
-              <!-- Full Name Field -->
-              <div class="contact-form-group">
-                <label class="contact-label" for="contactFullName">
-                  Full Name <span class="req" aria-hidden="true">*</span>
-                </label>
-                <input type="text" id="contactFullName" class="contact-input" placeholder="Enter your full name" autocomplete="name" required>
-                <div class="error-message-text" id="contactFullNameError">Please enter your full name</div>
+              <!-- ROW 1: COMPANY NAME & CONTACT PERSON -->
+              <div class="dmc-form-row">
+                <div class="dmc-form-group">
+                  <label for="dmcCompanyName" class="dmc-label">Company name <span class="req">*</span></label>
+                  <input type="text" id="dmcCompanyName" name="companyName" class="dmc-input"
+                    placeholder="Ceylon Journeys DMC" autocomplete="organization" required>
+                  <span class="error-text" id="dmcCompanyNameError"></span>
+                </div>
+
+                <div class="dmc-form-group">
+                  <label for="dmcContactPerson" class="dmc-label">Contact person <span class="req">*</span></label>
+                  <input type="text" id="dmcContactPerson" name="contactPerson" class="dmc-input"
+                    placeholder="Full name" autocomplete="name" required>
+                  <span class="error-text" id="dmcContactPersonError"></span>
+                </div>
               </div>
 
-              <!-- Email & Phone Fields (Two Columns) -->
-              <div class="contact-form-row">
-                <div class="contact-form-group">
-                  <label class="contact-label" for="contactEmail">
-                    Email Address <span class="req" aria-hidden="true">*</span>
+              <!-- ROW 2: EMAIL & PHONE -->
+              <div class="dmc-form-row">
+                <div class="dmc-form-group">
+                  <label for="dmcEmail" class="dmc-label">Email <span class="req">*</span></label>
+                  <input type="email" id="dmcEmail" name="email" class="dmc-input"
+                    placeholder="name@company.com" autocomplete="email" required>
+                  <span class="error-text" id="dmcEmailError"></span>
+                </div>
+
+                <div class="dmc-form-group">
+                  <label for="dmcPhone" class="dmc-label">Phone <span class="req">*</span></label>
+                  <input type="tel" id="dmcPhone" name="phone" class="dmc-input"
+                    placeholder="+1 (647) 000-0000" autocomplete="tel" required>
+                  <span class="error-text" id="dmcPhoneError"></span>
+                </div>
+              </div>
+
+              <!-- ROW 3: COUNTRY OF OPERATION & YEARS IN OPERATION -->
+              <div class="dmc-form-row">
+                <div class="dmc-form-group">
+                  <label for="dmcCountry" class="dmc-label">Country of operation <span class="req">*</span></label>
+                  <input type="text" id="dmcCountry" name="country" class="dmc-input"
+                    placeholder="Sri Lanka" required>
+                  <span class="error-text" id="dmcCountryError"></span>
+                </div>
+
+                <div class="dmc-form-group">
+                  <label for="dmcYears" class="dmc-label">Years in operation <span class="req">*</span></label>
+                  <input type="number" id="dmcYears" name="yearsInOperation" min="0" max="150" class="dmc-input"
+                    placeholder="5" required>
+                  <span class="error-text" id="dmcYearsError"></span>
+                </div>
+              </div>
+
+              <!-- ROW 4: COMPANY WEBSITE (FULL-WIDTH) -->
+              <div class="dmc-form-group full-width">
+                <label for="dmcWebsite" class="dmc-label">Company website</label>
+                <input type="url" id="dmcWebsite" name="website" class="dmc-input"
+                  placeholder="https://">
+                <span class="error-text" id="dmcWebsiteError"></span>
+              </div>
+
+              <!-- ROW 5: SERVICES OFFERED (CHECKBOX PILL BADGES) -->
+              <div class="dmc-services-wrap">
+                <label class="dmc-label">Services offered <span class="req">*</span></label>
+                <div class="dmc-services-grid" role="group" aria-label="Services offered checkboxes">
+                  
+                  <label class="dmc-checkbox-item">
+                    <input type="checkbox" name="services[]" value="Accommodation">
+                    <span>Accommodation</span>
                   </label>
-                  <input type="email" id="contactEmail" class="contact-input" placeholder="Enter your email address" autocomplete="email" inputmode="email" spellcheck="false" required>
-                  <div class="error-message-text" id="contactEmailError">Please enter a valid email address</div>
-                </div>
 
-                <div class="contact-form-group">
-                  <label class="contact-label" for="contactPhone">
-                    Phone Number <span class="req" aria-hidden="true">*</span>
+                  <label class="dmc-checkbox-item">
+                    <input type="checkbox" name="services[]" value="Transportation">
+                    <span>Transportation</span>
                   </label>
-                  <input type="tel" id="contactPhone" class="contact-input" placeholder="Enter your phone number" autocomplete="tel" inputmode="tel" required>
-                  <div class="error-message-text" id="contactPhoneError">Please enter your contact phone number</div>
+
+                  <label class="dmc-checkbox-item">
+                    <input type="checkbox" name="services[]" value="Tours and excursions">
+                    <span>Tours and excursions</span>
+                  </label>
+
+                  <label class="dmc-checkbox-item">
+                    <input type="checkbox" name="services[]" value="Local guides">
+                    <span>Local guides</span>
+                  </label>
+
+                  <label class="dmc-checkbox-item">
+                    <input type="checkbox" name="services[]" value="Attractions and tickets">
+                    <span>Attractions and tickets</span>
+                  </label>
+
                 </div>
+                <span class="error-text" id="dmcServicesError"></span>
               </div>
 
-              <!-- Subject Select Dropdown -->
-              <div class="contact-form-group">
-                <label class="contact-label" for="contactSubject">
-                  Subject <span class="req" aria-hidden="true">*</span>
-                </label>
-                <div class="contact-select-wrap">
-                  <select id="contactSubject" class="contact-select" required>
-                    <option value="" disabled selected>Select a subject:</option>
-                    <option value="General Inquiry">General Inquiry</option>
-                    <option value="Flights">Flights</option>
-                    <option value="Hotels & Accommodation">Hotels &amp; Accommodation</option>
-                    <option value="Cruises">Cruises</option>
-                    <option value="Holiday Packages">Holiday Packages</option>
-                    <option value="Tours & Experiences">Tours &amp; Experiences</option>
-                    <option value="Car Rentals">Car Rentals</option>
-                    <option value="Existing Booking">Existing Booking</option>
-                    <option value="Other">Other</option>
-                  </select>
-                  <svg class="select-arrow" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M7 10l5 5 5-5z" />
-                  </svg>
-                </div>
-                <div class="error-message-text" id="contactSubjectError">Please select a subject</div>
+              <!-- ROW 6: ADDITIONAL DETAILS (FULL-WIDTH TEXTAREA) -->
+              <div class="dmc-form-group full-width">
+                <label for="dmcDetails" class="dmc-label">Additional details</label>
+                <textarea id="dmcDetails" name="details" class="dmc-textarea" rows="4"
+                  placeholder="Regions covered, notable partners, capacity, anything else worth knowing"></textarea>
               </div>
 
-              <!-- Message Textarea -->
-              <div class="contact-form-group">
-                <label class="contact-label" for="contactMessage">
-                  Message <span class="req" aria-hidden="true">*</span>
-                </label>
-                <textarea id="contactMessage" class="contact-textarea" rows="5" placeholder="How can we help you?" required></textarea>
-                <div class="error-message-text" id="contactMessageError">Please enter your message</div>
+              <!-- SUBMIT BUTTON -->
+              <div class="dmc-form-actions">
+                <button type="submit" class="btn-dmc-submit" id="dmcSubmitBtn">
+                  Submit registration
+                </button>
               </div>
-
-              <!-- Submit Button -->
-              <button type="submit" class="btn-contact-submit" id="contactSubmitBtn">
-                <span>Send Message</span>
-                <svg viewBox="0 0 24 24">
-                  <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
-                </svg>
-              </button>
 
             </form>
-          </div>
-
-          <!-- RIGHT COLUMN: SUPPORTING CONTACT INFO CARD -->
-          <div class="contact-sidebar-card">
-            <h3 class="sidebar-card-title">Canadian Travel Concierge</h3>
-            <p class="sidebar-card-subtitle">
-              Connected, knowledgeable, borderless reach. We bring global reach together with authentic local expertise.
-            </p>
-
-            <div class="info-list">
-
-              <!-- Email Contact -->
-              <div class="info-item">
-                <div class="info-icon-box">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                  </svg>
-                </div>
-                <div>
-                  <div class="info-label">Email Concierge</div>
-                  <div class="info-val">
-                    <a href="mailto:hello@premiumglobalexp.ca">hello@premiumglobalexp.ca</a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Address Contact -->
-              <div class="info-item">
-                <div class="info-icon-box">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                  </svg>
-                </div>
-                <div>
-                  <div class="info-label">Location</div>
-                  <div class="info-val">
-                    Toronto, ON, Canada
-                  </div>
-                </div>
-              </div>
-
-              <!-- Operating Hours -->
-              <div class="info-item">
-                <div class="info-icon-box">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
-                  </svg>
-                </div>
-                <div>
-                  <div class="info-label">Operating Hours (Toronto, ON)</div>
-                  <div class="info-val">
-                    Mon – Sat: 9:00 AM – 6:00 PM EST
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <!-- Trust Line Badge -->
-            <div class="trust-badge-line">
-              <svg viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-              </svg>
-              <div class="trust-badge-text">
-                Our team typically responds within 24 hours.
-              </div>
-            </div>
-
-            <!-- Styled Map Frame -->
-            <div class="map-frame-wrapper">
-              <iframe
-                title="PGE Toronto Location Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d184552.5724458392!2d-79.5181404179373!3d43.71815569429712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4cb90d7c63ba5%3A0x323555502ab4c477!2sToronto%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sca!4v1700000000000!5m2!1sen!2sca"
-                width="600" height="180"
-                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
 
           </div>
 
@@ -344,19 +321,95 @@
     </section>
 
     <!-- ==========================================================================
-         SECTION 6: CALL-TO-ACTION SECTION (Identical structure to other pages)
-         Elementor Container: #cta-section | Background: Expedition Navy (#252E47)
+         SECTION 6: WHY PARTNER WITH US SECTION
+         Elementor Container: #dmc-why-partner | Navy / Midnight Background
+         ========================================================================== -->
+    <section class="dmc-why-section" id="dmc-why-partner">
+      <div class="container">
+        
+        <div class="dmc-why-header">
+          <span class="dmc-why-tagline">Partnership Advantages</span>
+          <h2 class="dmc-why-title">Why Partner With Premium Global Expeditions</h2>
+          <hr class="gold-rule center">
+        </div>
+
+        <div class="dmc-why-grid">
+
+          <!-- CARD 1: GLOBAL DISTRIBUTION NETWORK -->
+          <div class="dmc-why-card">
+            <div class="dmc-why-icon-box">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+              </svg>
+            </div>
+            <h3 class="dmc-why-card-title">Global Distribution Network</h3>
+            <p class="dmc-why-card-desc">
+              Direct exposure to discerning, high-yield Canadian travellers seeking bespoke, authentic luxury expeditions across the globe.
+            </p>
+          </div>
+
+          <!-- CARD 2: TRUSTED CANADIAN BRAND -->
+          <div class="dmc-why-card">
+            <div class="dmc-why-icon-box">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
+              </svg>
+            </div>
+            <h3 class="dmc-why-card-title">Trusted Canadian Brand</h3>
+            <p class="dmc-why-card-desc">
+              Fully registered Canadian tour operator adhering to the highest consumer protection, safety, and ethical hospitality standards.
+            </p>
+          </div>
+
+          <!-- CARD 3: RELIABLE, TIMELY PAYMENTS -->
+          <div class="dmc-why-card">
+            <div class="dmc-why-icon-box">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z" />
+              </svg>
+            </div>
+            <h3 class="dmc-why-card-title">Reliable, Timely Payments</h3>
+            <p class="dmc-why-card-desc">
+              Transparent contracting terms, punctual settlement schedules, and frictionless international payment systems you can rely on.
+            </p>
+          </div>
+
+          <!-- CARD 4: LONG-TERM PARTNERSHIP FOCUS -->
+          <div class="dmc-why-card">
+            <div class="dmc-why-icon-box">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 3s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+              </svg>
+            </div>
+            <h3 class="dmc-why-card-title">Long-Term Partnership Focus</h3>
+            <p class="dmc-why-card-desc">
+              We prioritize enduring, collaborative alliances over transactional bookings, growing passenger volume side-by-side with our DMCs.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 7: CALL-TO-ACTION SECTION
+         Elementor Container: #cta-section | Navy Background & Gold Accents
          ========================================================================== -->
     <section class="cta-section" id="cta-section">
       <div class="container">
         <div class="cta-box">
-          <span class="section-tagline" style="color: var(--color-gold);">Start Planning Today</span>
-          <h2 class="cta-title">Let's Plan Your Next Journey</h2>
+          <span class="section-tagline" style="color: var(--color-gold);">Partnership Inquiry</span>
+          <h2 class="cta-title">Have Questions Before You Register?</h2>
           <hr class="gold-rule center">
           <p class="cta-desc">
-            From flights and cruises to bespoke holidays and unforgettable experiences, our team is here to make your travel plans seamless. Get in touch with Premium Global Expeditions and let us bring your travel aspirations to life.
+            Our partnerships team is happy to answer any questions about working with Premium Global Expeditions and how we collaborate with international DMCs.
           </p>
-          <a href="#contact-form-section" class="btn-primary">Get In Touch!</a>
+          <a href="contact.html" class="btn-primary" id="getInTouchBtn">Get In Touch</a>
         </div>
       </div>
     </section>
@@ -364,7 +417,7 @@
   </main>
 
   <!-- ==========================================================================
-       SECTION 7: FOOTER SECTION (Identical to Home & Subpages)
+       SECTION 8: FOOTER SECTION
        Elementor Container: #footer-section | Background: Midnight (#121525)
        ========================================================================== -->
   <footer class="footer-section" id="footer-section">
@@ -411,7 +464,7 @@
             <li><a href="about.html"><span class="footer-link-arrow">&rsaquo;</span> About Us</a></li>
             <li><a href="packages.html"><span class="footer-link-arrow">&rsaquo;</span> Packages</a></li>
             <li><a href="contact.html"><span class="footer-link-arrow">&rsaquo;</span> Get In Touch</a></li>
-            <li><a href="register-dmc.html"><span class="footer-link-arrow">&rsaquo;</span> Register as a DMC</a></li>
+            <li><a href="register-dmc.html" class="active"><span class="footer-link-arrow">&rsaquo;</span> Register as a DMC</a></li>
           </ul>
         </div>
 
@@ -463,14 +516,14 @@
     </svg>
   </button>
 
-  <!-- MODAL FEEDBACK FOR CONTACT FORM SUBMISSION -->
+  <!-- MODAL FEEDBACK FOR DMC REGISTRATION SUBMISSION -->
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal-card">
-      <span class="section-tagline" style="color: var(--color-gold); font-size: 1.4rem;">Message Sent Successfully</span>
+      <span class="section-tagline" style="color: var(--color-gold); font-size: 1.4rem;">Partnership Application Received</span>
       <h4 style="font-family: var(--font-display); font-size: 2rem; color: var(--color-navy); margin-bottom: 0.75rem;">
-        Thank You for Reaching Out!</h4>
+        Thank You for Registering!</h4>
       <p style="font-size: 0.95rem; color: var(--color-slate); line-height: 1.65; margin-bottom: 1.75rem;">
-        Your inquiry has been received by our Canadian travel concierge team. We will review your request and get back to you within 24 hours.
+        Your DMC partner profile has been successfully submitted to Premium Global Expeditions Inc. Our partnership team in Toronto will review your credentials and reach out within 2–3 business days.
       </p>
       <button class="btn-primary" id="modalCloseBtn">Return to Site</button>
     </div>
@@ -478,7 +531,7 @@
 
   <!-- JAVASCRIPT CONTROLLERS -->
   <script src="script.js" defer></script>
-  <script src="contact.js" defer></script>
+  <script src="register-dmc.js" defer></script>
 </body>
 
 </html>
