@@ -1130,6 +1130,12 @@ textarea {
   grid-template-columns: 1fr 1.3fr;
 }
 
+@media (max-width: 900px) {
+  .flight-inquiry-container {
+    grid-template-columns: 1fr;
+  }
+}
+
 .flight-info-side {
   background-color: var(--color-navy);
   color: var(--color-ivory);
@@ -1155,57 +1161,277 @@ textarea {
   background-color: var(--color-white);
 }
 
-.form-grid {
+.inquiry-form-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inquiry-form-wrap .row {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.2rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
-.form-group.full-width {
-  grid-column: span 2;
+@media (max-width: 640px) {
+  .inquiry-form-wrap .row { grid-template-columns: 1fr; }
 }
 
-.form-label {
+.inquiry-form-wrap label {
   display: block;
-  font-size: 0.82rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 7px;
+  color: var(--color-navy);
+}
+
+.inquiry-form-wrap label .opt {
+  font-weight: 500;
+  color: #5b6270;
+}
+
+.inquiry-form-wrap .req { color: var(--color-gold); }
+
+.inquiry-form-wrap input[type=text],
+.inquiry-form-wrap input[type=email],
+.inquiry-form-wrap input[type=tel],
+.inquiry-form-wrap input[type=date],
+.inquiry-form-wrap input[type=number],
+.inquiry-form-wrap select,
+.inquiry-form-wrap textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 11px 14px;
+  background: #fbfaf7;
+  border: 1px solid #e5e0d5;
+  border-radius: 8px;
+  color: var(--color-navy);
+  outline: none;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.inquiry-form-wrap select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9' fill='none'><path d='M1 1L7 7L13 1' stroke='%23b69964' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+.inquiry-form-wrap input:focus,
+.inquiry-form-wrap select:focus,
+.inquiry-form-wrap textarea:focus {
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(182, 153, 100, 0.2);
+  background: #ffffff;
+}
+
+.legs {
+  border: 1px solid var(--color-gold-light);
+  background: rgba(182, 153, 100, 0.06);
+  border-radius: 12px;
+  padding: 20px 20px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.legs-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.legs-heading span.title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
   font-weight: 600;
   color: var(--color-navy);
-  margin-bottom: 0.4rem;
-  letter-spacing: 0.3px;
 }
 
-.form-control {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  background-color: var(--color-cloud-mist);
-  border: 1px solid rgba(44, 64, 88, 0.15);
-  border-radius: var(--radius-sm);
-  color: var(--color-navy);
-  font-size: 0.9rem;
-  transition: var(--transition-fast);
+.legs-heading span.hint {
+  font-size: 0.82rem;
+  color: #5b6270;
 }
 
-.form-control:focus {
-  outline: none;
-  border-color: var(--color-gold);
-  background-color: var(--color-white);
-  box-shadow: 0 0 0 3px rgba(182, 153, 100, 0.2);
+.leg {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 14px;
+  align-items: end;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed var(--color-gold-light);
 }
 
-.form-checkbox-group {
+.leg:last-of-type { border-bottom: none; padding-bottom: 4px; }
+
+.leg-label {
+  grid-column: 1 / -1;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-gold);
+  margin-bottom: -4px;
+}
+
+@media (max-width: 720px) {
+  .leg { grid-template-columns: 1fr; }
+}
+
+.remove-leg {
+  height: 44px;
+  width: 44px;
+  border-radius: 8px;
+  border: 1px solid #e5e0d5;
+  background: #fff;
+  color: #5b6270;
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  color: var(--color-slate);
-  margin-top: 0.5rem;
+  justify-content: center;
+  transition: border-color .15s ease, color .15s ease;
 }
 
-.form-checkbox-group input[type="checkbox"] {
-  width: 16px;
-  height: 16px;
+.remove-leg:hover { border-color: #b3452f; color: #b3452f; }
+.remove-leg:disabled { opacity: 0; pointer-events: none; }
+
+.add-leg {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  color: var(--color-gold);
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  padding: 6px 2px 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.add-leg:hover { color: var(--color-gold-hover); }
+.add-leg svg { width: 15px; height: 15px; }
+
+.counts-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  padding-bottom: 8px;
+}
+
+@media (max-width: 640px) {
+  .counts-row { grid-template-columns: 1fr; }
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.checkbox-row input {
+  width: 18px;
+  height: 18px;
   accent-color: var(--color-gold);
   cursor: pointer;
+}
+
+.checkbox-row label {
+  margin: 0;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--color-navy);
+  cursor: pointer;
+}
+
+.inquiry-form-wrap .submit {
+  margin-top: 8px;
+  align-self: flex-start;
+  background: var(--color-navy);
+  color: #fff;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s ease, transform .15s ease;
+}
+
+.inquiry-form-wrap .submit:hover {
+  background: var(--color-gold);
+  color: var(--color-navy);
+  transform: translateY(-2px);
+}
+
+/* Airport Autocomplete Dropdown Styling */
+.airport-autocomplete-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.airport-dropdown-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1050;
+  background: #ffffff;
+  border: 1px solid var(--color-gold-light);
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(37, 46, 71, 0.15);
+  max-height: 240px;
+  overflow-y: auto;
+  margin-top: 4px;
+  display: none;
+}
+
+.airport-dropdown-results.active {
+  display: block;
+}
+
+.airport-item {
+  padding: 10px 14px;
+  cursor: pointer;
+  border-bottom: 1px solid #f2eee7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background .15s ease;
+}
+
+.airport-item:last-child { border-bottom: none; }
+
+.airport-item:hover {
+  background: var(--color-ivory);
+}
+
+.airport-item .ap-iata {
+  font-weight: 700;
+  color: var(--color-gold);
+  background: rgba(182, 153, 100, 0.12);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  margin-right: 8px;
+}
+
+.airport-item .ap-info {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.airport-item .ap-sub {
+  font-size: 0.78rem;
+  color: #7a8292;
 }
 
 /* --------------------------------------------------------------------------
@@ -3187,14 +3413,6 @@ textarea {
           </svg>
           <span>Toronto, ON, Canada</span>
         </span>
-        <span class="utility-contact-sep">|</span>
-        <a href="mailto:hello@premiumglobalexp.ca" class="utility-contact-item">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-          </svg>
-          <span>hello@premiumglobalexp.ca</span>
-        </a>
       </div>
     </div>
   </section>
@@ -3220,7 +3438,7 @@ textarea {
 
       <!-- NAVIGATION ACTIONS -->
       <div class="nav-actions">
-        <a href="#cta-section" class="btn-primary">Plan Your Journey</a>
+        <a href="{{ route('register-dmc') }}" class="btn-primary">Register as a DMC</a>
         <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
           <svg viewBox="0 0 24 24">
             <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
@@ -3259,7 +3477,7 @@ textarea {
          ========================================================================== -->
     <nav class="packages-quicknav-strip" id="quicknav-strip" aria-label="Quick Category Navigation">
       <div class="container">
-        <div class="quicknav-container">
+        <div class="quicknav-container" style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
           <a href="#packages-section" class="quicknav-pill active" data-target="packages-section">
             <svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
             <span>All Inclusive Holiday Packages</span>
@@ -3294,7 +3512,7 @@ textarea {
         </div>
 
         <!-- Region Dropdown Filter for Packages -->
-        <div class="subgroup-filter-nav">
+        <div class="subgroup-filter-nav" style="justify-content: center;">
           <label class="subgroup-filter-label" for="pkgRegionFilter">Filter by Region:</label>
           <div class="select-dropdown-wrap">
             <select id="pkgRegionFilter" class="subgroup-select-filter pkg-section-filter" data-section="packages-grid" aria-label="Filter packages by region">
@@ -3433,13 +3651,15 @@ textarea {
         </div>
 
         <!-- Cruise Region Filter -->
-        <div class="subgroup-filter-nav">
+        <div class="subgroup-filter-nav" style="justify-content: center;">
           <label class="subgroup-filter-label" for="cruiseRegionFilter">Cruise Region:</label>
           <div class="select-dropdown-wrap">
             <select id="cruiseRegionFilter" class="subgroup-select-filter pkg-section-filter" data-section="cruises-grid" aria-label="Filter cruises by region">
               <option value="all">All Voyages</option>
-              <option value="alaska-singapore">Alaskan &amp; Singaporean</option>
-              <option value="nile-australia">Nile &amp; Australian</option>
+              <option value="alaska">Alaskan Cruise</option>
+              <option value="singapore">Singaporean Cruise</option>
+              <option value="nile">Nile Cruise</option>
+              <option value="australia">Australian Cruise</option>
             </select>
             <svg class="select-arrow" viewBox="0 0 24 24">
               <path d="M7 10l5 5 5-5z" />
@@ -3450,7 +3670,7 @@ textarea {
         <div class="cards-grid" id="cruises-grid">
 
           <!-- 1. Alaskan Cruise -->
-          <article class="card-item" data-group="alaska-singapore">
+          <article class="card-item" data-group="alaska">
             <a href="{{ route('voyage-detail') }}" class="card-img-wrap card-img-link" aria-label="View Inside Passage Glacier Voyage">
               <img src="https://images.unsplash.com/photo-1548574505-5e239809ee19?q=80&w=1000&auto=format&fit=crop"
                 alt="Alaskan Cruise Liner in Fjord Glaciers" class="card-img" width="1000" height="750" loading="lazy">
@@ -3467,7 +3687,7 @@ textarea {
           </article>
 
           <!-- 2. Singaporean Cruise -->
-          <article class="card-item" data-group="alaska-singapore">
+          <article class="card-item" data-group="singapore">
             <a href="{{ route('voyage-detail') }}" class="card-img-wrap card-img-link" aria-label="View Southeast Asian Spice Route Expedition">
               <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1000&auto=format&fit=crop"
                 alt="Singaporean Luxury Cruise Ship" class="card-img" width="1000" height="750" loading="lazy">
@@ -3484,7 +3704,7 @@ textarea {
           </article>
 
           <!-- 3. Nile Cruise -->
-          <article class="card-item" data-group="nile-australia">
+          <article class="card-item" data-group="nile">
             <a href="{{ route('voyage-detail') }}" class="card-img-wrap card-img-link" aria-label="View Pharaohs River Expedition on the Nile">
               <img src="https://images.unsplash.com/photo-1539650116574-8efeb43e2750?q=80&w=1000&auto=format&fit=crop"
                 alt="Nile River Sunset Cruise" class="card-img" width="1000" height="750" loading="lazy">
@@ -3501,7 +3721,7 @@ textarea {
           </article>
 
           <!-- 4. Australian Cruise -->
-          <article class="card-item" data-group="nile-australia">
+          <article class="card-item" data-group="australia">
             <a href="{{ route('voyage-detail') }}" class="card-img-wrap card-img-link" aria-label="View Great Barrier Reef & Southern Ocean Voyage">
               <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?q=80&w=1000&auto=format&fit=crop"
                 alt="Australian Barrier Reef Cruise" class="card-img" width="1000" height="750" loading="lazy">
@@ -3559,98 +3779,130 @@ textarea {
               style="font-family: var(--font-display); font-size: 1.6rem; color: var(--color-navy); margin-bottom: 1.5rem;">
               Airline Ticketing Inquiry</h4>
 
-            <form id="flightInquiryForm" class="form-grid">
-            @csrf
+            <form id="inquiryForm" class="inquiry-form-wrap">
+              @csrf
 
-              <div class="form-group">
-                <label class="form-label" for="fullName">Full Name *</label>
-                <input type="text" id="fullName" class="form-control" placeholder="e.g. Eleanor Vance" required>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="emailAddr">Email Address *</label>
-                <input type="email" id="emailAddr" class="form-control" placeholder="eleanor@example.com" required>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="phoneNum">Phone / WhatsApp *</label>
-                <input type="tel" id="phoneNum" class="form-control" placeholder="+1 (555) 000-0000" required>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="tripType">Trip Type *</label>
-                <select id="tripType" class="form-control" required>
-                  <option value="round-trip">Round Trip</option>
-                  <option value="one-way">One Way</option>
-                  <option value="multi-city">Multi-City / Bespoke Route</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="depCity">Departure City / Airport *</label>
-                <input type="text" id="depCity" class="form-control" placeholder="e.g. YVR - Vancouver or Toronto YYZ"
-                  required>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="destCity">Destination City / Airport *</label>
-                <input type="text" id="destCity" class="form-control" placeholder="e.g. CMB - Colombo or CAI - Cairo"
-                  required>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="depDate">Departure Date *</label>
-                <input type="date" id="depDate" class="form-control" required>
-              </div>
-
-              <div class="form-group" id="returnDateGroup">
-                <label class="form-label" for="retDate">Return Date</label>
-                <input type="date" id="retDate" class="form-control">
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="passengers">Travellers *</label>
-                <select id="passengers" class="form-control">
-                  <option value="1">1 Adult</option>
-                  <option value="2">2 Adults</option>
-                  <option value="family">Family (2 Adults + Children)</option>
-                  <option value="group">Group (5+ Passengers)</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="cabinClass">Cabin Class *</label>
-                <select id="cabinClass" class="form-control">
-                  <option value="economy">Economy Class</option>
-                  <option value="premium-econ">Premium Economy</option>
-                  <option value="business">Business Class</option>
-                  <option value="first">First Class</option>
-                </select>
-              </div>
-
-              <div class="form-group full-width">
-                <label class="form-label" for="preferredAirline">Preferred Airline (Optional)</label>
-                <input type="text" id="preferredAirline" class="form-control"
-                  placeholder="e.g. Air Canada, Emirates, Qatar Airways">
-              </div>
-
-              <div class="form-group full-width">
-                <div class="form-checkbox-group">
-                  <input type="checkbox" id="datesFlexible" checked>
-                  <label for="datesFlexible">My travel dates are flexible (+/- 3 days for best fares)</label>
+              <div class="row">
+                <div>
+                  <label>Full Name <span class="req">*</span></label>
+                  <input type="text" name="full_name" placeholder="e.g. Eleanor Vance" required />
+                </div>
+                <div>
+                  <label>Email Address <span class="req">*</span></label>
+                  <input type="email" name="email" placeholder="eleanor@example.com" required />
                 </div>
               </div>
 
-              <div class="form-group full-width">
-                <label class="form-label" for="specialRequests">Special Requests / Preferences</label>
-                <textarea id="specialRequests" class="form-control" rows="2"
-                  placeholder="Mention seat preferences, meal options, or stopover requests..."></textarea>
+              <div class="row">
+                <div>
+                  <label>Phone / WhatsApp <span class="req">*</span></label>
+                  <input type="tel" name="phone" placeholder="+1 (555) 000-0000" required />
+                </div>
+                <div>
+                  <label>Trip Type <span class="req">*</span></label>
+                  <select id="tripType" name="trip_type" required>
+                    <option value="oneway">One-Way</option>
+                    <option value="roundtrip">Round Trip</option>
+                    <option value="multicity" selected>Multi-City / Bespoke Route</option>
+                  </select>
+                </div>
               </div>
 
-              <div class="form-group full-width" style="margin-top: 0.5rem;">
-                <button type="submit" class="btn-primary" style="width: 100%;">Request Flight Options</button>
+              <!-- Simple route fields: shown for One-Way / Round Trip -->
+              <div id="simpleRoute" class="row" style="display:none;">
+                <div class="airport-autocomplete-wrap">
+                  <label>Departure City / Airport <span class="req">*</span></label>
+                  <input type="text" class="airport-input" name="dep_city" placeholder="e.g. YVR - Vancouver or Toronto" autocomplete="off" />
+                  <div class="airport-dropdown-results"></div>
+                </div>
+                <div class="airport-autocomplete-wrap">
+                  <label>Destination City / Airport <span class="req">*</span></label>
+                  <input type="text" class="airport-input" name="dest_city" placeholder="e.g. CMB - Colombo or Cairo" autocomplete="off" />
+                  <div class="airport-dropdown-results"></div>
+                </div>
               </div>
 
+              <div id="simpleDates" class="row" style="display:none;">
+                <div>
+                  <label>Departure Date <span class="req">*</span></label>
+                  <input type="date" name="dep_date" />
+                </div>
+                <div id="returnDateWrap">
+                  <label>Return Date</label>
+                  <input type="date" name="return_date" />
+                </div>
+              </div>
+
+              <!-- Multi-city legs: shown for Multi-City / Bespoke Route -->
+              <div id="legsBlock" class="legs">
+                <div class="legs-heading">
+                  <span class="title">Flights</span>
+                  <span class="hint">Add every leg of the trip, in order</span>
+                </div>
+                <div id="legsList"></div>
+                <button type="button" class="add-leg" id="addLegBtn">
+                  <svg viewBox="0 0 15 15" fill="none"><path d="M7.5 1V14M1 7.5H14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                  Add another flight
+                </button>
+              </div>
+
+              <div class="row">
+                <div>
+                  <label>Travellers <span class="req">*</span></label>
+                  <select id="travellerType" name="traveller_type" required>
+                    <option value="1adult">1 Adult</option>
+                    <option value="2adults">2 Adults</option>
+                    <option value="group">3 or more (specify below)</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Cabin Class <span class="req">*</span></label>
+                  <select name="cabin_class" required>
+                    <option>Economy Class</option>
+                    <option>Premium Economy</option>
+                    <option>Business Class</option>
+                    <option>First Class</option>
+                  </select>
+                </div>
+              </div>
+
+              <div id="travellerCounts" class="legs" style="display:none;">
+                <div class="legs-heading">
+                  <span class="title">Traveller Details</span>
+                  <span class="hint">Adults 12+, Children 2–11, Infants under 2</span>
+                </div>
+                <div class="counts-row">
+                  <div>
+                    <label>Adults <span class="req">*</span></label>
+                    <input type="number" id="countAdults" name="count_adults" min="1" value="3" />
+                  </div>
+                  <div>
+                    <label>Children</label>
+                    <input type="number" id="countChildren" name="count_children" min="0" value="0" />
+                  </div>
+                  <div>
+                    <label>Infants</label>
+                    <input type="number" id="countInfants" name="count_infants" min="0" value="0" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label>Preferred Airline <span class="opt">(Optional)</span></label>
+                <input type="text" name="preferred_airline" placeholder="e.g. Air Canada, Emirates, Qatar Airways" />
+              </div>
+
+              <div class="checkbox-row">
+                <input type="checkbox" id="flexDates" name="flex_dates" checked />
+                <label for="flexDates">My travel dates are flexible (+/- 3 days for best fares)</label>
+              </div>
+
+              <div>
+                <label>Special Requests / Preferences</label>
+                <textarea rows="3" name="special_requests" placeholder="Mention seat preferences, meal options, or stopover requests..."></textarea>
+              </div>
+
+              <button type="submit" class="submit">Submit Inquiry</button>
             </form>
           </div>
 
@@ -3673,13 +3925,18 @@ textarea {
         </div>
 
         <!-- Hotel Destinations Dropdown Filter -->
-        <div class="subgroup-filter-nav">
+        <div class="subgroup-filter-nav" style="justify-content: center;">
           <label class="subgroup-filter-label" for="hotelRegionFilter">Hotel Destinations:</label>
           <div class="select-dropdown-wrap">
             <select id="hotelRegionFilter" class="subgroup-select-filter pkg-section-filter" data-section="hotels-grid" aria-label="Filter hotels by destination">
               <option value="all">All Luxury Properties</option>
-              <option value="hotel-g1">Canada, Sri Lanka, Egypt &amp; Thailand</option>
-              <option value="hotel-g2">Vietnam, Nepal &amp; Turkey</option>
+              <option value="canada">Canada</option>
+              <option value="sri-lanka">Sri Lanka</option>
+              <option value="egypt">Egypt</option>
+              <option value="vietnam">Vietnam</option>
+              <option value="nepal">Nepal</option>
+              <option value="turkey">Turkey</option>
+              <option value="thailand">Thailand</option>
             </select>
             <svg class="select-arrow" viewBox="0 0 24 24">
               <path d="M7 10l5 5 5-5z" />
@@ -3690,7 +3947,7 @@ textarea {
         <div class="cards-grid" id="hotels-grid">
 
           <!-- 1. Canada Hotel -->
-          <article class="card-item" data-group="hotel-g1">
+          <article class="card-item" data-group="canada">
             <div class="card-img-wrap">
               <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop"
                 alt="Fairmont Banff Springs Hotel Canada" class="card-img" width="800" height="600" loading="lazy">
@@ -3707,7 +3964,7 @@ textarea {
           </article>
 
           <!-- 2. Sri Lanka Hotel -->
-          <article class="card-item" data-group="hotel-g1">
+          <article class="card-item" data-group="sri-lanka">
             <div class="card-img-wrap">
               <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=800&auto=format&fit=crop"
                 alt="Amangalla Resort Sri Lanka" class="card-img" width="800" height="600" loading="lazy">
@@ -3724,7 +3981,7 @@ textarea {
           </article>
 
           <!-- 3. Egypt Hotel -->
-          <article class="card-item" data-group="hotel-g1">
+          <article class="card-item" data-group="egypt">
             <div class="card-img-wrap">
               <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=800&auto=format&fit=crop"
                 alt="Four Seasons Cairo Egypt" class="card-img" width="800" height="600" loading="lazy">
@@ -3741,7 +3998,7 @@ textarea {
           </article>
 
           <!-- 4. Thailand Hotel -->
-          <article class="card-item" data-group="hotel-g1">
+          <article class="card-item" data-group="thailand">
             <div class="card-img-wrap">
               <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=800&auto=format&fit=crop"
                 alt="Anantara Chiang Mai Thailand" class="card-img" width="800" height="600" loading="lazy">
@@ -3758,7 +4015,7 @@ textarea {
           </article>
 
           <!-- 5. Vietnam Hotel -->
-          <article class="card-item" data-group="hotel-g2">
+          <article class="card-item" data-group="vietnam">
             <div class="card-img-wrap">
               <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=800&auto=format&fit=crop"
                 alt="Six Senses Con Dao Resort Vietnam" class="card-img" width="800" height="600" loading="lazy">
@@ -3775,7 +4032,7 @@ textarea {
           </article>
 
           <!-- 6. Nepal Hotel -->
-          <article class="card-item" data-group="hotel-g2">
+          <article class="card-item" data-group="nepal">
             <div class="card-img-wrap">
               <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop"
                 alt="Dwarikas Hotel Kathmandu Nepal" class="card-img" width="800" height="600" loading="lazy">
@@ -3792,7 +4049,7 @@ textarea {
           </article>
 
           <!-- 7. Turkey Hotel -->
-          <article class="card-item" data-group="hotel-g2">
+          <article class="card-item" data-group="turkey">
             <div class="card-img-wrap">
               <img src="https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?q=80&w=800&auto=format&fit=crop"
                 alt="Museum Hotel Cappadocia Turkey" class="card-img" width="800" height="600" loading="lazy">
@@ -3881,6 +4138,7 @@ textarea {
             <li><a href="{{ route('about') }}"><span class="footer-link-arrow">&rsaquo;</span> About Us</a></li>
             <li><a href="{{ route('packages') }}"><span class="footer-link-arrow">&rsaquo;</span> Packages</a></li>
             <li><a href="{{ route('contact') }}"><span class="footer-link-arrow">&rsaquo;</span> Get In Touch</a></li>
+            <li><a href="{{ route('register-dmc') }}"><span class="footer-link-arrow">&rsaquo;</span> Register as a DMC</a></li>
           </ul>
         </div>
 
@@ -3913,7 +4171,7 @@ textarea {
                     <path
                       d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                   </svg>
-                  <span>Email: hello@premiumglobalexp.ca</span>
+                  <span>Email: <a href="mailto:hello@premiumglobalexp.com" style="color: inherit; text-decoration: underline;">hello@premiumglobalexp.com</a></span>
                 </li>
           </ul>
         </div>
@@ -4387,113 +4645,229 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ------------------------------------------------------------------------
-     7. AIRLINE TICKETING INQUIRY FORM & MODAL FEEDBACK
+     7. AIRLINE TICKETING INQUIRY FORM & AIRPORT AUTOCOMPLETE
      ------------------------------------------------------------------------ */
-  const flightForms = document.querySelectorAll('#flightInquiryForm, #packagesFlightForm, .flight-inquiry-form');
+  const inquiryForm = document.getElementById('inquiryForm');
   const modalOverlay = document.getElementById('modalOverlay');
-  const modalCloseBtn = document.getElementById('modalCloseBtn');
-  const tripTypeSelect = document.getElementById('tripType');
-  const tripTypeRadios = document.querySelectorAll('input[name="tripType"]');
-  const returnDateGroup = document.getElementById('returnDateGroup');
-  const returnDateInput = returnDateGroup?.querySelector('input');
 
-  // Handle select dropdown tripType (Home Page)
-  if (tripTypeSelect && returnDateGroup) {
-    tripTypeSelect.addEventListener('change', (e) => {
-      if (e.target.value === 'one-way') {
-        returnDateGroup.style.opacity = '0.4';
-        if (returnDateInput) returnDateInput.disabled = true;
-      } else {
-        returnDateGroup.style.opacity = '1';
-        if (returnDateInput) returnDateInput.disabled = false;
+  if (inquiryForm) {
+    const tripType = document.getElementById('tripType');
+    const legsBlock = document.getElementById('legsBlock');
+    const legsList = document.getElementById('legsList');
+    const simpleRoute = document.getElementById('simpleRoute');
+    const simpleDates = document.getElementById('simpleDates');
+    const returnDateWrap = document.getElementById('returnDateWrap');
+    const addLegBtn = document.getElementById('addLegBtn');
+    const travellerType = document.getElementById('travellerType');
+    const travellerCounts = document.getElementById('travellerCounts');
+
+    // Show Traveller breakdown (Adults, Children, Infants) if travelers > 2 (i.e. 'group')
+    function renderForTravellerType() {
+      if (travellerCounts && travellerType) {
+        travellerCounts.style.display = (travellerType.value === 'group') ? 'flex' : 'none';
       }
-    });
-  }
+    }
+    if (travellerType) {
+      travellerType.addEventListener('change', renderForTravellerType);
+      renderForTravellerType();
+    }
 
-  // Handle radio pill tripType (Packages Page)
-  if (tripTypeRadios.length > 0 && returnDateGroup) {
-    tripTypeRadios.forEach(radio => {
-      radio.addEventListener('change', (e) => {
-        if (e.target.value === 'one-way' || e.target.value === 'multi-city') {
-          returnDateGroup.style.opacity = '0.4';
-          returnDateGroup.style.pointerEvents = 'none';
-          if (returnDateInput) {
-            returnDateInput.disabled = true;
-            returnDateInput.required = false;
-          }
+    let legCount = 0;
+    const MIN_LEGS = 3;
+
+    function relabelLegs() {
+      if (!legsList) return;
+      const legs = legsList.querySelectorAll('.leg');
+      legs.forEach((leg, i) => {
+        const label = leg.querySelector('.leg-label');
+        if (label) label.textContent = 'Flight ' + (i + 1);
+        const removeBtn = leg.querySelector('.remove-leg');
+        if (removeBtn) removeBtn.disabled = legs.length <= MIN_LEGS;
+      });
+    }
+
+    // Attach searchable airport dropdown from MySQL database (9,056 airports)
+    function attachAirportAutocomplete(input) {
+      if (!input || input.dataset.autocompleteAttached) return;
+      input.dataset.autocompleteAttached = "true";
+
+      let wrap = input.closest('.airport-autocomplete-wrap');
+      if (!wrap) {
+        wrap = document.createElement('div');
+        wrap.className = 'airport-autocomplete-wrap';
+        input.parentNode.insertBefore(wrap, input);
+        wrap.appendChild(input);
+      }
+
+      let dropdown = wrap.querySelector('.airport-dropdown-results');
+      if (!dropdown) {
+        dropdown = document.createElement('div');
+        dropdown.className = 'airport-dropdown-results';
+        wrap.appendChild(dropdown);
+      }
+
+      let timer = null;
+
+      function fetchAirports(query) {
+        fetch('/api/airports?q=' + encodeURIComponent(query))
+          .then(res => res.json())
+          .then(data => {
+            dropdown.innerHTML = '';
+            if (!data || data.length === 0) {
+              dropdown.innerHTML = '<div class="airport-item" style="color:#888; padding: 10px;">No matching airports found</div>';
+              dropdown.classList.add('active');
+              return;
+            }
+            data.forEach(item => {
+              const div = document.createElement('div');
+              div.className = 'airport-item';
+              div.innerHTML = `
+                <div>
+                  <span class="ap-iata">${item.iata_code || 'AIR'}</span>
+                  <span class="ap-info">${item.city || item.name}</span>
+                </div>
+                <div class="ap-sub">${item.name} ${item.country ? '(' + item.country + ')' : ''}</div>
+              `;
+              div.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const displayVal = item.iata_code ? `${item.iata_code} - ${item.city || item.name} (${item.country || ''})` : item.name;
+                input.value = displayVal;
+                dropdown.classList.remove('active');
+              });
+              dropdown.appendChild(div);
+            });
+            dropdown.classList.add('active');
+          })
+          .catch(err => console.error('Airport search error:', err));
+      }
+
+      input.addEventListener('input', () => {
+        clearTimeout(timer);
+        const query = input.value.trim();
+        if (query.length < 1) {
+          dropdown.classList.remove('active');
+          dropdown.innerHTML = '';
+          return;
+        }
+        timer = setTimeout(() => {
+          fetchAirports(query);
+        }, 150);
+      });
+
+      input.addEventListener('focus', () => {
+        const query = input.value.trim();
+        if (query.length >= 1) {
+          fetchAirports(query);
         } else {
-          returnDateGroup.style.opacity = '1';
-          returnDateGroup.style.pointerEvents = 'auto';
-          if (returnDateInput) {
-            returnDateInput.disabled = false;
-            returnDateInput.required = true;
-          }
+          dropdown.classList.remove('active');
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!wrap.contains(e.target)) {
+          dropdown.classList.remove('active');
+        }
+      });
+    }
+
+    function addLeg() {
+      if (!legsList) return;
+      legCount++;
+      const id = legCount;
+      const leg = document.createElement('div');
+      leg.className = 'leg';
+      leg.dataset.id = id;
+      leg.innerHTML = `
+        <div class="leg-label">Flight</div>
+        <div class="airport-autocomplete-wrap">
+          <label>Departure City / Airport <span class="req">*</span></label>
+          <input type="text" class="airport-input" name="leg_dep[]" placeholder="e.g. YVR - Vancouver" autocomplete="off" />
+          <div class="airport-dropdown-results"></div>
+        </div>
+        <div class="airport-autocomplete-wrap">
+          <label>Destination City / Airport <span class="req">*</span></label>
+          <input type="text" class="airport-input" name="leg_dest[]" placeholder="e.g. CMB - Colombo" autocomplete="off" />
+          <div class="airport-dropdown-results"></div>
+        </div>
+        <div>
+          <label>Departure Date <span class="req">*</span></label>
+          <input type="date" name="leg_date[]" />
+        </div>
+        <button type="button" class="remove-leg" title="Remove this flight" aria-label="Remove this flight">&times;</button>
+      `;
+      leg.querySelector('.remove-leg').addEventListener('click', () => {
+        leg.remove();
+        relabelLegs();
+      });
+      legsList.appendChild(leg);
+      
+      // Attach airport autocomplete to newly created inputs
+      leg.querySelectorAll('.airport-input').forEach(inp => attachAirportAutocomplete(inp));
+
+      relabelLegs();
+    }
+
+    function setLegCount(target) {
+      if (!legsList) return;
+      while (legsList.children.length < target) addLeg();
+    }
+
+    function renderForTripType() {
+      if (!tripType) return;
+      const val = tripType.value;
+      tripType.classList.toggle('active-trip', val === 'multicity');
+
+      if (val === 'multicity') {
+        if (legsBlock) legsBlock.style.display = 'flex';
+        if (simpleRoute) simpleRoute.style.display = 'none';
+        if (simpleDates) simpleDates.style.display = 'none';
+        if (legsList && legsList.children.length < MIN_LEGS) setLegCount(MIN_LEGS);
+      } else {
+        if (legsBlock) legsBlock.style.display = 'none';
+        if (simpleRoute) simpleRoute.style.display = 'grid';
+        if (simpleDates) simpleDates.style.display = 'grid';
+        if (returnDateWrap) returnDateWrap.style.display = (val === 'roundtrip') ? 'block' : 'none';
+      }
+    }
+
+    if (addLegBtn) addLegBtn.addEventListener('click', addLeg);
+    if (tripType) tripType.addEventListener('change', renderForTripType);
+
+    // Initial setup
+    renderForTripType();
+
+    // Attach autocomplete to static airport inputs
+    document.querySelectorAll('.airport-input').forEach(inp => attachAirportAutocomplete(inp));
+
+    // Submit Handler
+    inquiryForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(inquiryForm);
+      fetch('/airline-ticketing-inquiry', {
+        method: 'POST',
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest',
+          'X-CSRF-TOKEN': document.querySelector('input[name="_token"]')?.value || ''
+        },
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (modalOverlay) {
+          modalOverlay.classList.add('active');
+        } else {
+          alert(data.message || 'Thank you! Your airline ticketing inquiry has been submitted successfully.');
+        }
+      })
+      .catch(err => {
+        if (modalOverlay) {
+          modalOverlay.classList.add('active');
+        } else {
+          alert('Thank you! Your airline ticketing inquiry has been received.');
         }
       });
     });
   }
-
-  // Counter Buttons (+ / -) for Adults, Children, Infants
-  const counterBtns = document.querySelectorAll('.counter-btn');
-  counterBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault(); // Prevent form submission if inside a form
-      const action = btn.getAttribute('data-action');
-      const targetId = btn.getAttribute('data-target');
-      const targetValueSpan = document.getElementById(targetId);
-      if (!targetValueSpan) return;
-
-      let count = parseInt(targetValueSpan.textContent, 10) || 0;
-      if (action === 'increment') {
-        count++;
-      } else if (action === 'decrement') {
-        const minVal = targetId === 'adultsCount' ? 1 : 0;
-        if (count > minVal) count--;
-      }
-      targetValueSpan.textContent = count;
-    });
-  });
-
-  // Preferred Airline "No Preference" Checkbox
-  const noPrefAirline = document.getElementById('noPrefAirline');
-  const preferredAirlineInput = document.getElementById('preferredAirline');
-  if (noPrefAirline && preferredAirlineInput) {
-    noPrefAirline.addEventListener('change', (e) => {
-      if (e.target.checked) {
-        preferredAirlineInput.value = '';
-        preferredAirlineInput.placeholder = 'No Preference (Find Best Available)';
-        preferredAirlineInput.disabled = true;
-      } else {
-        preferredAirlineInput.placeholder = 'e.g. Air Canada, Emirates, Qatar Airways';
-        preferredAirlineInput.disabled = false;
-      }
-    });
-  }
-
-  // Form Submit Handler for all Flight Forms
-  flightForms.forEach(form => {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      if (modalOverlay) {
-        modalOverlay.classList.add('active');
-      }
-      form.reset();
-
-      // Reset count indicator spans to default
-      const adultsCount = document.getElementById('adultsCount');
-      const childrenCount = document.getElementById('childrenCount');
-      const infantsCount = document.getElementById('infantsCount');
-      if (adultsCount) adultsCount.textContent = '1';
-      if (childrenCount) childrenCount.textContent = '0';
-      if (infantsCount) infantsCount.textContent = '0';
-
-      if (returnDateGroup) {
-        returnDateGroup.style.opacity = '1';
-        returnDateGroup.style.pointerEvents = 'auto';
-        if (returnDateInput) returnDateInput.disabled = false;
-      }
-    });
-  });
 
   // Inquiry Modal Feedback (Index, Packages, Explore Packages, Voyage Detail)
   const modalCloseBtns = document.querySelectorAll('#modalCloseBtn, .modal-close-btn, [data-close-modal]');

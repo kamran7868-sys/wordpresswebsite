@@ -3269,14 +3269,6 @@ textarea {
           </svg>
           <span>Toronto, ON, Canada</span>
         </span>
-        <span class="utility-contact-sep">|</span>
-        <a href="mailto:hello@premiumglobalexp.ca" class="utility-contact-item">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-          </svg>
-          <span>hello@premiumglobalexp.ca</span>
-        </a>
       </div>
     </div>
   </section>
@@ -3678,9 +3670,10 @@ textarea {
             </li>
             <li>
               <svg viewBox="0 0 24 24">
-                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                <path
+                  d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
               </svg>
-              <span>Email: hello@premiumglobalexp.ca</span>
+              <span>Email: <a href="mailto:hello@premiumglobalexp.com" style="color: inherit; text-decoration: underline;">hello@premiumglobalexp.com</a></span>
             </li>
           </ul>
         </div>
