@@ -1,62 +1,39 @@
 <?php
 
+use App\Http\Controllers\AirportController;
+use App\Http\Controllers\InquiryController;
+use App\Http\Controllers\PackageController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('index');
-})->name('home');
-
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
-
-Route::get('/packages', function () {
-    return view('packages');
-})->name('packages');
-
-Route::get('/explore-packages', function () {
-    return view('explore-packages');
-})->name('explore-packages');
-
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
-
-Route::get('/register-dmc', function () {
-    return view('register-dmc');
-})->name('register-dmc');
-
-Route::get('/stay-detail', function () {
-    return view('stay-detail');
-})->name('stay-detail');
-
-Route::get('/voyage-detail', function () {
-    return view('voyage-detail');
-})->name('voyage-detail');
-
-Route::get('/api/airports', function (\Illuminate\Http\Request $request) {
-    $q = trim($request->input('q', ''));
-    if (strlen($q) < 1) {
-        return response()->json([]);
-    }
-
-    $airports = \Illuminate\Support\Facades\DB::table('airports')
-        ->where('iata_code', 'LIKE', "{$q}%")
-        ->orWhere('city', 'LIKE', "{$q}%")
-        ->orWhere('name', 'LIKE', "%{$q}%")
-        ->orWhere('country', 'LIKE', "%{$q}%")
-        ->select('iata_code', 'name', 'city', 'country')
-        ->limit(25)
-        ->get();
-
-    return response()->json($airports);
+/*
+|--------------------------------------------------------------------------
+| General & Informational Page Routes
+|--------------------------------------------------------------------------
+*/
+Route::controller(PageController::class)->group(function () {
+    Route::get('/', 'home')->name('home');
+    Route::get('/about', 'about')->name('about');
+    Route::get('/contact', 'contact')->name('contact');
+    Route::get('/register-dmc', 'registerDmc')->name('register-dmc');
 });
 
-Route::post('/airline-ticketing-inquiry', function (\Illuminate\Http\Request $request) {
-    \Illuminate\Support\Facades\Log::info('Airline Ticketing Inquiry Submitted:', $request->all());
-    return response()->json([
-        'status' => 'success',
-        'message' => 'Thank you! Your airline ticketing inquiry has been submitted successfully. Our Canadian flight concierges will contact you shortly.'
-    ]);
+/*
+|--------------------------------------------------------------------------
+| Package Catalog & Detail Routes
+|--------------------------------------------------------------------------
+*/
+Route::controller(PackageController::class)->group(function () {
+    Route::get('/packages', 'index')->name('packages');
+    Route::get('/explore-packages', 'explore')->name('explore-packages');
+    Route::get('/stay-detail', 'stayDetail')->name('stay-detail');
+    Route::get('/voyage-detail', 'voyageDetail')->name('voyage-detail');
 });
 
+/*
+|--------------------------------------------------------------------------
+| API & Inquiry Endpoints
+|--------------------------------------------------------------------------
+*/
+Route::get('/api/airports', [AirportController::class, 'search'])->name('api.airports');
+Route::post('/airline-ticketing-inquiry', [InquiryController::class, 'airlineTicketing'])->name('airline-ticketing-inquiry');

@@ -1379,17 +1379,20 @@ textarea {
 
 .airport-dropdown-results {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 6px);
   left: 0;
-  right: 0;
+  width: 100%;
+  min-width: 380px;
+  max-width: min(520px, calc(100vw - 32px));
   z-index: 1050;
   background: #ffffff;
-  border: 1px solid var(--color-gold-light);
-  border-radius: 8px;
-  box-shadow: 0 10px 25px rgba(37, 46, 71, 0.15);
-  max-height: 240px;
+  border: 1px solid rgba(182, 153, 100, 0.4);
+  border-radius: 10px;
+  box-shadow: 0 14px 36px rgba(26, 38, 57, 0.18), 0 2px 8px rgba(0, 0, 0, 0.05);
+  max-height: 330px;
   overflow-y: auto;
-  margin-top: 4px;
+  overscroll-behavior: contain;
+  margin-top: 2px;
   display: none;
 }
 
@@ -1397,41 +1400,140 @@ textarea {
   display: block;
 }
 
-.airport-item {
-  padding: 10px 14px;
-  cursor: pointer;
-  border-bottom: 1px solid #f2eee7;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: background .15s ease;
+/* Custom smooth scrollbar for dropdown */
+.airport-dropdown-results::-webkit-scrollbar {
+  width: 6px;
+}
+.airport-dropdown-results::-webkit-scrollbar-track {
+  background: #fdfbf7;
+  border-radius: 4px;
+}
+.airport-dropdown-results::-webkit-scrollbar-thumb {
+  background: #d8cdba;
+  border-radius: 4px;
+}
+.airport-dropdown-results::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
 }
 
-.airport-item:last-child { border-bottom: none; }
+/* Align right-hand dropdown so it stays within form bounds */
+#simpleRoute .airport-autocomplete-wrap:nth-child(2) .airport-dropdown-results,
+.leg .airport-autocomplete-wrap:nth-of-type(2) .airport-dropdown-results {
+  left: auto;
+  right: 0;
+}
+
+@media (max-width: 640px) {
+  .airport-dropdown-results,
+  #simpleRoute .airport-autocomplete-wrap:nth-child(2) .airport-dropdown-results,
+  .leg .airport-autocomplete-wrap:nth-of-type(2) .airport-dropdown-results {
+    min-width: 100% !important;
+    max-width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+  }
+}
+
+.inquiry-form-wrap .airport-input {
+  font-size: 0.96rem;
+  font-weight: 500;
+}
+
+.airport-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid #f2ede4;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  text-align: left;
+  background: #ffffff;
+  transition: background .15s ease, border-color .15s ease;
+}
+
+.airport-item:last-child {
+  border-bottom: none;
+}
 
 .airport-item:hover {
-  background: var(--color-ivory);
+  background: #fbf9f4;
+}
+
+.airport-item .ap-badge-col {
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 
 .airport-item .ap-iata {
+  display: inline-block;
   font-weight: 700;
-  color: var(--color-gold);
-  background: rgba(182, 153, 100, 0.12);
-  padding: 3px 8px;
-  border-radius: 4px;
-  font-size: 0.85rem;
-  margin-right: 8px;
-}
-
-.airport-item .ap-info {
   font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--color-navy);
+  letter-spacing: 0.05em;
+  color: var(--color-gold);
+  background: rgba(182, 153, 100, 0.14);
+  border: 1px solid rgba(182, 153, 100, 0.32);
+  padding: 4px 9px;
+  border-radius: 6px;
+  min-width: 50px;
+  text-align: center;
+  transition: background .15s ease, color .15s ease;
 }
 
-.airport-item .ap-sub {
-  font-size: 0.78rem;
-  color: #7a8292;
+.airport-item:hover .ap-iata {
+  background: var(--color-gold);
+  color: #ffffff;
+  border-color: var(--color-gold);
+}
+
+.airport-item .ap-info-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.airport-item .ap-primary-line {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.airport-item .ap-city {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  line-height: 1.25;
+}
+
+.airport-item .ap-country {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.airport-item .ap-airport-name {
+  font-size: 0.86rem;
+  color: #4b5563;
+  line-height: 1.38;
+  word-break: break-word;
+}
+
+.airport-empty-state {
+  padding: 18px 16px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.airport-empty-state small {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: #9ca3af;
 }
 
 /* --------------------------------------------------------------------------
@@ -4072,30 +4174,59 @@ document.addEventListener('DOMContentLoaded', () => {
 
       let timer = null;
 
+      function escapeHtml(str) {
+        if (!str) return '';
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
       function fetchAirports(query) {
         fetch('/api/airports?q=' + encodeURIComponent(query))
           .then(res => res.json())
           .then(data => {
             dropdown.innerHTML = '';
             if (!data || data.length === 0) {
-              dropdown.innerHTML = '<div class="airport-item" style="color:#888; padding: 10px;">No matching airports found</div>';
+              dropdown.innerHTML = `
+                <div class="airport-empty-state">
+                  <div style="font-weight: 600; color: var(--color-navy); margin-bottom: 2px;">No matching airports found</div>
+                  <small>Try searching by city name (e.g. Toronto, Vancouver) or 3-letter IATA code (e.g. YYZ, YVR, DXB)</small>
+                </div>
+              `;
               dropdown.classList.add('active');
               return;
             }
             data.forEach(item => {
               const div = document.createElement('div');
               div.className = 'airport-item';
+              div.setAttribute('role', 'option');
+
+              const iata = escapeHtml(item.iata_code || 'AIR');
+              const city = escapeHtml(item.city || item.name || '');
+              const country = item.country ? escapeHtml(item.country) : '';
+              const airportName = escapeHtml(item.name || '');
+
               div.innerHTML = `
-                <div>
-                  <span class="ap-iata">${item.iata_code || 'AIR'}</span>
-                  <span class="ap-info">${item.city || item.name}</span>
+                <div class="ap-badge-col">
+                  <span class="ap-iata">${iata}</span>
                 </div>
-                <div class="ap-sub">${item.name} ${item.country ? '(' + item.country + ')' : ''}</div>
+                <div class="ap-info-col">
+                  <div class="ap-primary-line">
+                    <span class="ap-city">${city}</span>
+                    ${country ? `<span class="ap-country">· ${country}</span>` : ''}
+                  </div>
+                  <div class="ap-airport-name">${airportName}</div>
+                </div>
               `;
+
               div.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const displayVal = item.iata_code ? `${item.iata_code} - ${item.city || item.name} (${item.country || ''})` : item.name;
                 input.value = displayVal;
+                input.title = displayVal;
                 dropdown.classList.remove('active');
               });
               dropdown.appendChild(div);
@@ -4123,6 +4254,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (query.length >= 1) {
           fetchAirports(query);
         } else {
+          dropdown.classList.remove('active');
+        }
+      });
+
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
           dropdown.classList.remove('active');
         }
       });
