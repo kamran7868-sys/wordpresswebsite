@@ -68,7 +68,7 @@
                 "_css_classes": "btn-primary",
                 "text": "Plan Your Journey",
                 "link": {
-                  "url": "contact.html"
+                  "url": "#cta-section"
                 }
               }
             }

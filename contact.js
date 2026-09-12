@@ -1,14 +1,13 @@
 /* ==========================================================================
    PREMIUM GLOBAL EXPEDITIONS INC. (PGE) — CONTACT PAGE JAVASCRIPT
    File: contact.js
-   Client-side form validation, subject select handler, mobile focus & modal feedback
+   Client-side form validation, subject select handler, and modal feedback
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
   const contactForm = document.getElementById('pgeContactForm');
   const modalOverlay = document.getElementById('modalOverlay');
   const modalCloseBtn = document.getElementById('modalCloseBtn');
-  const submitBtn = document.getElementById('contactSubmitBtn');
 
   if (!contactForm) return;
 
@@ -27,9 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
    * Helper: Show Error Message
    */
   function showError(inputElement, errorElementId, message) {
-    if (!inputElement) return;
     inputElement.classList.add('field-error');
-    inputElement.setAttribute('aria-invalid', 'true');
     const errEl = document.getElementById(errorElementId);
     if (errEl) {
       errEl.textContent = message;
@@ -41,9 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
    * Helper: Clear Error Message
    */
   function clearError(inputElement, errorElementId) {
-    if (!inputElement) return;
     inputElement.classList.remove('field-error');
-    inputElement.removeAttribute('aria-invalid');
     const errEl = document.getElementById(errorElementId);
     if (errEl) {
       errEl.classList.remove('visible');
@@ -65,13 +60,11 @@ document.addEventListener('DOMContentLoaded', () => {
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     let isValid = true;
-    let firstInvalidField = null;
 
     // 1. Validate Full Name
     if (!fullNameInput.value.trim()) {
       showError(fullNameInput, 'contactFullNameError', 'Please enter your full name');
       isValid = false;
-      if (!firstInvalidField) firstInvalidField = fullNameInput;
     } else {
       clearError(fullNameInput, 'contactFullNameError');
     }
@@ -81,11 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!emailVal) {
       showError(emailInput, 'contactEmailError', 'Please enter your email address');
       isValid = false;
-      if (!firstInvalidField) firstInvalidField = emailInput;
     } else if (!emailRegex.test(emailVal)) {
       showError(emailInput, 'contactEmailError', 'Please enter a valid email address (e.g. name@domain.com)');
       isValid = false;
-      if (!firstInvalidField) firstInvalidField = emailInput;
     } else {
       clearError(emailInput, 'contactEmailError');
     }
@@ -95,11 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!phoneVal) {
       showError(phoneInput, 'contactPhoneError', 'Please enter your contact phone number');
       isValid = false;
-      if (!firstInvalidField) firstInvalidField = phoneInput;
     } else if (!phoneRegex.test(phoneVal)) {
       showError(phoneInput, 'contactPhoneError', 'Please enter a valid phone number');
       isValid = false;
-      if (!firstInvalidField) firstInvalidField = phoneInput;
     } else {
       clearError(phoneInput, 'contactPhoneError');
     }
@@ -108,7 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!subjectSelect.value || subjectSelect.value === '') {
       showError(subjectSelect, 'contactSubjectError', 'Please select a subject from the list');
       isValid = false;
-      if (!firstInvalidField) firstInvalidField = subjectSelect;
     } else {
       clearError(subjectSelect, 'contactSubjectError');
     }
@@ -117,26 +105,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!messageInput.value.trim()) {
       showError(messageInput, 'contactMessageError', 'Please enter your message or inquiry');
       isValid = false;
-      if (!firstInvalidField) firstInvalidField = messageInput;
     } else {
       clearError(messageInput, 'contactMessageError');
     }
 
-    // If invalid, scroll/focus to first error element for mobile convenience
-    if (!isValid && firstInvalidField) {
-      firstInvalidField.focus({ preventScroll: false });
-      firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      return;
-    }
-
     // If all inputs valid, trigger submission feedback
     if (isValid) {
-      // Prevent double submissions
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.style.opacity = '0.75';
-      }
-
       /* ------------------------------------------------------------------------
          NOTE FOR WORDPRESS / ELEMENTOR INTEGRATION:
          Connect your API, Webhook, or Elementor Form Action URL here.
@@ -144,50 +118,32 @@ document.addEventListener('DOMContentLoaded', () => {
          ------------------------------------------------------------------------ */
 
       // Display Modal Overlay Success State
-      setTimeout(() => {
-        if (modalOverlay) {
-          modalOverlay.classList.add('active');
-          document.body.style.overflow = 'hidden';
-        } else {
-          alert('Thank you! Your message has been sent to Premium Global Expeditions. We will respond within 24 hours.');
-        }
+      if (modalOverlay) {
+        modalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      } else {
+        alert('Thank you! Your message has been sent to Premium Global Expeditions. We will respond within 24 hours.');
+      }
 
-        // Reset Form and restore button
-        contactForm.reset();
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.style.opacity = '';
-        }
-      }, 300);
+      // Reset Form
+      contactForm.reset();
     }
   });
 
   // Close Modal Handler
-  function closeModal() {
-    if (modalOverlay) {
+  if (modalCloseBtn && modalOverlay) {
+    modalCloseBtn.addEventListener('click', () => {
       modalOverlay.classList.remove('active');
       document.body.style.overflow = '';
-    }
-  }
+    });
 
-  if (modalCloseBtn) {
-    modalCloseBtn.addEventListener('click', closeModal);
-  }
-
-  if (modalOverlay) {
     modalOverlay.addEventListener('click', (e) => {
       if (e.target === modalOverlay) {
-        closeModal();
+        modalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
       }
     });
   }
-
-  // Keyboard accessibility: Escape to close modal
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('active')) {
-      closeModal();
-    }
-  });
 
   // Pre-select subject if passed in URL query param (e.g. contact.html?subject=flights)
   const urlParams = new URLSearchParams(window.location.search);

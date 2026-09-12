@@ -34,35 +34,12 @@
       },
       "elements": [
         {
-          "id": "contact-hero-breadcrumb",
-          "elType": "widget",
-          "widgetType": "heading",
-          "settings": {
-            "title": "Get In Touch",
-            "header_size": "span",
-            "title_color": "#B69964",
-            "align": "center",
-            "css_classes": "hero-breadcrumb"
-          }
-        },
-        {
           "id": "contact-hero-heading",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
             "title": "PREMIUM GLOBAL EXPEDITIONS",
-            "header_size": "h1",
-            "title_color": "#F7F4ED",
-            "align": "center",
-            "css_classes": "hero-title"
-          }
-        },
-        {
-          "id": "contact-hero-subtitle",
-          "elType": "widget",
-          "widgetType": "text-editor",
-          "settings": {
-            "editor": "<p class=\"hero-subtitle-script\" style=\"text-align: center; color: #B69964;\">Where Dreams Become A Reality</p>"
+            "header_size": "h1"
           }
         }
       ]

@@ -583,15 +583,6 @@ document.addEventListener('DOMContentLoaded', () => {
      ------------------------------------------------------------------------ */
   const quickNavPills = document.querySelectorAll('.quicknav-pill');
   if (quickNavPills.length > 0) {
-    if (window.location.hash) {
-      const initialTarget = window.location.hash.replace('#', '');
-      const matchingPill = document.querySelector(`.quicknav-pill[data-target="${initialTarget}"]`);
-      if (matchingPill) {
-        quickNavPills.forEach(p => p.classList.remove('active'));
-        matchingPill.classList.add('active');
-      }
-    }
-
     quickNavPills.forEach(pill => {
       pill.addEventListener('click', (e) => {
         const targetSectionId = pill.getAttribute('data-target');

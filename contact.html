@@ -37,7 +37,7 @@
           <span>Holiday Packages</span>
         </a>
         <span class="utility-sep">|</span>
-        <a href="explore-packages.html" class="utility-link-item">
+        <a href="packages.html#packages-section" class="utility-link-item">
           <svg viewBox="0 0 24 24">
             <path
               d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
@@ -119,7 +119,7 @@
 
       <!-- NAVIGATION ACTIONS -->
       <div class="nav-actions">
-        <a href="register-dmc.html" class="btn-primary">Register as a DMC Partner</a>
+        <a href="#contact-form-section" class="btn-primary">Plan Your Journey</a>
         <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
           <svg viewBox="0 0 24 24">
             <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
@@ -137,10 +137,6 @@
          ========================================================================== -->
     <section class="subpage-hero-section" id="contact-hero">
       <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1920&auto=format&fit=crop"
-        srcset="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=640&auto=format&fit=crop 640w,
-                https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1024&auto=format&fit=crop 1024w,
-                https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1920&auto=format&fit=crop 1920w"
-        sizes="100vw"
         alt="Premium Global Expeditions Travel Concierge &amp; Destinations" class="subpage-hero-bg" width="1920" height="420" fetchpriority="high" decoding="async">
       <div class="hero-overlay"></div>
 
@@ -192,9 +188,9 @@
               <!-- Full Name Field -->
               <div class="contact-form-group">
                 <label class="contact-label" for="contactFullName">
-                  Full Name <span class="req" aria-hidden="true">*</span>
+                  Full Name <span class="req">*</span>
                 </label>
-                <input type="text" id="contactFullName" class="contact-input" placeholder="Enter your full name" autocomplete="name" required>
+                <input type="text" id="contactFullName" class="contact-input" placeholder="Enter your full name" required>
                 <div class="error-message-text" id="contactFullNameError">Please enter your full name</div>
               </div>
 
@@ -202,17 +198,17 @@
               <div class="contact-form-row">
                 <div class="contact-form-group">
                   <label class="contact-label" for="contactEmail">
-                    Email Address <span class="req" aria-hidden="true">*</span>
+                    Email Address <span class="req">*</span>
                   </label>
-                  <input type="email" id="contactEmail" class="contact-input" placeholder="Enter your email address" autocomplete="email" inputmode="email" spellcheck="false" required>
+                  <input type="email" id="contactEmail" class="contact-input" placeholder="Enter your email address" required>
                   <div class="error-message-text" id="contactEmailError">Please enter a valid email address</div>
                 </div>
 
                 <div class="contact-form-group">
                   <label class="contact-label" for="contactPhone">
-                    Phone Number <span class="req" aria-hidden="true">*</span>
+                    Phone Number <span class="req">*</span>
                   </label>
-                  <input type="tel" id="contactPhone" class="contact-input" placeholder="Enter your phone number" autocomplete="tel" inputmode="tel" required>
+                  <input type="tel" id="contactPhone" class="contact-input" placeholder="Enter your phone number" required>
                   <div class="error-message-text" id="contactPhoneError">Please enter your contact phone number</div>
                 </div>
               </div>
@@ -220,7 +216,7 @@
               <!-- Subject Select Dropdown -->
               <div class="contact-form-group">
                 <label class="contact-label" for="contactSubject">
-                  Subject <span class="req" aria-hidden="true">*</span>
+                  Subject <span class="req">*</span>
                 </label>
                 <div class="contact-select-wrap">
                   <select id="contactSubject" class="contact-select" required>
@@ -235,7 +231,7 @@
                     <option value="Existing Booking">Existing Booking</option>
                     <option value="Other">Other</option>
                   </select>
-                  <svg class="select-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                  <svg class="select-arrow" viewBox="0 0 24 24">
                     <path d="M7 10l5 5 5-5z" />
                   </svg>
                 </div>
@@ -245,7 +241,7 @@
               <!-- Message Textarea -->
               <div class="contact-form-group">
                 <label class="contact-label" for="contactMessage">
-                  Message <span class="req" aria-hidden="true">*</span>
+                  Message <span class="req">*</span>
                 </label>
                 <textarea id="contactMessage" class="contact-textarea" rows="5" placeholder="How can we help you?" required></textarea>
                 <div class="error-message-text" id="contactMessageError">Please enter your message</div>
@@ -333,7 +329,6 @@
               <iframe
                 title="PGE Toronto Location Map"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d184552.5724458392!2d-79.5181404179373!3d43.71815569429712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4cb90d7c63ba5%3A0x323555502ab4c477!2sToronto%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sca!4v1700000000000!5m2!1sen!2sca"
-                width="600" height="180"
                 loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
@@ -411,7 +406,6 @@
             <li><a href="about.html"><span class="footer-link-arrow">&rsaquo;</span> About Us</a></li>
             <li><a href="packages.html"><span class="footer-link-arrow">&rsaquo;</span> Packages</a></li>
             <li><a href="contact.html"><span class="footer-link-arrow">&rsaquo;</span> Get In Touch</a></li>
-            <li><a href="register-dmc.html"><span class="footer-link-arrow">&rsaquo;</span> Register as a DMC</a></li>
           </ul>
         </div>
 
