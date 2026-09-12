@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 280" width="320" height="280">
+  <defs>
+    <style>
+      .gold-fill { fill: #B69964; }
+      .white-fill { fill: #FFFFFF; }
+      .navy-fill { fill: #252E47; }
+      .ivory-fill { fill: #F7F4ED; }
+      .brand-title-line1 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 22px; letter-spacing: 3px; fill: #FFFFFF; text-anchor: middle; }
+      .brand-title-line2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 22px; letter-spacing: 3.5px; fill: #B69964; text-anchor: middle; }
+      .brand-tagline-script { font-family: 'Alex Brush', 'Pinyon Script', cursive; font-size: 25px; fill: #F7F4ED; font-weight: 400; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- CENTERED EMBLEM (TOP) -->
+  <g transform="translate(160, 70)">
+    <!-- Outer Ring -->
+    <circle cx="0" cy="0" r="54" fill="none" stroke="#FFFFFF" stroke-width="2.5" />
+    <circle cx="0" cy="0" r="45" fill="none" stroke="#B69964" stroke-width="1.8" />
+    
+    <!-- Compass Points (North, South, East, West) -->
+    <!-- North -->
+    <polygon points="0,-57 5,-44 0,-47" class="gold-fill" />
+    <polygon points="0,-57 -5,-44 0,-47" class="white-fill" />
+    <!-- South -->
+    <polygon points="0,57 5,44 0,47" class="gold-fill" />
+    <polygon points="0,57 -5,44 0,47" class="white-fill" />
+    <!-- East -->
+    <polygon points="57,0 44,5 47,0" class="gold-fill" />
+    <polygon points="57,0 44,-5 47,0" class="white-fill" />
+    <!-- West -->
+    <polygon points="-57,0 -44,5 -47,0" class="gold-fill" />
+    <polygon points="-57,0 -44,-5 -47,0" class="white-fill" />
+    
+    <!-- Ordinal Points -->
+    <polygon points="38,-38 31,-29 33,-33" class="gold-fill" />
+    <polygon points="-38,38 -31,29 -33,33" class="gold-fill" />
+    <polygon points="38,38 29,31 33,33" class="white-fill" />
+    <polygon points="-38,-38 -29,-31 -33,-33" class="white-fill" />
+
+    <!-- Globe Inner Sphere -->
+    <circle cx="0" cy="0" r="37" fill="#252E47" stroke="#B69964" stroke-width="1.5" />
+    
+    <!-- Globe Lines -->
+    <ellipse cx="0" cy="0" rx="37" ry="17" fill="none" stroke="#B69964" stroke-width="1" opacity="0.6" stroke-dasharray="2,2" />
+    <ellipse cx="0" cy="0" rx="19" ry="37" fill="none" stroke="#B69964" stroke-width="1" opacity="0.6" stroke-dasharray="2,2" />
+    <line x1="-37" y1="0" x2="37" y2="0" stroke="#FFFFFF" stroke-width="1" opacity="0.4" />
+
+    <!-- Canadian Maple Leaf Centerpiece -->
+    <g transform="translate(0, 0) scale(0.92)">
+      <path d="M0,-23 L3,-15 L9,-17 L6,-10 L14,-11 L11,-4 L18,1 L11,4 L12,11 L6,8 L4,15 L0,11 L-4,15 L-6,8 L-12,11 L-11,4 L-18,1 L-11,-4 L-14,-11 L-6,-10 L-9,-17 L-3,-15 Z" fill="#F7F4ED" />
+      <rect x="-1.5" y="10" width="3" height="11" fill="#F7F4ED" rx="1" />
+    </g>
+
+    <!-- Orbital Ring -->
+    <path d="M -41,12 A 45,25 -25 1,0 42,-12" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+    <path d="M -41,12 A 45,25 -25 1,0 42,-12" fill="none" stroke="#B69964" stroke-width="1.2" stroke-linecap="round" />
+  </g>
+
+  <!-- CENTERED TYPOGRAPHY STACK -->
+  <g transform="translate(160, 165)">
+    <text x="0" y="0" class="brand-title-line1">PREMIUM GLOBAL</text>
+    <text x="0" y="28" class="brand-title-line2">EXPEDITIONS</text>
+    <text x="0" y="66" class="brand-tagline-script">Where Dreams Become A Reality</text>
+  </g>
+</svg>
