@@ -3379,7 +3379,7 @@ textarea {
             </div>
 
             <!-- REGISTRATION FORM -->
-            <form class="dmc-form" id="pgeDmcForm" novalidate>
+            <form class="dmc-form" id="pgeDmcForm" action="{{ route('register-dmc.submit') }}" method="POST" novalidate>
             @csrf
 
               <!-- ROW 1: COMPANY NAME & CONTACT PERSON -->
@@ -4602,7 +4602,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // If all inputs valid, trigger submission feedback
+    // If all inputs valid, trigger submission to Laravel backend
     const submitBtn = document.getElementById('dmcSubmitBtn');
     const originalText = submitBtn ? submitBtn.innerHTML : 'Submit registration';
     if (submitBtn) {
@@ -4611,19 +4611,46 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.innerHTML = 'Submitting Registration...';
     }
 
-    setTimeout(() => {
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.style.opacity = '1';
-        submitBtn.innerHTML = originalText;
-      }
+    const selectedServices = Array.from(serviceCheckboxes)
+      .filter(cb => cb.checked)
+      .map(cb => cb.value);
 
-      // Display Modal Overlay Success State
+    const payload = {
+      _token: document.querySelector('input[name="_token"]')?.value || '',
+      companyName: companyNameInput.value.trim(),
+      contactPerson: contactPersonInput.value.trim(),
+      email: emailInput.value.trim(),
+      phone: phoneInput.value.trim(),
+      country: countryInput.value.trim(),
+      yearsInOperation: parseInt(yearsInput.value.trim(), 10),
+      website: websiteInput.value.trim() || null,
+      services: selectedServices,
+      details: detailsInput ? detailsInput.value.trim() : null
+    };
+
+    fetch("{{ route('register-dmc.submit') }}", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-CSRF-TOKEN': payload._token
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(async (res) => {
+      const data = await res.json();
+      if (!res.ok) {
+        throw data;
+      }
+      return data;
+    })
+    .then((data) => {
       if (modalOverlay) {
         modalOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
       } else {
-        alert('Thank you! Your DMC registration has been received by Premium Global Expeditions. Our partnerships team will review your submission.');
+        alert(data.message || 'Thank you! Your DMC registration has been received.');
       }
 
       // Reset Form & uncheck pill styles
@@ -4631,7 +4658,31 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.dmc-checkbox-item').forEach(item => {
         item.classList.remove('checked');
       });
-    }, 400);
+    })
+    .catch((err) => {
+      if (err.errors) {
+        if (err.errors.companyName) showError(companyNameInput, 'dmcCompanyNameError', err.errors.companyName[0]);
+        if (err.errors.contactPerson) showError(contactPersonInput, 'dmcContactPersonError', err.errors.contactPerson[0]);
+        if (err.errors.email) showError(emailInput, 'dmcEmailError', err.errors.email[0]);
+        if (err.errors.phone) showError(phoneInput, 'dmcPhoneError', err.errors.phone[0]);
+        if (err.errors.country) showError(countryInput, 'dmcCountryError', err.errors.country[0]);
+        if (err.errors.yearsInOperation) showError(yearsInput, 'dmcYearsError', err.errors.yearsInOperation[0]);
+        if (err.errors.website) showError(websiteInput, 'dmcWebsiteError', err.errors.website[0]);
+        if (err.errors.services && servicesError) {
+          servicesError.textContent = err.errors.services[0];
+          servicesError.classList.add('visible');
+        }
+      } else {
+        alert(err.message || 'An error occurred while submitting your registration. Please try again.');
+      }
+    })
+    .finally(() => {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = '1';
+        submitBtn.innerHTML = originalText;
+      }
+    });
   });
 
   // Close Modal Handler

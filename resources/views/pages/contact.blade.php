@@ -3112,7 +3112,7 @@ textarea {
               </p>
             </div>
 
-            <form id="pgeContactForm" novalidate>
+            <form id="pgeContactForm" action="{{ route('contact.submit') }}" method="POST" novalidate>
             @csrf
 
               <!-- Full Name Field -->
@@ -3120,7 +3120,7 @@ textarea {
                 <label class="contact-label" for="contactFullName">
                   Full Name <span class="req">*</span>
                 </label>
-                <input type="text" id="contactFullName" class="contact-input" placeholder="Enter your full name" required>
+                <input type="text" id="contactFullName" name="full_name" class="contact-input" placeholder="Enter your full name" required>
                 <div class="error-message-text" id="contactFullNameError">Please enter your full name</div>
               </div>
 
@@ -3130,7 +3130,7 @@ textarea {
                   <label class="contact-label" for="contactEmail">
                     Email Address <span class="req">*</span>
                   </label>
-                  <input type="email" id="contactEmail" class="contact-input" placeholder="Enter your email address" required>
+                  <input type="email" id="contactEmail" name="email" class="contact-input" placeholder="Enter your email address" required>
                   <div class="error-message-text" id="contactEmailError">Please enter a valid email address</div>
                 </div>
 
@@ -3138,7 +3138,7 @@ textarea {
                   <label class="contact-label" for="contactPhone">
                     Phone Number <span class="req">*</span>
                   </label>
-                  <input type="tel" id="contactPhone" class="contact-input" placeholder="Enter your phone number" required>
+                  <input type="tel" id="contactPhone" name="phone" class="contact-input" placeholder="Enter your phone number" required>
                   <div class="error-message-text" id="contactPhoneError">Please enter your contact phone number</div>
                 </div>
               </div>
@@ -3149,7 +3149,7 @@ textarea {
                   Subject <span class="req">*</span>
                 </label>
                 <div class="contact-select-wrap">
-                  <select id="contactSubject" class="contact-select" required>
+                  <select id="contactSubject" name="subject" class="contact-select" required>
                     <option value="" disabled selected>Select a subject:</option>
                     <option value="General Inquiry">General Inquiry</option>
                     <option value="Flights">Flights</option>
@@ -3173,7 +3173,7 @@ textarea {
                 <label class="contact-label" for="contactMessage">
                   Message <span class="req">*</span>
                 </label>
-                <textarea id="contactMessage" class="contact-textarea" rows="5" placeholder="How can we help you?" required></textarea>
+                <textarea id="contactMessage" name="message" class="contact-textarea" rows="5" placeholder="How can we help you?" required></textarea>
                 <div class="error-message-text" id="contactMessageError">Please enter your message</div>
               </div>
 
@@ -4217,24 +4217,69 @@ document.addEventListener('DOMContentLoaded', () => {
       clearError(messageInput, 'contactMessageError');
     }
 
-    // If all inputs valid, trigger submission feedback
+    // If all inputs valid, trigger submission to Laravel backend
     if (isValid) {
-      /* ------------------------------------------------------------------------
-         NOTE FOR WORDPRESS / ELEMENTOR INTEGRATION:
-         Connect your API, Webhook, or Elementor Form Action URL here.
-         e.g., fetch('/api/submit-contact-form', { method: 'POST', body: ... })
-         ------------------------------------------------------------------------ */
-
-      // Display Modal Overlay Success State
-      if (modalOverlay) {
-        modalOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      } else {
-        alert('Thank you! Your message has been sent to Premium Global Expeditions. We will respond within 24 hours.');
+      const submitBtn = document.getElementById('contactSubmitBtn');
+      const originalHtml = submitBtn ? submitBtn.innerHTML : 'Send Message';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.7';
+        submitBtn.querySelector('span').textContent = 'Sending Message...';
       }
 
-      // Reset Form
-      contactForm.reset();
+      const payload = {
+        _token: document.querySelector('input[name="_token"]')?.value || '',
+        full_name: fullNameInput.value.trim(),
+        email: emailInput.value.trim(),
+        phone: phoneInput.value.trim(),
+        subject: subjectSelect.value,
+        message: messageInput.value.trim()
+      };
+
+      fetch("{{ route('contact.submit') }}", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest',
+          'X-CSRF-TOKEN': payload._token
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(async (res) => {
+        const data = await res.json();
+        if (!res.ok) {
+          throw data;
+        }
+        return data;
+      })
+      .then((data) => {
+        if (modalOverlay) {
+          modalOverlay.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        } else {
+          alert(data.message || 'Thank you! Your message has been sent to Premium Global Expeditions.');
+        }
+        contactForm.reset();
+      })
+      .catch((err) => {
+        if (err.errors) {
+          if (err.errors.full_name) showError(fullNameInput, 'contactFullNameError', err.errors.full_name[0]);
+          if (err.errors.email) showError(emailInput, 'contactEmailError', err.errors.email[0]);
+          if (err.errors.phone) showError(phoneInput, 'contactPhoneError', err.errors.phone[0]);
+          if (err.errors.subject) showError(subjectSelect, 'contactSubjectError', err.errors.subject[0]);
+          if (err.errors.message) showError(messageInput, 'contactMessageError', err.errors.message[0]);
+        } else {
+          alert(err.message || 'An error occurred while sending your message. Please try again.');
+        }
+      })
+      .finally(() => {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = '1';
+          submitBtn.innerHTML = originalHtml;
+        }
+      });
     }
   });
 

@@ -1,0 +1,1415 @@
+/* ==========================================================================
+   PREMIUM GLOBAL EXPEDITIONS INC. (PGE) — ADMIN PANEL STYLESHEET 2026
+   Brand Guide 2026 Compliant: Expedition Navy, Heritage Gold, Expedition Ivory
+   Refinement & Polish: Enhanced Contrast, Generous Spacing & Readability
+   ========================================================================== */
+
+:root {
+  /* Official Brand Colors (Strictly Preserved) */
+  --pge-navy: #252E47;
+  --pge-gold: #B69964;
+  --pge-gold-hover: #9E8250;
+  --pge-gold-light: #DFD3BD;
+  --pge-ivory: #F7F4ED;
+  --pge-cloud-mist: #E9ECF2;
+  --pge-slate: #2C4058;
+  --pge-midnight: #121525;
+  --pge-white: #FFFFFF;
+  
+  /* Status Colors — Enhanced Contrast (~5:1 to 14:1) */
+  --status-gold-bg: #F8F3E8;
+  --status-gold-border: #B69964;
+  --status-gold-text: #634C1B;
+
+  --status-slate-bg: #EAEFF5;
+  --status-slate-border: #2C4058;
+  --status-slate-text: #192738;
+
+  --status-blue-bg: #EFF4FC;
+  --status-blue-border: #2563EB;
+  --status-blue-text: #173E8A;
+
+  --status-midnight-bg: #ECEEF2;
+  --status-midnight-border: #121525;
+  --status-midnight-text: #121525;
+
+  --status-danger-bg: #FEF2F2;
+  --status-danger-border: #DC2626;
+  --status-danger-text: #991B1B;
+
+  /* Typography */
+  --font-ui: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-title: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body.admin-body-wrap {
+  font-family: var(--font-ui);
+  background-color: var(--pge-ivory);
+  color: #1E293B;
+  min-height: 100vh;
+  display: flex;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   1. SIDEBAR NAVIGATION & HEADER (Issue 7)
+   -------------------------------------------------------------------------- */
+.admin-sidebar {
+  width: 280px;
+  background-color: var(--pge-navy);
+  color: var(--pge-white);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  min-height: 100vh;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  padding: 1.85rem 1.6rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.sidebar-brand-title {
+  font-family: var(--font-title);
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--pge-gold);
+  text-decoration: none;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+/* Subtitle under logo: Increased contrast & legible tracking (Issue 7) */
+.sidebar-brand-sub {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #DFD3BD; /* PGE gold-light alias, crisp contrast on Navy */
+  font-weight: 600;
+  opacity: 1;
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding: 1.4rem 0.95rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  flex-grow: 1;
+}
+
+/* Nav links: Increased vertical padding for comfortable click area (Issue 7) */
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+  padding: 0.88rem 1.15rem;
+  color: #D1D9E6;
+  text-decoration: none;
+  font-size: 0.86rem;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all 0.18s ease-in-out;
+}
+
+.nav-link:hover {
+  background-color: var(--pge-midnight);
+  color: var(--pge-white);
+}
+
+.nav-link.active {
+  background-color: var(--pge-midnight);
+  color: var(--pge-gold);
+  font-weight: 600;
+  border-left: 3.5px solid var(--pge-gold);
+}
+
+.nav-link svg {
+  width: 19px;
+  height: 19px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.nav-badge {
+  margin-left: auto;
+  background-color: var(--pge-gold);
+  color: var(--pge-navy);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 12px;
+}
+
+.sidebar-divider {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.08);
+  margin: 0.85rem 0.5rem;
+}
+
+.sidebar-footer {
+  padding: 1.35rem 1.6rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  color: #94A3B8;
+}
+
+.user-session-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-name {
+  color: var(--pge-white);
+  font-weight: 600;
+}
+
+.btn-logout {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #CBD5E1;
+  padding: 0.35rem 0.7rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.2s;
+}
+
+.btn-logout:hover {
+  background-color: #DC2626;
+  border-color: #DC2626;
+  color: #FFF;
+}
+
+/* --------------------------------------------------------------------------
+   MAIN CONTAINER & TOPBAR
+   -------------------------------------------------------------------------- */
+.admin-main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+.admin-topbar {
+  background-color: var(--pge-navy);
+  color: var(--pge-white);
+  padding: 1.25rem 2.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topbar-page-title {
+  font-family: var(--font-title);
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--pge-gold-light);
+  line-height: 1.2;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.admin-content {
+  padding: 2.25rem;
+  flex-grow: 1;
+}
+
+/* --------------------------------------------------------------------------
+   2. BUTTONS & ACTIONS (Issue 6)
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-ui);
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 0.6rem 1.35rem; /* ~16-20px horizontal padding */
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.18s ease-in-out;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background-color: var(--pge-gold);
+  color: #121525;
+  border-color: var(--pge-gold);
+}
+
+.btn-primary:hover {
+  background-color: var(--pge-gold-hover);
+  border-color: var(--pge-gold-hover);
+  color: #FFF;
+}
+
+.btn-secondary {
+  background-color: var(--pge-slate);
+  color: var(--pge-white);
+  border-color: var(--pge-slate);
+}
+
+.btn-secondary:hover {
+  background-color: var(--pge-midnight);
+  border-color: var(--pge-midnight);
+}
+
+.btn-outline {
+  background-color: #FFFFFF;
+  color: var(--pge-slate);
+  border-color: #CBD5E1;
+}
+
+.btn-outline:hover {
+  background-color: var(--pge-cloud-mist);
+  color: var(--pge-midnight);
+  border-color: #94A3B8;
+}
+
+.btn-danger {
+  background-color: #DC2626;
+  color: #FFF;
+  border-color: #DC2626;
+}
+
+.btn-danger:hover {
+  background-color: #B91C1C;
+}
+
+/* Standardized small button height & generous padding (Issue 6) */
+.btn-sm {
+  height: 34px;
+  min-height: 34px;
+  padding: 0 1.15rem; /* ~18px horizontal padding */
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* Action button group with consistent 8-10px spacing (Issue 6) */
+.action-buttons {
+  display: flex;
+  gap: 0.6rem; /* ~9-10px gap */
+  align-items: center;
+}
+
+/* --------------------------------------------------------------------------
+   3. STATUS BADGES / PILLS (Issue 1)
+   -------------------------------------------------------------------------- */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.42rem 0.95rem; /* ~7px vertical, ~15px horizontal padding */
+  min-height: 28px;
+  border-radius: 20px;
+  font-size: 0.78rem; /* Standardized consistent readable badge size */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+/* Gold Badges: Published, Approved, Booked, Replied, Active (Matches "16 PUBLISHED" pill) */
+.status-badge.status-published,
+.status-badge.status-approved,
+.status-badge.status-booked,
+.status-badge.status-replied,
+.status-badge.status-active,
+.badge-gold,
+.badge-published,
+.badge-approved,
+.badge-booked {
+  background-color: var(--status-gold-bg) !important;
+  color: var(--status-gold-text) !important;
+  border-color: var(--status-gold-border) !important;
+}
+
+/* Slate Badges: Draft, Pending, Pending Review, Under Review, Unread, In Progress, Contacted, Quoted (Matches "0 DRAFT" pill) */
+.status-badge.status-draft,
+.status-badge.status-pending,
+.status-badge.status-pending_review,
+.status-badge.status-under_review,
+.status-badge.status-unread,
+.status-badge.status-in_progress,
+.status-badge.status-contacted,
+.status-badge.status-quoted,
+.badge-draft,
+.badge-pending,
+.badge-unread,
+.badge-in_progress {
+  background-color: var(--status-slate-bg) !important;
+  color: var(--status-slate-text) !important;
+  border-color: var(--status-slate-border) !important;
+}
+
+/* Midnight Badges: Archived, Rejected, Cancelled (Matches "0 ARCHIVED" pill) */
+.status-badge.status-archived,
+.status-badge.status-rejected,
+.status-badge.status-cancelled,
+.badge-archived,
+.badge-rejected,
+.badge-cancelled {
+  background-color: var(--status-midnight-bg) !important;
+  color: var(--status-midnight-text) !important;
+  border-color: var(--status-midnight-border) !important;
+}
+
+/* Dot indicator for unread messages */
+.unread-indicator {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--pge-gold);
+  margin-right: 0.5rem;
+  box-shadow: 0 0 0 2px rgba(182, 153, 100, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   4. DASHBOARD SUMMARY CARDS (Issue 5)
+   -------------------------------------------------------------------------- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+/* Equal padding on all four sides (Issue 5) */
+.stat-card {
+  background-color: var(--pge-white);
+  border: 1px solid var(--pge-cloud-mist);
+  border-radius: 8px;
+  padding: 1.75rem; /* Exactly 28px equal padding on all sides */
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 46, 71, 0.08);
+  border-color: var(--pge-gold);
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: var(--pge-gold);
+}
+
+.stat-card.card-slate::before {
+  background-color: var(--pge-slate);
+}
+
+.stat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.85rem;
+}
+
+.stat-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #475569;
+}
+
+.stat-value {
+  font-family: var(--font-title);
+  font-size: 2.45rem;
+  font-weight: 700;
+  color: var(--pge-navy);
+  line-height: 1;
+}
+
+/* Descriptive line: larger font, darkened text for crisp readability (Issue 5) */
+.stat-footer {
+  margin-top: 0.95rem;
+  font-size: 0.84rem; /* Up from 0.78rem */
+  color: #334155; /* Darkened from #64748B */
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  line-height: 1.4;
+}
+
+.stat-footer span {
+  color: #334155;
+}
+
+.stat-footer strong {
+  color: var(--pge-navy);
+}
+
+/* --------------------------------------------------------------------------
+   5. FILTER PILL BAR (Issue 4)
+   -------------------------------------------------------------------------- */
+.admin-card {
+  background-color: var(--pge-white);
+  border: 1px solid var(--pge-cloud-mist);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.card-toolbar {
+  padding: 1.35rem 1.6rem;
+  border-bottom: 1px solid var(--pge-cloud-mist);
+  background-color: var(--pge-white);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.15rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Filter pills: Consistent height, clear contrast between active and inactive (Issue 4) */
+.filter-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  min-height: 36px;
+  padding: 0 1.05rem; /* ~16-17px horizontal padding */
+  border-radius: 20px;
+  font-size: 0.78rem; /* Standardized matching badge font size */
+  font-weight: 600;
+  text-decoration: none;
+  color: #334155;
+  background-color: #E2E8F0;
+  border: 1px solid #CBD5E1;
+  transition: all 0.15s ease-in-out;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.filter-pill:hover {
+  background-color: #CBD5E1;
+  color: #0F172A;
+  border-color: #94A3B8;
+}
+
+/* Active filter pill: Dark Navy, Heritage Gold text, subtle shadow */
+.filter-pill.active {
+  background-color: var(--pge-navy);
+  color: var(--pge-gold);
+  border-color: var(--pge-navy);
+  font-weight: 700;
+  box-shadow: 0 2px 5px rgba(37, 46, 71, 0.25);
+}
+
+/* --------------------------------------------------------------------------
+   6. SEARCH INPUT FIELDS (Issue 3 & 8)
+   -------------------------------------------------------------------------- */
+.search-box {
+  display: flex;
+  align-items: center;
+  position: relative;
+  min-width: 380px; /* Widened so placeholder text never gets truncated (Issue 3) */
+  max-width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  height: 42px; /* Consistent height matching form inputs (Issue 8) */
+  padding: 0.65rem 1rem 0.65rem 2.5rem; /* Min ~10-12px vertical, 14px+ horizontal */
+  font-size: 0.84rem;
+  border: 1px solid #CBD5E1;
+  border-radius: 4px;
+  background-color: #F8FAFC;
+  outline: none;
+  font-family: var(--font-ui);
+  line-height: 1.4;
+  transition: border-color 0.18s, box-shadow 0.18s, background-color 0.18s;
+}
+
+.search-input::placeholder {
+  color: #64748B;
+  font-size: 0.82rem;
+}
+
+.search-input:focus {
+  border-color: var(--pge-gold);
+  background-color: #FFF;
+  box-shadow: 0 0 0 3px rgba(182, 153, 100, 0.2);
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.85rem;
+  width: 16px;
+  height: 16px;
+  fill: #64748B;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   7. TABLE ROW SPACING & READABILITY (Issue 2)
+   -------------------------------------------------------------------------- */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.86rem;
+}
+
+/* Column headers: tracking, vertical padding, clean separation (Issue 2) */
+.admin-table th {
+  background-color: #F8FAFC;
+  color: #334155;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em; /* Increased tracking */
+  padding: 1.15rem 1.25rem; /* Vertical padding under header row */
+  border-bottom: 2px solid var(--pge-cloud-mist);
+  white-space: nowrap;
+}
+
+/* Data cells: Increased vertical padding so rows breathe (Issue 2) */
+.admin-table td {
+  padding: 1.25rem 1.25rem; /* Generous vertical & horizontal cell padding */
+  border-bottom: 1px solid var(--pge-cloud-mist);
+  color: #1E293B;
+  vertical-align: middle;
+  line-height: 1.5;
+}
+
+.admin-table tbody tr:nth-child(even) {
+  background-color: rgba(233, 236, 242, 0.22);
+}
+
+.admin-table tbody tr:hover {
+  background-color: rgba(182, 153, 100, 0.05);
+}
+
+.admin-table tr.unread-row td {
+  font-weight: 600;
+  color: #0F172A;
+  background-color: rgba(182, 153, 100, 0.08);
+}
+
+/* Secondary / muted text in cells: bumped size & contrast (Issue 2) */
+.admin-table td span,
+.admin-table td small {
+  font-size: 0.8rem;
+  color: #475569; /* Darker than light slate, crisp legibility */
+  font-weight: 500;
+}
+
+.table-thumbnail {
+  width: 68px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--pge-cloud-mist);
+  background-color: #E2E8F0;
+}
+
+/* Table inline status select (consistent height with buttons) */
+.admin-table select.form-select,
+.table-status-select {
+  height: 34px !important;
+  min-height: 34px !important;
+  padding: 0 0.85rem !important;
+  font-size: 0.78rem !important;
+  font-weight: 600;
+  width: auto !important;
+  border-radius: 4px;
+  border: 1px solid #CBD5E1;
+  background-color: #F8FAFC;
+  color: #1E293B;
+}
+
+/* Dashboard Grid & Compact Tables (Prevents bottom empty void and horizontal scrolling) */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.dashboard-grid .admin-card {
+  margin-bottom: 0;
+}
+
+.dashboard-table th {
+  padding: 0.85rem 1rem;
+  font-size: 0.74rem;
+}
+
+.dashboard-table td {
+  padding: 0.85rem 1rem;
+  font-size: 0.82rem;
+}
+
+.pagination-container {
+  padding: 1.15rem 1.6rem;
+  border-top: 1px solid var(--pge-cloud-mist);
+  background-color: var(--pge-white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* PGE Custom Pagination Styles */
+.pge-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+}
+
+.pge-pagination-info {
+  font-size: 0.84rem;
+  color: #475569;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.pge-pagination-info strong {
+  color: var(--pge-navy);
+  font-weight: 700;
+}
+
+.pge-pagination-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.pge-page-item {
+  display: inline-flex;
+}
+
+.pge-page-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  min-width: 36px;
+  padding: 0 0.85rem;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #334155;
+  background-color: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.15s ease-in-out;
+  user-select: none;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.pge-page-link:hover {
+  background-color: #F1F5F9;
+  color: var(--pge-navy);
+  border-color: #94A3B8;
+}
+
+.pge-page-item.active .pge-page-link {
+  background-color: var(--pge-navy);
+  color: var(--pge-gold);
+  border-color: var(--pge-navy);
+  font-weight: 700;
+  box-shadow: 0 1px 3px rgba(37, 46, 71, 0.2);
+  cursor: default;
+}
+
+.pge-page-item.disabled .pge-page-link {
+  color: #94A3B8;
+  background-color: #F8FAFC;
+  border-color: #E2E8F0;
+  cursor: not-allowed;
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.pge-page-link.dots {
+  border-color: transparent;
+  background: transparent;
+  color: #64748B;
+  cursor: default;
+  min-width: 24px;
+  padding: 0 0.25rem;
+}
+
+/* Fallback Safeguard: Strict SVG sizing and styling if default Laravel Tailwind pagination is rendered */
+.pagination-container svg,
+nav[role="navigation"] svg {
+  width: 16px !important;
+  height: 16px !important;
+  max-width: 16px !important;
+  max-height: 16px !important;
+  min-width: 16px !important;
+  min-height: 16px !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+}
+
+.pagination-container nav[role="navigation"] {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 1rem !important;
+}
+
+.pagination-container .sm\:hidden {
+  display: none !important;
+}
+
+.pagination-container .hidden.sm\:flex-1,
+.pagination-container .sm\:flex {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  flex-wrap: wrap !important;
+  gap: 1rem !important;
+}
+
+.pagination-container p.text-sm {
+  font-size: 0.84rem !important;
+  color: #475569 !important;
+  margin: 0 !important;
+}
+
+.pagination-container p.text-sm span.font-medium {
+  color: var(--pge-navy) !important;
+  font-weight: 700 !important;
+}
+
+.pagination-container span.shadow-sm {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.35rem !important;
+  box-shadow: none !important;
+}
+
+.pagination-container span.shadow-sm a,
+.pagination-container span.shadow-sm span[aria-disabled="true"] > span,
+.pagination-container span.shadow-sm span[aria-current="page"] > span {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  padding: 0 0.85rem !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  border: 1px solid #CBD5E1 !important;
+  border-radius: 4px !important;
+  text-decoration: none !important;
+  color: #334155 !important;
+  background-color: #FFFFFF !important;
+  box-sizing: border-box !important;
+}
+
+.pagination-container span.shadow-sm a:hover {
+  background-color: #F1F5F9 !important;
+  color: var(--pge-navy) !important;
+  border-color: #94A3B8 !important;
+}
+
+.pagination-container span.shadow-sm span[aria-current="page"] > span {
+  background-color: var(--pge-navy) !important;
+  color: var(--pge-gold) !important;
+  border-color: var(--pge-navy) !important;
+  font-weight: 700 !important;
+}
+
+.pagination-container span.shadow-sm span[aria-disabled="true"] > span {
+  color: #94A3B8 !important;
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+  cursor: not-allowed !important;
+  opacity: 0.65 !important;
+}
+
+/* --------------------------------------------------------------------------
+   8. FORM CONTROLS & INPUT SIZING (Issue 8)
+   -------------------------------------------------------------------------- */
+.form-tabs-header {
+  display: flex;
+  background-color: #F8FAFC;
+  border-bottom: 1px solid var(--pge-cloud-mist);
+  overflow-x: auto;
+}
+
+.form-tab-btn {
+  padding: 0.95rem 1.5rem;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-family: var(--font-ui);
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #64748B;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.18s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-tab-btn:hover {
+  color: var(--pge-navy);
+  background-color: rgba(233, 236, 242, 0.5);
+}
+
+.form-tab-btn.active {
+  color: var(--pge-navy);
+  border-bottom-color: var(--pge-gold);
+  background-color: var(--pge-white);
+  font-weight: 700;
+}
+
+.form-tab-panel {
+  display: none;
+  padding: 2.25rem;
+}
+
+.form-tab-panel.active {
+  display: block;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.35rem;
+}
+
+.col-12 { grid-column: span 12; }
+.col-8  { grid-column: span 8; }
+.col-6  { grid-column: span 6; }
+.col-4  { grid-column: span 4; }
+.col-3  { grid-column: span 3; }
+.col-2  { grid-column: span 2; }
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #334155;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-label .required {
+  color: #DC2626;
+}
+
+/* Consistent comfortable input sizing (min ~10-12px vertical, 14px horizontal) (Issue 8) */
+.form-input, .form-select {
+  width: 100%;
+  height: 42px; /* Consistent height */
+  min-height: 42px;
+  padding: 0.65rem 0.95rem; /* ~10-12px vertical, ~15px horizontal */
+  font-size: 0.86rem;
+  border: 1px solid #CBD5E1;
+  border-radius: 4px;
+  background-color: #F8FAFC;
+  color: #0F172A;
+  font-family: var(--font-ui);
+  transition: border-color 0.18s, box-shadow 0.18s, background-color 0.18s;
+  box-sizing: border-box;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--pge-gold);
+  background-color: #FFF;
+  box-shadow: 0 0 0 3px rgba(182, 153, 100, 0.2);
+  outline: none;
+}
+
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem 0.95rem; /* Generous internal padding */
+  font-size: 0.86rem;
+  border: 1px solid #CBD5E1;
+  border-radius: 4px;
+  background-color: #F8FAFC;
+  color: #0F172A;
+  font-family: var(--font-ui);
+  resize: vertical;
+  min-height: 110px;
+  box-sizing: border-box;
+}
+
+.form-hint {
+  font-size: 0.75rem;
+  color: #64748B;
+}
+
+.error-text {
+  font-size: 0.75rem;
+  color: #DC2626;
+  font-weight: 600;
+}
+
+/* Slug generation row */
+.slug-input-group {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.slug-status-indicator {
+  position: absolute;
+  right: 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.slug-status-indicator.available {
+  color: #16A34A;
+}
+
+.slug-status-indicator.taken {
+  color: #DC2626;
+}
+
+/* Repeatable Tag Input */
+.tags-input-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid #CBD5E1;
+  border-radius: 4px;
+  background-color: #F8FAFC;
+  min-height: 44px;
+  align-items: center;
+}
+
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: var(--pge-navy);
+  color: var(--pge-gold);
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 0.25rem 0.7rem;
+  border-radius: 15px;
+}
+
+.tag-pill-remove {
+  cursor: pointer;
+  font-weight: 700;
+  color: #FFF;
+  opacity: 0.85;
+}
+
+.tag-pill-remove:hover {
+  opacity: 1;
+  color: #DC2626;
+}
+
+.tags-raw-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.84rem;
+  font-family: var(--font-ui);
+  flex-grow: 1;
+  min-width: 140px;
+}
+
+/* Image Upload & Gallery Grid */
+.hero-image-dropzone {
+  border: 2px dashed #CBD5E1;
+  border-radius: 6px;
+  padding: 1.75rem;
+  text-align: center;
+  background-color: #F8FAFC;
+  cursor: pointer;
+  transition: border-color 0.18s, background-color 0.18s;
+  position: relative;
+}
+
+.hero-image-dropzone:hover {
+  border-color: var(--pge-gold);
+  background-color: rgba(182, 153, 100, 0.05);
+}
+
+.hero-preview-img {
+  max-width: 100%;
+  max-height: 240px;
+  border-radius: 4px;
+  object-fit: cover;
+  border: 1px solid var(--pge-cloud-mist);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+
+.gallery-item {
+  position: relative;
+  aspect-ratio: 4/3;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--pge-cloud-mist);
+  background-color: #F1F5F9;
+  cursor: grab;
+}
+
+.gallery-item.dragging {
+  opacity: 0.4;
+  border: 2px dashed var(--pge-gold);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-item-remove {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background-color: rgba(220, 38, 38, 0.9);
+  color: #FFF;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Repeatable Cards (Itinerary, Room Types, Feature Icons) */
+.repeatable-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.repeatable-card {
+  background-color: #F8FAFC;
+  border: 1px solid var(--pge-cloud-mist);
+  border-radius: 6px;
+  padding: 1.4rem;
+  position: relative;
+}
+
+.repeatable-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.95rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.repeatable-card-title {
+  font-weight: 700;
+  font-size: 0.84rem;
+  color: var(--pge-navy);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.drag-handle {
+  cursor: grab;
+  color: #94A3B8;
+}
+
+/* Detail Views (Modules 3, 4, 5) */
+.detail-header-card {
+  background-color: var(--pge-white);
+  border: 1px solid var(--pge-cloud-mist);
+  border-radius: 8px;
+  padding: 1.6rem 2.25rem;
+  margin-bottom: 1.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.35rem;
+}
+
+.detail-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1.6rem;
+}
+
+.detail-section-card {
+  background-color: var(--pge-white);
+  border: 1px solid var(--pge-cloud-mist);
+  border-radius: 8px;
+  padding: 1.65rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.section-card-title {
+  font-family: var(--font-title);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--pge-navy);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--pge-cloud-mist);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.detail-field-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.detail-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.detail-field-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #64748B;
+  font-weight: 700;
+}
+
+.detail-field-value {
+  font-size: 0.9rem;
+  color: #1E293B;
+  line-height: 1.5;
+}
+
+.detail-field-value a {
+  color: var(--pge-navy);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.service-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.service-chip {
+  background-color: rgba(37, 46, 71, 0.08);
+  color: var(--pge-navy);
+  border: 1px solid rgba(37, 46, 71, 0.2);
+  padding: 0.35rem 0.85rem;
+  border-radius: 15px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   MODALS & TOASTS
+   -------------------------------------------------------------------------- */
+.modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(18, 21, 37, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease-in-out;
+}
+
+.modal-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-dialog {
+  background-color: var(--pge-white);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  transform: scale(0.95);
+  transition: transform 0.2s ease-in-out;
+}
+
+.modal-backdrop.open .modal-dialog {
+  transform: scale(1);
+}
+
+.modal-header {
+  padding: 1.35rem 1.6rem;
+  background-color: var(--pge-navy);
+  color: var(--pge-white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  font-family: var(--font-title);
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--pge-gold);
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  color: #FFF;
+  font-size: 1.3rem;
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+.modal-close-btn:hover {
+  opacity: 1;
+}
+
+.modal-body {
+  padding: 1.65rem;
+  font-size: 0.92rem;
+  color: #334155;
+  line-height: 1.6;
+}
+
+.modal-footer {
+  padding: 1.15rem 1.6rem;
+  background-color: #F8FAFC;
+  border-top: 1px solid var(--pge-cloud-mist);
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.85rem;
+}
+
+/* Toast container */
+.toast-container {
+  position: fixed;
+  bottom: 1.75rem;
+  right: 1.75rem;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.toast {
+  background-color: var(--pge-navy);
+  color: var(--pge-white);
+  padding: 0.95rem 1.35rem;
+  border-radius: 6px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.25);
+  border-left: 4px solid var(--pge-gold);
+  font-size: 0.84rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  animation: slideUp 0.25s ease-out;
+}
+
+.toast.toast-error {
+  border-left-color: #DC2626;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}

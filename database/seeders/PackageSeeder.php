@@ -1,0 +1,498 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Package;
+use Illuminate\Database\Seeder;
+
+class PackageSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        $packages = [
+            // ==========================================
+            // HOLIDAY PACKAGES
+            // ==========================================
+            [
+                'slug' => 'rocky-mountaineer-luxury-express',
+                'title' => 'Rocky Mountaineer Luxury Express',
+                'tagline' => 'Majestic Canadian Rockies in Glass-Domed Luxury',
+                'category' => 'holiday',
+                'region' => 'north-america',
+                'country' => 'Canada',
+                'duration' => '8 Days / 7 Nights',
+                'price_from' => 4850.00,
+                'featured_image' => 'https://images.unsplash.com/photo-1503614472-8c93d56e92ce?q=80&w=800&auto=format&fit=crop',
+                'overview' => 'Experience the majestic Canadian Rockies in glass-domed luxury carriages from Vancouver to Banff, featuring gourmet dining, five-star heritage hotels, and breathtaking alpine vistas.',
+                'is_featured' => true,
+                'features' => [
+                    'GoldLeaf bi-level glass dome rail coach',
+                    '5-Star heritage stays including Fairmont Banff Springs',
+                    'Panoramic helicopter tour over Three Sisters Peaks',
+                    'Private chauffeured transfers throughout'
+                ],
+                'itinerary' => [
+                    ['day' => 1, 'title' => 'Arrival in Vancouver', 'desc' => 'Arrive at Vancouver International Airport (YVR), greeted by your private concierge and transferred to the Fairmont Pacific Rim.'],
+                    ['day' => 2, 'title' => 'Vancouver City Touring & Gastown', 'desc' => 'Private morning city orientation including Stanley Park totem poles, Granville Island market, and private harbour yacht cruise.'],
+                    ['day' => 3, 'title' => 'GoldLeaf Rail — Vancouver to Kamloops', 'desc' => 'Board the legendary Rocky Mountaineer in GoldLeaf Service, traversing Fraser Canyon and Thompson River gorges.'],
+                    ['day' => 4, 'title' => 'GoldLeaf Rail — Kamloops to Banff', 'desc' => 'Ascend the Continental Divide through Spiral Tunnels to the alpine village of Banff, staying at the iconic Castle in the Rockies.'],
+                    ['day' => 5, 'title' => 'Banff & Lake Louise Alpine Discovery', 'desc' => 'Explore the turquoise waters of Lake Louise and Moraine Lake with a private naturalist guide.'],
+                    ['day' => 6, 'title' => 'Icefields Parkway & Columbia Glacier', 'desc' => 'Travel one of the world\'s most scenic mountain highways and step onto the ancient Athabasca Glacier.'],
+                    ['day' => 7, 'title' => 'Banff to Calgary via Kananaskis', 'desc' => 'Morning scenic drive through Kananaskis country with optional helicopter alpine excursion, arriving in Calgary.'],
+                    ['day' => 8, 'title' => 'Departure from Calgary', 'desc' => 'Chauffeured transfer to Calgary International Airport (YYC) for onward journey.'],
+                ],
+                'inclusions' => [
+                    '2 full days on Rocky Mountaineer in GoldLeaf Service',
+                    '7 nights 5-star luxury hotel accommodation',
+                    'All gourmet breakfasts, 3 three-course lunches, 4 dinners',
+                    'National park passes and private excursions'
+                ],
+                'exclusions' => [
+                    'International flights (can be bundled via ticketing concierge)',
+                    'Discretionary staff gratuities',
+                    'Comprehensive travel insurance'
+                ],
+            ],
+            [
+                'slug' => 'pharaohs-pyramids-odyssey',
+                'title' => 'Pharaohs & Pyramids Odyssey',
+                'tagline' => '5,000 Years of Living Antiquity Along the Nile',
+                'category' => 'holiday',
+                'region' => 'middle-east',
+                'country' => 'Egypt',
+                'duration' => '10 Days / 9 Nights',
+                'price_from' => 5200.00,
+                'featured_image' => 'https://images.unsplash.com/photo-1539768942893-daf53e448371?q=80&w=800&auto=format&fit=crop',
+                'overview' => 'Step inside 5,000 years of living antiquity with Egyptologist-guided exploration of the Giza Pyramids, Valley of the Kings, and a luxury 5-night private Nile dahabiya voyage.',
+                'is_featured' => true,
+                'features' => [
+                    'Private after-hours access to Giza plateau',
+                    'Exclusive chartered Nile Dahabiya cruise',
+                    'Personal certified master Egyptologist',
+                    'Historic stays at Mena House and Winter Palace'
+                ],
+                'itinerary' => [
+                    ['day' => 1, 'title' => 'Arrival in Cairo', 'desc' => 'VIP airport welcome and transfer to Marriott Mena House overlooking the Great Pyramids.'],
+                    ['day' => 2, 'title' => 'Pyramids of Giza & Sphinx VIP Access', 'desc' => 'Private morning access to the King\'s Chamber inside the Great Pyramid and Sphinx enclosure.'],
+                    ['day' => 3, 'title' => 'Grand Egyptian Museum & Old Cairo', 'desc' => 'Exclusive curated tour of the treasures of Tutankhamun at the Grand Egyptian Museum.'],
+                    ['day' => 4, 'title' => 'Fly to Luxor & Karnak Temple', 'desc' => 'Private flight to Luxor, visit the grand hypostyle hall of Karnak, and board your private Dahabiya.'],
+                    ['day' => 5, 'title' => 'Valley of the Kings & Queens', 'desc' => 'Descend into the royal tombs of Ramses VI, Tutankhamun, and Queen Nefertari.'],
+                    ['day' => 6, 'title' => 'Edfu & Kom Ombo Temples', 'desc' => 'Sail along the tranquil Upper Nile to the dual falcon and crocodile temples.'],
+                    ['day' => 7, 'title' => 'Aswan & Philae Island Temple', 'desc' => 'Visit the sanctuary of Isis on Agilkia Island and enjoy sunset afternoon tea at the Old Cataract Hotel.'],
+                    ['day' => 8, 'title' => 'Abu Simbel Private Flight & Cairo Return', 'desc' => 'Fly south to the colossal rock temples of Ramses II at Abu Simbel, return to Cairo.'],
+                    ['day' => 9, 'title' => 'Khan el-Khalili & Islamic Cairo', 'desc' => 'Stroll historical alleys, artisan spice souks, and Sultan Hassan Mosque.'],
+                    ['day' => 10, 'title' => 'Farewell Cairo', 'desc' => 'Private airport transfer for departure.'],
+                ],
+                'inclusions' => [
+                    'All domestic flights within Egypt',
+                    '5 nights private Nile dahabiya charter',
+                    '4 nights 5-star palace hotels in Cairo & Aswan',
+                    'All temple entry passes with private Egyptologist'
+                ],
+                'exclusions' => ['International airfare', 'Egyptian visa fees', 'Personal expenditures'],
+            ],
+            [
+                'slug' => 'island-hopping-villa-escape',
+                'title' => 'Island Hopping & Villa Escape',
+                'tagline' => 'Private Cliffside Villas Across the Aegean Sea',
+                'category' => 'holiday',
+                'region' => 'middle-east',
+                'country' => 'Greece',
+                'duration' => '7 Days / 6 Nights',
+                'price_from' => 4400.00,
+                'featured_image' => 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?q=80&w=800&auto=format&fit=crop',
+                'overview' => 'Sail between Santorini, Mykonos, and Paros on a private catamaran, staying in exclusive whitewashed cliffside villas overlooking caldera sunsets.',
+                'is_featured' => true,
+                'features' => [
+                    'Private speed boat transfers between islands',
+                    'Exclusive cliffside infinity pool villa in Oia',
+                    'Sunset catamaran cruise with private chef',
+                    'Bespoke volcanic vineyard wine tasting'
+                ],
+                'itinerary' => [
+                    ['day' => 1, 'title' => 'Arrival in Athens & Fly to Santorini', 'desc' => 'Transfer to Santorini cliffside estate overlooking the Aegean caldera.'],
+                    ['day' => 2, 'title' => 'Caldera Catamaran Sailing', 'desc' => 'Private yacht excursion to the hot springs and Red Beach with fresh seafood lunch.'],
+                    ['day' => 3, 'title' => 'Oia Architecture & Historic Akrotiri', 'desc' => 'Explore the Minoan ruins of Akrotiri and hidden cobblestone pathways of Oia.'],
+                    ['day' => 4, 'title' => 'Private Rib Transfer to Mykonos', 'desc' => 'Arrive in Mykonos, settling into an oceanfront private villa near Psarou Beach.'],
+                    ['day' => 5, 'title' => 'Delos Sacred Island Sanctuary', 'desc' => 'Private archaeological boat expedition to Delos, mythical birthplace of Apollo.'],
+                    ['day' => 6, 'title' => 'Little Venice & Beachside Leisure', 'desc' => 'Relaxation, world-class beach club cabana, and sunset dinner overlooking windmills.'],
+                    ['day' => 7, 'title' => 'Return to Athens & Departure', 'desc' => 'Morning flight back to Athens International Airport.'],
+                ],
+                'inclusions' => ['6 nights private luxury boutique villa', 'Island transfers by private high-speed catamaran', 'Daily champagne breakfasts', 'Private island guide'],
+                'exclusions' => ['International flights', 'City stay tourism taxes'],
+            ],
+            [
+                'slug' => 'pearl-of-the-indian-ocean',
+                'title' => 'Pearl of the Indian Ocean',
+                'tagline' => 'Ceylon Tea Country, Leopard Safaris & Colonial Forts',
+                'category' => 'holiday',
+                'region' => 'south-asia',
+                'country' => 'Sri Lanka',
+                'duration' => '9 Days / 8 Nights',
+                'price_from' => 3750.00,
+                'featured_image' => 'https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=800&auto=format&fit=crop',
+                'overview' => 'Journey across emerald tea plantations, Sigiriya lion rock fortress, Yala national park leopard safaris, and Dutch colonial ramparts in Galle.',
+                'is_featured' => false,
+                'features' => [
+                    'Stay in restored colonial tea planter bungalows',
+                    'Private open-top jeep safaris in Yala National Park',
+                    'Early access climb to Sigiriya Rock Fortress',
+                    'Exclusive walking tour of UNESCO Galle Fort'
+                ],
+                'itinerary' => [
+                    ['day' => 1, 'title' => 'Arrival in Colombo & Transfer to Cultural Triangle', 'desc' => 'Private chauffeur drive to luxury forest sanctuary in Habarana.'],
+                    ['day' => 2, 'title' => 'Sigiriya Rock & Dambulla Cave Temples', 'desc' => 'Ascend the 5th-century sky citadel and admire ancient Buddhist frescoes.'],
+                    ['day' => 3, 'title' => 'Hill Capital of Kandy', 'desc' => 'Visit the Sacred Tooth Relic Temple and Royal Botanical Gardens.'],
+                    ['day' => 4, 'title' => 'Scenic Tea Country Luxury Train', 'desc' => 'First-class observation train through misty mountain passes to Hatton.'],
+                    ['day' => 5, 'title' => 'Ceylon Tea Tasting & Tea Trails Estate', 'desc' => 'Curated masterclass with resident tea planter and waterfall hike.'],
+                    ['day' => 6, 'title' => 'Yala National Park Safari', 'desc' => 'Private game drive tracking the elusive Sri Lankan leopard and wild elephants.'],
+                    ['day' => 7, 'title' => 'Galle Historic Fortress & Southern Coast', 'desc' => 'Arrive at Amangalla inside the 17th-century ramparts of Galle Fort.'],
+                    ['day' => 8, 'title' => 'Ocean Whale Watching & Colonial Walking Tour', 'desc' => 'Morning blue whale expedition off Mirissa and evening fortress stroll.'],
+                    ['day' => 9, 'title' => 'Colombo City & Departure', 'desc' => 'Transfer to Bandaranaike International Airport for departure.'],
+                ],
+                'inclusions' => ['8 nights 5-star boutique & heritage accommodations', 'Private air-conditioned vehicle with dedicated chauffeur-guide', 'All national park permits and jeep fees'],
+                'exclusions' => ['International airfare', 'Travel insurance'],
+            ],
+            [
+                'slug' => 'grand-ottoman-cappadocia-ballooning',
+                'title' => 'Grand Ottoman & Cappadocia Ballooning',
+                'tagline' => 'Palaces of the Bosphorus to Surreal Fairy Chimneys',
+                'category' => 'holiday',
+                'region' => 'middle-east',
+                'country' => 'Turkey',
+                'duration' => '8 Days / 7 Nights',
+                'price_from' => 3950.00,
+                'featured_image' => 'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?q=80&w=800&auto=format&fit=crop',
+                'overview' => 'Fly above fairy chimney valleys at sunrise in a hot-air balloon, explore underground cities, and immerse yourself in private Bosphorus yacht cruises in Istanbul.',
+                'is_featured' => false,
+                'features' => [
+                    'Sunrise private hot-air balloon flight over Göreme Valley',
+                    'Stay in luxury cave suite hotel in Cappadocia',
+                    'Private yacht cruise along the Bosphorus Strait',
+                    'VIP access to Topkapi Palace & Hagia Sophia'
+                ],
+                'itinerary' => [
+                    ['day' => 1, 'title' => 'Arrival in Istanbul', 'desc' => 'VIP meet & greet and transfer to The Ritz-Carlton or Ciragan Palace Kempinski.'],
+                    ['day' => 2, 'title' => 'Sultanahmet Historic Quarter', 'desc' => 'Private guided tour of Hagia Sophia, Blue Mosque, and Basilica Cistern.'],
+                    ['day' => 3, 'title' => 'Topkapi Palace Harem & Private Bosphorus Yacht', 'desc' => 'Explore the imperial harem and embark on a 2-hour private sunset yacht cruise.'],
+                    ['day' => 4, 'title' => 'Fly to Cappadocia & Underground Cities', 'desc' => 'Flight to Kayseri, explore Kaymakli subterranean city and check into Museum Hotel.'],
+                    ['day' => 5, 'title' => 'Fairy Chimneys Sunrise Balloon Flight', 'desc' => 'Unforgettable hot-air balloon ascension followed by champagne toast and valley trek.'],
+                    ['day' => 6, 'title' => 'Göreme Open Air Museum & Pottery Artisans', 'desc' => 'Discover rock-cut Byzantine cave churches and Avanos ceramics studio.'],
+                    ['day' => 7, 'title' => 'Return to Istanbul & Grand Bazaar', 'desc' => 'Private shopping tour through the spice markets and rooftop farewell dinner.'],
+                    ['day' => 8, 'title' => 'Departure from Istanbul', 'desc' => 'Chauffeured airport transfer to Istanbul Airport (IST).'],
+                ],
+                'inclusions' => ['7 nights luxury boutique & cave hotel accommodation', 'Hot-air balloon flight with full insurance', 'Domestic flights within Turkey', 'Private licensed tour guide'],
+                'exclusions' => ['International airfare', 'Personal purchases and tips'],
+            ],
+            [
+                'slug' => 'ha-long-bay-imperial-heritage',
+                'title' => 'Ha Long Bay & Imperial Heritage',
+                'tagline' => 'Emerald Karst Islets, Ancient Citadels & Lantern Cities',
+                'category' => 'holiday',
+                'region' => 'southeast-asia',
+                'country' => 'Vietnam',
+                'duration' => '9 Days / 8 Nights',
+                'price_from' => 3450.00,
+                'featured_image' => 'https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=800&auto=format&fit=crop',
+                'overview' => 'Cruise the emerald waters of Ha Long Bay aboard an ultra-luxury wooden junk, wander lantern-lit Hoi An, and discover royal imperial tombs in Hue.',
+                'is_featured' => false,
+                'features' => [
+                    '2-night luxury cruise on Lan Ha & Ha Long Bay',
+                    'Heritage boutique resort in Hoi An ancient town',
+                    'Royal dinner banquet experience in Hue citadel',
+                    'Private seaplane scenic flight over karst islands'
+                ],
+                'itinerary' => [
+                    ['day' => 1, 'title' => 'Arrival in Hanoi', 'desc' => 'Check in to Sofitel Legend Metropole Hanoi and explore the French Colonial Quarter.'],
+                    ['day' => 2, 'title' => 'Hanoi Street Food & Temple of Literature', 'desc' => 'Curated culinary walk and visit to Vietnam\'s first national university.'],
+                    ['day' => 3, 'title' => 'Seaplane to Ha Long Bay & Luxury Cruise', 'desc' => 'Board luxury boutique vessel, kayak through dark & bright caves.'],
+                    ['day' => 4, 'title' => 'Cat Ba Island & Floating Fishing Villages', 'desc' => 'Bicycle exploration through pristine jungle trails on Cat Ba island.'],
+                    ['day' => 5, 'title' => 'Fly to Hue Imperial City', 'desc' => 'Private transfer to Hue and exploration of the Forbidden Purple City.'],
+                    ['day' => 6, 'title' => 'Hai Van Pass Scenic Drive to Hoi An', 'desc' => 'Spectacular mountain coastal road, arriving in historic Hoi An.'],
+                    ['day' => 7, 'title' => 'Lantern Making & Artisan Culinary Class', 'desc' => 'Hands-on cooking class with local master chef at organic herb village.'],
+                    ['day' => 8, 'title' => 'My Son Sanctuary & Beach Club Relaxation', 'desc' => 'Ancient Cham kingdom temples and seaside afternoon leisure.'],
+                    ['day' => 9, 'title' => 'Danang Departure', 'desc' => 'Chauffeured transfer to Danang International Airport (DAD).'],
+                ],
+                'inclusions' => ['8 nights 5-star heritage hotel and luxury cruise', 'Private transportation and domestic flights', 'All meals during Ha Long cruise', 'Private English-speaking guides'],
+                'exclusions' => ['International airfare', 'Visa on arrival fees'],
+            ],
+
+            // ==========================================
+            // CRUISES & EXPEDITIONS
+            // ==========================================
+            [
+                'slug' => 'inside-passage-glacier-voyage',
+                'title' => 'Inside Passage Glacier Voyage',
+                'tagline' => 'Calving Glaciers, Orca Pods & Misty Fjords',
+                'category' => 'cruise',
+                'region' => 'north-america',
+                'country' => 'Canada / Alaska',
+                'duration' => '7 Nights / 8 Days',
+                'price_from' => 5600.00,
+                'featured_image' => 'https://images.unsplash.com/photo-1498855926480-d98e83099315?q=80&w=800&auto=format&fit=crop',
+                'overview' => 'Set sail from Vancouver through the tranquil waters of British Columbia and Alaska\'s Inside Passage, observing thunderous glacier calving, humpback whales, and temperate rainforests.',
+                'is_featured' => true,
+                'features' => [
+                    'Balcony stateroom on small-ship luxury expedition vessel',
+                    'Daily guided Zodiac excursions and sea kayaking',
+                    'Onboard marine biologists, geologists, and wildlife photographers',
+                    'All-inclusive open bar, fine dining, and expedition parkas'
+                ],
+                'itinerary' => [
+                    ['day' => 1, 'title' => 'Embarkation in Vancouver', 'desc' => 'Board your luxury vessel at Canada Place and sail beneath the Lions Gate Bridge.'],
+                    ['day' => 2, 'title' => 'Cruising the Inside Passage', 'desc' => 'Navigate past snow-capped peaks and evergreen forested islands of British Columbia.'],
+                    ['day' => 3, 'title' => 'Ketchikan — Gateway to Misty Fjords', 'desc' => 'Explore native totem poles, historic Creek Street, and Zodiac expedition through fjords.'],
+                    ['day' => 4, 'title' => 'Juneau & Mendenhall Glacier', 'desc' => 'Dog-sledding over icefields or whale-watching excursion in Auke Bay.'],
+                    ['day' => 5, 'title' => 'Skagway & White Pass Scenic Railway', 'desc' => 'Vintage parlor rail car retracing the 1898 Gold Rush trail over mountain passes.'],
+                    ['day' => 6, 'title' => 'Glacier Bay National Park', 'desc' => 'Full-day cruising amidst Margerie and Grand Pacific Glaciers with National Park rangers.'],
+                    ['day' => 7, 'title' => 'Hubbard Glacier Spectacular Calving', 'desc' => 'Witness North America\'s largest tidewater glacier actively calving massive icebergs.'],
+                    ['day' => 8, 'title' => 'Disembarkation in Seward / Anchorage', 'desc' => 'Scenic transfer along Turnagain Arm to Anchorage International Airport.'],
+                ],
+                'inclusions' => ['7 nights luxury stateroom with private veranda', 'All onboard gourmet dining and sommelier wine selections', 'Daily shore excursions and Zodiac landings'],
+                'exclusions' => ['Pre-cruise airfare', 'Personal spa treatments'],
+            ],
+            [
+                'slug' => 'southeast-asian-spice-route-expedition',
+                'title' => 'Southeast Asian Spice Route Expedition',
+                'tagline' => 'Colonial Trading Ports, Coral Atolls & Mangrove Kingdoms',
+                'category' => 'cruise',
+                'region' => 'southeast-asia',
+                'country' => 'Singapore to Vietnam',
+                'duration' => '11 Nights / 12 Days',
+                'price_from' => 6800.00,
+                'featured_image' => 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop',
+                'overview' => 'Trace ancient mercantile trade routes connecting Singapore, Malaysia, Thailand, and the dramatic coastline of Vietnam aboard an ultra-luxury expedition yacht.',
+                'is_featured' => true,
+                'features' => [
+                    'All-suite boutique expedition ship (max 180 guests)',
+                    'Privileged mooring in central river ports inaccessible to mega-liners',
+                    'Lectures by prominent Southeast Asian historians',
+                    'Culinary market foraging with Michelin-starred guest chefs'
+                ],
+                'itinerary' => [
+                    ['day' => 1, 'title' => 'Embarkation in Singapore', 'desc' => 'Boarding and evening champagne cocktail looking over Marina Bay skyline.'],
+                    ['day' => 2, 'title' => 'Malacca Historic Straits', 'desc' => 'Discover Peranakan heritage, Cheng Hoon Teng temple, and Jonker Street.'],
+                    ['day' => 3, 'title' => 'Penang (George Town)', 'desc' => 'UNESCO colonial mansions, Khoo Kongsi clan house, and celebrated hawker culture.'],
+                    ['day' => 4, 'title' => 'Phuket & Phang Nga Bay', 'desc' => 'Cruising lime-karst towers, sea caves, and secluded white sand beaches.'],
+                    ['day' => 5, 'title' => 'At Sea — Andaman Ocean Passage', 'desc' => 'Spa rejuvenation, infinity pool lounging, and navigational bridge visit.'],
+                    ['day' => 6, 'title' => 'Gulf of Thailand & Koh Samui', 'desc' => 'Private beach club barbecue and marine sanctuary snorkeling.'],
+                    ['day' => 7, 'title' => 'Bangkok River Mooring', 'desc' => 'Overnight stay in Bangkok on Chao Phraya River, VIP Grand Palace entry.'],
+                    ['day' => 8, 'title' => 'Sihanoukville & Cambodian Islands', 'desc' => 'Speedboat transfer to Koh Rong private marine reserve.'],
+                    ['day' => 9, 'title' => 'Cruising the South China Sea', 'desc' => 'Cooking demonstrations and marine conservation lectures.'],
+                    ['day' => 10, 'title' => 'Mekong Delta Gateway (Phu My / Saigon)', 'desc' => 'Private sampan boat journey through coconut groves and floating markets.'],
+                    ['day' => 11, 'title' => 'Ho Chi Minh City Overnight', 'desc' => 'Rooftop cocktail party and farewell dinner at historic French villa.'],
+                    ['day' => 12, 'title' => 'Disembarkation', 'desc' => 'Private transfer to Tan Son Nhat International Airport.'],
+                ],
+                'inclusions' => ['11 nights all-suite ocean view accommodation', 'All meals, premium wines, spirits, and specialty coffees', 'All Zodiac excursions and expert-led cultural tours'],
+                'exclusions' => ['Long-haul flights', 'Visa processing fees'],
+            ],
+            [
+                'slug' => 'pharaohs-river-expedition-nile',
+                'title' => 'Pharaohs River Expedition on the Nile',
+                'tagline' => 'Private Dahabiya Sailing between Luxor and Aswan',
+                'category' => 'cruise',
+                'region' => 'middle-east',
+                'country' => 'Egypt',
+                'duration' => '5 Nights / 6 Days',
+                'price_from' => 3800.00,
+                'featured_image' => 'https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?q=80&w=800&auto=format&fit=crop',
+                'overview' => 'Sail silently under traditional canvas sails aboard an intimate twin-masted Dahabiya yacht, stopping at secluded riverbank temples far away from large tourist crowds.',
+                'is_featured' => false,
+                'features' => [
+                    'Traditional luxury twin-masted sailboat (only 8 suites)',
+                    'Private chef preparing authentic Egyptian farm-to-table cuisine',
+                    'Direct mooring at riverbanks untouched by motor cruisers',
+                    'Candlelit dinner on an uninhabited Nile island'
+                ],
+                'itinerary' => [
+                    ['day' => 1, 'title' => 'Embarkation in Esna', 'desc' => 'Transfer from Luxor to Esna, board Dahabiya and sail toward El Kab tombs.'],
+                    ['day' => 2, 'title' => 'Temple of Horus at Edfu', 'desc' => 'Horse-drawn carriage to Egypt\'s best-preserved Greco-Roman temple.'],
+                    ['day' => 3, 'title' => 'Gebel el-Silsila Ancient Quarries', 'desc' => 'Walk where sandstone for all great Nile temples was carved thousands of years ago.'],
+                    ['day' => 4, 'title' => 'Kom Ombo Sobek Sanctuary', 'desc' => 'Dusk visit to the dual temple dedicated to the crocodile god Sobek and falcon god Haroeris.'],
+                    ['day' => 5, 'title' => 'Aswan Archipelago & Philae Temple', 'desc' => 'Sail through Aswan\'s granite cataract boulders, visit Nubian museum.'],
+                    ['day' => 6, 'title' => 'Disembarkation in Aswan', 'desc' => 'Transfer to Aswan Airport or onward luxury resort stay.'],
+                ],
+                'inclusions' => ['5 nights onboard private Dahabiya', 'All meals, afternoon tea, and non-alcoholic beverages', 'Private resident Egyptologist throughout the voyage'],
+                'exclusions' => ['Domestic or international flights', 'Alcoholic beverages'],
+            ],
+            [
+                'slug' => 'great-barrier-reef-southern-ocean',
+                'title' => 'Great Barrier Reef & Southern Ocean Voyage',
+                'tagline' => 'Coral Atolls, Whitsunday Inlets & Ribbon Reefs',
+                'category' => 'cruise',
+                'region' => 'oceania',
+                'country' => 'Australia',
+                'duration' => '8 Nights / 9 Days',
+                'price_from' => 6200.00,
+                'featured_image' => 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop',
+                'overview' => 'Discover Australia\'s UNESCO Great Barrier Reef from Cairns to Lizard Island on an ultra-luxury boutique vessel equipped with glass-bottom tenders and certified dive masters.',
+                'is_featured' => false,
+                'features' => [
+                    'Small-capacity expedition catamaran',
+                    'Snorkel and scuba directly on pristine outer Ribbon Reefs',
+                    'Helicopter flyover above the iconic Heart Reef',
+                    'Guided visits to sea turtle rehabilitation sanctuaries'
+                ],
+                'itinerary' => [
+                    ['day' => 1, 'title' => 'Embarkation in Cairns', 'desc' => 'Board ship at Trinity Wharf, welcome drinks and departure towards Fitzroy Island.'],
+                    ['day' => 2, 'title' => 'Sudbury Cay & Coral Gardens', 'desc' => 'Private cay landing on pristine coral sands, snorkeling with manta rays.'],
+                    ['day' => 3, 'title' => 'Ribbon Reefs No. 3 & 5', 'desc' => 'World-class diving in crystal clear turquoise waters teeming with marine life.'],
+                    ['day' => 4, 'title' => 'Lizard Island Historic Anchorage', 'desc' => 'Hike Cook\'s Look panoramic summit and swim at Watson\'s Bay.'],
+                    ['day' => 5, 'title' => 'Osprey Reef (Coral Sea Shark Sanctuary)', 'desc' => 'Deep ocean atoll dive observing oceanic sharks and enormous coral walls.'],
+                    ['day' => 6, 'title' => 'Cape Melville & Flinders Island Group', 'desc' => 'Indigenous rock art galleries and mangrove eco-cruises.'],
+                    ['day' => 7, 'title' => 'Cooktown Historic Outpost', 'desc' => 'Visit James Cook Museum and botanic gardens.'],
+                    ['day' => 8, 'title' => 'Low Isles & Port Douglas', 'desc' => 'Heritage lighthouse island visit and farewell gala dinner.'],
+                    ['day' => 9, 'title' => 'Disembarkation in Cairns', 'desc' => 'Transfer to Cairns Airport.'],
+                ],
+                'inclusions' => ['8 nights luxury stateroom', 'All dive/snorkel equipment and instruction', 'All meals prepared by Australian culinary team'],
+                'exclusions' => ['Nitrox scuba fills', 'Personal bar purchases'],
+            ],
+
+            // ==========================================
+            // LUXURY HOTELS & ACCOMMODATION
+            // ==========================================
+            [
+                'slug' => 'fairmont-banff-springs-castle',
+                'title' => 'Fairmont Banff Springs Castle',
+                'tagline' => 'Canada\'s "Castle in the Rockies" Luxury Heritage Resort',
+                'category' => 'hotel',
+                'region' => 'north-america',
+                'country' => 'Canada',
+                'duration' => 'Nightly / Bespoke Stay',
+                'price_from' => 680.00,
+                'featured_image' => 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=800&auto=format&fit=crop',
+                'overview' => 'Located in the heart of Banff National Park, this world-renowned UNESCO World Heritage resort has provided legendary hospitality for more than 130 years.',
+                'is_featured' => true,
+                'features' => [
+                    'Willow Stream Spa featuring natural mineral hot springs',
+                    'Championship 27-hole golf course along the Bow River',
+                    'Nine signature restaurants and cocktail lounges',
+                    'Private Fairmont Gold floor concierge service'
+                ],
+                'itinerary' => null,
+                'inclusions' => ['Daily breakfast buffet for two', 'Access to thermal mineral pools', 'Complimentary valet parking'],
+                'exclusions' => ['Spa treatments', 'Discretionary gratuities'],
+            ],
+            [
+                'slug' => 'amangalla-historic-fortress-estate',
+                'title' => 'Amangalla Historic Fortress Estate',
+                'tagline' => 'Centuries of Colonial Splendour Inside Galle Fort',
+                'category' => 'hotel',
+                'region' => 'south-asia',
+                'country' => 'Sri Lanka',
+                'duration' => 'Nightly / Bespoke Stay',
+                'price_from' => 750.00,
+                'featured_image' => 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop',
+                'overview' => 'An icon of colonial grandeur dating back to 1684, Amangalla sits within the ramparts of UNESCO-listed Galle Fort, offering timeless suites, teak floors, and Ayurvedic baths.',
+                'is_featured' => false,
+                'features' => [
+                    'Historic suites with four-poster beds and antique furnishings',
+                    'The Baths — comprehensive Ayurvedic spa pavilion',
+                    'Private walking tours of Galle ramparts with resident historian',
+                    'Traditional Ceylon high tea on the iconic verandah'
+                ],
+                'itinerary' => null,
+                'inclusions' => ['Daily Sri Lankan or Western breakfast', 'Afternoon Ceylon tea service', 'Complimentary fortress tour'],
+                'exclusions' => ['Ayurvedic treatments', 'Private excursions'],
+            ],
+            [
+                'slug' => 'four-seasons-nile-plaza-sanctuary',
+                'title' => 'Four Seasons Nile Plaza Sanctuary',
+                'tagline' => 'Panoramic Views Over the River Nile in Cairo',
+                'category' => 'hotel',
+                'region' => 'middle-east',
+                'country' => 'Egypt',
+                'duration' => 'Nightly / Bespoke Stay',
+                'price_from' => 520.00,
+                'featured_image' => 'https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=800&auto=format&fit=crop',
+                'overview' => 'Overlooking the majestic River Nile from the diplomatic Garden City quarter, this refined sanctuary offers sweeping skyline views, world-class dining, and royal suites.',
+                'is_featured' => false,
+                'features' => [
+                    'Private balconies with panoramic views of the Nile and Pyramids',
+                    'Ten diverse fine dining restaurants and lounges',
+                    'Luxurious bi-level wellness spa and rooftop pool',
+                    'Private chauffeured airport limousine service'
+                ],
+                'itinerary' => null,
+                'inclusions' => ['Nile-view room category upgrade upon availability', 'Daily breakfast at Zitouni', 'High-speed premium WiFi'],
+                'exclusions' => ['City room tax', 'Private limousine service'],
+            ],
+            [
+                'slug' => 'the-ritz-carlton-istanbul-bosphorus',
+                'title' => 'The Ritz-Carlton Istanbul Bosphorus',
+                'tagline' => 'Where East Meets West Over the Bosphorus Strait',
+                'category' => 'hotel',
+                'region' => 'middle-east',
+                'country' => 'Turkey',
+                'duration' => 'Nightly / Bespoke Stay',
+                'price_from' => 590.00,
+                'featured_image' => 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=800&auto=format&fit=crop',
+                'overview' => 'Perched on the European shore with majestic views of the Bosphorus, blending Turkish hospitality with contemporary five-star opulence and open-air rooftop terraces.',
+                'is_featured' => false,
+                'features' => [
+                    'Bosphorus-view luxury suites with marble baths',
+                    'Traditional Turkish Hamam within the luxury spa',
+                    'Rooftop open-air infinity pool and lounge',
+                    'Nobu Istanbul dining on-premises'
+                ],
+                'itinerary' => null,
+                'inclusions' => ['Daily Turkish gourmet breakfast', 'Access to Hamam and indoor swimming pool'],
+                'exclusions' => ['Spa treatments', 'Nobu dining'],
+            ],
+            [
+                'slug' => 'intercontinental-danang-sun-peninsula',
+                'title' => 'InterContinental Danang Sun Peninsula',
+                'tagline' => 'Bill Bensley Masterpiece Clinging to Monkey Mountain',
+                'category' => 'hotel',
+                'region' => 'southeast-asia',
+                'country' => 'Vietnam',
+                'duration' => 'Nightly / Bespoke Stay',
+                'price_from' => 650.00,
+                'featured_image' => 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop',
+                'overview' => 'An architectural marvel designed by Bill Bensley, spanning Heaven, Sky, Earth, and Sea levels connected by a funicular railway down to a private secluded cove.',
+                'is_featured' => false,
+                'features' => [
+                    'Private beach and protected nature reserve',
+                    'La Maison 1888 by 3-Michelin-star chef Pierre Gagnaire',
+                    'Mi Sol Spa featuring sound healing and wellness therapies',
+                    'Private infinity pool villas overlooking the bay'
+                ],
+                'itinerary' => null,
+                'inclusions' => ['Sumptuous international buffet breakfast', 'Round-trip Danang airport transfers', 'Complimentary non-motorized water sports'],
+                'exclusions' => ['Dining at La Maison 1888', 'Spa wellness packages'],
+            ],
+            [
+                'slug' => 'katikies-santorini-cliffside-retreat',
+                'title' => 'Katikies Santorini Cliffside Retreat',
+                'tagline' => 'Whitewashed Luxury Suspended Over the Aegean Caldera',
+                'category' => 'hotel',
+                'region' => 'middle-east',
+                'country' => 'Greece',
+                'duration' => 'Nightly / Bespoke Stay',
+                'price_from' => 890.00,
+                'featured_image' => 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?q=80&w=800&auto=format&fit=crop',
+                'overview' => 'Cascading down the cliffs of Oia, Katikies offers romantic cubist cave architecture, three infinity pools cantilevered over the caldera, and Michelin-recognized dining.',
+                'is_featured' => false,
+                'features' => [
+                    'Breathtaking caldera views from all suites and private verandas',
+                    'Cave infinity pools and open-air hot tubs',
+                    'Botrini\'s Santorini fine-dining restaurant',
+                    '24-hour dedicated butler service'
+                ],
+                'itinerary' => null,
+                'inclusions' => ['American champagne breakfast served on private terrace', 'Welcome champagne and fruit platter', 'Porter service for luggage down cliff steps'],
+                'exclusions' => ['Private yacht charter', 'Government accommodation tax'],
+            ],
+        ];
+
+        foreach ($packages as $pkg) {
+            Package::updateOrCreate(
+                ['slug' => $pkg['slug']],
+                $pkg
+            );
+        }
+    }
+}

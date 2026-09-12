@@ -3223,26 +3223,26 @@ textarea {
 
             <!-- TAG PILLS ROW -->
             <div class="package-tags-row">
-              <span class="package-tag-pill">CANADA</span>
-              <span class="package-tag-pill">RAIL JOURNEY</span>
-              <span class="package-tag-pill">ROCKIES</span>
-              <span class="package-tag-pill">LUXURY</span>
+              <span class="package-tag-pill">{{ strtoupper($package->country ?? 'OCEAN VOYAGE') }}</span>
+              <span class="package-tag-pill">{{ strtoupper($package->category ?? 'CRUISE') }}</span>
+              <span class="package-tag-pill">{{ strtoupper(str_replace('-', ' ', $package->region ?? 'EXPEDITION')) }}</span>
+              <span class="package-tag-pill">LUXURY EXPEDITION</span>
             </div>
 
             <!-- VOYAGE TITLE -->
-            <h1 class="package-hero-title">ROCKY MOUNTAINEER LUXURY EXPRESS</h1>
+            <h1 class="package-hero-title">{{ strtoupper($package->title ?? 'INSIDE PASSAGE GLACIER VOYAGE') }}</h1>
 
             <!-- DURATION LINE -->
-            <div class="package-hero-duration">8 Days / 7 Nights</div>
+            <div class="package-hero-duration">{{ $package->duration ?? '7 Nights Ocean Voyage' }}</div>
 
             <!-- SHORT DESCRIPTION PARAGRAPH -->
             <p class="package-hero-desc">
-              Experience the majestic Canadian Rockies in glass-domed luxury carriages from Vancouver to Banff &mdash; a two-day GoldLeaf rail journey framed by turquoise lakes, alpine peaks and five-star hospitality throughout.
+              {{ $package->overview ?? 'Sail through pristine fjords, calving glaciers, and whale sanctuaries aboard 5-star luxury expedition liners with world-class dining and private naturalist guides.' }}
             </p>
 
             <!-- ACTION BUTTONS -->
             <div class="package-hero-actions">
-              <a href="#cta-section" class="btn-primary">REQUEST THIS PACKAGE</a>
+              <a href="{{ route('contact') }}?subject={{ urlencode($package->title ?? 'Cruise Voyage') }}" class="btn-primary">REQUEST THIS VOYAGE</a>
               <a href="#itinerary-section" class="btn-secondary-outline">VIEW FULL ITINERARY</a>
             </div>
 

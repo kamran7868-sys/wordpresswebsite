@@ -4001,28 +4001,26 @@ textarea {
 
             <!-- TAG PILLS ROW -->
             <div class="package-tags-row">
-              <span class="package-tag-pill">Canada</span>
-              <span class="package-tag-pill">Rail Journey</span>
-              <span class="package-tag-pill">Rockies</span>
-              <span class="package-tag-pill">Luxury</span>
+              <span class="package-tag-pill">{{ $package->country ?? 'Canada' }}</span>
+              <span class="package-tag-pill">{{ ucfirst($package->category ?? 'Stay') }}</span>
+              <span class="package-tag-pill">{{ str_replace('-', ' ', ucwords($package->region ?? 'North America', '-')) }}</span>
+              <span class="package-tag-pill">Luxury Curated</span>
             </div>
 
             <!-- PACKAGE TITLE -->
-            <h1 class="package-hero-title">Rocky Mountaineer Luxury Express</h1>
+            <h1 class="package-hero-title">{{ $package->title ?? 'Rocky Mountaineer Luxury Express' }}</h1>
 
             <!-- DURATION -->
-            <div class="package-hero-duration">8 Days / 7 Nights</div>
+            <div class="package-hero-duration">{{ $package->duration ?? '8 Days / 7 Nights' }}</div>
 
             <!-- DESCRIPTION -->
             <p class="package-hero-desc">
-              Experience the majestic Canadian Rockies in glass-domed luxury carriages from Vancouver to Banff —
-              a two-day GoldLeaf rail journey framed by turquoise lakes, alpine peaks and five-star hospitality
-              throughout.
+              {{ $package->overview ?? 'Experience the majestic Canadian Rockies in glass-domed luxury carriages from Vancouver to Banff — a two-day GoldLeaf rail journey framed by turquoise lakes, alpine peaks and five-star hospitality throughout.' }}
             </p>
 
             <!-- ACTION BUTTONS -->
             <div class="package-hero-actions">
-              <a href="#cta-section" class="btn-primary">Request This Package</a>
+              <a href="{{ route('contact') }}?subject={{ urlencode($package->title ?? 'Luxury Stay') }}" class="btn-primary">Request This Package</a>
               <a href="#itinerary-section" class="btn-secondary-outline">View Full Itinerary</a>
             </div>
 
