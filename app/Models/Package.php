@@ -16,6 +16,8 @@ class Package extends Model
         'slug',
         'title',
         'tagline',
+        'meta_title',
+        'meta_description',
         'category',
         'region',
         'country',

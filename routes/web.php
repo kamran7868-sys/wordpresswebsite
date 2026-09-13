@@ -49,6 +49,21 @@ Route::post('/airline-ticketing-inquiry', [InquiryController::class, 'airlineTic
 
 /*
 |--------------------------------------------------------------------------
+| SEO Sitemap Route (Public)
+|--------------------------------------------------------------------------
+*/
+Route::get('/sitemap.xml', function () {
+    $sitemapPath = public_path('sitemap.xml');
+    if (!file_exists($sitemapPath)) {
+        \Illuminate\Support\Facades\Artisan::call('sitemap:generate');
+    }
+    return response(file_get_contents($sitemapPath), 200, [
+        'Content-Type' => 'application/xml; charset=utf-8',
+    ]);
+})->name('sitemap');
+
+/*
+|--------------------------------------------------------------------------
 | Staff Authentication Routes
 |--------------------------------------------------------------------------
 */
@@ -76,8 +91,6 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
         Route::delete('/{package}', 'destroy')->name('destroy');
         Route::patch('/{package}/status', 'status')->name('status');
     });
-    // Convenience alias for legacy admin.packages
-    Route::get('/packages-list', [AdminPackageController::class, 'index'])->name('packages');
 
     // Module 3 — Flight Inquiries
     Route::prefix('inquiries')->name('inquiries.')->controller(AdminInquiryController::class)->group(function () {
@@ -85,17 +98,14 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
         Route::get('/{inquiry}', 'show')->name('show');
         Route::patch('/{inquiry}', 'update')->name('update');
     });
-    // Convenience alias for legacy admin.inquiries
-    Route::get('/inquiries-list', [AdminInquiryController::class, 'index'])->name('inquiries');
 
     // Module 4 — Contact Messages
     Route::prefix('contacts')->name('contacts.')->controller(AdminContactController::class)->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/{contact}', 'show')->name('show');
         Route::patch('/{contact}', 'update')->name('update');
+        Route::post('/{contact}/reply', 'reply')->name('reply');
     });
-    // Convenience alias for legacy admin.contacts
-    Route::get('/contacts-list', [AdminContactController::class, 'index'])->name('contacts');
 
     // Module 5 — DMC Registrations
     Route::prefix('dmc-registrations')->name('dmc.')->controller(AdminDmcController::class)->group(function () {
@@ -103,6 +113,4 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
         Route::get('/{dmc}', 'show')->name('show');
         Route::patch('/{dmc}', 'update')->name('update');
     });
-    // Convenience alias for legacy admin.dmc-registrations
-    Route::get('/dmc-registrations-list', [AdminDmcController::class, 'index'])->name('dmc-registrations');
 });

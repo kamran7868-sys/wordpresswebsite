@@ -261,6 +261,8 @@ class PackageController extends Controller
             'category' => 'required|string|in:holiday,cruise,hotel',
             'title' => 'required|string|max:200',
             'slug' => $slugRule,
+            'meta_title' => 'nullable|string|max:70',
+            'meta_description' => 'nullable|string|max:160',
             'country' => 'nullable|string|max:100',
             'region' => 'nullable|string|max:100',
             'duration_days' => 'required|integer|min:1|max:365',

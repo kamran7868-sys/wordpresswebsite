@@ -17,7 +17,13 @@ class ContactInquiry extends Model
         'phone',
         'subject',
         'message',
+        'admin_reply',
+        'replied_at',
         'status',
         'ip_address',
+    ];
+
+    protected $casts = [
+        'replied_at' => 'datetime',
     ];
 }

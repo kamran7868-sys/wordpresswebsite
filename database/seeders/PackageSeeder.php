@@ -18,6 +18,8 @@ class PackageSeeder extends Seeder
             // ==========================================
             [
                 'slug' => 'rocky-mountaineer-luxury-express',
+                'meta_title' => 'Rocky Mountaineer Luxury Express | Canada Rail Tour | PGE',
+                'meta_description' => 'Travel the Canadian Rockies in glass-domed luxury carriages from Vancouver to Banff. GoldLeaf Service, gourmet dining, and 5-star heritage hotels.',
                 'title' => 'Rocky Mountaineer Luxury Express',
                 'tagline' => 'Majestic Canadian Rockies in Glass-Domed Luxury',
                 'category' => 'holiday',
@@ -25,7 +27,7 @@ class PackageSeeder extends Seeder
                 'country' => 'Canada',
                 'duration' => '8 Days / 7 Nights',
                 'price_from' => 4850.00,
-                'featured_image' => 'https://images.unsplash.com/photo-1503614472-8c93d56e92ce?q=80&w=800&auto=format&fit=crop',
+                'featured_image' => '/assets/media/rocky-mountaineer-luxury-express.webp',
                 'overview' => 'Experience the majestic Canadian Rockies in glass-domed luxury carriages from Vancouver to Banff, featuring gourmet dining, five-star heritage hotels, and breathtaking alpine vistas.',
                 'is_featured' => true,
                 'features' => [
@@ -58,6 +60,8 @@ class PackageSeeder extends Seeder
             ],
             [
                 'slug' => 'pharaohs-pyramids-odyssey',
+                'meta_title' => 'Pharaohs & Pyramids Odyssey | Egypt Luxury Tour | PGE',
+                'meta_description' => 'Experience 5,000 years of living antiquity with private Egyptologist-guided exploration of the Giza Pyramids and a luxury private Nile cruise.',
                 'title' => 'Pharaohs & Pyramids Odyssey',
                 'tagline' => '5,000 Years of Living Antiquity Along the Nile',
                 'category' => 'holiday',
@@ -65,7 +69,7 @@ class PackageSeeder extends Seeder
                 'country' => 'Egypt',
                 'duration' => '10 Days / 9 Nights',
                 'price_from' => 5200.00,
-                'featured_image' => 'https://images.unsplash.com/photo-1539768942893-daf53e448371?q=80&w=800&auto=format&fit=crop',
+                'featured_image' => '/assets/media/pharaohs-pyramids-odyssey-nile.webp',
                 'overview' => 'Step inside 5,000 years of living antiquity with Egyptologist-guided exploration of the Giza Pyramids, Valley of the Kings, and a luxury 5-night private Nile dahabiya voyage.',
                 'is_featured' => true,
                 'features' => [
@@ -96,6 +100,8 @@ class PackageSeeder extends Seeder
             ],
             [
                 'slug' => 'island-hopping-villa-escape',
+                'meta_title' => 'Thailand Island Hopping & Villa Escape | PGE Expeditions',
+                'meta_description' => 'Bespoke private luxury retreat across Phuket, Koh Samui, and Chiang Mai. Oceanfront pool villas, private speedboats, and cultural tours.',
                 'title' => 'Island Hopping & Villa Escape',
                 'tagline' => 'Private Cliffside Villas Across the Aegean Sea',
                 'category' => 'holiday',
@@ -103,7 +109,7 @@ class PackageSeeder extends Seeder
                 'country' => 'Greece',
                 'duration' => '7 Days / 6 Nights',
                 'price_from' => 4400.00,
-                'featured_image' => 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?q=80&w=800&auto=format&fit=crop',
+                'featured_image' => '/assets/media/thailand-islands-phuket-retreat.webp',
                 'overview' => 'Sail between Santorini, Mykonos, and Paros on a private catamaran, staying in exclusive whitewashed cliffside villas overlooking caldera sunsets.',
                 'is_featured' => true,
                 'features' => [
@@ -126,6 +132,8 @@ class PackageSeeder extends Seeder
             ],
             [
                 'slug' => 'pearl-of-the-indian-ocean',
+                'meta_title' => 'Sri Lanka Heritage & Sigiriya Tour | PGE Expeditions',
+                'meta_description' => 'Explore the cultural triangle of Sigiriya, colonial Ceylon tea plantation estates, and Yala coastal leopard safaris with private naturalist guides.',
                 'title' => 'Pearl of the Indian Ocean',
                 'tagline' => 'Ceylon Tea Country, Leopard Safaris & Colonial Forts',
                 'category' => 'holiday',
@@ -133,7 +141,7 @@ class PackageSeeder extends Seeder
                 'country' => 'Sri Lanka',
                 'duration' => '9 Days / 8 Nights',
                 'price_from' => 3750.00,
-                'featured_image' => 'https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=800&auto=format&fit=crop',
+                'featured_image' => '/assets/media/sri-lanka-sigiriya-heritage.webp',
                 'overview' => 'Journey across emerald tea plantations, Sigiriya lion rock fortress, Yala national park leopard safaris, and Dutch colonial ramparts in Galle.',
                 'is_featured' => false,
                 'features' => [
@@ -158,6 +166,8 @@ class PackageSeeder extends Seeder
             ],
             [
                 'slug' => 'grand-ottoman-cappadocia-ballooning',
+                'meta_title' => 'Cappadocia Ballooning & Istanbul Tour | PGE Expeditions',
+                'meta_description' => 'Private Bosphorus yacht cruising in Istanbul, ancient Ephesus ruins, and magical hot air balloon rides over cave suites in Cappadocia.',
                 'title' => 'Grand Ottoman & Cappadocia Ballooning',
                 'tagline' => 'Palaces of the Bosphorus to Surreal Fairy Chimneys',
                 'category' => 'holiday',
@@ -165,7 +175,7 @@ class PackageSeeder extends Seeder
                 'country' => 'Turkey',
                 'duration' => '8 Days / 7 Nights',
                 'price_from' => 3950.00,
-                'featured_image' => 'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?q=80&w=800&auto=format&fit=crop',
+                'featured_image' => '/assets/media/cappadocia-hot-air-balloon-turkey.webp',
                 'overview' => 'Fly above fairy chimney valleys at sunrise in a hot-air balloon, explore underground cities, and immerse yourself in private Bosphorus yacht cruises in Istanbul.',
                 'is_featured' => false,
                 'features' => [
@@ -189,6 +199,8 @@ class PackageSeeder extends Seeder
             ],
             [
                 'slug' => 'ha-long-bay-imperial-heritage',
+                'meta_title' => 'Ha Long Bay & Imperial Vietnam Tour | PGE Expeditions',
+                'meta_description' => 'Private luxury junk boat cruising through Ha Long Bay emerald waters, ancient Hoi An lantern town, and Hanoi imperial culture.',
                 'title' => 'Ha Long Bay & Imperial Heritage',
                 'tagline' => 'Emerald Karst Islets, Ancient Citadels & Lantern Cities',
                 'category' => 'holiday',
@@ -196,7 +208,7 @@ class PackageSeeder extends Seeder
                 'country' => 'Vietnam',
                 'duration' => '9 Days / 8 Nights',
                 'price_from' => 3450.00,
-                'featured_image' => 'https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=800&auto=format&fit=crop',
+                'featured_image' => '/assets/media/ha-long-bay-karsts-vietnam.webp',
                 'overview' => 'Cruise the emerald waters of Ha Long Bay aboard an ultra-luxury wooden junk, wander lantern-lit Hoi An, and discover royal imperial tombs in Hue.',
                 'is_featured' => false,
                 'features' => [
@@ -225,6 +237,8 @@ class PackageSeeder extends Seeder
             // ==========================================
             [
                 'slug' => 'inside-passage-glacier-voyage',
+                'meta_title' => 'Inside Passage Glacier Voyage | Alaska Cruise | PGE',
+                'meta_description' => 'Sail through pristine Alaskan fjords, calving glaciers, and whale sanctuaries aboard 5-star luxury cruise liners with balcony staterooms.',
                 'title' => 'Inside Passage Glacier Voyage',
                 'tagline' => 'Calving Glaciers, Orca Pods & Misty Fjords',
                 'category' => 'cruise',
@@ -232,7 +246,7 @@ class PackageSeeder extends Seeder
                 'country' => 'Canada / Alaska',
                 'duration' => '7 Nights / 8 Days',
                 'price_from' => 5600.00,
-                'featured_image' => 'https://images.unsplash.com/photo-1498855926480-d98e83099315?q=80&w=800&auto=format&fit=crop',
+                'featured_image' => '/assets/media/alaskan-cruise-liner-fjords.webp',
                 'overview' => 'Set sail from Vancouver through the tranquil waters of British Columbia and Alaska\'s Inside Passage, observing thunderous glacier calving, humpback whales, and temperate rainforests.',
                 'is_featured' => true,
                 'features' => [
@@ -256,6 +270,8 @@ class PackageSeeder extends Seeder
             ],
             [
                 'slug' => 'southeast-asian-spice-route-expedition',
+                'meta_title' => 'Southeast Asian Spice Route Cruise | PGE Expeditions',
+                'meta_description' => 'Embark on an ultra-luxury ocean voyage from Singapore to Phuket, Penang, and Langkawi featuring Michelin-starred dining and private excursions.',
                 'title' => 'Southeast Asian Spice Route Expedition',
                 'tagline' => 'Colonial Trading Ports, Coral Atolls & Mangrove Kingdoms',
                 'category' => 'cruise',
@@ -263,7 +279,7 @@ class PackageSeeder extends Seeder
                 'country' => 'Singapore to Vietnam',
                 'duration' => '11 Nights / 12 Days',
                 'price_from' => 6800.00,
-                'featured_image' => 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop',
+                'featured_image' => '/assets/media/singapore-spice-route-cruise.webp',
                 'overview' => 'Trace ancient mercantile trade routes connecting Singapore, Malaysia, Thailand, and the dramatic coastline of Vietnam aboard an ultra-luxury expedition yacht.',
                 'is_featured' => true,
                 'features' => [
@@ -291,6 +307,8 @@ class PackageSeeder extends Seeder
             ],
             [
                 'slug' => 'pharaohs-river-expedition-nile',
+                'meta_title' => 'Nile River Luxury Expedition | Egypt Cruise | PGE',
+                'meta_description' => 'Glide along the Nile from Luxor to Aswan visiting Kom Ombo and Edfu temples with private Egyptologist lectures and gourmet dining onboard.',
                 'title' => 'Pharaohs River Expedition on the Nile',
                 'tagline' => 'Private Dahabiya Sailing between Luxor and Aswan',
                 'category' => 'cruise',
@@ -298,7 +316,7 @@ class PackageSeeder extends Seeder
                 'country' => 'Egypt',
                 'duration' => '5 Nights / 6 Days',
                 'price_from' => 3800.00,
-                'featured_image' => 'https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?q=80&w=800&auto=format&fit=crop',
+                'featured_image' => '/assets/media/nile-river-sunset-cruise.webp',
                 'overview' => 'Sail silently under traditional canvas sails aboard an intimate twin-masted Dahabiya yacht, stopping at secluded riverbank temples far away from large tourist crowds.',
                 'is_featured' => false,
                 'features' => [
@@ -320,6 +338,8 @@ class PackageSeeder extends Seeder
             ],
             [
                 'slug' => 'great-barrier-reef-southern-ocean',
+                'meta_title' => 'Great Barrier Reef & Australia Cruise | PGE Expeditions',
+                'meta_description' => 'Depart Sydney Harbour visiting the Whitsunday Islands, Tasmania fjords, and outer coral reefs with certified marine biologist guides.',
                 'title' => 'Great Barrier Reef & Southern Ocean Voyage',
                 'tagline' => 'Coral Atolls, Whitsunday Inlets & Ribbon Reefs',
                 'category' => 'cruise',
@@ -327,7 +347,7 @@ class PackageSeeder extends Seeder
                 'country' => 'Australia',
                 'duration' => '8 Nights / 9 Days',
                 'price_from' => 6200.00,
-                'featured_image' => 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop',
+                'featured_image' => '/assets/media/australian-barrier-reef-cruise.webp',
                 'overview' => 'Discover Australia\'s UNESCO Great Barrier Reef from Cairns to Lizard Island on an ultra-luxury boutique vessel equipped with glass-bottom tenders and certified dive masters.',
                 'is_featured' => false,
                 'features' => [
@@ -356,6 +376,8 @@ class PackageSeeder extends Seeder
             // ==========================================
             [
                 'slug' => 'fairmont-banff-springs-castle',
+                'meta_title' => 'Fairmont Banff Springs Hotel | Canada Castle Stay | PGE',
+                'meta_description' => 'Stay at the iconic Castle in the Rockies in Banff National Park. Mineral hot springs, championship golf, and breathtaking mountain vistas.',
                 'title' => 'Fairmont Banff Springs Castle',
                 'tagline' => 'Canada\'s "Castle in the Rockies" Luxury Heritage Resort',
                 'category' => 'hotel',
@@ -363,7 +385,7 @@ class PackageSeeder extends Seeder
                 'country' => 'Canada',
                 'duration' => 'Nightly / Bespoke Stay',
                 'price_from' => 680.00,
-                'featured_image' => 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=800&auto=format&fit=crop',
+                'featured_image' => '/assets/media/fairmont-banff-springs-hotel.webp',
                 'overview' => 'Located in the heart of Banff National Park, this world-renowned UNESCO World Heritage resort has provided legendary hospitality for more than 130 years.',
                 'is_featured' => true,
                 'features' => [
@@ -378,6 +400,8 @@ class PackageSeeder extends Seeder
             ],
             [
                 'slug' => 'amangalla-historic-fortress-estate',
+                'meta_title' => 'Amangalla Historic Fortress Estate | Sri Lanka Stay | PGE',
+                'meta_description' => 'Restored 17th-century Dutch colonial luxury estate inside UNESCO Galle Fort. Antique four-poster suites and Ayurvedic spa treatments.',
                 'title' => 'Amangalla Historic Fortress Estate',
                 'tagline' => 'Centuries of Colonial Splendour Inside Galle Fort',
                 'category' => 'hotel',
@@ -385,7 +409,7 @@ class PackageSeeder extends Seeder
                 'country' => 'Sri Lanka',
                 'duration' => 'Nightly / Bespoke Stay',
                 'price_from' => 750.00,
-                'featured_image' => 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop',
+                'featured_image' => '/assets/media/amangalla-fortress-resort-sri-lanka.webp',
                 'overview' => 'An icon of colonial grandeur dating back to 1684, Amangalla sits within the ramparts of UNESCO-listed Galle Fort, offering timeless suites, teak floors, and Ayurvedic baths.',
                 'is_featured' => false,
                 'features' => [
@@ -400,6 +424,8 @@ class PackageSeeder extends Seeder
             ],
             [
                 'slug' => 'four-seasons-nile-plaza-sanctuary',
+                'meta_title' => 'Four Seasons Nile Plaza Sanctuary | Cairo Hotel | PGE',
+                'meta_description' => 'Overlook the majestic Nile River in Cairo from private terrace suites with museum-quality art, luxury spa, and authentic Egyptian dining.',
                 'title' => 'Four Seasons Nile Plaza Sanctuary',
                 'tagline' => 'Panoramic Views Over the River Nile in Cairo',
                 'category' => 'hotel',
@@ -407,7 +433,7 @@ class PackageSeeder extends Seeder
                 'country' => 'Egypt',
                 'duration' => 'Nightly / Bespoke Stay',
                 'price_from' => 520.00,
-                'featured_image' => 'https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=800&auto=format&fit=crop',
+                'featured_image' => '/assets/media/four-seasons-cairo-nile-hotel.webp',
                 'overview' => 'Overlooking the majestic River Nile from the diplomatic Garden City quarter, this refined sanctuary offers sweeping skyline views, world-class dining, and royal suites.',
                 'is_featured' => false,
                 'features' => [
@@ -422,6 +448,8 @@ class PackageSeeder extends Seeder
             ],
             [
                 'slug' => 'the-ritz-carlton-istanbul-bosphorus',
+                'meta_title' => 'The Ritz-Carlton Istanbul Bosphorus | Luxury Hotel | PGE',
+                'meta_description' => 'Overlook the Bosphorus Strait in Istanbul with five-star luxury suites, traditional Turkish Hamam, rooftop infinity pool, and Nobu dining.',
                 'title' => 'The Ritz-Carlton Istanbul Bosphorus',
                 'tagline' => 'Where East Meets West Over the Bosphorus Strait',
                 'category' => 'hotel',
@@ -429,7 +457,7 @@ class PackageSeeder extends Seeder
                 'country' => 'Turkey',
                 'duration' => 'Nightly / Bespoke Stay',
                 'price_from' => 590.00,
-                'featured_image' => 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=800&auto=format&fit=crop',
+                'featured_image' => '/assets/media/museum-hotel-cappadocia-cave.webp',
                 'overview' => 'Perched on the European shore with majestic views of the Bosphorus, blending Turkish hospitality with contemporary five-star opulence and open-air rooftop terraces.',
                 'is_featured' => false,
                 'features' => [
@@ -444,6 +472,8 @@ class PackageSeeder extends Seeder
             ],
             [
                 'slug' => 'intercontinental-danang-sun-peninsula',
+                'meta_title' => 'InterContinental Danang Sun Peninsula | Vietnam Stay | PGE',
+                'meta_description' => 'Luxury hillside resort on Monkey Mountain in Vietnam with private beach cove, Michelin-star dining by Pierre Gagnaire, and secluded infinity pool villas.',
                 'title' => 'InterContinental Danang Sun Peninsula',
                 'tagline' => 'Bill Bensley Masterpiece Clinging to Monkey Mountain',
                 'category' => 'hotel',
@@ -451,7 +481,7 @@ class PackageSeeder extends Seeder
                 'country' => 'Vietnam',
                 'duration' => 'Nightly / Bespoke Stay',
                 'price_from' => 650.00,
-                'featured_image' => 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop',
+                'featured_image' => '/assets/media/intercontinental-danang-resort.webp',
                 'overview' => 'An architectural marvel designed by Bill Bensley, spanning Heaven, Sky, Earth, and Sea levels connected by a funicular railway down to a private secluded cove.',
                 'is_featured' => false,
                 'features' => [
@@ -466,6 +496,8 @@ class PackageSeeder extends Seeder
             ],
             [
                 'slug' => 'katikies-santorini-cliffside-retreat',
+                'meta_title' => 'Katikies Santorini Cliffside Retreat | Greece Luxury | PGE',
+                'meta_description' => 'Romantic whitewashed luxury cave suites and cantilevered infinity pools overlooking the Aegean caldera in Oia Santorini with 24-hour butler service.',
                 'title' => 'Katikies Santorini Cliffside Retreat',
                 'tagline' => 'Whitewashed Luxury Suspended Over the Aegean Caldera',
                 'category' => 'hotel',
@@ -473,7 +505,7 @@ class PackageSeeder extends Seeder
                 'country' => 'Greece',
                 'duration' => 'Nightly / Bespoke Stay',
                 'price_from' => 890.00,
-                'featured_image' => 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?q=80&w=800&auto=format&fit=crop',
+                'featured_image' => '/assets/media/santorini-cliffside-villas-escape.webp',
                 'overview' => 'Cascading down the cliffs of Oia, Katikies offers romantic cubist cave architecture, three infinity pools cantilevered over the caldera, and Michelin-recognized dining.',
                 'is_featured' => false,
                 'features' => [

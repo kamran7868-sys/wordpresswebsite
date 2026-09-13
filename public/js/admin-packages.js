@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initRepeatableRoomTypes();
   initRepeatableTextLists();
   initDeleteModal();
+  initSeoCounters();
 });
 
 /* --------------------------------------------------------------------------
@@ -665,3 +666,34 @@ function escapeHtml(text) {
   div.textContent = text;
   return div.innerHTML;
 }
+
+/* --------------------------------------------------------------------------
+   12. SEO META CHAR COUNTERS
+   -------------------------------------------------------------------------- */
+function initSeoCounters() {
+  const titleInput = document.getElementById('meta_title');
+  const titleCount = document.getElementById('meta_title_count');
+  const descInput = document.getElementById('meta_description');
+  const descCount = document.getElementById('meta_desc_count');
+
+  if (titleInput && titleCount) {
+    const updateTitle = () => {
+      const len = titleInput.value.length;
+      titleCount.textContent = `${len} / 60 chars`;
+      titleCount.style.color = len > 60 ? '#DC2626' : '#64748B';
+    };
+    titleInput.addEventListener('input', updateTitle);
+    updateTitle();
+  }
+
+  if (descInput && descCount) {
+    const updateDesc = () => {
+      const len = descInput.value.length;
+      descCount.textContent = `${len} / 150 chars`;
+      descCount.style.color = len > 150 ? '#DC2626' : '#64748B';
+    };
+    descInput.addEventListener('input', updateDesc);
+    updateDesc();
+  }
+}
+

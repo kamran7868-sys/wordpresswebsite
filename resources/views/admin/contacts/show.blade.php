@@ -103,4 +103,106 @@
   </div>
 </div>
 
+<!-- PREVIOUS REPLY HISTORY (IF ALREADY REPLIED) -->
+@if($contact->admin_reply)
+  <div class="detail-section-card" style="margin-top: 1.6rem; border-left: 4px solid var(--pge-gold);">
+    <div class="section-card-title" style="margin-bottom: 1rem;">
+      <div style="display: flex; align-items: center; gap: 0.65rem;">
+        <span class="status-badge status-replied">
+          ✓ Reply Sent
+        </span>
+        <span style="font-size: 0.82rem; font-weight: 600; color: var(--pge-navy);">
+          Sent on {{ $contact->replied_at ? $contact->replied_at->format('F d, Y \a\t h:i A') : 'Recorded' }}
+          @if($contact->replied_at)
+            ({{ $contact->replied_at->diffForHumans() }})
+          @endif
+        </span>
+      </div>
+      <span style="font-size: 0.78rem; color: #64748B;">
+        Recipient: <strong>{{ $contact->email }}</strong>
+      </span>
+    </div>
+
+    <div style="background-color: #FAF8F5; border: 1px solid rgba(182, 153, 100, 0.25); border-radius: 6px; padding: 1.35rem 1.5rem; font-size: 0.9rem; line-height: 1.7; color: #1E293B; white-space: pre-wrap;">{{ $contact->admin_reply }}</div>
+  </div>
+@endif
+
+<!-- DIRECT REPLY TO CLIENT FORM -->
+<div class="detail-section-card" style="margin-top: 1.6rem;">
+  <div class="section-card-title">
+    <div style="display: flex; align-items: center; gap: 0.65rem;">
+      <svg style="width: 20px; height: 20px; fill: var(--pge-gold);" viewBox="0 0 24 24">
+        <path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"/>
+      </svg>
+      <span>{{ $contact->admin_reply ? 'Send Follow-up / Additional Reply' : 'Send Official Reply to Client' }}</span>
+    </div>
+    <span style="font-size: 0.78rem; color: #64748B; font-weight: 500;">
+      To: <strong>{{ $contact->full_name }}</strong> &lt;{{ $contact->email }}&gt;
+    </span>
+  </div>
+
+  @php
+    $defaultSubject = 'Re: ' . $contact->subject . ' — Premium Global Expeditions';
+    $defaultBody = "Dear " . $contact->full_name . ",\n\nThank you for contacting Premium Global Expeditions Inc. regarding your inquiry about \"" . $contact->subject . "\".\n\nWe have reviewed your request and are pleased to assist you.\n\n\nWarm regards,\n" . (auth()->user()->name ?? 'PGE Expedition Concierge') . "\nPremium Global Expeditions Inc.\noperations@pge.com";
+    $mailtoUrl = "mailto:" . $contact->email . "?subject=" . rawurlencode($defaultSubject) . "&body=" . rawurlencode($defaultBody);
+  @endphp
+
+  <form action="{{ route('admin.contacts.reply', $contact->id) }}" method="POST">
+    @csrf
+
+    <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+      <!-- SUBJECT -->
+      <div class="form-group" style="margin-bottom: 0;">
+        <label for="reply_subject" class="detail-field-label" style="display: block; margin-bottom: 0.45rem;">
+          Email Subject Line
+        </label>
+        <input type="text" 
+               name="reply_subject" 
+               id="reply_subject" 
+               class="form-control" 
+               value="{{ old('reply_subject', $defaultSubject) }}" 
+               required 
+               style="width: 100%; padding: 0.65rem 0.95rem; border: 1px solid var(--pge-cloud-mist); border-radius: 6px; font-size: 0.88rem;">
+      </div>
+
+      <!-- MESSAGE BODY -->
+      <div class="form-group" style="margin-bottom: 0;">
+        <label for="reply_message" class="detail-field-label" style="display: block; margin-bottom: 0.45rem;">
+          Reply Message Content
+        </label>
+        <textarea name="reply_message" 
+                  id="reply_message" 
+                  rows="8" 
+                  class="form-control" 
+                  required
+                  placeholder="Type your response to {{ $contact->full_name }} here..."
+                  style="width: 100%; padding: 0.85rem 1rem; border: 1px solid var(--pge-cloud-mist); border-radius: 6px; font-size: 0.88rem; font-family: var(--font-ui); line-height: 1.6; resize: vertical;">{{ old('reply_message', $defaultBody) }}</textarea>
+      </div>
+
+      <!-- ACTIONS BAR -->
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding-top: 0.5rem; border-top: 1px solid var(--pge-cloud-mist);">
+        <div style="display: flex; align-items: center; gap: 0.85rem; flex-wrap: wrap;">
+          <button type="submit" class="btn btn-primary" style="padding: 0.7rem 1.4rem;">
+            <svg style="width: 16px; height: 16px; fill: currentColor;" viewBox="0 0 24 24">
+              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+            </svg>
+            Send Reply & Mark as Replied
+          </button>
+
+          <a href="{{ $mailtoUrl }}" class="btn btn-outline" style="padding: 0.7rem 1.2rem;">
+            <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24">
+              <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+            </svg>
+            Open in Mail Client (Outlook / Gmail)
+          </a>
+        </div>
+
+        <span style="font-size: 0.76rem; color: #64748B;">
+          ℹ Submitting will automatically update inquiry status to <strong>Replied</strong>.
+        </span>
+      </div>
+    </div>
+  </form>
+</div>
+
 @endsection

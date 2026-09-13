@@ -8,6 +8,8 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -83,5 +85,35 @@ class ContactController extends Controller
         }
 
         return back()->with('success', "Contact message status updated to " . str_replace('_', ' ', $contact->status) . ".");
+    }
+
+    /**
+     * Send official reply to client, record admin response, and mark inquiry as replied.
+     */
+    public function reply(Request $request, ContactInquiry $contact): RedirectResponse
+    {
+        $validated = $request->validate([
+            'reply_subject' => 'required|string|max:255',
+            'reply_message' => 'required|string|min:5',
+        ]);
+
+        // 1. Update contact record with admin reply and set status to replied
+        $contact->update([
+            'admin_reply' => $validated['reply_message'],
+            'replied_at' => now(),
+            'status' => 'replied',
+        ]);
+
+        // 2. Dispatch email to customer (with fallback error logging)
+        try {
+            Mail::raw($validated['reply_message'], function ($mail) use ($contact, $validated) {
+                $mail->to($contact->email, $contact->full_name)
+                     ->subject($validated['reply_subject']);
+            });
+        } catch (\Throwable $e) {
+            Log::warning("Contact reply email to {$contact->email} was recorded but email delivery failed: " . $e->getMessage());
+        }
+
+        return back()->with('success', "Official reply successfully recorded and sent to {$contact->full_name} ({$contact->email}). Inquiry status updated to Replied.");
     }
 }

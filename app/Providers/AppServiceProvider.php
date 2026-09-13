@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Package;
+use App\Observers\PackageObserver;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
@@ -22,5 +24,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::defaultView('admin.pagination');
         Paginator::defaultSimpleView('admin.pagination');
+
+        Package::observe(PackageObserver::class);
     }
 }

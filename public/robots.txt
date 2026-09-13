@@ -1,2 +1,11 @@
 User-agent: *
-Disallow:
+Allow: /
+Allow: /assets/media/
+Allow: /storage/media/
+Disallow: /admin/
+Disallow: /api/
+Disallow: /vendor/
+Disallow: /storage/
+Disallow: /login
+
+Sitemap: https://premiumglobalexp.com/sitemap.xml

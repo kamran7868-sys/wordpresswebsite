@@ -143,4 +143,43 @@ class ContactManagementTest extends TestCase
             'status' => 'in_progress',
         ]);
     }
+
+    /**
+     * Test admin can send official reply, saving reply text and marking status as replied.
+     */
+    public function test_admin_can_send_reply_to_contact_inquiry(): void
+    {
+        $contact = ContactInquiry::create([
+            'full_name' => 'Sophia Loren',
+            'email' => 'sophia@rome-expeditions.it',
+            'phone' => '+39 06 698 1234',
+            'subject' => 'Amalfi Coast Yacht Tour',
+            'message' => 'Please provide itinerary details for July.',
+            'status' => 'unread',
+        ]);
+
+        $this->actingAs($this->admin);
+
+        $replySubject = 'Re: Amalfi Coast Yacht Tour — Premium Global Expeditions';
+        $replyBody = 'Dear Sophia, we are delighted to assist you with the Amalfi itinerary.';
+
+        $response = $this->post("/admin/contacts/{$contact->id}/reply", [
+            'reply_subject' => $replySubject,
+            'reply_message' => $replyBody,
+        ]);
+
+        $response->assertRedirect();
+        $response->assertSessionHas('success');
+
+        $this->assertDatabaseHas('contact_inquiries', [
+            'id' => $contact->id,
+            'status' => 'replied',
+            'admin_reply' => $replyBody,
+        ]);
+
+        $detailResponse = $this->get("/admin/contacts/{$contact->id}");
+        $detailResponse->assertStatus(200);
+        $detailResponse->assertSee($replyBody);
+        $detailResponse->assertSee('Reply Sent');
+    }
 }

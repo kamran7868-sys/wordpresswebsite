@@ -273,4 +273,39 @@ class MvcRoutesTest extends TestCase
             'status' => 'approved',
         ]);
     }
+
+    /**
+     * Test sitemap.xml returns 200 with valid XML content.
+     */
+    public function test_sitemap_returns_valid_xml(): void
+    {
+        $response = $this->get('/sitemap.xml');
+        $response->assertStatus(200);
+        $response->assertHeader('Content-Type', 'application/xml; charset=utf-8');
+
+        $content = $response->getContent();
+        $this->assertStringContainsString('<?xml version="1.0" encoding="UTF-8"?>', $content);
+        $this->assertStringContainsString('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">', $content);
+        $this->assertStringContainsString('/packages', $content);
+        $this->assertStringContainsString('/about', $content);
+        $this->assertStringContainsString('/contact', $content);
+        $this->assertStringContainsString('/register-dmc', $content);
+    }
+
+    /**
+     * Test robots.txt contains required allow/disallow directives and sitemap URL.
+     */
+    public function test_robots_txt_contains_directives(): void
+    {
+        $robotsPath = public_path('robots.txt');
+        $this->assertFileExists($robotsPath);
+
+        $content = file_get_contents($robotsPath);
+        $this->assertStringContainsString('User-agent: *', $content);
+        $this->assertStringContainsString('Allow: /assets/media/', $content);
+        $this->assertStringContainsString('Allow: /storage/media/', $content);
+        $this->assertStringContainsString('Disallow: /admin/', $content);
+        $this->assertStringContainsString('Disallow: /api/', $content);
+        $this->assertStringContainsString('Sitemap:', $content);
+    }
 }
