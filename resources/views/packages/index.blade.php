@@ -781,7 +781,7 @@
       <div class="container hero-container" style="position: relative; z-index: 3;">
         <div class="hero-content text-center" style="max-width: 860px; margin: 0 auto; text-align: center;">
           <span class="hero-breadcrumb">Packages &amp; Expeditions</span>
-          <h1 class="hero-title" style="letter-spacing: 2px; margin-bottom: 0.75rem;">Curated Expeditions &amp; All-Inclusive Holiday Packages</h1>
+          <h1 class="hero-title" style="letter-spacing: 4px; margin-bottom: 0.75rem;">PREMIUM GLOBAL EXPEDITIONS</h1>
           <p class="hero-subtitle-script" style="font-size: 2.2rem; color: var(--color-gold); margin-bottom: 0.5rem; font-family: var(--font-script);">Where Dreams Become A Reality</p>
           <hr class="gold-rule center" style="margin: 0.75rem auto 1.25rem; width: 80px; border-color: var(--color-gold);">
           <p class="hero-tagline-lead" style="font-family: var(--font-body); font-size: 1.15rem; color: rgba(247, 244, 237, 0.95); font-weight: 500; letter-spacing: 0.5px; max-width: 680px; margin: 0 auto;">

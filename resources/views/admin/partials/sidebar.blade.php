@@ -67,17 +67,27 @@
 
   <!-- SIDEBAR FOOTER (USER & LOGOUT) -->
   <div class="sidebar-footer">
-    <div class="user-session-info">
-      <div>
-        <div class="user-name">{{ auth()->user()->name ?? 'PGE Admin' }}</div>
-        <div style="font-size: 0.7rem; color: var(--pge-gold-light);">{{ auth()->user()->email ?? 'admin@pge.com' }}</div>
+    <div class="user-profile-box">
+      <div class="user-avatar-badge">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+        </svg>
       </div>
-      <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
-        @csrf
-        <button type="submit" class="btn-logout" title="Sign out of administration">
-          Sign Out
-        </button>
-      </form>
+      <div class="user-text-meta">
+        <div class="user-name" title="{{ auth()->user()->name ?? 'PGE Global Concierge Admin' }}">{{ auth()->user()->name ?? 'PGE Global Concierge Admin' }}</div>
+        <div class="user-email" title="{{ auth()->user()->email ?? 'admin@premiumglobalexp.com' }}">{{ auth()->user()->email ?? 'admin@premiumglobalexp.com' }}</div>
+      </div>
     </div>
+    <form action="{{ route('logout') }}" method="POST" class="user-logout-form">
+      @csrf
+      <button type="submit" class="btn-logout" title="Sign out of administration">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+          <polyline points="16 17 21 12 16 7"></polyline>
+          <line x1="21" y1="12" x2="9" y2="12"></line>
+        </svg>
+        <span>Sign Out</span>
+      </button>
+    </form>
   </div>
 </aside>

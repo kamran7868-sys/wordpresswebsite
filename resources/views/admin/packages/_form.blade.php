@@ -391,10 +391,12 @@
   </div>
 
   <!-- FORM FOOTER ACTIONS -->
-  <div class="form-card-footer">
-    <a href="{{ route('admin.packages.index') }}" class="btn btn-outline">Cancel & Back</a>
-    <div style="display: flex; gap: 0.75rem;">
-      <button type="submit" class="btn btn-primary" style="padding: 0.65rem 2rem;">
+  <div class="form-card-footer" style="padding: 1.5rem 2.25rem; background-color: #F8FAFC; border-top: 1px solid var(--pge-cloud-mist); display: flex; justify-content: space-between; align-items: center; gap: 1.25rem; flex-wrap: wrap;">
+    <a href="{{ route('admin.packages.index') }}" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1.4rem;">
+      &larr; Cancel &amp; Back
+    </a>
+    <div style="display: flex; gap: 1rem; align-items: center;">
+      <button type="submit" class="btn btn-primary" style="padding: 0.7rem 2.25rem; font-weight: 700; box-shadow: 0 2px 6px rgba(182, 153, 100, 0.35);">
         Save Package
       </button>
     </div>

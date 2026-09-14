@@ -198,45 +198,93 @@ body.admin-body-wrap {
 }
 
 .sidebar-footer {
-  padding: 1.35rem 1.6rem;
+  padding: 1.25rem 1.35rem;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(18, 21, 37, 0.45);
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.85rem;
   font-size: 0.78rem;
   color: #94A3B8;
+  margin-top: auto;
 }
 
-.user-session-info {
+.user-profile-box {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.user-avatar-badge {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: 50%;
+  background: rgba(182, 153, 100, 0.18);
+  border: 1px solid rgba(182, 153, 100, 0.4);
+  color: var(--pge-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.user-text-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+  flex-grow: 1;
 }
 
 .user-name {
   color: var(--pge-white);
+  font-size: 0.82rem;
   font-weight: 600;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-email {
+  font-size: 0.72rem;
+  color: #DFD3BD;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0.9;
+}
+
+.user-logout-form {
+  margin: 0;
+  width: 100%;
 }
 
 .btn-logout {
-  background: none;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #CBD5E1;
-  padding: 0.35rem 0.7rem;
-  border-radius: 4px;
-  font-size: 0.75rem;
+  width: 100%;
+  background: rgba(220, 38, 38, 0.08);
+  border: 1px solid rgba(220, 38, 38, 0.35);
+  color: #FCA5A5;
+  padding: 0.55rem 0.85rem;
+  border-radius: 5px;
+  font-size: 0.78rem;
+  font-weight: 600;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  transition: all 0.2s;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
 }
 
 .btn-logout:hover {
   background-color: #DC2626;
   border-color: #DC2626;
-  color: #FFF;
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
 }
 
 /* --------------------------------------------------------------------------
@@ -1035,6 +1083,17 @@ nav[role="navigation"] svg {
 
 .form-tab-panel.active {
   display: block;
+}
+
+.form-card-footer {
+  padding: 1.5rem 2.25rem;
+  background-color: #F8FAFC;
+  border-top: 1px solid var(--pge-cloud-mist);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
 }
 
 .form-grid {
