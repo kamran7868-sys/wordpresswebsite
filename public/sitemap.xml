@@ -31,18 +31,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://premiumglobalexp.com/explore-packages/rocky-mountaineer-luxury-express</loc>
-    <lastmod>2026-09-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://premiumglobalexp.com/explore-packages/pharaohs-pyramids-odyssey</loc>
-    <lastmod>2026-09-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://premiumglobalexp.com/explore-packages/island-hopping-villa-escape</loc>
     <lastmod>2026-09-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -122,6 +110,18 @@
   </url>
   <url>
     <loc>https://premiumglobalexp.com/stay-detail/katikies-santorini-cliffside-retreat</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://premiumglobalexp.com/explore-packages/rocky-mountaineer-luxury-express</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://premiumglobalexp.com/explore-packages/pharaohs-pyramids-odyssey</loc>
     <lastmod>2026-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
