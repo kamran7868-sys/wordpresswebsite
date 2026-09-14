@@ -1960,50 +1960,257 @@ img, picture, video, canvas, svg {
 }
 
 /* ==========================================================================
-   TABLET VIEWPORT (768px – 1023px)
+   TABLET & MOBILE NAVIGATION SYSTEM (Screens under 1024px)
    ========================================================================== */
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (max-width: 1023px) {
+  /* Activate mobile hamburger toggle for all viewport widths under 1024px */
   .mobile-toggle {
-    display: none !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    background: transparent;
+    border: 1.5px solid rgba(182, 153, 100, 0.4);
+    border-radius: var(--radius-sm);
+    color: var(--color-gold);
+    cursor: pointer;
+    padding: 0;
+    transition: var(--transition-fast);
+    z-index: 1002;
+    position: relative;
   }
 
+  .mobile-toggle:hover,
+  .mobile-toggle:focus-visible,
+  .mobile-toggle.is-active {
+    border-color: var(--color-gold);
+    background: rgba(182, 153, 100, 0.15);
+  }
+
+  .mobile-toggle svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--color-gold);
+    transition: transform 0.2s ease;
+  }
+
+  /* Backdrop Dark Dim Overlay */
+  .nav-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background-color: rgba(18, 21, 37, 0.72);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .nav-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Full-Featured Mobile Slide-Over Navigation Panel */
+  .nav-menu {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: auto !important;
+    width: min(100%, 375px) !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    background: linear-gradient(180deg, #181D2E 0%, #121525 100%) !important;
+    flex-direction: column !important;
+    padding: 5.25rem 1.4rem 2.5rem !important;
+    gap: 1.25rem !important;
+    border-left: 1px solid rgba(182, 153, 100, 0.3) !important;
+    border-bottom: none !important;
+    transform: translateX(100%) !important;
+    transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.32s !important;
+    box-shadow: -10px 0 35px rgba(0, 0, 0, 0.65) !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    z-index: 1001 !important;
+    display: flex !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  .nav-menu.mobile-open {
+    transform: translateX(0) !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+
+  /* Prevent backdrop-filter stacking trap on header when mobile menu is active */
+  body.nav-open .main-header {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Nav Links in Mobile Drawer */
+  .nav-menu-links {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.4rem !important;
+    width: 100% !important;
+    border-bottom: 1px solid rgba(182, 153, 100, 0.2) !important;
+    padding-bottom: 1.15rem !important;
+  }
+
+  .nav-menu-links .nav-link {
+    font-size: 1.15rem !important;
+    font-family: var(--font-display) !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.6px !important;
+    color: var(--color-ivory) !important;
+    padding: 0.85rem 0.8rem !important;
+    border-radius: var(--radius-sm) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    min-height: 48px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+    transition: all 0.2s ease !important;
+    text-decoration: none !important;
+  }
+
+  .nav-menu-links .nav-link:hover,
+  .nav-menu-links .nav-link.active {
+    color: var(--color-gold) !important;
+    background: rgba(182, 153, 100, 0.12) !important;
+    padding-left: 1.1rem !important;
+    border-bottom-color: rgba(182, 153, 100, 0.3) !important;
+  }
+
+  .nav-menu-links .nav-link::after {
+    content: '→' !important;
+    font-size: 1.15rem !important;
+    color: var(--color-gold) !important;
+    opacity: 0.6 !important;
+    transition: transform 0.2s ease, opacity 0.2s ease !important;
+  }
+
+  .nav-menu-links .nav-link:hover::after,
+  .nav-menu-links .nav-link.active::after {
+    opacity: 1 !important;
+    transform: translateX(4px) !important;
+  }
+
+  /* Primary Action Button inside Mobile Drawer */
+  .nav-menu-mobile-action {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .mobile-menu-btn {
+    width: 100% !important;
+    min-height: 48px !important;
+    font-size: 0.88rem !important;
+    letter-spacing: 1px !important;
+    justify-content: center !important;
+    display: inline-flex !important;
+    box-shadow: 0 4px 18px rgba(182, 153, 100, 0.35) !important;
+  }
+
+  /* Mobile Quick Travel Services Utility Drawer Section */
+  .nav-menu-mobile-utility {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+    background: rgba(37, 46, 71, 0.55) !important;
+    border: 1px solid rgba(182, 153, 100, 0.25) !important;
+    border-radius: var(--radius-md) !important;
+    padding: 1.15rem 0.95rem !important;
+    width: 100% !important;
+  }
+
+  .mobile-utility-title {
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    color: var(--color-gold) !important;
+    margin-bottom: 0.2rem !important;
+  }
+
+  .mobile-utility-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.6rem !important;
+  }
+
+  .mobile-utility-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.45rem !important;
+    padding: 0.6rem 0.5rem !important;
+    background: rgba(18, 21, 37, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: var(--radius-sm) !important;
+    color: rgba(247, 244, 237, 0.92) !important;
+    text-decoration: none !important;
+    font-size: 0.76rem !important;
+    font-weight: 500 !important;
+    min-height: 42px !important;
+    transition: var(--transition-fast) !important;
+  }
+
+  .mobile-utility-item svg {
+    width: 16px !important;
+    height: 16px !important;
+    fill: var(--color-gold) !important;
+    flex-shrink: 0 !important;
+  }
+
+  .mobile-utility-item:hover,
+  .mobile-utility-item:focus {
+    color: var(--color-gold) !important;
+    border-color: rgba(182, 153, 100, 0.4) !important;
+    background: rgba(182, 153, 100, 0.15) !important;
+  }
+
+  .mobile-utility-footer {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    font-size: 0.72rem !important;
+    color: rgba(247, 244, 237, 0.7) !important;
+    border-top: 1px dashed rgba(182, 153, 100, 0.25) !important;
+    padding-top: 0.75rem !important;
+    margin-top: 0.25rem !important;
+  }
+
+  .mobile-utility-footer svg {
+    width: 14px !important;
+    height: 14px !important;
+    fill: var(--color-gold) !important;
+    flex-shrink: 0 !important;
+  }
+}
+
+/* ==========================================================================
+   TABLET VIEWPORT SPECIFICS (768px – 1023px)
+   ========================================================================== */
+@media (min-width: 768px) and (max-width: 1023px) {
   .brand-logo-img {
     height: 42px;
   }
 
-  .main-header .btn-primary {
+  .header-nav-action-btn {
     padding: 0.65rem 1.15rem;
     font-size: 0.78rem;
     letter-spacing: 0.8px;
     white-space: nowrap;
-  }
-
-  .nav-menu {
-    display: flex !important;
-    position: static !important;
-    flex-direction: row !important;
-    transform: none !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-    border: none !important;
-    background: transparent !important;
-    height: auto !important;
-  }
-
-  .nav-menu-links {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 1.25rem;
-  }
-
-  .nav-menu-links .nav-link {
-    font-size: 0.86rem;
-  }
-
-  .nav-menu-mobile-action,
-  .nav-menu-mobile-utility {
-    display: none !important;
   }
 
   .hero-section {
@@ -2100,184 +2307,134 @@ img, picture, video, canvas, svg {
     flex-shrink: 0;
   }
 
+  /* Hide wide "Register as a DMC" in mobile header bar so Logo & Hamburger have clean space without wrapping */
   .header-nav-action-btn {
-    padding: 0.5rem 0.85rem !important;
-    font-size: 0.72rem !important;
-    letter-spacing: 0.4px !important;
-    white-space: nowrap;
-    min-height: 42px;
-    display: inline-flex;
-    align-items: center;
-    border-radius: var(--radius-sm);
+    display: none !important;
   }
 
-  .mobile-toggle {
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    min-width: 44px;
-    min-height: 44px;
-    background: transparent;
-    border: 1px solid rgba(182, 153, 100, 0.35);
-    border-radius: var(--radius-sm);
-    color: var(--color-gold);
-    cursor: pointer;
-    padding: 0;
-    transition: var(--transition-fast);
+  /* --------------------------------------------------------------------------
+     2. UNIVERSAL MOBILE-FRIENDLY BUTTON SIZING
+     -------------------------------------------------------------------------- */
+  /* Global Buttons Touch Sizing */
+  .btn-primary,
+  .btn-secondary,
+  .btn-secondary-outline,
+  .btn-navy,
+  .btn-outline,
+  .btn-hero-primary,
+  .btn-hero-secondary {
+    padding: 0.72rem 1.35rem !important;
+    font-size: 0.82rem !important;
+    letter-spacing: 0.7px !important;
+    min-height: 44px !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+    line-height: 1.35 !important;
+    white-space: normal !important;
+    border-radius: var(--radius-sm) !important;
   }
 
-  .mobile-toggle svg {
-    width: 24px;
-    height: 24px;
-    fill: var(--color-gold);
+  /* Hero Actions on Mobile */
+  .hero-actions,
+  .package-hero-actions,
+  .stay-hero-actions,
+  .subpage-hero-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    gap: 0.75rem !important;
   }
 
-  .mobile-toggle:hover,
-  .mobile-toggle:focus-visible {
-    border-color: var(--color-gold);
-    background: rgba(182, 153, 100, 0.12);
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary,
+  .package-hero-actions .btn-primary,
+  .package-hero-actions .btn-secondary,
+  .package-hero-actions .btn-secondary-outline,
+  .stay-hero-actions .btn-primary,
+  .stay-hero-actions .btn-secondary,
+  .stay-hero-actions .btn-secondary-outline {
+    width: 100% !important;
+    min-height: 48px !important;
+    padding: 0.8rem 1.25rem !important;
+    font-size: 0.82rem !important;
+    justify-content: center !important;
+    margin: 0 !important;
   }
 
-  /* 2. FULL-FEATURED MOBILE DRAWER MENU */
-  .nav-menu {
-    position: fixed;
-    top: 68px;
-    left: 0;
-    width: 100%;
-    height: calc(100vh - 68px);
-    height: calc(100dvh - 68px);
-    background-color: var(--color-midnight);
-    flex-direction: column;
-    padding: 1.5rem 1.25rem 2.5rem;
-    gap: 1.25rem;
-    border-bottom: 2px solid var(--color-gold);
-    transform: translateX(100%);
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 16px 32px rgba(18, 21, 37, 0.45);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    z-index: 999;
-    display: flex;
+  /* Package Cards & Grid Action Buttons */
+  .cards-grid .package-card .btn-primary,
+  .cards-grid .package-card .btn-outline,
+  .package-card-content .btn-primary,
+  .package-card-content .btn-outline,
+  .stay-card-content .btn-primary,
+  .voyage-card-content .btn-primary,
+  .card-action-wrap .btn-primary,
+  .card-action-wrap .btn-outline {
+    width: 100% !important;
+    min-height: 44px !important;
+    padding: 0.7rem 1rem !important;
+    font-size: 0.8rem !important;
+    justify-content: center !important;
   }
 
-  .nav-menu.mobile-open {
-    transform: translateX(0);
+  /* Form Action & Submission Buttons */
+  .flight-inquiry-container button[type="submit"],
+  .contact-form-card button[type="submit"],
+  .dmc-registration-form button[type="submit"],
+  .form-actions-wrap button[type="submit"],
+  .flight-inquiry-actions button,
+  .form-submit-btn,
+  .btn-booking-submit {
+    width: 100% !important;
+    min-height: 48px !important;
+    font-size: 0.86rem !important;
+    padding: 0.85rem 1.4rem !important;
+    justify-content: center !important;
   }
 
-  .nav-menu-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-    width: 100%;
-    border-bottom: 1px solid rgba(182, 153, 100, 0.2);
-    padding-bottom: 1rem;
+  /* CTA Banner Section Button */
+  .cta-section .btn-primary,
+  .cta-box .btn-primary {
+    width: 100% !important;
+    max-width: 320px !important;
+    margin: 0 auto !important;
+    min-height: 48px !important;
+    font-size: 0.85rem !important;
+    padding: 0.85rem 1.5rem !important;
+    justify-content: center !important;
   }
 
-  .nav-menu-links .nav-link {
-    font-size: 1.15rem;
-    font-family: var(--font-display);
-    font-weight: 600;
-    color: var(--color-ivory);
-    padding: 0.75rem 0.5rem;
-    border-radius: var(--radius-sm);
-    display: flex;
-    align-items: center;
-    min-height: 44px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.2s ease;
+  /* Category Pills, Filter Tabs, and Quick Utility Touch Scrolling */
+  .category-pills,
+  .category-tabs,
+  .filter-tabs {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    gap: 0.5rem !important;
+    padding-bottom: 0.4rem !important;
   }
 
-  .nav-menu-links .nav-link.active,
-  .nav-menu-links .nav-link:hover {
-    color: var(--color-gold);
-    background: rgba(182, 153, 100, 0.08);
-    padding-left: 0.75rem;
+  .category-pills::-webkit-scrollbar,
+  .category-tabs::-webkit-scrollbar,
+  .filter-tabs::-webkit-scrollbar {
+    display: none !important;
   }
 
-  .nav-menu-mobile-action {
-    width: 100%;
-  }
-
-  .mobile-menu-btn {
-    width: 100%;
-    min-height: 48px;
-    font-size: 0.9rem;
-    justify-content: center;
-  }
-
-  /* Mobile Utility Services Drawer */
-  .nav-menu-mobile-utility {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    background: rgba(37, 46, 71, 0.55);
-    border: 1px solid rgba(182, 153, 100, 0.25);
-    border-radius: var(--radius-md);
-    padding: 1.25rem 1rem;
-  }
-
-  .mobile-utility-title {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--color-gold);
-    margin-bottom: 0.25rem;
-  }
-
-  .mobile-utility-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.65rem;
-  }
-
-  .mobile-utility-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.6rem 0.5rem;
-    background: rgba(18, 21, 37, 0.5);
-    border-radius: var(--radius-sm);
-    color: rgba(247, 244, 237, 0.9);
-    text-decoration: none;
-    font-size: 0.78rem;
-    font-weight: 500;
-    min-height: 44px;
-    transition: var(--transition-fast);
-  }
-
-  .mobile-utility-item svg {
-    width: 16px;
-    height: 16px;
-    fill: var(--color-gold);
-    flex-shrink: 0;
-  }
-
-  .mobile-utility-item:hover,
-  .mobile-utility-item:focus {
-    color: var(--color-gold);
-    background: rgba(182, 153, 100, 0.15);
-  }
-
-  .mobile-utility-footer {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.72rem;
-    color: rgba(247, 244, 237, 0.7);
-    border-top: 1px dashed rgba(182, 153, 100, 0.25);
-    padding-top: 0.75rem;
-    margin-top: 0.25rem;
-  }
-
-  .mobile-utility-footer svg {
-    width: 14px;
-    height: 14px;
-    fill: var(--color-gold);
-    flex-shrink: 0;
+  .category-pill,
+  .tab-btn,
+  .filter-btn {
+    flex-shrink: 0 !important;
+    padding: 0.55rem 1.1rem !important;
+    font-size: 0.78rem !important;
+    min-height: 40px !important;
+    white-space: nowrap !important;
   }
 
   /* 3. HERO SECTIONS */
@@ -2576,15 +2733,37 @@ img, picture, video, canvas, svg {
     max-width: 155px;
   }
 
-  .header-nav-action-btn {
-    padding: 0.45rem 0.65rem !important;
-    font-size: 0.68rem !important;
-  }
-
   .nav-menu-mobile-utility .mobile-utility-grid {
     grid-template-columns: 1fr;
   }
 }
+
+/* Compact screens (under 480px, e.g. iPhone SE, Galaxy A, 320px - 414px) */
+@media (max-width: 480px) {
+  .btn-primary,
+  .btn-secondary,
+  .btn-secondary-outline,
+  .btn-navy,
+  .btn-outline {
+    padding: 0.65rem 1rem !important;
+    font-size: 0.78rem !important;
+    letter-spacing: 0.5px !important;
+    min-height: 44px !important;
+  }
+
+  .brand-logo-img {
+    height: 34px !important;
+    max-width: 155px !important;
+  }
+
+  .mobile-toggle {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+  }
+}
+
 
 /* Micro-refinements for Small Smartphones (<= 375px) */
 @media (max-width: 375px) {
