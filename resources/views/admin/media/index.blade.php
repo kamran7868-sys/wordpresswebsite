@@ -381,6 +381,47 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+@media (max-width: 1023px) {
+  .media-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .media-header-stats {
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .media-stat-card {
+    min-width: 100%;
+    padding: 1rem 1.15rem;
+  }
+  .media-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  .pge-modal-backdrop {
+    padding: 1rem;
+  }
+  .pge-modal-box {
+    max-width: 100%;
+  }
+  .pge-modal-header,
+  .pge-modal-body,
+  .pge-modal-footer {
+    padding: 1rem 1.15rem;
+  }
+  .pge-toast {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    justify-content: center;
+  }
+}
 </style>
 @endsection
 

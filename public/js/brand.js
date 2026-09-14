@@ -42,26 +42,43 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileToggle = document.getElementById('mobileMenuToggle');
   const navMenu = document.getElementById('mainNavMenu');
 
-  if (mobileToggle && navMenu) {
-    mobileToggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      navMenu.classList.toggle('mobile-open');
-      const isExpanded = navMenu.classList.contains('mobile-open');
-      mobileToggle.setAttribute('aria-expanded', isExpanded);
-    });
+  function closeMobileNav() {
+    if (navMenu && navMenu.classList.contains('mobile-open')) {
+      navMenu.classList.remove('mobile-open');
+      document.body.classList.remove('nav-open');
+      mobileToggle?.setAttribute('aria-expanded', 'false');
+    }
+  }
 
-    navMenu.querySelectorAll('.nav-link').forEach(link => {
+  function toggleMobileNav(e) {
+    if (e) e.stopPropagation();
+    if (!navMenu) return;
+    const willOpen = !navMenu.classList.contains('mobile-open');
+    navMenu.classList.toggle('mobile-open', willOpen);
+    document.body.classList.toggle('nav-open', willOpen);
+    mobileToggle?.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+  }
+
+  if (mobileToggle && navMenu) {
+    mobileToggle.addEventListener('click', toggleMobileNav);
+
+    navMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        navMenu.classList.remove('mobile-open');
-        mobileToggle.setAttribute('aria-expanded', 'false');
+        closeMobileNav();
       });
     });
 
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
       if (navMenu.classList.contains('mobile-open') && !navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
-        navMenu.classList.remove('mobile-open');
-        mobileToggle.setAttribute('aria-expanded', 'false');
+        closeMobileNav();
+      }
+    });
+
+    // Close menu on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navMenu.classList.contains('mobile-open')) {
+        closeMobileNav();
       }
     });
   }
@@ -341,7 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ------------------------------------------------------------------------
      6. QUICK STATS COUNTER ANIMATION
      ------------------------------------------------------------------------ */
-  const statNumbers = document.querySelectorAll('.stat-number[data-count]');
+  const statNumbers = document.querySelectorAll('.stat-number[data-count], .stat-number[data-target]');
   if (statNumbers.length > 0) {
     let animated = false;
 
@@ -350,33 +367,60 @@ document.addEventListener('DOMContentLoaded', () => {
       animated = true;
 
       statNumbers.forEach(stat => {
-        const target = parseInt(stat.getAttribute('data-count'), 10);
+        const rawTarget = stat.getAttribute('data-count') || stat.getAttribute('data-target');
+        const target = parseInt(rawTarget, 10);
+        if (isNaN(target)) return;
+
         const prefix = stat.getAttribute('data-prefix') || '';
         const suffix = stat.getAttribute('data-suffix') || '';
+        const format = stat.getAttribute('data-format');
         const duration = 1800;
-        const stepTime = 25;
-        const totalSteps = duration / stepTime;
-        const stepIncrement = target / totalSteps;
+        const startTime = performance.now();
 
-        let current = 0;
-        const timer = setInterval(() => {
-          current += stepIncrement;
-          if (current >= target) {
-            stat.textContent = prefix + target.toLocaleString() + suffix;
-            clearInterval(timer);
+        function updateCounter(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          // Ease-out cubic curve
+          const easeOut = 1 - Math.pow(1 - progress, 3);
+          const currentVal = Math.floor(easeOut * target);
+
+          const formattedVal = (format === 'comma' || target >= 1000)
+            ? currentVal.toLocaleString()
+            : currentVal.toString();
+
+          stat.textContent = prefix + formattedVal + suffix;
+
+          if (progress < 1) {
+            requestAnimationFrame(updateCounter);
           } else {
-            stat.textContent = prefix + Math.floor(current).toLocaleString() + suffix;
+            const finalFormatted = (format === 'comma' || target >= 1000)
+              ? target.toLocaleString()
+              : target.toString();
+            stat.textContent = prefix + finalFormatted + suffix;
           }
-        }, stepTime);
+        }
+
+        requestAnimationFrame(updateCounter);
       });
     }
 
-    const statsSection = document.querySelector('.quick-stats-strip');
-    if (statsSection) {
+    const statsSection = document.querySelector('.stats-section, #stats-section, .quick-stats-strip');
+    if (statsSection && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounters();
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      observer.observe(statsSection);
+    } else if (statsSection) {
       function checkStatsInView() {
         const rect = statsSection.getBoundingClientRect();
         if (rect.top < window.innerHeight && rect.bottom >= 0) {
           animateCounters();
+          window.removeEventListener('scroll', checkStatsInView);
         }
       }
       window.addEventListener('scroll', checkStatsInView, { passive: true });

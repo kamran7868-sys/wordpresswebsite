@@ -18,10 +18,10 @@ class AdminUserSeeder extends Seeder
     {
         // 1. Create or update admin user
         User::updateOrCreate(
-            ['email' => 'admin@pge.com'],
+            ['email' => 'admin@premiumglobalexp.com'],
             [
                 'name' => 'PGE Global Concierge Admin',
-                'password' => Hash::make('Secret123!'),
+                'password' => Hash::make('admin24@#$'),
             ]
         );
 

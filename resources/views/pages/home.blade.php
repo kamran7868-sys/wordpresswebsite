@@ -3,583 +3,6 @@
 @section('title', 'Luxury Canadian Travel Company | Premium Global Expeditions')
 @section('meta_description', 'Bespoke journeys with Premium Global Expeditions, a luxury Canadian travel company curating custom holidays, cruises, flights, and 5-star stays.')
 
-@push('styles')
-<style>
-/* ==========================================================================
-   PAGE SPECIFIC STYLES
-   -------------------------------------------------------------------------- */
-.subpage-hero-section {
-  position: relative;
-  width: 100%;
-  height: 380px;
-  min-height: 320px;
-  background-color: var(--color-midnight);
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-}
-
-.subpage-hero-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.hero-breadcrumb {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--color-gold);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  display: inline-block;
-  margin-bottom: 0.5rem;
-}
-
-/* Brand Quote Section */
-.brand-quote-section {
-  background: linear-gradient(135deg, var(--color-midnight) 0%, var(--color-navy) 100%);
-  color: var(--color-ivory);
-  padding: 6rem 1.5rem;
-  text-align: center;
-  position: relative;
-  border-top: 1px solid rgba(182, 153, 100, 0.25);
-  border-bottom: 1px solid rgba(182, 153, 100, 0.25);
-}
-
-.quote-box {
-  max-width: 860px;
-  margin: 0 auto;
-}
-
-.quote-title {
-  font-family: var(--font-display);
-  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
-  font-weight: 600;
-  color: var(--color-ivory);
-  letter-spacing: 1px;
-  margin-bottom: 0.75rem;
-}
-
-.quote-tagline-script {
-  font-family: var(--font-script);
-  font-size: clamp(2rem, 3.8vw, 3rem);
-  color: var(--color-gold);
-  font-weight: 400;
-  display: block;
-}
-
-/* About Intro Copy Readability */
-.about-intro-copy {
-  max-width: 720px;
-  /* ~65-75 chars per line optimal readability */
-}
-
-.about-intro-copy p {
-  font-size: 1.05rem;
-  line-height: 1.85;
-  color: var(--color-navy);
-  margin-bottom: 1.5rem;
-}
-
-.about-intro-copy p:last-child {
-  margin-bottom: 0;
-}
-
-/* --------------------------------------------------------------------------
-   14. VOYAGE DETAIL PAGE SPECIFIC STYLES (MATCHING EXPLORE PACKAGES)
-   -------------------------------------------------------------------------- */
-.package-itinerary-section {
-  background-color: var(--color-ivory);
-  padding: 5rem 0;
-}
-
-.day-cards-timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
-}
-
-.day-card {
-  display: flex;
-  gap: 1.75rem;
-  align-items: flex-start;
-  padding-bottom: 1.75rem;
-  border-bottom: 1px solid rgba(44, 64, 88, 0.12);
-  background: transparent;
-  box-shadow: none;
-  border-radius: 0;
-}
-
-.day-card:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.day-badge {
-  width: 95px;
-  min-height: 105px;
-  background-color: var(--color-navy);
-  border-radius: var(--radius-sm);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0.85rem 0.5rem;
-  text-align: center;
-  flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(18, 21, 37, 0.08);
-}
-
-.day-badge-num {
-  font-family: var(--font-display);
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: #FFFFFF;
-  line-height: 1;
-  margin-bottom: 0.15rem;
-}
-
-.day-badge-label {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--color-gold);
-  line-height: 1;
-  margin-bottom: 0.5rem;
-}
-
-.day-badge-icon {
-  width: 20px;
-  height: 20px;
-  fill: var(--color-gold);
-}
-
-.day-content {
-  flex: 1;
-  padding-top: 0.25rem;
-}
-
-/* ==========================================================================
-   SECTION 15: STAY DETAIL PAGE STYLES
-   Elementor Container: #stay-hero, #stay-overview | Brand Guide 2026
-   ========================================================================== */
-.stay-hero {
-  background-color: var(--color-navy);
-  color: var(--color-ivory);
-  padding: 4.5rem 0 4rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.stay-hero-lineart-bg {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  pointer-events: none;
-  opacity: 0.2;
-  z-index: 1;
-}
-
-.stay-hero .container {
-  position: relative;
-  z-index: 2;
-}
-
-.stay-hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 440px;
-  gap: 3.5rem;
-  align-items: center;
-}
-
-@media (max-width: 991px) {
-  .stay-hero-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  .stay-hero-graphic-wrap {
-    display: none;
-  }
-}
-
-.stay-tags-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-bottom: 1.25rem;
-}
-
-.stay-tag-pill {
-  display: inline-block;
-  padding: 0.35rem 1.1rem;
-  border: 1px solid var(--color-gold);
-  border-radius: 50px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-ivory);
-  background: rgba(37, 46, 71, 0.5);
-  backdrop-filter: blur(4px);
-}
-
-.stay-hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-  font-weight: 600;
-  color: var(--color-ivory);
-  line-height: 1.12;
-  letter-spacing: -0.01em;
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
-}
-
-.stay-hero-rate {
-  font-family: var(--font-display);
-  font-size: clamp(1.4rem, 2.4vw, 1.85rem);
-  font-style: italic;
-  font-weight: 500;
-  color: var(--color-gold);
-  margin-bottom: 1.25rem;
-  display: block;
-}
-
-.stay-hero-desc {
-  font-size: 1.05rem;
-  line-height: 1.75;
-  color: rgba(247, 244, 237, 0.9);
-  max-width: 700px;
-  margin-bottom: 2rem;
-}
-
-.stay-hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-  align-items: center;
-}
-
-.stay-overview-section {
-  background-color: var(--color-ivory);
-  padding: 5rem 0;
-}
-
-.stay-layout-grid {
-  display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 3.5rem;
-  align-items: start;
-}
-
-@media (max-width: 1023px) {
-  .stay-layout-grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-}
-
-.itinerary-main-col,
-.stay-main-col {
-  width: 100%;
-}
-
-.itinerary-eyebrow,
-.stay-eyebrow {
-  color: var(--color-gold);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 0.35rem;
-}
-
-.itinerary-main-title,
-.stay-main-title {
-  font-family: var(--font-display);
-  font-size: 2.8rem;
-  font-weight: 600;
-  color: var(--color-navy);
-  margin-bottom: 2.5rem;
-  line-height: 1.15;
-}
-
-.day-cards-timeline,
-.room-cards-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
-}
-
-.day-card,
-.room-card {
-  display: flex;
-  gap: 1.75rem;
-  align-items: flex-start;
-  padding-bottom: 1.75rem;
-  border-bottom: 1px solid rgba(44, 64, 88, 0.12);
-  background: transparent;
-  box-shadow: none;
-  border-radius: 0;
-}
-
-.day-card:last-child,
-.room-card:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-@media (max-width: 576px) {
-  .day-card,
-  .room-card {
-    gap: 1.25rem;
-  }
-}
-
-.day-badge,
-.room-badge {
-  width: 95px;
-  min-height: 105px;
-  background-color: var(--color-navy);
-  border-radius: var(--radius-sm);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0.85rem 0.5rem;
-  text-align: center;
-  flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(18, 21, 37, 0.08);
-}
-
-.day-badge-num,
-.room-badge-num {
-  font-family: var(--font-display);
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: #FFFFFF;
-  line-height: 1;
-  margin-bottom: 0.15rem;
-}
-
-.day-badge-label,
-.room-badge-label {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--color-gold);
-  line-height: 1;
-  margin-bottom: 0.5rem;
-}
-
-.day-badge-icon,
-.room-badge-icon {
-  width: 22px;
-  height: 22px;
-  fill: var(--color-gold);
-}
-
-.day-content,
-.room-content {
-  flex: 1;
-  padding-top: 0.25rem;
-}
-
-.day-title,
-.room-title {
-  font-family: var(--font-display);
-  font-size: 1.55rem;
-  font-weight: 600;
-  color: var(--color-navy);
-  margin-bottom: 0.5rem;
-  line-height: 1.25;
-}
-
-.day-desc,
-.room-desc {
-  font-size: 0.96rem;
-  line-height: 1.7;
-  color: rgba(37, 46, 71, 0.88);
-  margin-bottom: 0.75rem;
-}
-
-.day-meta,
-.room-meta {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-gold);
-}
-
-.itinerary-footnote,
-.stay-footnote {
-  font-size: 0.82rem;
-  color: rgba(44, 64, 88, 0.7);
-  line-height: 1.6;
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(44, 64, 88, 0.1);
-}
-
-.itinerary-sidebar-col,
-.stay-sidebar-col {
-  width: 100%;
-}
-
-.sticky-sidebar-wrapper {
-  position: sticky;
-  top: 100px;
-  display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
-}
-
-@media (max-width: 1023px) {
-  .sticky-sidebar-wrapper {
-    position: static;
-  }
-}
-
-.sidebar-card {
-  border-radius: var(--radius-md);
-  padding: 2rem;
-  box-shadow: 0 8px 24px rgba(18, 21, 37, 0.06);
-}
-
-.sidebar-card.highlights-card {
-  background-color: var(--color-navy);
-  color: var(--color-ivory);
-}
-
-.sidebar-card.includes-card {
-  background-color: var(--color-travel-sand);
-  color: var(--color-navy);
-}
-
-.sidebar-card-title {
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: 1.25rem;
-  display: block;
-}
-
-.highlights-card .sidebar-card-title {
-  color: var(--color-gold);
-}
-
-.includes-card .sidebar-card-title {
-  color: var(--color-navy);
-}
-
-.highlights-list,
-.includes-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
-}
-
-.highlight-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: rgba(247, 244, 237, 0.92);
-}
-
-.highlight-icon {
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-  margin-top: 3px;
-}
-
-.include-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.85rem;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: var(--color-navy);
-  font-weight: 500;
-}
-
-.include-icon {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-  fill: var(--color-navy);
-  margin-top: 2px;
-}
-
-/* Sidebar Editorial Graphic Panel */
-.sidebar-graphic-panel {
-  background-color: var(--color-midnight);
-  border-radius: var(--radius-md);
-  padding: 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(182, 153, 100, 0.15);
-  box-shadow: 0 8px 24px rgba(18, 21, 37, 0.06);
-}
-
-.sidebar-graphic-svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-/* Mini 2x2 Graphics Grid */
-.sidebar-graphics-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-.mini-graphic-card {
-  background-color: var(--color-navy);
-  border-radius: var(--radius-sm);
-  height: 110px;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(182, 153, 100, 0.15);
-  transition: var(--transition-fast);
-}
-
-.mini-graphic-card:hover {
-  border-color: var(--color-gold);
-}
-
-.mini-graphic-svg {
-  width: 100%;
-  max-width: 100px;
-  height: auto;
-}
-</style>
-@endpush
-
 @section('content')
 <!-- ==========================================================================
          SECTION 3: HERO SECTION (CINEMATIC CAROUSEL)
@@ -740,17 +163,17 @@
         <div class="stats-grid">
 
           <div class="stat-item">
-            <div class="stat-number" data-target="150" data-suffix="+">0+</div>
+            <div class="stat-number" data-target="150" data-count="150" data-suffix="+">0+</div>
             <div class="stat-label">DMC Partners</div>
           </div>
 
           <div class="stat-item">
-            <div class="stat-number" data-target="85" data-suffix="+">0+</div>
+            <div class="stat-number" data-target="85" data-count="85" data-suffix="+">0+</div>
             <div class="stat-label">Curated Destinations</div>
           </div>
 
           <div class="stat-item">
-            <div class="stat-number" data-target="12500" data-suffix="+" data-format="comma">0+</div>
+            <div class="stat-number" data-target="12500" data-count="12500" data-suffix="+" data-format="comma">0+</div>
             <div class="stat-label">Happy Travellers</div>
           </div>
 
@@ -1330,3 +753,101 @@
       </div>
     </section>
 @endsection
+
+@push('schema')
+@php
+$homeItemList = [];
+$pos = 1;
+
+$allFeatured = collect()
+    ->merge($holidayPackages ?? [])
+    ->merge($cruisePackages ?? [])
+    ->merge($hotelPackages ?? [])
+    ->take(10);
+
+foreach ($allFeatured as $item) {
+    if ($item->category === 'hotel') {
+        $itemUrl = route('stay-detail', ['slug' => $item->slug]);
+    } elseif ($item->category === 'cruise') {
+        $itemUrl = route('voyage-detail', ['slug' => $item->slug]);
+    } else {
+        $itemUrl = route('explore-packages', ['slug' => $item->slug]);
+    }
+
+    $img = $item->featured_image ? (str_starts_with($item->featured_image, 'http') ? $item->featured_image : asset($item->featured_image)) : asset('assets/pge-logo-full-light.svg');
+
+    $homeItemList[] = [
+        '@type' => 'ListItem',
+        'position' => $pos++,
+        'item' => [
+            '@type' => 'TouristTrip',
+            'name' => $item->title,
+            'description' => $item->overview ?: $item->tagline,
+            'url' => $itemUrl,
+            'image' => $img,
+            'offers' => [
+                '@type' => 'Offer',
+                'price' => (float) $item->price_from,
+                'priceCurrency' => $item->currency ?: 'CAD',
+                'availability' => 'https://schema.org/InStock',
+            ],
+            'provider' => [
+                '@id' => url('/') . '/#organization',
+            ],
+        ],
+    ];
+}
+
+$itemListSchema = [
+    '@context' => 'https://schema.org',
+    '@type' => 'ItemList',
+    'name' => 'Featured Luxury Travel Packages & Expeditions',
+    'itemListElement' => $homeItemList,
+];
+
+$faqSchema = [
+    '@context' => 'https://schema.org',
+    '@type' => 'FAQPage',
+    'mainEntity' => [
+        [
+            '@type' => 'Question',
+            'name' => 'What luxury travel services does Premium Global Expeditions offer?',
+            'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => 'Premium Global Expeditions is a registered Canadian tour operator offering bespoke international holiday packages, luxury ocean and river cruises, first/business class airline ticketing, curated 5-star hotel retreats, and customized private itineraries worldwide.',
+            ],
+        ],
+        [
+            '@type' => 'Question',
+            'name' => 'How do I book or customize a luxury vacation package?',
+            'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => 'You can browse our curated holiday, cruise, and stay collections on our website, or contact our Canadian travel concierges via our online inquiry form or email at hello@premiumglobalexp.com for tailored custom itineraries.',
+            ],
+        ],
+        [
+            '@type' => 'Question',
+            'name' => 'Can flights and luxury hotel accommodations be booked together?',
+            'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => 'Yes, our airline ticketing concierge works directly with international carriers to provide seamless flight bookings bundled with private transfers, luxury stays, and private tours.',
+            ],
+        ],
+        [
+            '@type' => 'Question',
+            'name' => 'How can Destination Management Companies (DMCs) partner with PGE?',
+            'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => 'Licensed and reputable local destination management operators can apply through our DMC Registration portal on premiumglobalexp.com to partner with our Canadian global distribution network.',
+            ],
+        ],
+    ],
+];
+@endphp
+<script type="application/ld+json">
+{!! json_encode($itemListSchema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) !!}
+</script>
+<script type="application/ld+json">
+{!! json_encode($faqSchema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) !!}
+</script>
+@endpush

@@ -5,7 +5,74 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initStatusToggles();
+  initAdminSidebar();
 });
+
+/**
+ * PGE Admin Sidebar Drawer Controller (Mobile / Tablet Responsive)
+ */
+function initAdminSidebar() {
+  const sidebar = document.querySelector('.admin-sidebar');
+  const toggleBtn = document.getElementById('adminSidebarToggle');
+  const closeBtn = document.getElementById('adminSidebarClose');
+  const backdrop = document.getElementById('adminSidebarBackdrop');
+
+  function openSidebar() {
+    if (sidebar) {
+      sidebar.classList.add('mobile-open');
+      backdrop?.classList.add('active');
+      document.body.classList.add('admin-nav-open');
+      toggleBtn?.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  function closeSidebar() {
+    if (sidebar) {
+      sidebar.classList.remove('mobile-open');
+      backdrop?.classList.remove('active');
+      document.body.classList.remove('admin-nav-open');
+      toggleBtn?.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  toggleBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (sidebar?.classList.contains('mobile-open')) {
+      closeSidebar();
+    } else {
+      openSidebar();
+    }
+  });
+
+  closeBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    closeSidebar();
+  });
+
+  backdrop?.addEventListener('click', () => {
+    closeSidebar();
+  });
+
+  sidebar?.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 1023) {
+        closeSidebar();
+      }
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sidebar?.classList.contains('mobile-open')) {
+      closeSidebar();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024 && sidebar?.classList.contains('mobile-open')) {
+      closeSidebar();
+    }
+  });
+}
 
 function initStatusToggles() {
   const forms = document.querySelectorAll('.js-status-form');

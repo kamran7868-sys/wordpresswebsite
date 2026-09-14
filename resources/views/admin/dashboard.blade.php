@@ -505,7 +505,7 @@
   /* 6. SPLIT GRID & TABLES */
   .dash-split-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr));
     gap: 1.75rem;
     align-items: start;
     margin-bottom: 2rem;
@@ -627,19 +627,57 @@
     color: var(--pge-gold);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1023px) {
+    .dash-split-grid {
+      grid-template-columns: 1fr;
+    }
     .dash-hero {
-      padding: 1.5rem;
+      padding: 1.75rem 1.5rem;
     }
     .dash-hero-title {
-      font-size: 1.7rem;
+      font-size: 1.85rem;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .dash-hero {
+      padding: 1.35rem 1.15rem;
+    }
+    .dash-hero-title {
+      font-size: 1.5rem;
+    }
+    .dash-hero-actions {
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+      gap: 0.65rem;
+    }
+    .btn-hero-primary, .btn-hero-secondary {
+      width: 100%;
+      justify-content: center;
+      min-height: 44px;
+    }
+    .quick-hub {
+      padding-bottom: 0.75rem;
+      -webkit-overflow-scrolling: touch;
+    }
+    .dash-stats-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
     }
     .dash-split-grid {
       grid-template-columns: 1fr;
+      gap: 1.25rem;
     }
     .dash-ops-footer {
       flex-direction: column;
       align-items: flex-start;
+      gap: 0.85rem;
+      padding: 1.15rem 1.25rem;
+    }
+    .dash-ops-links {
+      flex-wrap: wrap;
+      gap: 0.85rem;
     }
   }
 </style>

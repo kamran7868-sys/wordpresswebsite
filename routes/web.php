@@ -62,6 +62,16 @@ Route::get('/sitemap.xml', function () {
     ]);
 })->name('sitemap');
 
+Route::get('/robots.txt', function () {
+    $robotsPath = public_path('robots.txt');
+    $content = file_exists($robotsPath)
+        ? file_get_contents($robotsPath)
+        : "User-agent: *\nDisallow: /admin/\nDisallow: /login\nDisallow: /api/\n";
+    return response($content, 200, [
+        'Content-Type' => 'text/plain; charset=utf-8',
+    ]);
+})->name('robots');
+
 /*
 |--------------------------------------------------------------------------
 | Staff Authentication Routes

@@ -26,5 +26,9 @@ class AppServiceProvider extends ServiceProvider
         Paginator::defaultSimpleView('admin.pagination');
 
         Package::observe(PackageObserver::class);
+
+        if (!app()->environment('testing') && (str_starts_with((string) config('app.url'), 'https://') || app()->environment('production'))) {
+            \Illuminate\Support\Facades\URL::forceScheme('https');
+        }
     }
 }

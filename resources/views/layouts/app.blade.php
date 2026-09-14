@@ -7,6 +7,30 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>@yield('title', 'Luxury Canadian Travel Company | Premium Global Expeditions')</title>
   <meta name="description" content="@yield('meta_description', 'Bespoke journeys with Premium Global Expeditions, a luxury Canadian travel company curating custom holidays, cruises, flights, and 5-star stays.')">
+  <link rel="canonical" href="{{ url()->current() }}">
+
+  <!-- BRAND SITE ICONS / FAVICONS -->
+  <link rel="icon" type="image/png" sizes="48x48" href="{{ asset('favicon-48x48.png') }}?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}?v=2">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png') }}?v=2">
+  <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}?v=2">
+  <link rel="shortcut icon" href="{{ asset('favicon.ico') }}?v=2">
+
+  <!-- OPEN GRAPH / SOCIAL META -->
+  <meta property="og:site_name" content="Premium Global Expeditions">
+  <meta property="og:url" content="{{ url()->current() }}">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="@yield('title', 'Luxury Canadian Travel Company | Premium Global Expeditions')">
+  <meta property="og:description" content="@yield('meta_description', 'Bespoke journeys with Premium Global Expeditions, a luxury Canadian travel company curating custom holidays, cruises, flights, and 5-star stays.')">
+  <meta property="og:image" content="{{ asset('assets/pge-logo-full-light.svg') }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:domain" content="premiumglobalexp.com">
+  <meta name="twitter:url" content="{{ url()->current() }}">
+
+  <!-- SCHEMA.ORG STRUCTURED DATA -->
+  @include('partials.schema')
+  @stack('schema')
 
   <!-- GOOGLE FONTS (Brand Guide 2026: Cormorant Garamond, Montserrat, Alex Brush) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">

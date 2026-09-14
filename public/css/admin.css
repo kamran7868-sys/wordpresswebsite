@@ -81,8 +81,41 @@ body.admin-body-wrap {
   padding: 1.85rem 1.6rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.sidebar-brand-group {
+  display: flex;
   flex-direction: column;
   gap: 0.35rem;
+  flex-grow: 1;
+}
+
+.admin-sidebar-close {
+  display: none;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+  color: #CBD5E1;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.admin-sidebar-close:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--pge-gold);
+  border-color: var(--pge-gold);
 }
 
 .sidebar-brand-title {
@@ -225,6 +258,55 @@ body.admin-body-wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
+}
+
+.topbar-left-group {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-width: 0;
+}
+
+.admin-sidebar-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+  color: var(--pge-gold-light);
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.admin-sidebar-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--pge-gold);
+  border-color: var(--pge-gold);
+}
+
+.admin-sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(18, 21, 37, 0.65);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 1040;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.admin-sidebar-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .topbar-page-title {
@@ -568,8 +650,9 @@ body.admin-body-wrap {
   display: flex;
   align-items: center;
   position: relative;
-  min-width: 380px; /* Widened so placeholder text never gets truncated (Issue 3) */
-  max-width: 100%;
+  width: 100%;
+  max-width: 420px;
+  min-width: 0;
 }
 
 .search-input {
@@ -1412,4 +1495,365 @@ nav[role="navigation"] svg {
 @keyframes slideUp {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   9. RESPONSIVE BREAKPOINTS (PGE 2026 SPECIFICATION)
+   Desktop: 1024px+
+   Tablet:  768px – 1023px
+   Mobile:  up to 767px (with 480px refinements)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   TABLET BREAKPOINT (max-width: 1023px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1023px) {
+  body.admin-body-wrap {
+    position: relative;
+  }
+
+  body.admin-nav-open {
+    overflow: hidden !important;
+  }
+
+  /* Off-canvas mobile drawer sidebar */
+  .admin-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 290px;
+    max-width: 85vw;
+    height: 100vh;
+    z-index: 1050;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: none;
+  }
+
+  .admin-sidebar.mobile-open {
+    transform: translateX(0);
+    box-shadow: 6px 0 30px rgba(0, 0, 0, 0.45);
+  }
+
+  .admin-sidebar-close {
+    display: inline-flex;
+  }
+
+  .admin-sidebar-toggle {
+    display: inline-flex;
+  }
+
+  /* Admin main content fills viewport */
+  .admin-main {
+    width: 100% !important;
+    margin-left: 0 !important;
+    min-width: 0;
+  }
+
+  .admin-topbar {
+    padding: 1.15rem 1.5rem;
+  }
+
+  .topbar-page-title {
+    font-size: 1.5rem;
+  }
+
+  .admin-content {
+    padding: 1.5rem 1.5rem;
+  }
+
+  /* Stats grid on tablet: 2 equal columns */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  /* Dashboard grid stacked */
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  /* Form columns responsive adjustments for tablet */
+  .col-8 { grid-column: span 12; }
+  .col-6 { grid-column: span 12; }
+  .col-4 { grid-column: span 6; }
+  .col-3 { grid-column: span 6; }
+
+  /* Detail info grid */
+  .detail-info-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   MOBILE BREAKPOINT (max-width: 767px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  .admin-topbar {
+    padding: 0.95rem 1rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .topbar-left-group {
+    gap: 0.65rem;
+  }
+
+  .topbar-page-title {
+    font-size: 1.25rem;
+  }
+
+  .topbar-actions {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .topbar-actions .btn {
+    width: 100%;
+    min-height: 44px;
+    justify-content: center;
+  }
+
+  .admin-content {
+    padding: 1rem 0.85rem;
+  }
+
+  /* Stats cards: single full-width column */
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .stat-card {
+    padding: 1.35rem 1.25rem;
+  }
+
+  .stat-value {
+    font-size: 2rem;
+  }
+
+  /* Card toolbar & filter groups */
+  .card-toolbar {
+    padding: 1rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.85rem;
+  }
+
+  .card-toolbar > div,
+  .card-toolbar > div > div {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.85rem !important;
+    width: 100% !important;
+  }
+
+  .filter-group {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    gap: 0.4rem;
+  }
+
+  .filter-pill {
+    flex-shrink: 0;
+    min-height: 44px;
+    padding: 0 1rem;
+  }
+
+  .search-box {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .search-input {
+    height: 44px;
+    font-size: 16px !important; /* Prevents iOS auto-zoom on focus */
+  }
+
+  /* Table responsiveness & touch scrolling */
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -0.85rem;
+    padding: 0 0.85rem;
+    width: calc(100% + 1.7rem);
+  }
+
+  .admin-table th,
+  .admin-table td {
+    padding: 0.95rem 0.85rem;
+    font-size: 0.82rem;
+  }
+
+  .action-buttons {
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .action-buttons .btn,
+  .action-buttons .btn-sm {
+    min-height: 44px;
+    padding: 0 0.95rem;
+  }
+
+  .table-status-select,
+  .admin-table select.form-select {
+    min-height: 44px !important;
+    font-size: 16px !important;
+  }
+
+  /* Pagination */
+  .pagination-container {
+    padding: 1rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+    text-align: center;
+  }
+
+  .pge-pagination {
+    justify-content: center;
+  }
+
+  .pge-page-link {
+    min-width: 44px;
+    height: 44px;
+  }
+
+  /* Forms & Tabs */
+  .form-tabs-header {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+  }
+
+  .form-tab-btn {
+    padding: 0.85rem 1.15rem;
+    min-height: 44px;
+    flex-shrink: 0;
+  }
+
+  .form-tab-panel {
+    padding: 1.25rem 1rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .col-12, .col-8, .col-6, .col-4, .col-3, .col-2 {
+    grid-column: span 1 !important;
+  }
+
+  /* Form inputs & selects minimum 44px height and 16px font-size */
+  .form-input,
+  .form-select {
+    height: 44px !important;
+    min-height: 44px !important;
+    font-size: 16px !important; /* Disables iOS automatic zooming */
+    padding: 0.65rem 0.85rem;
+  }
+
+  .form-textarea {
+    font-size: 16px !important;
+    padding: 0.75rem 0.85rem;
+  }
+
+  /* Repeatable cards and dropzones */
+  .repeatable-card {
+    padding: 1rem;
+  }
+
+  .hero-image-dropzone {
+    padding: 1.25rem 0.85rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+    gap: 0.65rem;
+  }
+
+  /* Detail views */
+  .detail-header-card {
+    padding: 1.25rem 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .detail-header-card .action-buttons {
+    width: 100%;
+  }
+
+  .detail-header-card .action-buttons .btn {
+    flex: 1;
+  }
+
+  .detail-section-card {
+    padding: 1.25rem 1rem;
+  }
+
+  /* Modals & Toasts on Mobile */
+  .modal-dialog {
+    max-width: 94vw;
+    margin: 1rem;
+  }
+
+  .modal-header,
+  .modal-body,
+  .modal-footer {
+    padding: 1.15rem 1.25rem;
+  }
+
+  .modal-footer {
+    flex-direction: column-reverse;
+  }
+
+  .modal-footer .btn {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .toast-container {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .toast {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   EXTRA COMPACT MOBILE (max-width: 480px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .topbar-page-title {
+    font-size: 1.15rem;
+  }
+
+  .stat-value {
+    font-size: 1.85rem;
+  }
+
+  .stat-card {
+    padding: 1.15rem 1rem;
+  }
+
+  .admin-sidebar {
+    width: 275px;
+  }
 }

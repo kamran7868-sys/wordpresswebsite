@@ -1,8 +1,16 @@
 <!-- PGE LEFT SIDEBAR -->
 <aside class="admin-sidebar">
   <div class="sidebar-header">
-    <a href="{{ route('admin.dashboard') }}" class="sidebar-brand-title">Premium Global</a>
-    <span class="sidebar-brand-sub">Expeditions Inc. &bull; Staff Hub</span>
+    <div class="sidebar-brand-group">
+      <a href="{{ route('admin.dashboard') }}" class="sidebar-brand-title">Premium Global</a>
+      <span class="sidebar-brand-sub">Expeditions Inc. &bull; Staff Hub</span>
+    </div>
+    <button type="button" class="admin-sidebar-close" id="adminSidebarClose" aria-label="Close navigation sidebar">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
   </div>
 
   <ul class="sidebar-nav">

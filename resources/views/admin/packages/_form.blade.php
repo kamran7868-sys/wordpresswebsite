@@ -391,7 +391,7 @@
   </div>
 
   <!-- FORM FOOTER ACTIONS -->
-  <div style="padding: 1.5rem 2rem; background-color: #F8FAFC; border-top: 1px solid var(--pge-cloud-mist); display: flex; justify-content: space-between; align-items: center;">
+  <div class="form-card-footer">
     <a href="{{ route('admin.packages.index') }}" class="btn btn-outline">Cancel & Back</a>
     <div style="display: flex; gap: 0.75rem;">
       <button type="submit" class="btn btn-primary" style="padding: 0.65rem 2rem;">
