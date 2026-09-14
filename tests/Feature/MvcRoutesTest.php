@@ -293,7 +293,7 @@ class MvcRoutesTest extends TestCase
     }
 
     /**
-     * Test robots.txt contains required allow/disallow directives and sitemap URL.
+     * Test robots.txt contains required allow/disallow directives.
      */
     public function test_robots_txt_contains_directives(): void
     {
@@ -302,10 +302,66 @@ class MvcRoutesTest extends TestCase
 
         $content = file_get_contents($robotsPath);
         $this->assertStringContainsString('User-agent: *', $content);
-        $this->assertStringContainsString('Allow: /assets/media/', $content);
-        $this->assertStringContainsString('Allow: /storage/media/', $content);
         $this->assertStringContainsString('Disallow: /admin/', $content);
+        $this->assertStringContainsString('Disallow: /login', $content);
         $this->assertStringContainsString('Disallow: /api/', $content);
-        $this->assertStringContainsString('Sitemap:', $content);
+        $this->assertStringNotContainsString('Sitemap:', $content);
+
+        // Test HTTP endpoint
+        $response = $this->get('/robots.txt');
+        $response->assertStatus(200);
+        $response->assertHeader('Content-Type', 'text/plain; charset=utf-8');
+        $response->assertSee('Disallow: /admin/', false);
+        $response->assertSee('Disallow: /login', false);
+        $response->assertDontSee('Sitemap:', false);
+    }
+
+    /**
+     * Test SEO Schema.org JSON-LD structured data renders and is valid JSON on all public pages.
+     */
+    public function test_seo_schemas_render_on_public_pages(): void
+    {
+        $pages = [
+            '/' => ['TravelAgency', 'WebSite', 'ItemList', 'FAQPage'],
+            '/about' => ['AboutPage', 'BreadcrumbList'],
+            '/contact' => ['ContactPage', 'BreadcrumbList'],
+            '/register-dmc' => ['WebPage', 'BreadcrumbList'],
+            '/packages' => ['CollectionPage', 'ItemList', 'BreadcrumbList'],
+            '/explore-packages' => ['TouristTrip', 'BreadcrumbList'],
+            '/stay-detail' => ['Hotel', 'BreadcrumbList'],
+            '/voyage-detail' => ['TouristTrip', 'BreadcrumbList'],
+        ];
+
+        foreach ($pages as $uri => $expectedTypes) {
+            $response = $this->get($uri);
+            $response->assertStatus(200);
+
+            $html = $response->getContent();
+            $this->assertStringContainsString('application/ld+json', $html, "Page {$uri} must contain application/ld+json");
+
+            preg_match_all('#<script type="application/ld\+json">(.*?)</script>#is', $html, $matches);
+            $this->assertNotEmpty($matches[1], "Page {$uri} must contain valid ld+json script blocks");
+
+            $foundTypes = [];
+            foreach ($matches[1] as $jsonText) {
+                $decoded = json_decode(trim($jsonText), true);
+                $this->assertNotNull($decoded, "JSON-LD on {$uri} must be valid JSON: " . json_last_error_msg());
+                $this->assertEquals('https://schema.org', $decoded['@context'] ?? '');
+
+                $type = $decoded['@type'] ?? '';
+                if (is_array($type)) {
+                    foreach ($type as $t) {
+                        $foundTypes[] = $t;
+                    }
+                } else {
+                    $foundTypes[] = $type;
+                }
+            }
+
+            foreach ($expectedTypes as $expectedType) {
+                $this->assertContains($expectedType, $foundTypes, "Page {$uri} must declare schema @type {$expectedType}");
+            }
+        }
     }
 }
+
