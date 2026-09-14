@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="csrf-token" content="{{ csrf_token() }}">
+  <meta name="google-site-verification" content="ro-BdJZlIl7ExCfT-x7CBsry4GuoN9g7OZ5avMGoj_g">
   <title>@yield('title', 'Luxury Canadian Travel Company | Premium Global Expeditions')</title>
   <meta name="description" content="@yield('meta_description', 'Bespoke journeys with Premium Global Expeditions, a luxury Canadian travel company curating custom holidays, cruises, flights, and 5-star stays.')">
   <link rel="canonical" href="{{ url()->current() }}">
@@ -38,7 +39,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- MASTER BRAND STYLESHEET -->
-  <link rel="stylesheet" href="{{ asset('css/brand.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/brand.css') }}?v=20260915v2">
 
   @stack('styles')
   @yield('extra_css')
@@ -61,7 +62,7 @@
   @include('partials.flight-modal')
 
   <!-- MASTER BRAND JAVASCRIPT CONTROLLER -->
-  <script src="{{ asset('js/brand.js') }}"></script>
+  <script src="{{ asset('js/brand.js') }}?v=20260915v2"></script>
 
   @stack('scripts')
   @yield('extra_js')

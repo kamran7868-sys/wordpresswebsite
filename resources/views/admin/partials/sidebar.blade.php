@@ -74,8 +74,8 @@
         </svg>
       </div>
       <div class="user-text-meta">
-        <div class="user-name" title="{{ auth()->user()->name ?? 'PGE Global Concierge Admin' }}">{{ auth()->user()->name ?? 'PGE Global Concierge Admin' }}</div>
-        <div class="user-email" title="{{ auth()->user()->email ?? 'admin@premiumglobalexp.com' }}">{{ auth()->user()->email ?? 'admin@premiumglobalexp.com' }}</div>
+        <div class="user-name" title="{{ auth()->user()->name ?? 'PGE Global Concierge Admin' }}" style="color: #FFFFFF !important; font-size: 0.88rem !important; font-weight: 700 !important; line-height: 1.3 !important; display: block !important;">{{ auth()->user()->name ?? 'PGE Global Concierge Admin' }}</div>
+        <div class="user-email" title="{{ auth()->user()->email ?? 'admin@premiumglobalexp.com' }}" style="color: #DFD3BD !important; font-size: 0.74rem !important; font-weight: 500 !important; line-height: 1.3 !important; margin-top: 2px !important; display: block !important;">{{ auth()->user()->email ?? 'admin@premiumglobalexp.com' }}</div>
       </div>
     </div>
     <form action="{{ route('logout') }}" method="POST" class="user-logout-form">

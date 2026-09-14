@@ -239,22 +239,23 @@ body.admin-body-wrap {
 }
 
 .user-name {
-  color: var(--pge-white);
-  font-size: 0.82rem;
-  font-weight: 600;
-  line-height: 1.3;
+  color: #FFFFFF !important;
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .user-email {
-  font-size: 0.72rem;
-  color: #DFD3BD;
+  font-size: 0.74rem !important;
+  color: #DFD3BD !important;
+  font-weight: 500 !important;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  opacity: 0.9;
+  opacity: 1 !important;
 }
 
 .user-logout-form {
