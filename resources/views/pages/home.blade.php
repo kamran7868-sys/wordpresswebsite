@@ -225,109 +225,30 @@
           </div>
 
           <div class="cards-grid">
-
-            <!-- Canada -->
-            <article class="card-item" data-group="north-america">
-              <div class="card-img-wrap">
-                <picture><source srcset="{{ asset('assets/media/rocky-mountaineer-luxury-express.webp') }}" type="image/webp"><img src="{{ asset('assets/media/rocky-mountaineer-luxury-express.jpg') }}" alt="Rocky Mountaineer GoldLeaf luxury train traversing Canadian Rockies" class="card-img" width="800" height="600" loading="lazy" decoding="async"></picture>
-                <span class="card-tag">Canada</span>
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">Rocky Mountaineer Luxury Express</h3>
-                <p class="card-text">Experience the majestic Canadian Rockies in glass-domed luxury carriages from
-                  Vancouver to Banff.</p>
-                <div class="card-footer">
-                  <span class="card-footer-info">8 Days / 7 Nights</span>
-                  <a href="{{ route('explore-packages') }}" class="card-btn-action">Explore Package</a>
+            @forelse($holidayPackages as $pkg)
+              <article class="card-item" data-group="{{ strtolower($pkg->region ?: 'all') }}">
+                <div class="card-img-wrap">
+                  <img src="{{ $pkg->featured_image ?: asset('assets/media/ancient-egypt-pyramids-giza.jpg') }}"
+                       alt="{{ $pkg->title }}" class="card-img" width="800" height="600" loading="lazy" decoding="async"
+                       onerror="this.src='{{ asset('assets/media/ancient-egypt-pyramids-giza.jpg') }}'">
+                  <span class="card-tag">{{ $pkg->country ?: 'Holiday' }}</span>
                 </div>
-              </div>
-            </article>
-
-            <!-- Egypt -->
-            <article class="card-item" data-group="middle-east">
-              <div class="card-img-wrap">
-                <picture><source srcset="{{ asset('assets/media/ancient-egypt-pyramids-giza.webp') }}" type="image/webp"><img src="{{ asset('assets/media/ancient-egypt-pyramids-giza.jpg') }}" alt="Ancient Giza Pyramids and Sphinx guided expedition in Egypt" class="card-img" width="800" height="600" loading="lazy" decoding="async"></picture>
-                <span class="card-tag">Egypt</span>
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">Pharaohs &amp; Pyramids Odyssey</h3>
-                <p class="card-text">Private guided exploration of Cairo Pyramids, Luxor temples, and Red Sea luxury
-                  beach sanctuary.</p>
-                <div class="card-footer">
-                  <span class="card-footer-info">10 Days / 9 Nights</span>
-                  <a href="{{ route('explore-packages') }}" class="card-btn-action">Explore Package</a>
+                <div class="card-body">
+                  <h3 class="card-title">{{ $pkg->title }}</h3>
+                  <p class="card-text">{{ Str::limit($pkg->short_description ?: $pkg->overview, 130) }}</p>
+                  <div class="card-footer">
+                    <span class="card-footer-info">{{ $pkg->duration ?: ($pkg->duration_days . ' Days / ' . ($pkg->duration_nights ?? max(0, $pkg->duration_days - 1)) . ' Nights') }}</span>
+                    <a href="{{ route('package.show', $pkg->slug) }}" class="card-btn-action">Explore Package</a>
+                  </div>
                 </div>
+              </article>
+            @empty
+              <div style="grid-column: 1 / -1; text-align: center; padding: 3.5rem 1rem; background: #ffffff; border-radius: 8px; border: 1px dashed rgba(182, 153, 100, 0.4);">
+                <h3 style="font-family: var(--font-display); font-size: 1.8rem; color: var(--color-navy); margin-bottom: 0.5rem;">No Holiday Packages Currently Listed</h3>
+                <p style="color: #64748B; font-size: 0.95rem; margin-bottom: 1.5rem;">Our Canadian travel concierges are curating new bespoke holiday expeditions.</p>
+                <a href="{{ route('contact') }}" class="btn-primary" style="display: inline-block;">Request Bespoke Itinerary</a>
               </div>
-            </article>
-
-            <!-- Thailand -->
-            <article class="card-item" data-group="southeast-asia">
-              <div class="card-img-wrap">
-                <picture><source srcset="{{ asset('assets/media/thailand-islands-phuket-retreat.webp') }}" type="image/webp"><img src="{{ asset('assets/media/thailand-islands-phuket-retreat.jpg') }}" alt="Tropical island hopping and private luxury pool villas in Thailand" class="card-img" width="800" height="600" loading="lazy" decoding="async"></picture>
-                <span class="card-tag">Thailand</span>
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">Island Hopping &amp; Villa Escape</h3>
-                <p class="card-text">Bespoke private luxury retreat across Phuket, Koh Samui, and Chiang Mai elephant
-                  sanctuaries.</p>
-                <div class="card-footer">
-                  <span class="card-footer-info">12 Days / 11 Nights</span>
-                  <a href="{{ route('explore-packages') }}" class="card-btn-action">Explore Package</a>
-                </div>
-              </div>
-            </article>
-
-            <!-- Sri Lanka -->
-            <article class="card-item" data-group="south-asia">
-              <div class="card-img-wrap">
-                <picture><source srcset="{{ asset('assets/media/sri-lanka-sigiriya-heritage.webp') }}" type="image/webp"><img src="{{ asset('assets/media/sri-lanka-sigiriya-heritage.jpg') }}" alt="Sigiriya UNESCO Rock Fortress and Ceylon tea estates in Sri Lanka" class="card-img" width="800" height="600" loading="lazy" decoding="async"></picture>
-                <span class="card-tag">Sri Lanka</span>
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">Pearl of the Indian Ocean</h3>
-                <p class="card-text">Cultural triangle of Sigiriya, tea plantation estates in Nuwara Eliya, and southern
-                  coastal safaris.</p>
-                <div class="card-footer">
-                  <span class="card-footer-info">9 Days / 8 Nights</span>
-                  <a href="{{ route('explore-packages') }}" class="card-btn-action">Explore Package</a>
-                </div>
-              </div>
-            </article>
-
-            <!-- Turkey -->
-            <article class="card-item" data-group="middle-east">
-              <div class="card-img-wrap">
-                <picture><source srcset="{{ asset('assets/media/cappadocia-hot-air-balloon-turkey.webp') }}" type="image/webp"><img src="{{ asset('assets/media/cappadocia-hot-air-balloon-turkey.jpg') }}" alt="Hot air balloons flying over Cappadocia fairy chimneys in Turkey" class="card-img" width="800" height="600" loading="lazy" decoding="async"></picture>
-                <span class="card-tag">Turkey</span>
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">Grand Ottoman &amp; Cappadocia Ballooning</h3>
-                <p class="card-text">Istanbul Bosphorus cruises, ancient Ephesus ruins, and magical hot air balloon
-                  rides over cave suites.</p>
-                <div class="card-footer">
-                  <span class="card-footer-info">11 Days / 10 Nights</span>
-                  <a href="{{ route('explore-packages') }}" class="card-btn-action">Explore Package</a>
-                </div>
-              </div>
-            </article>
-
-            <!-- Vietnam -->
-            <article class="card-item" data-group="southeast-asia">
-              <div class="card-img-wrap">
-                <picture><source srcset="{{ asset('assets/media/ha-long-bay-karsts-vietnam.webp') }}" type="image/webp"><img src="{{ asset('assets/media/ha-long-bay-karsts-vietnam.jpg') }}" alt="Private luxury junk boat cruising through Ha Long Bay emerald pillars" class="card-img" width="800" height="600" loading="lazy" decoding="async"></picture>
-                <span class="card-tag">Vietnam</span>
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">Ha Long Bay &amp; Imperial Heritage</h3>
-                <p class="card-text">Private junk boat cruising through emerald limestone pillars, Hoi An lantern town,
-                  and Hanoi culture.</p>
-                <div class="card-footer">
-                  <span class="card-footer-info">10 Days / 9 Nights</span>
-                  <a href="{{ route('explore-packages') }}" class="card-btn-action">Explore Package</a>
-                </div>
-              </div>
-            </article>
-
+            @endforelse
           </div>
         </div>
 
@@ -352,75 +273,30 @@
           </div>
 
           <div class="cards-grid">
-
-            <!-- Alaskan Cruise -->
-            <article class="card-item" data-group="alaska">
-              <a href="{{ route('voyage-detail') }}" class="card-img-wrap card-img-link" aria-label="View Inside Passage Glacier Voyage">
-                <picture><source srcset="{{ asset('assets/media/alaskan-cruise-liner-fjords.webp') }}" type="image/webp"><img src="{{ asset('assets/media/alaskan-cruise-liner-fjords.jpg') }}" alt="Luxury ocean cruise liner navigating pristine Alaskan glacier fjords" class="card-img" width="1000" height="650" loading="lazy" decoding="async"></picture>
-                <span class="card-tag">Alaskan Cruise</span>
-              </a>
-              <div class="card-body">
-                <h3 class="card-title"><a href="{{ route('voyage-detail') }}">Inside Passage Glacier Voyage</a></h3>
-                <p class="card-text">Sail through pristine fjords, calving glaciers, and whale sanctuaries aboard 5-star
-                  luxury liners.</p>
-                <div class="card-footer">
-                  <span class="card-footer-info">7 Nights Ocean Voyage</span>
-                  <a href="{{ route('voyage-detail') }}" class="card-btn-action">View Voyage</a>
+            @forelse($cruisePackages as $pkg)
+              <article class="card-item" data-group="{{ strtolower($pkg->region ?: 'all') }}">
+                <a href="{{ route('package.show', $pkg->slug) }}" class="card-img-wrap card-img-link" aria-label="View {{ $pkg->title }}">
+                  <img src="{{ $pkg->featured_image ?: asset('assets/media/alaskan-cruise-liner-fjords.jpg') }}"
+                       alt="{{ $pkg->title }}" class="card-img" width="1000" height="650" loading="lazy" decoding="async"
+                       onerror="this.src='{{ asset('assets/media/alaskan-cruise-liner-fjords.jpg') }}'">
+                  <span class="card-tag">{{ $pkg->country ?: 'Cruise' }}</span>
+                </a>
+                <div class="card-body">
+                  <h3 class="card-title"><a href="{{ route('package.show', $pkg->slug) }}">{{ $pkg->title }}</a></h3>
+                  <p class="card-text">{{ Str::limit($pkg->short_description ?: $pkg->overview, 130) }}</p>
+                  <div class="card-footer">
+                    <span class="card-footer-info">{{ $pkg->duration ?: ($pkg->duration_days . ' Days Ocean Voyage') }}</span>
+                    <a href="{{ route('package.show', $pkg->slug) }}" class="card-btn-action">View Voyage</a>
+                  </div>
                 </div>
+              </article>
+            @empty
+              <div style="grid-column: 1 / -1; text-align: center; padding: 3.5rem 1rem; background: #ffffff; border-radius: 8px; border: 1px dashed rgba(182, 153, 100, 0.4);">
+                <h3 style="font-family: var(--font-display); font-size: 1.8rem; color: var(--color-navy); margin-bottom: 0.5rem;">No Ocean or River Cruises Currently Listed</h3>
+                <p style="color: #64748B; font-size: 0.95rem; margin-bottom: 1.5rem;">Contact our luxury maritime specialists to arrange bespoke private charters or cruise departures.</p>
+                <a href="{{ route('contact') }}" class="btn-primary" style="display: inline-block;">Request Cruise Inquiry</a>
               </div>
-            </article>
-
-            <!-- Singaporean Cruise -->
-            <article class="card-item" data-group="singapore">
-              <a href="{{ route('voyage-detail') }}" class="card-img-wrap card-img-link" aria-label="View Southeast Asian Spice Route Expedition">
-                <picture><source srcset="{{ asset('assets/media/singapore-spice-route-cruise.webp') }}" type="image/webp"><img src="{{ asset('assets/media/singapore-spice-route-cruise.jpg') }}" alt="Southeast Asian spice route luxury cruise departing Singapore" class="card-img" width="1000" height="650" loading="lazy" decoding="async"></picture>
-                <span class="card-tag">Singaporean Cruise</span>
-              </a>
-              <div class="card-body">
-                <h3 class="card-title"><a href="{{ route('voyage-detail') }}">Southeast Asian Spice Route Expedition</a></h3>
-                <p class="card-text">Embark from Singapore to Phuket, Penang, and Langkawi with Michelin-starred dining
-                  on board.</p>
-                <div class="card-footer">
-                  <span class="card-footer-info">6 Nights Spice Route</span>
-                  <a href="{{ route('voyage-detail') }}" class="card-btn-action">View Voyage</a>
-                </div>
-              </div>
-            </article>
-
-            <!-- Nile Cruise -->
-            <article class="card-item" data-group="nile">
-              <a href="{{ route('voyage-detail') }}" class="card-img-wrap card-img-link" aria-label="View Pharaohs River Expedition on the Nile">
-                <picture><source srcset="{{ asset('assets/media/nile-river-sunset-cruise.webp') }}" type="image/webp"><img src="{{ asset('assets/media/nile-river-sunset-cruise.jpg') }}" alt="Nile river sunset expedition cruise with traditional sails in Egypt" class="card-img" width="1000" height="650" loading="lazy" decoding="async"></picture>
-                <span class="card-tag">Nile Cruise</span>
-              </a>
-              <div class="card-body">
-                <h3 class="card-title"><a href="{{ route('voyage-detail') }}">Pharaohs River Expedition on the Nile</a></h3>
-                <p class="card-text">Glide from Luxor to Aswan stopping at Kom Ombo and Edfu temples with Egyptologist
-                  guides.</p>
-                <div class="card-footer">
-                  <span class="card-footer-info">5 Nights River Cruise</span>
-                  <a href="{{ route('voyage-detail') }}" class="card-btn-action">View Voyage</a>
-                </div>
-              </div>
-            </article>
-
-            <!-- Australian Cruise -->
-            <article class="card-item" data-group="australia">
-              <a href="{{ route('voyage-detail') }}" class="card-img-wrap card-img-link" aria-label="View Great Barrier Reef & Southern Ocean Voyage">
-                <picture><source srcset="{{ asset('assets/media/australian-barrier-reef-cruise.webp') }}" type="image/webp"><img src="{{ asset('assets/media/australian-barrier-reef-cruise.jpg') }}" alt="Australian Great Barrier Reef ocean expedition cruise ship" class="card-img" width="1000" height="650" loading="lazy" decoding="async"></picture>
-                <span class="card-tag">Australian Cruise</span>
-              </a>
-              <div class="card-body">
-                <h3 class="card-title"><a href="{{ route('voyage-detail') }}">Great Barrier Reef &amp; Southern Ocean Voyage</a></h3>
-                <p class="card-text">Sydney Harbour departures visiting Whitsunday Islands, Tasmania fjords, and coral
-                  reefs.</p>
-                <div class="card-footer">
-                  <span class="card-footer-info">10 Nights Barrier Reef</span>
-                  <a href="{{ route('voyage-detail') }}" class="card-btn-action">View Voyage</a>
-                </div>
-              </div>
-            </article>
-
+            @endforelse
           </div>
         </div>
 
@@ -605,128 +481,30 @@
           </div>
 
           <div class="cards-grid">
-
-            <!-- Canada -->
-            <article class="card-item" data-group="canada">
-              <a href="{{ route('stay-detail') }}" class="card-img-wrap card-img-link" aria-label="Reserve Fairmont Banff Springs & Chateau Lake Louise">
-                <picture><source srcset="{{ asset('assets/media/fairmont-banff-springs-hotel.webp') }}" type="image/webp"><img src="{{ asset('assets/media/fairmont-banff-springs-hotel.jpg') }}" alt="Historic Fairmont Banff Springs luxury castle resort in Canadian Rockies" class="card-img" width="800" height="600" loading="lazy" decoding="async"></picture>
-                <span class="card-tag">Canada</span>
-              </a>
-              <div class="card-body">
-                <h3 class="card-title"><a href="{{ route('stay-detail') }}">Fairmont Banff Springs &amp; Chateau Lake Louise</a></h3>
-                <p class="card-text">Historic castle sanctuary offering world-class spa, fine dining, and panoramic
-                  alpine views.</p>
-                <div class="card-footer">
-                  <span class="card-footer-info">5-Star Luxury Resort</span>
-                  <a href="{{ route('stay-detail') }}" class="card-btn-action">Reserve Stay</a>
+            @forelse($hotelPackages as $pkg)
+              <article class="card-item" data-group="{{ strtolower(Str::slug($pkg->country ?: 'all')) }}">
+                <a href="{{ route('stay-detail', $pkg->slug) }}" class="card-img-wrap card-img-link" aria-label="Reserve {{ $pkg->title }}">
+                  <img src="{{ $pkg->featured_image ?: asset('assets/media/fairmont-banff-springs-hotel.jpg') }}"
+                       alt="{{ $pkg->title }}" class="card-img" width="800" height="600" loading="lazy" decoding="async"
+                       onerror="this.src='{{ asset('assets/media/fairmont-banff-springs-hotel.jpg') }}'">
+                  <span class="card-tag">{{ $pkg->country ?: 'Hotel' }}</span>
+                </a>
+                <div class="card-body">
+                  <h3 class="card-title"><a href="{{ route('stay-detail', $pkg->slug) }}">{{ $pkg->title }}</a></h3>
+                  <p class="card-text">{{ Str::limit($pkg->short_description ?: $pkg->overview, 130) }}</p>
+                  <div class="card-footer">
+                    <span class="card-footer-info">{{ $pkg->duration ?: '5-Star Luxury Resort' }}</span>
+                    <a href="{{ route('stay-detail', $pkg->slug) }}" class="card-btn-action">Reserve Stay</a>
+                  </div>
                 </div>
+              </article>
+            @empty
+              <div style="grid-column: 1 / -1; text-align: center; padding: 3.5rem 1rem; background: #ffffff; border-radius: 8px; border: 1px dashed rgba(182, 153, 100, 0.4);">
+                <h3 style="font-family: var(--font-display); font-size: 1.8rem; color: var(--color-navy); margin-bottom: 0.5rem;">No Luxury Stays Currently Listed</h3>
+                <p style="color: #64748B; font-size: 0.95rem; margin-bottom: 1.5rem;">Contact our private hospitality team to reserve exclusive luxury suites and estate villas.</p>
+                <a href="{{ route('contact') }}" class="btn-primary" style="display: inline-block;">Request Hotel Reservation</a>
               </div>
-            </article>
-
-            <!-- Sri Lanka -->
-            <article class="card-item" data-group="sri-lanka">
-              <a href="{{ route('stay-detail') }}" class="card-img-wrap card-img-link" aria-label="Reserve Amangalla Historic Fortress Estate">
-                <picture><source srcset="{{ asset('assets/media/amangalla-fortress-resort-sri-lanka.webp') }}" type="image/webp"><img src="{{ asset('assets/media/amangalla-fortress-resort-sri-lanka.jpg') }}" alt="Amangalla historic Dutch fortress luxury heritage estate in Galle Sri Lanka" class="card-img" width="800" height="600" loading="lazy" decoding="async"></picture>
-                <span class="card-tag">Sri Lanka</span>
-              </a>
-              <div class="card-body">
-                <h3 class="card-title"><a href="{{ route('stay-detail') }}">Amangalla Historic Fortress Estate</a></h3>
-                <p class="card-text">Restored 17th-century Dutch colonial sanctuary within UNESCO Galle Fort with private butler service.</p>
-                <div class="card-footer">
-                  <span class="card-footer-info">Boutique Heritage Estate</span>
-                  <a href="{{ route('stay-detail') }}" class="card-btn-action">Reserve Stay</a>
-                </div>
-              </div>
-            </article>
-
-            <!-- Egypt -->
-            <article class="card-item" data-group="egypt">
-              <a href="{{ route('stay-detail') }}" class="card-img-wrap card-img-link" aria-label="Reserve Four Seasons Cairo at First Residence">
-                <picture><source srcset="{{ asset('assets/media/four-seasons-cairo-nile-hotel.webp') }}" type="image/webp"><img src="{{ asset('assets/media/four-seasons-cairo-nile-hotel.jpg') }}" alt="Four Seasons Cairo at First Residence 5-star Nile view luxury hotel" class="card-img" width="800" height="600" loading="lazy" decoding="async"></picture>
-                <span class="card-tag">Egypt</span>
-              </a>
-              <div class="card-body">
-                <h3 class="card-title"><a href="{{ route('stay-detail') }}">Four Seasons Cairo at First Residence</a></h3>
-                <p class="card-text">Bespoke Nile-front hotel featuring private balcony views of the Pyramids and
-                  ancient Cairo skyline.</p>
-                <div class="card-footer">
-                  <span class="card-footer-info">5-Star Premier Suite</span>
-                  <a href="{{ route('stay-detail') }}" class="card-btn-action">Reserve Stay</a>
-                </div>
-              </div>
-            </article>
-
-            <!-- Vietnam -->
-            <article class="card-item" data-group="vietnam">
-              <a href="{{ route('stay-detail') }}" class="card-img-wrap card-img-link" aria-label="Reserve InterContinental Danang Sun Peninsula Resort">
-                <picture><source srcset="{{ asset('assets/media/intercontinental-danang-resort.webp') }}" type="image/webp"><img src="{{ asset('assets/media/intercontinental-danang-resort.jpg') }}" alt="InterContinental Danang Sun Peninsula hillside luxury oceanfront resort" class="card-img" width="800" height="600" loading="lazy" decoding="async"></picture>
-                <span class="card-tag">Vietnam</span>
-              </a>
-              <div class="card-body">
-                <h3 class="card-title"><a href="{{ route('stay-detail') }}">InterContinental Danang Sun Peninsula Resort</a></h3>
-                <p class="card-text">Bill Bensley-designed luxury cliffside sanctuary perched on Son Tra Peninsula's
-                  private bay.</p>
-                <div class="card-footer">
-                  <span class="card-footer-info">5-Star Oceanfront Resort</span>
-                  <a href="{{ route('stay-detail') }}" class="card-btn-action">Reserve Stay</a>
-                </div>
-              </div>
-            </article>
-
-            <!-- Nepal -->
-            <article class="card-item" data-group="nepal">
-              <a href="{{ route('stay-detail') }}" class="card-img-wrap card-img-link" aria-label="Reserve Dwarika's Heritage Hotel Kathmandu">
-                <picture>
-                  <source srcset="{{ asset('assets/media/dwarikas-heritage-hotel-nepal.webp') }}" type="image/webp">
-                  <img src="{{ asset('assets/media/dwarikas-heritage-hotel-nepal.jpg') }}"
-                    alt="Dwarikas heritage hotel traditional Newari architecture in Kathmandu Nepal" class="card-img" width="800" height="600" loading="lazy" decoding="async">
-                </picture>
-                <span class="card-tag">Nepal</span>
-              </a>
-              <div class="card-body">
-                <h3 class="card-title"><a href="{{ route('stay-detail') }}">Dwarika's Heritage Hotel Kathmandu</a></h3>
-                <p class="card-text">A living museum of Nepalese wood carving, ancient courtyard suites, and royal Himalayan hospitality.</p>
-                <div class="card-footer">
-                  <span class="card-footer-info">UNESCO Cultural Heritage</span>
-                  <a href="{{ route('stay-detail') }}" class="card-btn-action">Reserve Stay</a>
-                </div>
-              </div>
-            </article>
-
-            <!-- Turkey -->
-            <article class="card-item" data-group="turkey">
-              <a href="{{ route('stay-detail') }}" class="card-img-wrap card-img-link" aria-label="Reserve Museum Hotel & Cave Suites Cappadocia">
-                <picture><source srcset="{{ asset('assets/media/museum-hotel-cappadocia-cave.webp') }}" type="image/webp"><img src="{{ asset('assets/media/museum-hotel-cappadocia-cave.jpg') }}" alt="Museum Hotel luxury cave suites with terrace pool in Cappadocia Turkey" class="card-img" width="800" height="600" loading="lazy" decoding="async"></picture>
-                <span class="card-tag">Turkey</span>
-              </a>
-              <div class="card-body">
-                <h3 class="card-title"><a href="{{ route('stay-detail') }}">Museum Hotel &amp; Cave Suites Cappadocia</a></h3>
-                <p class="card-text">Authentic restored cave hotel with heated outdoor terrace pools overlooking fairy
-                  chimneys.</p>
-                <div class="card-footer">
-                  <span class="card-footer-info">Bespoke Heritage Suite</span>
-                  <a href="{{ route('stay-detail') }}" class="card-btn-action">Reserve Stay</a>
-                </div>
-              </div>
-            </article>
-
-            <!-- Thailand -->
-            <article class="card-item" data-group="thailand">
-              <a href="{{ route('stay-detail') }}" class="card-img-wrap card-img-link" aria-label="Reserve Amanpuri & Banyan Tree Villa Suites">
-                <picture><source srcset="{{ asset('assets/media/amanpuri-banyan-tree-phuket.webp') }}" type="image/webp"><img src="{{ asset('assets/media/amanpuri-banyan-tree-phuket.jpg') }}" alt="Amanpuri private infinity pool beachfront villa in Phuket Thailand" class="card-img" width="800" height="600" loading="lazy" decoding="async"></picture>
-                <span class="card-tag">Thailand</span>
-              </a>
-              <div class="card-body">
-                <h3 class="card-title"><a href="{{ route('stay-detail') }}">Amanpuri &amp; Banyan Tree Villa Suites</a></h3>
-                <p class="card-text">Private infinity pool beachfront villas overlooking the turquoise Andaman Ocean in
-                  Phuket.</p>
-                <div class="card-footer">
-                  <span class="card-footer-info">5-Star Pool Villas</span>
-                  <a href="{{ route('stay-detail') }}" class="card-btn-action">Reserve Stay</a>
-                </div>
-              </div>
-            </article>
-
+            @endforelse
           </div>
         </div>
 

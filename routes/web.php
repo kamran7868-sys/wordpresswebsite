@@ -107,6 +107,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/{inquiry}', 'show')->name('show');
         Route::patch('/{inquiry}', 'update')->name('update');
+        Route::post('/{inquiry}/reply', 'reply')->name('reply');
     });
 
     // Module 4 — Contact Messages

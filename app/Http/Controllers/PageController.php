@@ -9,6 +9,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class PageController extends Controller
 {
@@ -25,27 +26,15 @@ class PageController extends Controller
     }
 
     /**
-     * Display the About Us page with dynamic stats.
+     * Display the About Us page.
      */
     public function about(): View
     {
-        $totalPackages = Package::published()->count();
-        $totalDestinations = Package::published()->distinct('country')->count('country');
-        $verifiedDmcPartners = DmcRegistration::where('status', 'approved')->count();
-
-        // Ensure minimum presentation numbers for credibility
-        $stats = [
-            'destinations' => max(40, $totalDestinations + 30),
-            'packages' => max(15, $totalPackages),
-            'partners' => max(85, $verifiedDmcPartners + 80),
-            'satisfaction' => '99.4%',
-        ];
-
-        return view('pages.about', compact('stats'));
+        return view('pages.about');
     }
 
     /**
-     * Display the Contact page.
+     * Display the Contact Us page.
      */
     public function contact(): View
     {
@@ -53,7 +42,7 @@ class PageController extends Controller
     }
 
     /**
-     * Handle incoming Contact inquiries and save to MySQL.
+     * Handle incoming Contact Us form submissions.
      */
     public function submitContact(Request $request): JsonResponse
     {
@@ -76,6 +65,25 @@ class PageController extends Controller
         ]);
 
         Log::info('Contact Inquiry Saved to MySQL:', ['id' => $inquiry->id, 'email' => $inquiry->email]);
+
+        // Dispatch admin alert notification email
+        try {
+            $adminEmail = config('mail.from.address', 'admin@premiumglobalexp.com');
+            $alertSubject = "✉ New Contact Message #{$inquiry->id}: {$inquiry->subject} from {$inquiry->full_name}";
+            $alertBody = "A new contact message has been received on the website:\n\n"
+                       . "Sender: {$inquiry->full_name}\n"
+                       . "Email: {$inquiry->email}\n"
+                       . "Phone: {$inquiry->phone}\n"
+                       . "Subject: {$inquiry->subject}\n\n"
+                       . "Message:\n{$inquiry->message}\n\n"
+                       . "View & Reply in Admin Panel: " . route('admin.contacts.show', $inquiry->id);
+
+            Mail::raw($alertBody, function ($mail) use ($adminEmail, $alertSubject) {
+                $mail->to($adminEmail)->subject($alertSubject);
+            });
+        } catch (\Throwable $e) {
+            Log::warning("Could not send admin contact notification email: " . $e->getMessage());
+        }
 
         return response()->json([
             'status' => 'success',

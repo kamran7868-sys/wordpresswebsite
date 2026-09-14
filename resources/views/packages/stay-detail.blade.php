@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', Str::limit(isset($package) && $package->meta_title ? $package->meta_title : ((isset($package) ? $package->title : 'Luxury Stay & Resort') . ' | Luxury Stay | PGE'), 60))
-@section('meta_description', '{{ Str::limit(isset($package) && $package->meta_description ? $package->meta_description : ((isset($package) ? $package->tagline :')
+@section('meta_description', Str::limit(isset($package) && $package->meta_description ? $package->meta_description : ((isset($package) && $package->tagline ? $package->tagline : 'Bespoke luxury 5-star hotel stays and estate resorts curated by Premium Global Expeditions.')), 160))
 
 @push('styles')
 <style>
@@ -1557,32 +1557,18 @@
 
           </div>
 
-          <!-- RIGHT COLUMN: EDITORIAL VECTOR GRAPHIC (Train Silhouette & Mountain Peak Motif) -->
-          <div class="package-hero-graphic-wrap">
-            <svg viewBox="0 0 440 280" fill="none" xmlns="http://www.w3.org/2000/svg"
-              style="width: 100%; height: auto;">
-              <!-- Mountain Silhouette -->
-              <path d="M20 220 L120 70 L200 170 L310 50 L420 220 Z" fill="#2C4058" opacity="0.4" />
-              <path d="M120 70 L130 90 L110 90 Z" fill="#F7F4ED" opacity="0.7" />
-              <path d="M310 50 L322 75 L298 75 Z" fill="#F7F4ED" opacity="0.7" />
-              <path d="M0 220 L440 220" stroke="#B69964" stroke-width="2" />
-
-              <!-- Stylized Train Carriage Silhouette -->
-              <rect x="60" y="160" width="320" height="50" rx="12" fill="#121525" stroke="#B69964" stroke-width="2" />
-              <!-- Domed Glass Roof Window Accents -->
-              <rect x="80" y="170" width="30" height="18" rx="3" fill="#B69964" opacity="0.8" />
-              <rect x="120" y="170" width="30" height="18" rx="3" fill="#B69964" opacity="0.8" />
-              <rect x="160" y="170" width="30" height="18" rx="3" fill="#B69964" opacity="0.8" />
-              <rect x="200" y="170" width="30" height="18" rx="3" fill="#B69964" opacity="0.8" />
-              <rect x="240" y="170" width="30" height="18" rx="3" fill="#B69964" opacity="0.8" />
-              <rect x="280" y="170" width="30" height="18" rx="3" fill="#B69964" opacity="0.8" />
-              <rect x="320" y="170" width="30" height="18" rx="3" fill="#B69964" opacity="0.8" />
-              <!-- Wheels -->
-              <circle cx="110" cy="216" r="6" fill="#B69964" />
-              <circle cx="130" cy="216" r="6" fill="#B69964" />
-              <circle cx="310" cy="216" r="6" fill="#B69964" />
-              <circle cx="330" cy="216" r="6" fill="#B69964" />
-            </svg>
+          <!-- RIGHT COLUMN: HOTEL / STAY HERO IMAGE -->
+          <div class="package-hero-graphic-wrap" style="display: flex; align-items: center; justify-content: center;">
+            @if(!empty($package->featured_image))
+              <img src="{{ $package->featured_image }}" alt="{{ $package->title ?? 'Hotel' }}"
+                   style="max-width: 100%; border-radius: 8px; border: 1px solid rgba(182, 153, 100, 0.35); box-shadow: 0 10px 30px rgba(0,0,0,0.3); max-height: 320px; object-fit: cover;"
+                   onerror="this.src='{{ asset('assets/media/fairmont-banff-springs-hotel.jpg') }}'">
+            @else
+              <svg viewBox="0 0 440 280" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;">
+                <path d="M20 220 L120 70 L200 170 L310 50 L420 220 Z" fill="#2C4058" opacity="0.4" />
+                <rect x="60" y="160" width="320" height="50" rx="12" fill="#121525" stroke="#B69964" stroke-width="2" />
+              </svg>
+            @endif
           </div>
 
         </div>
@@ -1596,52 +1582,47 @@
     <section class="feature-icons-strip" id="feature-icons-strip">
       <div class="container">
         <div class="feature-strip-grid">
-
-          <!-- ITEM 1: PRIVATE TOURS -->
-          <div class="feature-strip-item">
-            <svg class="feature-strip-icon" viewBox="0 0 24 24">
-              <path
-                d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.04 3H5.81l1.04-3zM19 17H5v-4h14v4z" />
-            </svg>
-            <span class="feature-strip-label">Private Tours</span>
-          </div>
-
-          <!-- ITEM 2: LUXURY ACCOMMODATION -->
-          <div class="feature-strip-item">
-            <svg class="feature-strip-icon" viewBox="0 0 24 24">
-              <path
-                d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z" />
-            </svg>
-            <span class="feature-strip-label">Luxury Accommodation</span>
-          </div>
-
-          <!-- ITEM 3: DYNAMIC PACKAGE FEATURE (GOLDLEAF RAIL JOURNEY) -->
-          <div class="feature-strip-item">
-            <svg class="feature-strip-icon" viewBox="0 0 24 24">
-              <path
-                d="M12 2c-4 0-8 .5-8 4v9.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h12v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-4-4-8-4zm0 2c3.71 0 5.8 0 6 2H6c.2-2 2.29-2 6-2zm6 7H6V8h12v3zm-9.5 6c-.83 0-1.5-.67-1.5-1.5S7.67 12 8.5 12s1.5.67 1.5 1.5S9.33 15 8.5 15zm7 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
-            </svg>
-            <span class="feature-strip-label">GoldLeaf Rail Journey</span>
-          </div>
-
-          <!-- ITEM 4: EXPERT GUIDES -->
-          <div class="feature-strip-item">
-            <svg class="feature-strip-icon" viewBox="0 0 24 24">
-              <path
-                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-            </svg>
-            <span class="feature-strip-label">Expert Guides</span>
-          </div>
-
-          <!-- ITEM 5: SEAMLESS TRANSFERS -->
-          <div class="feature-strip-item">
-            <svg class="feature-strip-icon" viewBox="0 0 24 24">
-              <path
-                d="M17 6h-2V3c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v3H7c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2 0 .55.45 1 1 1s1-.45 1-1h8c0 .55.45 1 1 1s1-.45 1-1c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-3h2v3h-2V3zM9.5 18c-.83 0-1.5-.67-1.5-1.5S8.67 15 9.5 15s1.5.67 1.5 1.5S10.33 18 9.5 18zm5 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
-            </svg>
-            <span class="feature-strip-label">Seamless Transfers</span>
-          </div>
-
+          @if(!empty($package->features) && count($package->features) > 0)
+            @foreach($package->features as $feat)
+              <div class="feature-strip-item">
+                <svg class="feature-strip-icon" viewBox="0 0 24 24">
+                  @if(($feat['icon'] ?? '') === 'hotel')
+                    <path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z"/>
+                  @elseif(($feat['icon'] ?? '') === 'star')
+                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                  @elseif(($feat['icon'] ?? '') === 'coffee')
+                    <path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z"/>
+                  @elseif(($feat['icon'] ?? '') === 'shield')
+                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+                  @else
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  @endif
+                </svg>
+                <span class="feature-strip-label">{{ $feat['label'] ?? 'Curated Feature' }}</span>
+              </div>
+            @endforeach
+          @else
+            <div class="feature-strip-item">
+              <svg class="feature-strip-icon" viewBox="0 0 24 24"><path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z"/></svg>
+              <span class="feature-strip-label">5-Star Luxury Suites</span>
+            </div>
+            <div class="feature-strip-item">
+              <svg class="feature-strip-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <span class="feature-strip-label">Private Butler & Concierge</span>
+            </div>
+            <div class="feature-strip-item">
+              <svg class="feature-strip-icon" viewBox="0 0 24 24"><path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z"/></svg>
+              <span class="feature-strip-label">Fine Dining & Cellar</span>
+            </div>
+            <div class="feature-strip-item">
+              <svg class="feature-strip-icon" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+              <span class="feature-strip-label">Private Wellness Sanctuary</span>
+            </div>
+            <div class="feature-strip-item">
+              <svg class="feature-strip-icon" viewBox="0 0 24 24"><path d="M17 6h-2V3c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v3H7c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2 0 .55.45 1 1 1s1-.45 1-1h8c0 .55.45 1 1 1s1-.45 1-1c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-3h2v3h-2V3zM9.5 18c-.83 0-1.5-.67-1.5-1.5S8.67 15 9.5 15s1.5.67 1.5 1.5S10.33 18 9.5 18zm5 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+              <span class="feature-strip-label">Airport Chauffeur Included</span>
+            </div>
+          @endif
         </div>
       </div>
     </section>
@@ -1658,191 +1639,52 @@
                LEFT COLUMN: DAY-BY-DAY TIMELINE (~65% Width)
                ================================================================== -->
           <div class="itinerary-main-col">
-            <span class="itinerary-eyebrow">DAY BY DAY</span>
-            <h2 class="itinerary-main-title">Itinerary Overview</h2>
+            <span class="itinerary-eyebrow">SUITES & ACCOMMODATIONS</span>
+            <h2 class="itinerary-main-title">Curated Rooms &amp; Suites</h2>
 
-            <!-- ITINERARY DAY CARDS TIMELINE -->
+            <!-- ROOMS & SUITES TIMELINE -->
             <div class="day-cards-timeline">
-
-              <!-- DAY 1 CARD -->
-              <!-- Elementor Loop Item / Template Block -->
-              <article class="day-card">
-                <div class="day-badge">
-                  <span class="day-badge-num">1</span>
-                  <span class="day-badge-label">DAY</span>
-                  <svg class="day-badge-icon" viewBox="0 0 24 24" fill="none" stroke="#B69964" stroke-width="1.8"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path
-                      d="M17.8 19.2L16 11l3.5-3.5C21 6 21 4 19.5 2.5c-1.5-1.5-3.5-1.5-5 0L11 6 2.8 4.2c-.5-.1-.9.2-1 .7-.1.4.1.8.4 1l5.8 4.7L6 14.5l-2.5-.5c-.4-.1-.8.1-1 .4-.2.4-.1.8.2 1.1l2.5 2 2 2.5c.3.3.7.4 1.1.2.3-.2.5-.6.4-1l-.5-2.5 3.9-2 4.7 5.8c.2.3.6.5 1 .4.5-.1.8-.5.7-1z" />
-                  </svg>
-                </div>
-                <div class="day-content">
-                  <h3 class="day-title">Arrival in Vancouver</h3>
-                  <p class="day-desc">
-                    Private airport meet-and-greet and luxury transfer to your hotel. Check in and take the afternoon at
-                    leisure,
-                    or stroll the Coal Harbour seawall as the sun sets over English Bay.
-                  </p>
-                  <div class="day-meta">OVERNIGHT: VANCOUVER</div>
-                </div>
-              </article>
-
-              <!-- DAY 2 CARD -->
-              <article class="day-card">
-                <div class="day-badge">
-                  <span class="day-badge-num">2</span>
-                  <span class="day-badge-label">DAY</span>
-                  <svg class="day-badge-icon" viewBox="0 0 24 24" fill="none" stroke="#B69964" stroke-width="1.8"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="4" y="4" width="16" height="13" rx="2.5" />
-                    <line x1="4" y1="10" x2="20" y2="10" />
-                    <circle cx="8" cy="14" r="1.2" fill="#B69964" />
-                    <circle cx="16" cy="14" r="1.2" fill="#B69964" />
-                    <path d="M6 17v2M18 17v2" />
-                  </svg>
-                </div>
-                <div class="day-content">
-                  <h3 class="day-title">Vancouver City Touring</h3>
-                  <p class="day-desc">
-                    Guided sightseeing across Stanley Park's ancient cedars, the Capilano Suspension Bridge, and the
-                    artisan stalls of Granville Island.
-                  </p>
-                  <div class="day-meta">OVERNIGHT: VANCOUVER &middot; B</div>
-                </div>
-              </article>
-
-              <!-- DAY 3 CARD -->
-              <article class="day-card">
-                <div class="day-badge">
-                  <span class="day-badge-num">3</span>
-                  <span class="day-badge-label">DAY</span>
-                  <svg class="day-badge-icon" viewBox="0 0 24 24" fill="none" stroke="#B69964" stroke-width="1.8"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="5" y="3" width="14" height="14" rx="2.5" />
-                    <line x1="5" y1="9" x2="19" y2="9" />
-                    <circle cx="8.5" cy="13.5" r="1.2" fill="#B69964" />
-                    <circle cx="15.5" cy="13.5" r="1.2" fill="#B69964" />
-                    <path d="M7 17l-2 3M17 17l2 3" />
-                  </svg>
-                </div>
-                <div class="day-content">
-                  <h3 class="day-title">GoldLeaf Rail &mdash; Vancouver to Kamloops</h3>
-                  <p class="day-desc">
-                    Board the Rocky Mountaineer in GoldLeaf Service. Glass-dome views trace the Fraser Canyon and
-                    Thompson River, with a la carte dining on board.
-                  </p>
-                  <div class="day-meta">OVERNIGHT: KAMLOOPS &middot; B / L</div>
-                </div>
-              </article>
-
-              <!-- DAY 4 CARD -->
-              <article class="day-card">
-                <div class="day-badge">
-                  <span class="day-badge-num">4</span>
-                  <span class="day-badge-label">DAY</span>
-                  <svg class="day-badge-icon" viewBox="0 0 24 24" fill="none" stroke="#B69964" stroke-width="1.8"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="5" y="3" width="14" height="14" rx="2.5" />
-                    <line x1="5" y1="9" x2="19" y2="9" />
-                    <circle cx="8.5" cy="13.5" r="1.2" fill="#B69964" />
-                    <circle cx="15.5" cy="13.5" r="1.2" fill="#B69964" />
-                    <path d="M7 17l-2 3M17 17l2 3" />
-                  </svg>
-                </div>
-                <div class="day-content">
-                  <h3 class="day-title">GoldLeaf Rail &mdash; Kamloops to Banff</h3>
-                  <p class="day-desc">
-                    Continue over the Continental Divide and through Kicking Horse Pass, with the Rockies' snow-capped
-                    peaks framed by your private dome coach.
-                  </p>
-                  <div class="day-meta">OVERNIGHT: BANFF &middot; B / L</div>
-                </div>
-              </article>
-
-              <!-- DAY 5 CARD -->
-              <article class="day-card">
-                <div class="day-badge">
-                  <span class="day-badge-num">5</span>
-                  <span class="day-badge-label">DAY</span>
-                  <svg class="day-badge-icon" viewBox="0 0 24 24">
-                    <path
-                      d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                  </svg>
-                </div>
-                <div class="day-content">
-                  <h3 class="day-title">Banff &amp; Lake Louise</h3>
-                  <p class="day-desc">
-                    A guided day exploring Banff Gondola's summit views and the glacier-fed, turquoise waters of Lake
-                    Louise.
-                  </p>
-                  <div class="day-meta">OVERNIGHT: BANFF &middot; B</div>
-                </div>
-              </article>
-
-              <!-- DAY 6 CARD -->
-              <article class="day-card">
-                <div class="day-badge">
-                  <span class="day-badge-num">6</span>
-                  <span class="day-badge-label">DAY</span>
-                  <svg class="day-badge-icon" viewBox="0 0 24 24">
-                    <path d="M14 6l-3.75 5 2.85 3.8L11 17l-3.5-4.67L3 18h18l-7-12z" />
-                  </svg>
-                </div>
-                <div class="day-content">
-                  <h3 class="day-title">Moraine Lake &amp; Icefields Parkway</h3>
-                  <p class="day-desc">
-                    A leisure day with an optional excursion to Moraine Lake's Valley of the Ten Peaks, or time to
-                    explore Banff Avenue at your own pace.
-                  </p>
-                  <div class="day-meta">OVERNIGHT: BANFF &middot; B</div>
-                </div>
-              </article>
-
-              <!-- DAY 7 CARD -->
-              <article class="day-card">
-                <div class="day-badge">
-                  <span class="day-badge-num">7</span>
-                  <span class="day-badge-label">DAY</span>
-                  <svg class="day-badge-icon" viewBox="0 0 24 24">
-                    <path
-                      d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.04 3H5.81l1.04-3zM19 17H5v-4h14v4z" />
-                  </svg>
-                </div>
-                <div class="day-content">
-                  <h3 class="day-title">Banff to Calgary</h3>
-                  <p class="day-desc">
-                    A scenic drive along the Bow Valley Parkway, arriving into Calgary with the afternoon free to
-                    explore the city.
-                  </p>
-                  <div class="day-meta">OVERNIGHT: CALGARY &middot; B</div>
-                </div>
-              </article>
-
-              <!-- DAY 8 CARD -->
-              <article class="day-card">
-                <div class="day-badge">
-                  <span class="day-badge-num">8</span>
-                  <span class="day-badge-label">DAY</span>
-                  <svg class="day-badge-icon" viewBox="0 0 24 24">
-                    <path
-                      d="M17 6h-2V3c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v3H7c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2 0 .55.45 1 1 1s1-.45 1-1h8c0 .55.45 1 1 1s1-.45 1-1c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-3h2v3h-2V3z" />
-                  </svg>
-                </div>
-                <div class="day-content">
-                  <h3 class="day-title">Departure</h3>
-                  <p class="day-desc">
-                    Private transfer to Calgary International Airport for your onward journey home.
-                  </p>
-                  <div class="day-meta">END OF JOURNEY</div>
-                </div>
-              </article>
-
+              @if(!empty($package->room_types) && count($package->room_types) > 0)
+                @foreach($package->room_types as $room)
+                  <article class="day-card">
+                    <div class="day-badge">
+                      <span class="day-badge-num">{{ $loop->iteration }}</span>
+                      <span class="day-badge-label">SUITE</span>
+                      <svg class="day-badge-icon" viewBox="0 0 24 24" fill="none" stroke="#B69964" stroke-width="1.8">
+                        <rect x="4" y="4" width="16" height="13" rx="2.5" />
+                        <line x1="4" y1="10" x2="20" y2="10" />
+                      </svg>
+                    </div>
+                    <div class="day-content">
+                      <h3 class="day-title">{{ $room['name'] ?? 'Bespoke Suite' }}</h3>
+                      <p class="day-desc">{{ $room['description'] ?? '' }}</p>
+                      @if(!empty($room['meta']))
+                        <div class="day-meta">SPECIFICATIONS: {{ strtoupper($room['meta']) }}</div>
+                      @endif
+                    </div>
+                  </article>
+                @endforeach
+              @else
+                <article class="day-card">
+                  <div class="day-badge">
+                    <span class="day-badge-num">★</span>
+                    <span class="day-badge-label">SANCTUARY</span>
+                    <svg class="day-badge-icon" viewBox="0 0 24 24" fill="none" stroke="#B69964" stroke-width="1.8">
+                      <rect x="4" y="4" width="16" height="13" rx="2.5" />
+                    </svg>
+                  </div>
+                  <div class="day-content">
+                    <h3 class="day-title">{{ $package->title ?? '5-Star Luxury Estate' }}</h3>
+                    <p class="day-desc">{{ $package->overview ?? $package->short_description ?? 'Contact our Canadian concierge division to customize private villa, suite options, and VIP arrival privileges.' }}</p>
+                    <div class="day-meta">DESTINATION: {{ strtoupper($package->country ?? 'GLOBAL') }} &middot; 5-STAR LUXURY</div>
+                  </div>
+                </article>
+              @endif
             </div>
 
             <!-- FOOTNOTE -->
             <p class="itinerary-footnote">
-              B &mdash; Breakfast &nbsp;|&nbsp; L &mdash; Lunch &nbsp;|&nbsp; D &mdash; Dinner.
-              Itinerary is subject to change based on rail schedules and local conditions.
+              Room allocations and suite configurations are confirmed directly with our private hotel concierge at reservation.
             </p>
           </div>
 
@@ -1856,55 +1698,29 @@
               <div class="sidebar-card highlights-card">
                 <span class="sidebar-card-title">TOUR HIGHLIGHTS</span>
                 <ul class="highlights-list">
-                  <li class="highlight-item">
-                    <svg class="highlight-icon" viewBox="0 0 16 16" fill="none" stroke="#B69964" stroke-width="1.8"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M2.5 8.5l3.5 3.5 7.5-8" />
-                    </svg>
-                    <span>Two-day GoldLeaf glass-dome rail journey, Vancouver to Banff</span>
-                  </li>
-                  <li class="highlight-item">
-                    <svg class="highlight-icon" viewBox="0 0 16 16" fill="none" stroke="#B69964" stroke-width="1.8"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M2.5 8.5l3.5 3.5 7.5-8" />
-                    </svg>
-                    <span>Guided sightseeing in Vancouver, Banff and Lake Louise</span>
-                  </li>
-                  <li class="highlight-item">
-                    <svg class="highlight-icon" viewBox="0 0 16 16" fill="none" stroke="#B69964" stroke-width="1.8"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M2.5 8.5l3.5 3.5 7.5-8" />
-                    </svg>
-                    <span>Overnight rail-side hospitality in Kamloops</span>
-                  </li>
-                  <li class="highlight-item">
-                    <svg class="highlight-icon" viewBox="0 0 16 16" fill="none" stroke="#B69964" stroke-width="1.8"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M2.5 8.5l3.5 3.5 7.5-8" />
-                    </svg>
-                    <span>Scenic drive along the Bow Valley Parkway</span>
-                  </li>
-                  <li class="highlight-item">
-                    <svg class="highlight-icon" viewBox="0 0 16 16" fill="none" stroke="#B69964" stroke-width="1.8"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M2.5 8.5l3.5 3.5 7.5-8" />
-                    </svg>
-                    <span>Luxury alpine accommodation in Banff</span>
-                  </li>
-                  <li class="highlight-item">
-                    <svg class="highlight-icon" viewBox="0 0 16 16" fill="none" stroke="#B69964" stroke-width="1.8"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M2.5 8.5l3.5 3.5 7.5-8" />
-                    </svg>
-                    <span>Private transfers throughout in an air-conditioned vehicle</span>
-                  </li>
-                  <li class="highlight-item">
-                    <svg class="highlight-icon" viewBox="0 0 16 16" fill="none" stroke="#B69964" stroke-width="1.8"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M2.5 8.5l3.5 3.5 7.5-8" />
-                    </svg>
-                    <span>Expert local guides and onboard rail hosts</span>
-                  </li>
+                  @if(!empty($package->highlights) && count($package->highlights) > 0)
+                    @foreach($package->highlights as $hl)
+                      <li class="highlight-item">
+                        <svg class="highlight-icon" viewBox="0 0 16 16" fill="none" stroke="#B69964" stroke-width="1.8">
+                          <path d="M2.5 8.5l3.5 3.5 7.5-8" />
+                        </svg>
+                        <span>{{ $hl }}</span>
+                      </li>
+                    @endforeach
+                  @else
+                    <li class="highlight-item">
+                      <svg class="highlight-icon" viewBox="0 0 16 16" fill="none" stroke="#B69964" stroke-width="1.8"><path d="M2.5 8.5l3.5 3.5 7.5-8"/></svg>
+                      <span>Luxury 5-star estate accommodation & private concierge</span>
+                    </li>
+                    <li class="highlight-item">
+                      <svg class="highlight-icon" viewBox="0 0 16 16" fill="none" stroke="#B69964" stroke-width="1.8"><path d="M2.5 8.5l3.5 3.5 7.5-8"/></svg>
+                      <span>Fine dining experiences and signature breakfast service</span>
+                    </li>
+                    <li class="highlight-item">
+                      <svg class="highlight-icon" viewBox="0 0 16 16" fill="none" stroke="#B69964" stroke-width="1.8"><path d="M2.5 8.5l3.5 3.5 7.5-8"/></svg>
+                      <span>VIP arrival amenities & chauffeur airport transfers</span>
+                    </li>
+                  @endif
                 </ul>
               </div>
 
@@ -1945,61 +1761,34 @@
               <div class="sidebar-card includes-card">
                 <span class="sidebar-card-title">PACKAGE INCLUDES</span>
                 <ul class="includes-list">
-                  <li class="include-item">
-                    <svg class="include-icon" viewBox="0 0 24 24">
-                      <path
-                        d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z" />
-                    </svg>
-                    <span>7 nights luxury accommodation &mdash; Vancouver, Kamloops, Banff, Calgary</span>
-                  </li>
-                  <li class="include-item">
-                    <svg class="include-icon" viewBox="0 0 24 24">
-                      <path
-                        d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z" />
-                    </svg>
-                    <span>Daily breakfast, plus 2 lunches on board the Rocky Mountaineer</span>
-                  </li>
-                  <li class="include-item">
-                    <svg class="include-icon" viewBox="0 0 24 24">
-                      <path
-                        d="M12 2c-4 0-8 .5-8 4v9.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h12v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-4-4-8-4zm0 2c3.71 0 5.8 0 6 2H6c.2-2 2.29-2 6-2zm6 7H6V8h12v3zm-9.5 6c-.83 0-1.5-.67-1.5-1.5S7.67 12 8.5 12s1.5.67 1.5 1.5S9.33 15 8.5 15zm7 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
-                    </svg>
-                    <span>2 days GoldLeaf Service rail journey, Vancouver&ndash;Kamloops&ndash;Banff</span>
-                  </li>
-                  <li class="include-item">
-                    <svg class="include-icon" viewBox="0 0 24 24">
-                      <path
-                        d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.04 3H5.81l1.04-3zM19 17H5v-4h14v4z" />
-                    </svg>
-                    <span>All private airport, rail and hotel transfers</span>
-                  </li>
-                  <li class="include-item">
-                    <svg class="include-icon" viewBox="0 0 24 24">
-                      <path
-                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                    </svg>
-                    <span>Guided city tours in Vancouver and Banff</span>
-                  </li>
-                  <li class="include-item">
-                    <svg class="include-icon" viewBox="0 0 24 24">
-                      <path
-                        d="M22 10V6c0-1.11-.9-2-2-2H4c-1.1 0-1.99.89-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2s.9-2 2-2zm-2-1.5c-1.25.79-2 2.16-2 3.65s.75 2.86 2 3.65V18H4v-2.2c1.25-.79 2-2.16 2-3.65s-.75-2.86-2-3.65V6h16v2.5z" />
-                    </svg>
-                    <span>Entrance fees to Capilano Suspension Bridge and Banff Gondola</span>
-                  </li>
-                  <li class="include-item">
-                    <svg class="include-icon" viewBox="0 0 24 24">
-                      <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
-                    </svg>
-                    <span>Bottled water and onboard refreshments</span>
-                  </li>
-                  <li class="include-item">
-                    <svg class="include-icon" viewBox="0 0 24 24">
-                      <path
-                        d="M7.5 11C9.43 11 11 9.43 11 7.5S9.43 4 7.5 4 4 5.57 4 7.5 5.57 11 7.5 11zm0-5C8.33 6 9 6.67 9 7.5S8.33 9 7.5 9 6 8.33 6 7.5 6.67 6 7.5 6.67 6 7.5 6zm9 14c1.93 0 3.5-1.57 3.5-3.5S18.43 13 16.5 13 13 14.57 13 16.5s1.57 3.5 3.5 3.5zm0-5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM4.03 18.59L18.59 4.03l1.41 1.41L5.44 20l-1.41-1.41z" />
-                    </svg>
-                    <span>All service charges and taxes</span>
-                  </li>
+                  @if(!empty($package->inclusions) && count($package->inclusions) > 0)
+                    @foreach($package->inclusions as $inc)
+                      <li class="include-item">
+                        <svg class="include-icon" viewBox="0 0 24 24">
+                          <path
+                            d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z" />
+                        </svg>
+                        <span>{{ $inc }}</span>
+                      </li>
+                    @endforeach
+                  @else
+                    <li class="include-item">
+                      <svg class="include-icon" viewBox="0 0 24 24"><path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z"/></svg>
+                      <span>{{ $package->duration ?? '5-Star' }} luxury suite accommodation</span>
+                    </li>
+                    <li class="include-item">
+                      <svg class="include-icon" viewBox="0 0 24 24"><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/></svg>
+                      <span>Daily artisanal breakfast and welcome reception</span>
+                    </li>
+                    <li class="include-item">
+                      <svg class="include-icon" viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.04 3H5.81l1.04-3zM19 17H5v-4h14v4z"/></svg>
+                      <span>Private round-trip airport and city transfers</span>
+                    </li>
+                    <li class="include-item">
+                      <svg class="include-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                      <span>Dedicated private concierge throughout stay</span>
+                    </li>
+                  @endif
                 </ul>
               </div>
 

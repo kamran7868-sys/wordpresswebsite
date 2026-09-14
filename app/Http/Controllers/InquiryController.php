@@ -6,6 +6,7 @@ use App\Models\FlightInquiry;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class InquiryController extends Controller
 {
@@ -73,6 +74,30 @@ class InquiryController extends Controller
         ]);
 
         Log::info('Flight Inquiry Saved to MySQL:', ['id' => $inquiry->id, 'email' => $inquiry->email]);
+
+        // Dispatch admin alert notification email
+        try {
+            $adminEmail = config('mail.from.address', 'admin@premiumglobalexp.com');
+            $alertSubject = "✈ New Flight Inquiry #{$inquiry->id}: {$inquiry->full_name} (" . ($inquiry->dep_city ?: 'Any') . " → " . ($inquiry->dest_city ?: 'Any') . ")";
+            $alertBody = "A new airline ticketing inquiry has been received on the website:\n\n"
+                       . "Client: {$inquiry->full_name}\n"
+                       . "Email: {$inquiry->email}\n"
+                       . "Phone: " . ($inquiry->phone ?: 'Not provided') . "\n"
+                       . "Trip Type: " . ucfirst($inquiry->trip_type) . "\n"
+                       . "Route: " . ($inquiry->dep_city ?: 'N/A') . " → " . ($inquiry->dest_city ?: 'N/A') . "\n"
+                       . "Depart Date: " . ($inquiry->dep_date ? $inquiry->dep_date->format('M d, Y') : 'Flexible') . "\n"
+                       . "Return Date: " . ($inquiry->return_date ? $inquiry->return_date->format('M d, Y') : 'N/A') . "\n"
+                       . "Class: " . ucfirst($inquiry->cabin_class) . "\n"
+                       . "Passengers: {$inquiry->count_adults} Adult(s), {$inquiry->count_children} Child(ren), {$inquiry->count_infants} Infant(s)\n"
+                       . "Special Requests: " . ($inquiry->special_requests ?: 'None') . "\n\n"
+                       . "View & Reply in Admin Panel: " . route('admin.inquiries.show', $inquiry->id);
+
+            Mail::raw($alertBody, function ($mail) use ($adminEmail, $alertSubject) {
+                $mail->to($adminEmail)->subject($alertSubject);
+            });
+        } catch (\Throwable $e) {
+            Log::warning("Could not send admin flight inquiry notification email: " . $e->getMessage());
+        }
 
         return response()->json([
             'status' => 'success',

@@ -29,6 +29,8 @@ class FlightInquiry extends Model
         'flex_dates',
         'multicity_legs',
         'special_requests',
+        'admin_reply',
+        'replied_at',
         'status',
         'ip_address',
     ];
@@ -36,6 +38,7 @@ class FlightInquiry extends Model
     protected $casts = [
         'dep_date' => 'date',
         'return_date' => 'date',
+        'replied_at' => 'datetime',
         'flex_dates' => 'boolean',
         'multicity_legs' => 'array',
         'count_adults' => 'integer',

@@ -8,6 +8,8 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class InquiryController extends Controller
 {
@@ -79,4 +81,38 @@ class InquiryController extends Controller
 
         return back()->with('success', "Flight inquiry status updated to " . ucfirst($inquiry->status) . ".");
     }
+
+    /**
+     * Send official reply / quote to client, record admin response, and mark flight inquiry as contacted/quoted.
+     */
+    public function reply(Request $request, FlightInquiry $inquiry): RedirectResponse
+    {
+        $validated = $request->validate([
+            'reply_subject' => 'required|string|max:255',
+            'reply_message' => 'required|string|min:5',
+            'target_status' => 'nullable|string|in:contacted,quoted,booked',
+        ]);
+
+        $newStatus = $validated['target_status'] ?? ($inquiry->status === 'pending' ? 'contacted' : $inquiry->status);
+
+        // 1. Update inquiry record with admin reply and timestamp
+        $inquiry->update([
+            'admin_reply' => $validated['reply_message'],
+            'replied_at' => now(),
+            'status' => $newStatus,
+        ]);
+
+        // 2. Dispatch email to customer (with fallback error logging)
+        try {
+            Mail::raw($validated['reply_message'], function ($mail) use ($inquiry, $validated) {
+                $mail->to($inquiry->email, $inquiry->full_name)
+                     ->subject($validated['reply_subject']);
+            });
+        } catch (\Throwable $e) {
+            Log::warning("Flight inquiry reply email to {$inquiry->email} was recorded but email delivery failed: " . $e->getMessage());
+        }
+
+        return back()->with('success', "Official reply successfully sent to {$inquiry->full_name} ({$inquiry->email}) and recorded. Status updated to " . ucfirst($newStatus) . ".");
+    }
 }
+
