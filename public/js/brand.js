@@ -41,56 +41,26 @@ document.addEventListener('DOMContentLoaded', () => {
      ------------------------------------------------------------------------ */
   const mobileToggle = document.getElementById('mobileMenuToggle');
   const navMenu = document.getElementById('mainNavMenu');
-  const navBackdrop = document.getElementById('navBackdrop');
-
-  function updateToggleIcon(isOpen) {
-    if (!mobileToggle) return;
-    const iconHamb = mobileToggle.querySelector('.icon-hamburger');
-    const iconClose = mobileToggle.querySelector('.icon-close');
-    if (iconHamb && iconClose) {
-      iconHamb.style.display = isOpen ? 'none' : 'block';
-      iconClose.style.display = isOpen ? 'block' : 'none';
-    }
-  }
 
   function closeMobileNav() {
     if (navMenu && navMenu.classList.contains('mobile-open')) {
       navMenu.classList.remove('mobile-open');
       document.body.classList.remove('nav-open');
       mobileToggle?.setAttribute('aria-expanded', 'false');
-      mobileToggle?.classList.remove('is-active');
-      navBackdrop?.classList.remove('active');
-      updateToggleIcon(false);
     }
-  }
-
-  function openMobileNav() {
-    if (!navMenu) return;
-    navMenu.classList.add('mobile-open');
-    document.body.classList.add('nav-open');
-    mobileToggle?.setAttribute('aria-expanded', 'true');
-    mobileToggle?.classList.add('is-active');
-    navBackdrop?.classList.add('active');
-    updateToggleIcon(true);
   }
 
   function toggleMobileNav(e) {
     if (e) e.stopPropagation();
     if (!navMenu) return;
-    if (navMenu.classList.contains('mobile-open')) {
-      closeMobileNav();
-    } else {
-      openMobileNav();
-    }
+    const willOpen = !navMenu.classList.contains('mobile-open');
+    navMenu.classList.toggle('mobile-open', willOpen);
+    document.body.classList.toggle('nav-open', willOpen);
+    mobileToggle?.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
   }
 
   if (mobileToggle && navMenu) {
     mobileToggle.addEventListener('click', toggleMobileNav);
-
-    navBackdrop?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      closeMobileNav();
-    });
 
     navMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
@@ -108,13 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close menu on Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && navMenu.classList.contains('mobile-open')) {
-        closeMobileNav();
-      }
-    });
-
-    // Auto-close on resize to desktop viewport
-    window.addEventListener('resize', () => {
-      if (window.innerWidth >= 1024 && navMenu.classList.contains('mobile-open')) {
         closeMobileNav();
       }
     });
