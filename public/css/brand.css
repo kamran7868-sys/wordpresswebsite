@@ -1762,6 +1762,31 @@ textarea {
   fill: var(--color-gold);
   flex-shrink: 0;
   margin-top: 3px;
+  transition: transform 0.25s ease, fill 0.25s ease;
+}
+
+.footer-contact-info .footer-email-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: rgba(247, 244, 237, 0.85);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.footer-contact-info .footer-email-link:hover {
+  color: var(--color-gold);
+}
+
+.footer-contact-info .footer-email-link:hover .footer-email-address {
+  color: var(--color-gold);
+  text-decoration: underline;
+}
+
+.footer-contact-info .footer-email-link:hover svg {
+  transform: scale(1.15);
+  fill: #D4AF37;
 }
 
 .footer-bottom {
