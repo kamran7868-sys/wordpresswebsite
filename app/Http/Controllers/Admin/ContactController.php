@@ -90,7 +90,7 @@ class ContactController extends Controller
     /**
      * Send official reply to client, record admin response, and mark inquiry as replied.
      */
-    public function reply(Request $request, ContactInquiry $contact): RedirectResponse
+    public function reply(Request $request, ContactInquiry $contact): JsonResponse|RedirectResponse
     {
         $validated = $request->validate([
             'reply_subject' => 'required|string|max:255',
@@ -104,16 +104,39 @@ class ContactController extends Controller
             'status' => 'replied',
         ]);
 
-        // 2. Dispatch email to customer (with fallback error logging)
+        // 2. Dispatch email to customer (with fallback error logging and timeout safeguard)
+        $emailDispatched = false;
         try {
+            $prevTimeout = ini_get('default_socket_timeout');
+            ini_set('default_socket_timeout', '5');
             Mail::raw($validated['reply_message'], function ($mail) use ($contact, $validated) {
                 $mail->to($contact->email, $contact->full_name)
                      ->subject($validated['reply_subject']);
             });
+            ini_set('default_socket_timeout', $prevTimeout);
+            $emailDispatched = true;
         } catch (\Throwable $e) {
             Log::warning("Contact reply email to {$contact->email} was recorded but email delivery failed: " . $e->getMessage());
         }
 
-        return back()->with('success', "Official reply successfully recorded and sent to {$contact->full_name} ({$contact->email}). Inquiry status updated to Replied.");
+        $mailerDriver = config('mail.default', 'log');
+        if ($emailDispatched && $mailerDriver !== 'log') {
+            $successMsg = "Official reply successfully recorded and sent to {$contact->full_name} ({$contact->email}). Inquiry status updated to Replied.";
+        } else {
+            $successMsg = "Official reply successfully recorded and status updated to Replied.";
+        }
+
+        if ($request->wantsJson() || $request->ajax()) {
+            return response()->json([
+                'status' => 'success',
+                'message' => $successMsg,
+                'contact_status' => 'replied',
+                'admin_reply' => $validated['reply_message'],
+                'replied_at' => now()->format('F d, Y \a\t h:i A'),
+                'email_dispatched' => $emailDispatched,
+            ]);
+        }
+
+        return back()->with('success', $successMsg);
     }
 }

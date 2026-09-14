@@ -85,7 +85,7 @@ class InquiryController extends Controller
     /**
      * Send official reply / quote to client, record admin response, and mark flight inquiry as contacted/quoted.
      */
-    public function reply(Request $request, FlightInquiry $inquiry): RedirectResponse
+    public function reply(Request $request, FlightInquiry $inquiry): JsonResponse|RedirectResponse
     {
         $validated = $request->validate([
             'reply_subject' => 'required|string|max:255',
@@ -95,24 +95,48 @@ class InquiryController extends Controller
 
         $newStatus = $validated['target_status'] ?? ($inquiry->status === 'pending' ? 'contacted' : $inquiry->status);
 
-        // 1. Update inquiry record with admin reply and timestamp
-        $inquiry->update([
-            'admin_reply' => $validated['reply_message'],
-            'replied_at' => now(),
-            'status' => $newStatus,
-        ]);
+        // 1. Update inquiry record (gracefully checking columns in case server migration is pending)
+        $updateData = ['status' => $newStatus];
+        if (\Illuminate\Support\Facades\Schema::hasColumn('flight_inquiries', 'admin_reply')) {
+            $updateData['admin_reply'] = $validated['reply_message'];
+            $updateData['replied_at'] = now();
+        }
+        $inquiry->update($updateData);
 
-        // 2. Dispatch email to customer (with fallback error logging)
+        // 2. Dispatch email to customer (with fallback error logging and socket timeout safeguard)
+        $emailDispatched = false;
         try {
+            $prevTimeout = ini_get('default_socket_timeout');
+            ini_set('default_socket_timeout', '5');
             Mail::raw($validated['reply_message'], function ($mail) use ($inquiry, $validated) {
                 $mail->to($inquiry->email, $inquiry->full_name)
                      ->subject($validated['reply_subject']);
             });
+            ini_set('default_socket_timeout', $prevTimeout);
+            $emailDispatched = true;
         } catch (\Throwable $e) {
             Log::warning("Flight inquiry reply email to {$inquiry->email} was recorded but email delivery failed: " . $e->getMessage());
         }
 
-        return back()->with('success', "Official reply successfully sent to {$inquiry->full_name} ({$inquiry->email}) and recorded. Status updated to " . ucfirst($newStatus) . ".");
+        $mailerDriver = config('mail.default', 'log');
+        if ($emailDispatched && $mailerDriver !== 'log') {
+            $successMsg = "Official reply successfully recorded and sent to {$inquiry->full_name} ({$inquiry->email}). Status updated to " . ucfirst($newStatus) . ".";
+        } else {
+            $successMsg = "Official reply successfully recorded and status updated to " . ucfirst($newStatus) . ".";
+        }
+
+        if ($request->wantsJson() || $request->ajax()) {
+            return response()->json([
+                'status' => 'success',
+                'message' => $successMsg,
+                'inquiry_status' => $newStatus,
+                'admin_reply' => $validated['reply_message'],
+                'replied_at' => now()->format('F d, Y \a\t h:i A'),
+                'email_dispatched' => $emailDispatched,
+            ]);
+        }
+
+        return back()->with('success', $successMsg);
     }
 }
 
