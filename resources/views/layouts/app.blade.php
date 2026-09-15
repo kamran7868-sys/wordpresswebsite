@@ -39,10 +39,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- SECURITY HEADERS (Client-side meta fallback) -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self';">
-  <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin-allow-popups">
-
   <!-- ASSET PRELOADS -->
   <link rel="preload" href="{{ asset('css/brand.min.css') }}?v=20260915v7" as="style">
   <link rel="preload" href="{{ asset('js/brand.js') }}?v=20260915v4" as="script">
