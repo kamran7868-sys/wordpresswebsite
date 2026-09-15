@@ -250,33 +250,32 @@ textarea {
   color: var(--color-ivory);
   font-size: 0.76rem;
   height: var(--utility-bar-height);
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
   position: relative;
   z-index: 1001;
 }
 
-.utility-bar-inner {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  text-align: center !important;
-  width: 100% !important;
-  margin: 0 auto !important;
-  gap: 0.75rem !important;
-}
-
-.utility-links {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  text-align: center !important;
-  margin: 0 auto !important;
-  gap: 0.75rem !important;
-  overflow-x: auto;
-  scrollbar-width: none;
-  white-space: nowrap;
+@media (min-width: 768px) {
+  .top-utility-bar {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .utility-bar-inner {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+  .utility-links {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    gap: 0.75rem !important;
+  }
 }
 
 .utility-links::-webkit-scrollbar {
@@ -2073,12 +2072,50 @@ img, picture, video, canvas, svg {
 @media (max-width: 767px) {
   /* 1. TOP UTILITY BAR & MAIN HEADER */
   .top-utility-bar {
+    display: block !important;
+    height: 38px !important;
+    line-height: 38px !important;
+    background-color: var(--color-navy) !important;
+    border-bottom: 1px solid rgba(182, 153, 100, 0.25) !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow: hidden !important;
+    position: relative !important;
+    z-index: 1001 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .utility-bar-inner {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    height: 100% !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    padding: 0 0.85rem !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+  }
+  .utility-bar-inner::-webkit-scrollbar {
     display: none !important;
+  }
+  .utility-links {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 0.65rem !important;
+    white-space: nowrap !important;
+    flex-wrap: nowrap !important;
+    width: max-content !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   :root {
     --header-height: 68px;
-    --utility-bar-height: 0px;
+    --utility-bar-height: 38px;
   }
 
   .main-header {
@@ -2095,9 +2132,10 @@ img, picture, video, canvas, svg {
   }
 
   .brand-logo-img {
-    height: 38px;
-    max-width: 175px;
-    width: auto;
+    height: 32px !important;
+    max-width: 150px !important;
+    width: auto !important;
+    object-fit: contain !important;
   }
 
   .nav-actions {
@@ -2108,11 +2146,11 @@ img, picture, video, canvas, svg {
   }
 
   .header-nav-action-btn {
-    padding: 0.5rem 0.85rem !important;
-    font-size: 0.72rem !important;
-    letter-spacing: 0.4px !important;
+    padding: 0.4rem 0.65rem !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.2px !important;
     white-space: nowrap;
-    min-height: 42px;
+    min-height: 36px !important;
     display: inline-flex;
     align-items: center;
     border-radius: var(--radius-sm);
@@ -2540,6 +2578,14 @@ img, picture, video, canvas, svg {
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .footer-brand-col .footer-logo {
+    height: 38px !important;
+    max-width: 220px !important;
+    width: auto !important;
+    object-fit: contain !important;
+    margin-bottom: 1rem !important;
   }
 
   .footer-brand-col,

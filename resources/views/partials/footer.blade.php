@@ -1,7 +1,20 @@
-<!-- ==========================================================================
-     FOOTER SECTION
-     Elementor Container: #footer-section | Background: Midnight (#121525)
-     ========================================================================== -->
+<style>
+  @media (max-width: 767px) {
+    .footer-brand-col .footer-logo {
+      height: 38px !important;
+      max-width: 220px !important;
+      width: auto !important;
+      object-fit: contain !important;
+      margin-bottom: 1rem !important;
+    }
+  }
+  @media (max-width: 380px) {
+    .footer-brand-col .footer-logo {
+      height: 32px !important;
+      max-width: 185px !important;
+    }
+  }
+</style>
 <footer class="footer-section" id="footer-section">
   <div class="container">
 

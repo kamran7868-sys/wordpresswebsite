@@ -3,33 +3,150 @@
      Elementor Container: #utility-bar | Background: Expedition Navy (#252E47)
      ========================================================================== -->
 <style>
-  .top-utility-bar {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    text-align: center !important;
+  /* Desktop & Large Tablet (>= 768px): Dead-Center Aligned */
+  @media (min-width: 768px) {
+    .top-utility-bar {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      text-align: center !important;
+      background-color: var(--color-navy) !important;
+      border-bottom: 1px solid rgba(182, 153, 100, 0.25) !important;
+      height: var(--utility-bar-height) !important;
+      width: 100% !important;
+      position: relative !important;
+      z-index: 1001 !important;
+    }
+    .utility-bar-inner {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      text-align: center !important;
+      width: 100% !important;
+      margin: 0 auto !important;
+    }
+    .utility-links {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      text-align: center !important;
+      margin: 0 auto !important;
+      gap: 0.75rem !important;
+      width: auto !important;
+    }
   }
-  .utility-bar-inner {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    text-align: center !important;
-    width: 100% !important;
-    margin: 0 auto !important;
+
+  /* Mobile Devices (< 768px): Touch-Scrollable Strip, Zero Layout Distortion */
+  @media (max-width: 767px) {
+    .top-utility-bar {
+      display: block !important;
+      height: 38px !important;
+      line-height: 38px !important;
+      background-color: var(--color-navy) !important;
+      border-bottom: 1px solid rgba(182, 153, 100, 0.25) !important;
+      width: 100% !important;
+      max-width: 100vw !important;
+      overflow: hidden !important;
+      position: relative !important;
+      z-index: 1001 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    .utility-bar-inner {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      height: 100% !important;
+      width: 100% !important;
+      max-width: 100vw !important;
+      padding: 0 0.85rem !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      -webkit-overflow-scrolling: touch !important;
+      scrollbar-width: none !important;
+    }
+    .utility-bar-inner::-webkit-scrollbar {
+      display: none !important;
+    }
+    .utility-links {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      gap: 0.65rem !important;
+      white-space: nowrap !important;
+      flex-wrap: nowrap !important;
+      width: max-content !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    .utility-link-item,
+    .utility-contact-item {
+      display: inline-flex !important;
+      align-items: center !important;
+      font-size: 0.72rem !important;
+      flex-shrink: 0 !important;
+      gap: 0.35rem !important;
+      color: rgba(247, 244, 237, 0.9) !important;
+    }
+    .utility-link-item svg,
+    .utility-contact-item svg {
+      width: 12px !important;
+      height: 12px !important;
+      flex-shrink: 0 !important;
+    }
+    .utility-sep {
+      font-size: 0.65rem !important;
+      flex-shrink: 0 !important;
+      opacity: 0.4 !important;
+    }
+    
+    /* Header Logo & Navigation Responsiveness */
+    .brand-logo-wrap {
+      display: flex !important;
+      align-items: center !important;
+      max-width: 50% !important;
+      flex-shrink: 1 !important;
+      min-width: 0 !important;
+    }
+    .brand-logo-wrap picture {
+      display: flex !important;
+      align-items: center !important;
+      width: 100% !important;
+    }
+    .brand-logo-img {
+      height: 32px !important;
+      max-width: 100% !important;
+      width: auto !important;
+      object-fit: contain !important;
+    }
+    .header-nav-action-btn {
+      padding: 0.4rem 0.65rem !important;
+      font-size: 0.68rem !important;
+      letter-spacing: 0.2px !important;
+      min-height: 36px !important;
+      white-space: nowrap !important;
+    }
   }
-  .utility-links {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    text-align: center !important;
-    margin: 0 auto !important;
-    gap: 0.75rem !important;
-    width: auto !important;
+
+  @media (max-width: 380px) {
+    .brand-logo-img {
+      height: 27px !important;
+      max-width: 135px !important;
+    }
+    .header-nav-action-btn {
+      padding: 0.35rem 0.5rem !important;
+      font-size: 0.62rem !important;
+      min-height: 32px !important;
+    }
+    .header-inner {
+      padding: 0 0.5rem !important;
+      gap: 0.4rem !important;
+    }
   }
 </style>
-<section class="top-utility-bar" id="utility-bar" style="display: flex !important; justify-content: center !important; align-items: center !important; text-align: center !important;">
-  <div class="container utility-bar-inner" style="display: flex !important; justify-content: center !important; align-items: center !important; text-align: center !important; width: 100% !important; margin: 0 auto !important;">
-    <nav class="utility-links" aria-label="Quick Travel Services" style="display: flex !important; justify-content: center !important; align-items: center !important; text-align: center !important; margin: 0 auto !important; gap: 0.75rem !important;">
+<section class="top-utility-bar" id="utility-bar">
+  <div class="container utility-bar-inner">
+    <nav class="utility-links" aria-label="Quick Travel Services">
       <a href="{{ route('home') }}#travel-categories" data-tab="packages-panel" class="utility-link-item">
         <svg viewBox="0 0 24 24">
           <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" />
