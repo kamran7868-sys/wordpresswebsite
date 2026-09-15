@@ -772,7 +772,7 @@
     <section class="subpage-hero-section" id="packages-hero">
       <picture>
         <source srcset="{{ asset('assets/media/packages-catalog-mountain-hero.webp') }}" type="image/webp">
-        <img src="{{ asset('assets/media/packages-catalog-mountain-hero.webp') }}"
+        <img src="{{ asset('assets/media/packages-catalog-mountain-hero.jpg') }}"
           alt="Curated expeditions and all-inclusive holiday packages in majestic mountain landscapes" class="subpage-hero-bg"
           width="1920" height="800" fetchpriority="high" decoding="sync">
       </picture>
@@ -881,7 +881,7 @@
                        loading="{{ $isEager ? 'eager' : 'lazy' }}"
                        fetchpriority="{{ $isEager ? 'high' : 'low' }}"
                        decoding="async"
-                       onerror="this.src='{{ asset('assets/media/ancient-egypt-pyramids-giza.webp') }}'">
+                       onerror="this.src='{{ asset('assets/media/ancient-egypt-pyramids-giza.jpg') }}'">
                 </picture>
                 <span class="card-tag">{{ $pkg->country ?: 'Holiday' }}</span>
               </div>
@@ -970,7 +970,7 @@
                        loading="{{ $isEager ? 'eager' : 'lazy' }}"
                        fetchpriority="{{ $isEager ? 'high' : 'low' }}"
                        decoding="async"
-                       onerror="this.src='{{ asset('assets/media/alaskan-cruise-liner-fjords.webp') }}'">
+                       onerror="this.src='{{ asset('assets/media/alaskan-cruise-liner-fjords.jpg') }}'">
                 </picture>
                 <span class="card-tag">{{ $pkg->country ?: 'Cruise' }}</span>
               </a>
@@ -1217,7 +1217,7 @@
               <a href="{{ route('stay-detail', $pkg->slug) }}" class="card-img-wrap card-img-link" aria-label="Reserve {{ $pkg->title }}">
                 <img src="{{ $pkg->optimized_image }}"
                      alt="{{ $pkg->title }}" class="card-img" width="800" height="500" loading="lazy" decoding="async"
-                     onerror="this.src='{{ asset('assets/media/fairmont-banff-springs-hotel.webp') }}'">
+                     onerror="this.src='{{ asset('assets/media/fairmont-banff-springs-hotel.jpg') }}'">
                 <span class="card-tag">{{ $pkg->country ?: 'Hotel' }}</span>
               </a>
               <div class="card-body">

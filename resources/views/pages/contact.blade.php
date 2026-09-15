@@ -585,7 +585,7 @@
     <section class="subpage-hero-section" id="contact-hero">
       <picture>
         <source srcset="{{ asset('assets/media/tropical-ocean-horizon-contact.webp') }}" type="image/webp">
-        <img src="{{ asset('assets/media/tropical-ocean-horizon-contact.webp') }}"
+        <img src="{{ asset('assets/media/tropical-ocean-horizon-contact.jpg') }}"
           alt="Contact Canadian travel concierge at Premium Global Expeditions" class="subpage-hero-bg" width="1920" height="800" fetchpriority="high" decoding="sync">
       </picture>
       <div class="hero-overlay"></div>
