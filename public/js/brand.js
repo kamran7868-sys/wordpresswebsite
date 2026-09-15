@@ -217,6 +217,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (targetId === 'hotels' || targetId === 'hotel') cleanTarget = 'hotels-panel';
     if (targetId === 'packages' || targetId === 'holiday-packages') cleanTarget = 'packages-panel';
 
+    // Read layout BEFORE modifying DOM to prevent forced synchronous reflow (Layout Thrashing)
+    let offsetPosition = null;
+    if (shouldScroll) {
+      const catSection = document.getElementById('travel-categories');
+      if (catSection) {
+        const headerOffset = 100;
+        const elementPosition = catSection.getBoundingClientRect().top;
+        offsetPosition = elementPosition + (window.pageYOffset || window.scrollY) - headerOffset;
+      }
+    }
+
     categoryTabBtns.forEach(btn => {
       const btnTarget = btn.getAttribute('data-target');
       if (btnTarget === cleanTarget) {
@@ -254,14 +265,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    if (shouldScroll) {
-      const catSection = document.getElementById('travel-categories');
-      if (catSection) {
-        const headerOffset = 100;
-        const elementPosition = catSection.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + (window.pageYOffset || window.scrollY) - headerOffset;
-        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-      }
+    if (offsetPosition !== null) {
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
     }
   }
 

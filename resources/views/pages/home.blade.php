@@ -17,8 +17,8 @@
         <div class="hero-slide active">
           <picture>
             <source srcset="{{ asset('assets/media/canadian-rockies-banff-lake-hero.webp') }}" type="image/webp">
-            <img src="{{ asset('assets/media/canadian-rockies-banff-lake-hero.jpg') }}"
-              alt="Majestic Canadian Rockies and Banff Emerald Lake panoramic view" class="hero-slide-bg" width="1920" height="1080" fetchpriority="high" decoding="sync">
+            <img src="{{ asset('assets/media/canadian-rockies-banff-lake-hero.webp') }}"
+              alt="Majestic Canadian Rockies and Banff Emerald Lake panoramic view" class="hero-slide-bg" width="1335" height="891" fetchpriority="high" decoding="sync">
           </picture>
         </div>
 
@@ -245,8 +245,9 @@
               <article class="card-item" data-group="{{ strtolower($pkg->region ?: 'all') }}">
                 <div class="card-img-wrap">
                   <img src="{{ $pkg->optimized_image }}"
-                       alt="{{ $pkg->title }}" class="card-img" width="800" height="500" loading="lazy" decoding="async"
-                       onerror="this.src='{{ asset('assets/media/ancient-egypt-pyramids-giza.jpg') }}'">
+                       @if($pkg->card_image_srcset) srcset="{{ $pkg->card_image_srcset }}" sizes="{{ $pkg->card_image_sizes }}" @endif
+                       alt="{{ $pkg->title }}" class="card-img" width="387" height="258" loading="lazy" decoding="async"
+                       onerror="this.src='{{ asset('assets/media/ancient-egypt-pyramids-giza.webp') }}'">
                   <span class="card-tag">{{ $pkg->country ?: 'Holiday' }}</span>
                 </div>
                 <div class="card-body">
@@ -309,8 +310,9 @@
               <article class="card-item" data-group="{{ strtolower(trim(($pkg->region ?: '') . ' ' . Str::slug($pkg->country ?: '') . ' ' . Str::slug($pkg->title ?: ''))) }}">
                 <a href="{{ route('package.show', $pkg->slug) }}" class="card-img-wrap card-img-link" aria-label="View {{ $pkg->title }}">
                   <img src="{{ $pkg->optimized_image }}"
-                       alt="{{ $pkg->title }}" class="card-img" width="800" height="500" loading="lazy" decoding="async"
-                       onerror="this.src='{{ asset('assets/media/alaskan-cruise-liner-fjords.jpg') }}'">
+                       @if($pkg->card_image_srcset) srcset="{{ $pkg->card_image_srcset }}" sizes="{{ $pkg->card_image_sizes }}" @endif
+                       alt="{{ $pkg->title }}" class="card-img" width="387" height="258" loading="lazy" decoding="async"
+                       onerror="this.src='{{ asset('assets/media/alaskan-cruise-liner-fjords.webp') }}'">
                   <span class="card-tag">{{ $pkg->country ?: 'Cruise' }}</span>
                 </a>
                 <div class="card-body">
@@ -531,8 +533,9 @@
               <article class="card-item" data-group="{{ strtolower(trim(Str::slug($pkg->country ?: '') . ' ' . ($pkg->region ?: '') . ' ' . Str::slug($pkg->title ?: '')) ?: 'all') }}">
                 <a href="{{ route('stay-detail', $pkg->slug) }}" class="card-img-wrap card-img-link" aria-label="Reserve {{ $pkg->title }}">
                   <img src="{{ $pkg->optimized_image }}"
-                       alt="{{ $pkg->title }}" class="card-img" width="800" height="500" loading="lazy" decoding="async"
-                       onerror="this.src='{{ asset('assets/media/fairmont-banff-springs-hotel.jpg') }}'">
+                       @if($pkg->card_image_srcset) srcset="{{ $pkg->card_image_srcset }}" sizes="{{ $pkg->card_image_sizes }}" @endif
+                       alt="{{ $pkg->title }}" class="card-img" width="387" height="258" loading="lazy" decoding="async"
+                       onerror="this.src='{{ asset('assets/media/fairmont-banff-springs-hotel.webp') }}'">
                   <span class="card-tag">{{ $pkg->country ?: 'Hotel' }}</span>
                 </a>
                 <div class="card-body">
