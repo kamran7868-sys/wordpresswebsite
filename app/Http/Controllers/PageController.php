@@ -85,17 +85,18 @@ class PageController extends Controller
             Log::warning("Could not send admin contact notification email: " . $e->getMessage());
         }
 
-        // Return JSON response with redirect target for AJAX, or redirect for standard POST
+        // Return JSON response for AJAX (triggers popup modal in browser)
         if ($request->ajax() || $request->wantsJson()) {
             return response()->json([
                 'status' => 'success',
                 'inquiry_id' => $inquiry->id,
-                'message' => 'Thank you! Your message has been received by Premium Global Expeditions.',
-                'redirect' => route('contact.success'),
+                'message' => 'Thank you! Your message has been received by Premium Global Expeditions. Our Canadian travel concierges will respond within 24 hours.',
             ]);
         }
 
-        return redirect()->route('contact.success')->with([
+        // Standard browser POST fallback: redirects back to contact page and displays popup modal
+        return redirect()->route('contact')->with([
+            'contact_success' => true,
             'inquiry_id' => $inquiry->id,
             'full_name' => $inquiry->full_name,
             'subject' => $inquiry->subject,

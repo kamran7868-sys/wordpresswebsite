@@ -806,14 +806,69 @@
         </div>
       </div>
     </section>
+
+    <!-- ==========================================================================
+         MODAL FEEDBACK FOR CONTACT FORM SUBMISSION
+         ========================================================================== -->
+    <div class="modal-overlay {{ session('contact_success') ? 'active' : '' }}" id="contactModalOverlay" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+      <div class="modal-card" style="position: relative;">
+        <!-- Close icon button top-right -->
+        <button type="button" class="modal-close-icon" id="contactModalCloseX" aria-label="Close modal" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; color: #94A3B8; cursor: pointer; line-height: 1;">&times;</button>
+
+        <!-- Gold circular checkmark badge -->
+        <div style="width: 70px; height: 70px; margin: 0 auto 1.25rem; background: linear-gradient(135deg, #FAF7F0 0%, #F5EDDC 100%); border: 2px solid var(--color-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(182, 153, 100, 0.25);">
+          <svg viewBox="0 0 24 24" style="width: 38px; height: 38px; fill: none; stroke: var(--color-gold); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
+
+        <span class="section-tagline" style="color: var(--color-gold); font-size: 1.1rem; display: block; margin-bottom: 0.25rem;">Inquiry Received</span>
+        <div class="modal-title" id="contactModalTitle" style="font-family: var(--font-display); font-size: 1.8rem; color: var(--color-navy); margin-bottom: 0.5rem; font-weight: 600;">
+          Thank You for Reaching Out!
+        </div>
+        <p class="modal-subtitle-script" style="font-family: 'Alex Brush', cursive; color: var(--color-gold); font-size: 1.5rem; margin: 0 0 1rem;">
+          Where Dreams Become A Reality
+        </p>
+        <p style="font-size: 0.95rem; color: var(--color-slate); line-height: 1.6; margin-bottom: 1.75rem;">
+          Your message has been received by our Canadian travel concierges. We will review your travel preferences and connect with you within <strong>24 hours</strong>.
+        </p>
+        <button type="button" class="btn-primary" id="contactModalCloseBtn" style="width: 100%;">Return to Site</button>
+      </div>
+    </div>
 @endsection
 
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-const contactForm = document.getElementById('pgeContactForm');
-  const modalOverlay = document.getElementById('modalOverlay');
-  const modalCloseBtn = document.getElementById('modalCloseBtn');
+  const contactForm = document.getElementById('pgeContactForm');
+  const contactModal = document.getElementById('contactModalOverlay');
+  const contactModalCloseBtn = document.getElementById('contactModalCloseBtn');
+  const contactModalCloseX = document.getElementById('contactModalCloseX');
+
+  function closeModal() {
+    if (contactModal) {
+      contactModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (contactModalCloseBtn) contactModalCloseBtn.addEventListener('click', closeModal);
+  if (contactModalCloseX) contactModalCloseX.addEventListener('click', closeModal);
+
+  if (contactModal) {
+    contactModal.addEventListener('click', (e) => {
+      if (e.target === contactModal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && contactModal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+  }
 
   if (!contactForm) return;
 
@@ -832,7 +887,7 @@ const contactForm = document.getElementById('pgeContactForm');
    * Helper: Show Error Message
    */
   function showError(inputElement, errorElementId, message) {
-    inputElement.classList.add('field-error');
+    if (inputElement) inputElement.classList.add('field-error');
     const errEl = document.getElementById(errorElementId);
     if (errEl) {
       errEl.textContent = message;
@@ -844,7 +899,7 @@ const contactForm = document.getElementById('pgeContactForm');
    * Helper: Clear Error Message
    */
   function clearError(inputElement, errorElementId) {
-    inputElement.classList.remove('field-error');
+    if (inputElement) inputElement.classList.remove('field-error');
     const errEl = document.getElementById(errorElementId);
     if (errEl) {
       errEl.classList.remove('visible');
@@ -868,7 +923,7 @@ const contactForm = document.getElementById('pgeContactForm');
     let isValid = true;
 
     // 1. Validate Full Name
-    if (!fullNameInput.value.trim()) {
+    if (!fullNameInput || !fullNameInput.value.trim()) {
       showError(fullNameInput, 'contactFullNameError', 'Please enter your full name');
       isValid = false;
     } else {
@@ -876,7 +931,7 @@ const contactForm = document.getElementById('pgeContactForm');
     }
 
     // 2. Validate Email
-    const emailVal = emailInput.value.trim();
+    const emailVal = emailInput ? emailInput.value.trim() : '';
     if (!emailVal) {
       showError(emailInput, 'contactEmailError', 'Please enter your email address');
       isValid = false;
@@ -888,7 +943,7 @@ const contactForm = document.getElementById('pgeContactForm');
     }
 
     // 3. Validate Phone Number
-    const phoneVal = phoneInput.value.trim();
+    const phoneVal = phoneInput ? phoneInput.value.trim() : '';
     if (!phoneVal) {
       showError(phoneInput, 'contactPhoneError', 'Please enter your contact phone number');
       isValid = false;
@@ -900,7 +955,7 @@ const contactForm = document.getElementById('pgeContactForm');
     }
 
     // 4. Validate Subject Select
-    if (!subjectSelect.value || subjectSelect.value === '') {
+    if (!subjectSelect || !subjectSelect.value || subjectSelect.value === '') {
       showError(subjectSelect, 'contactSubjectError', 'Please select a subject from the list');
       isValid = false;
     } else {
@@ -908,14 +963,14 @@ const contactForm = document.getElementById('pgeContactForm');
     }
 
     // 5. Validate Message Textarea
-    if (!messageInput.value.trim()) {
+    if (!messageInput || !messageInput.value.trim()) {
       showError(messageInput, 'contactMessageError', 'Please enter your message or inquiry');
       isValid = false;
     } else {
       clearError(messageInput, 'contactMessageError');
     }
 
-    // If all inputs valid, trigger submission to Laravel backend
+    // If all inputs valid, trigger AJAX submission
     if (isValid) {
       const submitBtn = document.getElementById('contactSubmitBtn');
       const originalHtml = submitBtn ? submitBtn.innerHTML : 'Send Message';
@@ -952,17 +1007,24 @@ const contactForm = document.getElementById('pgeContactForm');
         return data;
       })
       .then((data) => {
-        window.location.href = data.redirect || "{{ route('contact.success') }}";
+        // OPEN THE POPUP MODAL!
+        if (contactModal) {
+          contactModal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        } else {
+          alert(data.message || 'Thank you! Your message has been received by Premium Global Expeditions.');
+        }
+        contactForm.reset();
       })
       .catch((err) => {
-        if (err.errors) {
+        if (err && err.errors) {
           if (err.errors.full_name) showError(fullNameInput, 'contactFullNameError', err.errors.full_name[0]);
           if (err.errors.email) showError(emailInput, 'contactEmailError', err.errors.email[0]);
           if (err.errors.phone) showError(phoneInput, 'contactPhoneError', err.errors.phone[0]);
           if (err.errors.subject) showError(subjectSelect, 'contactSubjectError', err.errors.subject[0]);
           if (err.errors.message) showError(messageInput, 'contactMessageError', err.errors.message[0]);
         } else {
-          alert(err.message || 'An error occurred while sending your message. Please try again.');
+          alert((err && err.message) ? err.message : 'An error occurred while sending your message. Please try again.');
         }
       })
       .finally(() => {
@@ -972,6 +1034,8 @@ const contactForm = document.getElementById('pgeContactForm');
           submitBtn.innerHTML = originalHtml;
         }
       });
+    }
+  });
 });
 </script>
 @endpush

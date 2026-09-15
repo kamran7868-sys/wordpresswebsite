@@ -250,25 +250,30 @@ textarea {
   color: var(--color-ivory);
   font-size: 0.76rem;
   height: var(--utility-bar-height);
-  display: flex;
-  align-items: center;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
   position: relative;
   z-index: 1001;
 }
 
 .utility-bar-inner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  gap: 0.75rem;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  gap: 0.75rem !important;
 }
 
 .utility-links {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+  gap: 0.75rem !important;
   overflow-x: auto;
   scrollbar-width: none;
   white-space: nowrap;

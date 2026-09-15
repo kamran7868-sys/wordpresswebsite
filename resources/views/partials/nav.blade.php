@@ -2,9 +2,34 @@
      TOP UTILITY BAR
      Elementor Container: #utility-bar | Background: Expedition Navy (#252E47)
      ========================================================================== -->
-<section class="top-utility-bar" id="utility-bar">
-  <div class="container utility-bar-inner">
-    <nav class="utility-links" aria-label="Quick Travel Services">
+<style>
+  .top-utility-bar {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .utility-bar-inner {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+  .utility-links {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    gap: 0.75rem !important;
+    width: auto !important;
+  }
+</style>
+<section class="top-utility-bar" id="utility-bar" style="display: flex !important; justify-content: center !important; align-items: center !important; text-align: center !important;">
+  <div class="container utility-bar-inner" style="display: flex !important; justify-content: center !important; align-items: center !important; text-align: center !important; width: 100% !important; margin: 0 auto !important;">
+    <nav class="utility-links" aria-label="Quick Travel Services" style="display: flex !important; justify-content: center !important; align-items: center !important; text-align: center !important; margin: 0 auto !important; gap: 0.75rem !important;">
       <a href="{{ route('home') }}#travel-categories" data-tab="packages-panel" class="utility-link-item">
         <svg viewBox="0 0 24 24">
           <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" />
@@ -46,16 +71,14 @@
         </svg>
         <span>Car Rentals</span>
       </a>
-    </nav>
-    <div class="utility-contact">
-      <span class="utility-contact-sep">|</span>
+      <span class="utility-sep">|</span>
       <span class="utility-contact-item">
         <svg viewBox="0 0 24 24">
           <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
         </svg>
         <span>Toronto, ON, Canada</span>
       </span>
-    </div>
+    </nav>
   </div>
 </section>
 

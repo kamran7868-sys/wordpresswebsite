@@ -39,7 +39,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- MASTER BRAND STYLESHEET -->
-  <link rel="stylesheet" href="{{ asset('css/brand.css') }}?v=20260915v3">
+  <link rel="stylesheet" href="{{ asset('css/brand.css') }}?v=20260915v4">
 
   @stack('styles')
   @yield('extra_css')
