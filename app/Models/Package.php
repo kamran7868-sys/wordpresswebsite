@@ -95,6 +95,7 @@ class Package extends Model
 
     /**
      * Return the optimal WebP image URL if available, falling back to original featured_image.
+     * Auto-converts heavy storage PNGs/JPGs to lightweight WebP on-the-fly if needed.
      */
     public function getOptimizedImageAttribute(): string
     {
@@ -107,13 +108,55 @@ class Package extends Model
             return $img;
         }
 
-        // If it's a JPG/PNG, check if companion WebP exists
+        // Check if companion WebP candidate exists or can be generated
         $webpCandidate = preg_replace('/\.(jpe?g|png)$/i', '.webp', $img);
         if ($webpCandidate !== $img) {
             $parsedPath = parse_url($webpCandidate, PHP_URL_PATH);
-            $localFile = public_path(ltrim($parsedPath, '/\\'));
-            if (file_exists($localFile)) {
+            $localWebpPath = public_path(ltrim($parsedPath, '/\\'));
+
+            if (file_exists($localWebpPath)) {
                 return $webpCandidate;
+            }
+
+            // On-the-fly WebP conversion & compression for heavy storage uploads
+            $origParsedPath = parse_url($img, PHP_URL_PATH);
+            $origLocalPath = public_path(ltrim($origParsedPath, '/\\'));
+
+            if (file_exists($origLocalPath) && function_exists('imagecreatefromstring')) {
+                @mkdir(dirname($localWebpPath), 0755, true);
+                $info = @getimagesize($origLocalPath);
+                if ($info) {
+                    $mime = $info['mime'];
+                    $src = null;
+                    if ($mime === 'image/png') {
+                        $src = @imagecreatefrompng($origLocalPath);
+                    } elseif ($mime === 'image/jpeg') {
+                        $src = @imagecreatefromjpeg($origLocalPath);
+                    }
+
+                    if ($src) {
+                        $w = imagesx($src);
+                        $h = imagesy($src);
+                        if ($w > 1200) {
+                            $nw = 1200;
+                            $nh = (int) round(($h / $w) * $nw);
+                            $resized = imagecreatetruecolor($nw, $nh);
+                            if ($mime === 'image/png') {
+                                imagealphablending($resized, false);
+                                imagesavealpha($resized, true);
+                            }
+                            imagecopyresampled($resized, $src, 0, 0, 0, 0, $nw, $nh, $w, $h);
+                            imagedestroy($src);
+                            $src = $resized;
+                        }
+
+                        if (@imagewebp($src, $localWebpPath, 82)) {
+                            imagedestroy($src);
+                            return $webpCandidate;
+                        }
+                        imagedestroy($src);
+                    }
+                }
             }
         }
 

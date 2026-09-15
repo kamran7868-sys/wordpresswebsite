@@ -864,12 +864,25 @@
         </div>
 
         <div class="cards-grid" id="packages-grid">
-          @forelse($holidayPackages as $pkg)
-            <article class="card-item" data-group="{{ strtolower($pkg->region ?: 'all') }}">
+          @forelse($holidayPackages as $loopIndex => $pkg)
+            @php
+              $imgSrc = $pkg->optimized_image;
+              $webpSrc = str_ends_with(strtolower($imgSrc), '.webp') ? $imgSrc : preg_replace('/\.(jpe?g|png)$/i', '.webp', $imgSrc);
+              $isEager = $loopIndex < 3;
+            @endphp
+            <article class="card-item" data-group="{{ strtolower($pkg->region ?: 'all') }}" style="content-visibility: auto; contain-intrinsic-size: 380px;">
               <div class="card-img-wrap">
-                <img src="{{ $pkg->optimized_image }}"
-                     alt="{{ $pkg->title }}" class="card-img" width="800" height="500" loading="lazy" decoding="async"
-                     onerror="this.src='{{ asset('assets/media/ancient-egypt-pyramids-giza.jpg') }}'">
+                <picture>
+                  @if($webpSrc !== $imgSrc)
+                    <source srcset="{{ asset(ltrim($webpSrc, '/')) }}" type="image/webp">
+                  @endif
+                  <img src="{{ asset(ltrim($imgSrc, '/')) }}"
+                       alt="{{ $pkg->title }}" class="card-img" width="800" height="500"
+                       loading="{{ $isEager ? 'eager' : 'lazy' }}"
+                       fetchpriority="{{ $isEager ? 'high' : 'low' }}"
+                       decoding="async"
+                       onerror="this.src='{{ asset('assets/media/ancient-egypt-pyramids-giza.jpg') }}'">
+                </picture>
                 <span class="card-tag">{{ $pkg->country ?: 'Holiday' }}</span>
               </div>
               <div class="card-body">
@@ -940,12 +953,25 @@
         </div>
 
         <div class="cards-grid" id="cruises-grid">
-          @forelse($cruisePackages as $pkg)
-            <article class="card-item" data-group="{{ strtolower(trim(($pkg->region ?: '') . ' ' . Str::slug($pkg->country ?: '') . ' ' . Str::slug($pkg->title ?: ''))) }}">
+          @forelse($cruisePackages as $loopIndex => $pkg)
+            @php
+              $imgSrc = $pkg->optimized_image;
+              $webpSrc = str_ends_with(strtolower($imgSrc), '.webp') ? $imgSrc : preg_replace('/\.(jpe?g|png)$/i', '.webp', $imgSrc);
+              $isEager = $loopIndex < 2;
+            @endphp
+            <article class="card-item" data-group="{{ strtolower(trim(($pkg->region ?: '') . ' ' . Str::slug($pkg->country ?: '') . ' ' . Str::slug($pkg->title ?: ''))) }}" style="content-visibility: auto; contain-intrinsic-size: 380px;">
               <a href="{{ route('package.show', $pkg->slug) }}" class="card-img-wrap card-img-link" aria-label="View {{ $pkg->title }}">
-                <img src="{{ $pkg->optimized_image }}"
-                     alt="{{ $pkg->title }}" class="card-img" width="800" height="500" loading="lazy" decoding="async"
-                     onerror="this.src='{{ asset('assets/media/alaskan-cruise-liner-fjords.jpg') }}'">
+                <picture>
+                  @if($webpSrc !== $imgSrc)
+                    <source srcset="{{ asset(ltrim($webpSrc, '/')) }}" type="image/webp">
+                  @endif
+                  <img src="{{ asset(ltrim($imgSrc, '/')) }}"
+                       alt="{{ $pkg->title }}" class="card-img" width="800" height="500"
+                       loading="{{ $isEager ? 'eager' : 'lazy' }}"
+                       fetchpriority="{{ $isEager ? 'high' : 'low' }}"
+                       decoding="async"
+                       onerror="this.src='{{ asset('assets/media/alaskan-cruise-liner-fjords.jpg') }}'">
+                </picture>
                 <span class="card-tag">{{ $pkg->country ?: 'Cruise' }}</span>
               </a>
               <div class="card-body">
