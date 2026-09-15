@@ -40,9 +40,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- ASSET PRELOADS -->
-  <link rel="preload" href="{{ asset('css/brand.min.css') }}?v=20260915v7" as="style">
+  <link rel="preload" href="{{ asset('assets/media/canadian-rockies-banff-lake-hero.webp') }}" as="image" type="image/webp" fetchpriority="high">
+  <link rel="preload" href="{{ asset('css/brand.min.css') }}?v=20260915v8" as="style">
   <link rel="preload" href="{{ asset('js/brand.js') }}?v=20260915v4" as="script">
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap">
+  @stack('preloads')
 
   <!-- GOOGLE FONTS (Non-render-blocking) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
@@ -68,10 +70,19 @@
     body { font-family: var(--font-body); background-color: var(--color-dark-navy); color: var(--color-white); line-height: 1.6; font-display: swap; }
     .main-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; width: 100%; background: transparent; transition: all 0.3s ease; }
     .hero-section { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--color-dark-navy); }
+    .hero-slider-track { position: absolute; inset: 0; z-index: 1; }
+    .hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s ease-in-out; }
+    .hero-slide.active { opacity: 1; z-index: 2; }
+    .hero-slide-bg { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .hero-overlay { position: absolute; inset: 0; z-index: 3; background: linear-gradient(180deg, rgba(6, 14, 26, 0.45) 0%, rgba(6, 14, 26, 0.75) 100%); }
+    .hero-content-wrap { position: relative; z-index: 4; text-align: center; max-width: 900px; margin: 0 auto; padding: 0 1.5rem; }
+    .hero-main-title { font-family: var(--font-heading); color: var(--color-white); text-align: center; font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 600; line-height: 1.15; letter-spacing: 2px; }
+    .hero-tagline-script { font-family: var(--font-script); color: var(--color-gold); font-size: clamp(1.8rem, 4vw, 3rem); text-align: center; display: block; margin-top: 0.5rem; }
+    .btn-primary { display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #C5A880 0%, #B69964 100%); color: var(--color-dark-navy); font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; padding: 0.9rem 2.2rem; border-radius: 4px; text-decoration: none; transition: all 0.3s ease; }
   </style>
 
   <!-- MASTER BRAND STYLESHEET (MINIFIED) -->
-  <link rel="stylesheet" href="{{ asset('css/brand.min.css') }}?v=20260915v7">
+  <link rel="stylesheet" href="{{ asset('css/brand.min.css') }}?v=20260915v8">
 
   @stack('styles')
   @yield('extra_css')

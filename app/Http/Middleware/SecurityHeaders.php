@@ -45,6 +45,11 @@ class SecurityHeaders
         $response->headers->set('X-XSS-Protection', '1; mode=block');
         $response->headers->set('Referrer-Policy', 'strict-origin-when-cross-origin');
 
+        // Cache-Control Optimization for guest GET requests to minimize TTFB and boost FCP/LCP
+        if ($request->isMethod('GET') && !$request->ajax() && !auth()->check()) {
+            $response->headers->set('Cache-Control', 'public, max-age=3600, s-maxage=3600');
+        }
+
         return $response;
     }
 }
