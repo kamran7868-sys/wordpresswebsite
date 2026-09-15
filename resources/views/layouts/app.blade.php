@@ -33,13 +33,45 @@
   @include('partials.schema')
   @stack('schema')
 
-  <!-- GOOGLE FONTS (Brand Guide 2026: Cormorant Garamond, Montserrat, Alex Brush) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- DNS PREFETCH & PRECONNECT -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- ASSET PRELOADS -->
+  <link rel="preload" href="{{ asset('css/brand.css') }}?v=20260915v6" as="style">
+  <link rel="preload" href="{{ asset('js/brand.js') }}?v=20260915v4" as="script">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap">
+
+  <!-- GOOGLE FONTS (Non-render-blocking) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap">
+  </noscript>
+
+  <!-- CRITICAL ABOVE-THE-FOLD INLINE STYLES -->
+  <style>
+    :root {
+      --color-navy: #0B192C;
+      --color-dark-navy: #060E1A;
+      --color-gold: #C5A880;
+      --color-gold-light: #E4D5BC;
+      --color-white: #FFFFFF;
+      --color-cream: #F7F4ED;
+      --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-heading: 'Cormorant Garamond', Georgia, serif;
+      --font-script: 'Alex Brush', cursive;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body { font-family: var(--font-body); background-color: var(--color-dark-navy); color: var(--color-white); line-height: 1.6; font-display: swap; }
+    .main-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; width: 100%; background: transparent; transition: all 0.3s ease; }
+    .hero-section { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--color-dark-navy); }
+  </style>
 
   <!-- MASTER BRAND STYLESHEET -->
-  <link rel="stylesheet" href="{{ asset('css/brand.css') }}?v=20260915v5">
+  <link rel="stylesheet" href="{{ asset('css/brand.css') }}?v=20260915v6">
 
   @stack('styles')
   @yield('extra_css')
@@ -61,8 +93,8 @@
   <!-- SHARED FLIGHT INQUIRY FEEDBACK MODAL -->
   @include('partials.flight-modal')
 
-  <!-- MASTER BRAND JAVASCRIPT CONTROLLER -->
-  <script src="{{ asset('js/brand.js') }}?v=20260915v3"></script>
+  <!-- MASTER BRAND JAVASCRIPT CONTROLLER (Non-render-blocking execution) -->
+  <script src="{{ asset('js/brand.js') }}?v=20260915v4" defer></script>
 
   @stack('scripts')
   @yield('extra_js')
