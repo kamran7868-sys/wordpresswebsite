@@ -3,7 +3,7 @@
      ========================================================================== -->
 <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalFeedbackTitle">
   <div class="modal-card">
-    <span class="section-tagline" style="color: var(--color-gold); font-size: 1.5rem;">Inquiry Received</span>
+    <span class="section-tagline" style="color: var(--color-gold-dark); font-size: 1.5rem;">Inquiry Received</span>
     <div class="modal-title" id="modalFeedbackTitle" style="font-family: var(--font-display); font-size: 2rem; color: var(--color-navy); margin-bottom: 0.75rem; font-weight: 600;">
       Thank You for Choosing PGE!
     </div>

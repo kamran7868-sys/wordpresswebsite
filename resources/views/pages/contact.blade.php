@@ -606,7 +606,7 @@
     <section class="contact-intro-section" id="contact-intro">
       <div class="container">
         <div class="contact-intro-box">
-          <span class="section-tagline" style="color: var(--color-gold);">We Are Here To Assist You</span>
+          <span class="section-tagline" style="color: var(--color-gold-dark);">We Are Here To Assist You</span>
           <h2 class="contact-intro-title">Get In Touch!</h2>
           <hr class="gold-rule center" style="margin-bottom: 1.5rem;">
           <p class="contact-intro-text">
@@ -823,7 +823,7 @@
           </svg>
         </div>
 
-        <span class="section-tagline" style="color: var(--color-gold); font-size: 1.1rem; display: block; margin-bottom: 0.25rem;">Inquiry Received</span>
+        <span class="section-tagline" style="color: var(--color-gold-dark); font-size: 1.1rem; display: block; margin-bottom: 0.25rem;">Inquiry Received</span>
         <div class="modal-title" id="contactModalTitle" style="font-family: var(--font-display); font-size: 1.8rem; color: var(--color-navy); margin-bottom: 0.5rem; font-weight: 600;">
           Thank You for Reaching Out!
         </div>

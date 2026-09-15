@@ -890,7 +890,7 @@
                 <p class="card-text">{{ Str::limit($pkg->short_description ?: $pkg->overview, 130) }}</p>
                 <div class="card-footer">
                   <span class="card-footer-info">{{ $pkg->duration ?: ($pkg->duration_days . ' Days / ' . ($pkg->duration_nights ?? max(0, $pkg->duration_days - 1)) . ' Nights') }}</span>
-                  <a href="{{ route('package.show', $pkg->slug) }}" class="card-btn-action">Explore Package</a>
+                  <a href="{{ route('package.show', $pkg->slug) }}" class="card-btn-action" aria-label="Explore {{ $pkg->title }}">Explore Package</a>
                 </div>
               </div>
             </article>
@@ -979,7 +979,7 @@
                 <p class="card-text">{{ Str::limit($pkg->short_description ?: $pkg->overview, 130) }}</p>
                 <div class="card-footer">
                   <span class="card-footer-info">{{ $pkg->duration ?: ($pkg->duration_days . ' Days Ocean Voyage') }}</span>
-                  <a href="{{ route('package.show', $pkg->slug) }}" class="card-btn-action">View Voyage</a>
+                  <a href="{{ route('package.show', $pkg->slug) }}" class="card-btn-action" aria-label="View {{ $pkg->title }} voyage">View Voyage</a>
                 </div>
               </div>
             </article>
@@ -1225,7 +1225,7 @@
                 <p class="card-text">{{ Str::limit($pkg->short_description ?: $pkg->overview, 130) }}</p>
                 <div class="card-footer">
                   <span class="card-footer-info">{{ $pkg->duration ?: '5-Star Luxury Resort' }}</span>
-                  <a href="{{ route('stay-detail', $pkg->slug) }}" class="card-btn-action">Reserve Stay</a>
+                  <a href="{{ route('stay-detail', $pkg->slug) }}" class="card-btn-action" aria-label="Reserve stay at {{ $pkg->title }}">Reserve Stay</a>
                 </div>
               </div>
             </article>

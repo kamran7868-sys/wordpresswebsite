@@ -19,6 +19,8 @@
   /* Content Breathing Space (25%) */
   --color-gold: #B69964;
   /* Distinction & Accent (10%) */
+  --color-gold-dark: #85642E;
+  /* High-contrast gold tone for text on light backgrounds (WCAG AA Compliant 4.9:1) */
   --color-gold-hover: #9E8250;
   /* Gold button hover state */
   --color-gold-light: #DFD3BD;
@@ -38,6 +40,7 @@
   /* Brand Guide 2026 Strict Color Aliases */
   --expedition-navy: #252E47;
   --heritage-gold: #B69964;
+  --heritage-gold-dark: #85642E;
   --midnight: #121525;
   --atlantic-slate: #2C4058;
   --expedition-ivory: #F7F4ED;
@@ -50,7 +53,7 @@
   --font-script: 'Alex Brush', 'Great Vibes', cursive;
 
   /* Spacing & Layout */
-  --container-max-width: 1280px;
+  --container-max-width: 1320px;
   --header-height: 84px;
   --utility-bar-height: 38px;
   --radius-sm: 4px;
@@ -68,7 +71,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   2. GLOBAL RESET & BASE STYLES
+   2. GLOBAL BASE RESET & TYPOGRAPHY
    -------------------------------------------------------------------------- */
 *,
 *::before,
@@ -79,21 +82,22 @@
 }
 
 html {
-  scroll-behavior: smooth;
   font-size: 16px;
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-slate);
   background-color: var(--color-ivory);
-  color: var(--color-navy);
-  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
 }
 
-img {
+img,
+picture {
   max-width: 100%;
   height: auto;
   display: block;
@@ -131,10 +135,20 @@ textarea {
 .section-tagline {
   font-family: var(--font-script);
   font-size: 1.85rem;
-  color: var(--color-gold);
+  color: var(--color-gold-dark, #85642E);
   display: block;
   margin-bottom: 0.25rem;
   font-weight: 400;
+}
+
+.cta-section .section-tagline,
+.stats-section .section-tagline,
+.hero-section .section-tagline,
+.bg-navy .section-tagline,
+.dark-section .section-tagline,
+.flight-info-side .section-tagline,
+.section-tagline.light {
+  color: var(--color-gold);
 }
 
 .section-title {
