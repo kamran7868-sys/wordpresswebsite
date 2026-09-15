@@ -16,27 +16,27 @@
         <!-- Slide 1: Canadian Rockies -->
         <div class="hero-slide active">
           <picture>
-            <source srcset="{{ asset('assets/media/canadian-rockies-banff-lake-hero.webp') }}" type="image/webp">
+            <source srcset="{{ asset('assets/media/canadian-rockies-banff-lake-hero.webp') }}" type="image/webp" sizes="(max-width: 768px) 100vw, 100vw">
             <img src="{{ asset('assets/media/canadian-rockies-banff-lake-hero.jpg') }}"
-              alt="Majestic Canadian Rockies and Banff Emerald Lake panoramic view" class="hero-slide-bg" width="1920" height="1080" fetchpriority="high" decoding="sync">
+              alt="Majestic Canadian Rockies and Banff Emerald Lake panoramic view" class="hero-slide-bg" width="1920" height="1080" fetchpriority="high" decoding="sync" sizes="(max-width: 768px) 100vw, 100vw">
           </picture>
         </div>
 
         <!-- Slide 2: Nile River Cruise, Egypt -->
         <div class="hero-slide">
           <picture>
-            <source srcset="{{ asset('assets/media/ancient-egypt-nile-sunset-hero.webp') }}" type="image/webp">
+            <source srcset="{{ asset('assets/media/ancient-egypt-nile-sunset-hero.webp') }}" type="image/webp" sizes="(max-width: 768px) 100vw, 100vw">
             <img src="{{ asset('assets/media/ancient-egypt-nile-sunset-hero.jpg') }}"
-              alt="Ancient Egyptian Nile luxury expedition sunset view" class="hero-slide-bg" width="1920" height="1080" loading="lazy" decoding="async">
+              alt="Ancient Egyptian Nile luxury expedition sunset view" class="hero-slide-bg" width="1920" height="1080" loading="lazy" decoding="async" sizes="(max-width: 768px) 100vw, 100vw">
           </picture>
         </div>
 
         <!-- Slide 3: Sri Lanka & Southeast Asia Coastal Retreat -->
         <div class="hero-slide">
           <picture>
-            <source srcset="{{ asset('assets/media/tropical-coastal-sanctuary-hero.webp') }}" type="image/webp">
+            <source srcset="{{ asset('assets/media/tropical-coastal-sanctuary-hero.webp') }}" type="image/webp" sizes="(max-width: 768px) 100vw, 100vw">
             <img src="{{ asset('assets/media/tropical-coastal-sanctuary-hero.jpg') }}"
-              alt="Pristine tropical coastal sanctuary with turquoise waters" class="hero-slide-bg" width="1920" height="1080" loading="lazy" decoding="async">
+              alt="Pristine tropical coastal sanctuary with turquoise waters" class="hero-slide-bg" width="1920" height="1080" loading="lazy" decoding="async" sizes="(max-width: 768px) 100vw, 100vw">
           </picture>
         </div>
 
