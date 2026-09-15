@@ -33,24 +33,13 @@
   @include('partials.schema')
   @stack('schema')
 
-  <!-- GOOGLE FONTS (Preconnects maintained, async loaded with font-display: swap) -->
+  <!-- GOOGLE FONTS (Brand Guide 2026: Cormorant Garamond, Montserrat, Alex Brush) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap">
-  </noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- CRITICAL ABOVE-THE-FOLD INLINE CSS -->
-  <style>
-    {!! @file_get_contents(public_path('css/critical.min.css')) !!}
-  </style>
-
-  <!-- MASTER BRAND STYLESHEET (Minified & Asynchronously Loaded) -->
-  <link rel="preload" as="style" href="{{ asset('css/brand.min.css') }}?v=20260915v6" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet" href="{{ asset('css/brand.min.css') }}?v=20260915v6">
-  </noscript>
+  <!-- MASTER BRAND STYLESHEET -->
+  <link rel="stylesheet" href="{{ asset('css/brand.css') }}?v=20260915v5">
 
   @stack('styles')
   @yield('extra_css')
@@ -73,7 +62,7 @@
   @include('partials.flight-modal')
 
   <!-- MASTER BRAND JAVASCRIPT CONTROLLER -->
-  <script src="{{ asset('js/brand.js') }}?v=20260915v4" defer></script>
+  <script src="{{ asset('js/brand.js') }}?v=20260915v3"></script>
 
   @stack('scripts')
   @yield('extra_js')
