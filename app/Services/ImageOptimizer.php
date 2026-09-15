@@ -122,16 +122,6 @@ class ImageOptimizer
                 imagewebp($targetImage, $webpFullPath, $quality);
             }
 
-            // 2. Save JPG companion fallback with clean white background
-            if (function_exists('imagejpeg')) {
-                $jpgCanvas = imagecreatetruecolor($targetWidth, $targetHeight);
-                $white = imagecolorallocate($jpgCanvas, 255, 255, 255);
-                imagefilledrectangle($jpgCanvas, 0, 0, $targetWidth, $targetHeight, $white);
-                imagecopy($jpgCanvas, $targetImage, 0, 0, 0, 0, $targetWidth, $targetHeight);
-                imagejpeg($jpgCanvas, $jpgFullPath, $quality);
-                imagedestroy($jpgCanvas);
-            }
-
             imagedestroy($srcImage);
             imagedestroy($targetImage);
 

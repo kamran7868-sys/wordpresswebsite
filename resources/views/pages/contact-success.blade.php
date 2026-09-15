@@ -10,7 +10,7 @@
   <section class="subpage-hero-section" id="contact-success-hero" style="min-height: 380px; position: relative; display: flex; align-items: center; justify-content: center;">
     <picture>
       <source srcset="{{ asset('assets/media/tropical-ocean-horizon-contact.webp') }}" type="image/webp">
-      <img src="{{ asset('assets/media/tropical-ocean-horizon-contact.jpg') }}"
+      <img src="{{ asset('assets/media/tropical-ocean-horizon-contact.webp') }}"
         alt="Premium Global Expeditions Travel Concierge" class="subpage-hero-bg" width="1920" height="800" fetchpriority="high" decoding="sync">
     </picture>
     <div class="hero-overlay" style="background: linear-gradient(180deg, rgba(18, 21, 37, 0.75) 0%, rgba(37, 46, 71, 0.88) 100%); position: absolute; inset: 0; z-index: 1;"></div>

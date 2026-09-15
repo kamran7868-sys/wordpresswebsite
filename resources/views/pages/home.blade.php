@@ -17,7 +17,7 @@
         <div class="hero-slide active">
           <picture>
             <source srcset="{{ asset('assets/media/canadian-rockies-banff-lake-hero.webp') }}" type="image/webp">
-            <img src="{{ asset('assets/media/canadian-rockies-banff-lake-hero.jpg') }}"
+            <img src="{{ asset('assets/media/canadian-rockies-banff-lake-hero.webp') }}"
               alt="Majestic Canadian Rockies and Banff Emerald Lake panoramic view" class="hero-slide-bg" width="1920" height="1080" fetchpriority="high" decoding="sync">
           </picture>
         </div>
@@ -26,7 +26,7 @@
         <div class="hero-slide">
           <picture>
             <source srcset="{{ asset('assets/media/ancient-egypt-nile-sunset-hero.webp') }}" type="image/webp">
-            <img src="{{ asset('assets/media/ancient-egypt-nile-sunset-hero.jpg') }}"
+            <img src="{{ asset('assets/media/ancient-egypt-nile-sunset-hero.webp') }}"
               alt="Ancient Egyptian Nile luxury expedition sunset view" class="hero-slide-bg" width="1920" height="1080" loading="lazy" decoding="async">
           </picture>
         </div>
@@ -35,7 +35,7 @@
         <div class="hero-slide">
           <picture>
             <source srcset="{{ asset('assets/media/tropical-coastal-sanctuary-hero.webp') }}" type="image/webp">
-            <img src="{{ asset('assets/media/tropical-coastal-sanctuary-hero.jpg') }}"
+            <img src="{{ asset('assets/media/tropical-coastal-sanctuary-hero.webp') }}"
               alt="Pristine tropical coastal sanctuary with turquoise waters" class="hero-slide-bg" width="1920" height="1080" loading="lazy" decoding="async">
           </picture>
         </div>
@@ -140,7 +140,7 @@
           <div class="intro-image-wrap">
             <picture>
             <source srcset="{{ asset('assets/media/cinematic-luxury-travel-founder.webp') }}" type="image/webp">
-            <img src="{{ asset('assets/media/cinematic-luxury-travel-founder.jpg') }}"
+            <img src="{{ asset('assets/media/cinematic-luxury-travel-founder.webp') }}"
               alt="Cinematic luxury travel founder and bespoke expedition planning" class="intro-main-img"
               width="1200" height="800" loading="lazy" decoding="async">
           </picture>
@@ -246,7 +246,7 @@
                 <div class="card-img-wrap">
                   <img src="{{ $pkg->optimized_image }}"
                        alt="{{ $pkg->title }}" class="card-img" width="800" height="500" loading="lazy" decoding="async"
-                       onerror="this.src='{{ asset('assets/media/ancient-egypt-pyramids-giza.jpg') }}'">
+                       onerror="this.src='{{ asset('assets/media/ancient-egypt-pyramids-giza.webp') }}'">
                   <span class="card-tag">{{ $pkg->country ?: 'Holiday' }}</span>
                 </div>
                 <div class="card-body">
@@ -310,7 +310,7 @@
                 <a href="{{ route('package.show', $pkg->slug) }}" class="card-img-wrap card-img-link" aria-label="View {{ $pkg->title }}">
                   <img src="{{ $pkg->optimized_image }}"
                        alt="{{ $pkg->title }}" class="card-img" width="800" height="500" loading="lazy" decoding="async"
-                       onerror="this.src='{{ asset('assets/media/alaskan-cruise-liner-fjords.jpg') }}'">
+                       onerror="this.src='{{ asset('assets/media/alaskan-cruise-liner-fjords.webp') }}'">
                   <span class="card-tag">{{ $pkg->country ?: 'Cruise' }}</span>
                 </a>
                 <div class="card-body">
@@ -532,7 +532,7 @@
                 <a href="{{ route('stay-detail', $pkg->slug) }}" class="card-img-wrap card-img-link" aria-label="Reserve {{ $pkg->title }}">
                   <img src="{{ $pkg->optimized_image }}"
                        alt="{{ $pkg->title }}" class="card-img" width="800" height="500" loading="lazy" decoding="async"
-                       onerror="this.src='{{ asset('assets/media/fairmont-banff-springs-hotel.jpg') }}'">
+                       onerror="this.src='{{ asset('assets/media/fairmont-banff-springs-hotel.webp') }}'">
                   <span class="card-tag">{{ $pkg->country ?: 'Hotel' }}</span>
                 </a>
                 <div class="card-body">

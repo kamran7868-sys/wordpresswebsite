@@ -642,7 +642,7 @@
     <section class="subpage-hero-section" id="about-hero">
       <picture>
         <source srcset="{{ asset('assets/media/about-hero-cinematic-travel.webp') }}" type="image/webp">
-        <img src="{{ asset('assets/media/about-hero-cinematic-travel.jpg') }}"
+        <img src="{{ asset('assets/media/about-hero-cinematic-travel.webp') }}"
           alt="Cinematic luxury travel destination view curated by Canadian global tour operator" class="subpage-hero-bg" width="1920" height="800" fetchpriority="high" decoding="sync">
       </picture>
       <div class="hero-overlay"></div>
@@ -702,7 +702,7 @@
             <div class="media-frame">
               <picture>
                 <source srcset="{{ asset('assets/media/canadian-travel-concierge-compass.webp') }}" type="image/webp">
-                <img src="{{ asset('assets/media/canadian-travel-concierge-compass.jpg') }}"
+                <img src="{{ asset('assets/media/canadian-travel-concierge-compass.webp') }}"
                   alt="Canadian travel concierge planning bespoke global expeditions with compass and map" width="1200" height="800" loading="lazy" decoding="async">
               </picture>
             </div>

@@ -423,19 +423,6 @@ class MediaController extends Controller
                 imagewebp($im, $webpPath, 80);
             }
 
-            // If uploaded WEBP -> create .jpg
-            if ($ext === 'webp' && function_exists('imagejpeg')) {
-                $jpgPath = $this->mediaPath . DIRECTORY_SEPARATOR . "{$baseSlug}.jpg";
-                $w = imagesx($im);
-                $h = imagesy($im);
-                $bg = imagecreatetruecolor($w, $h);
-                $white = imagecolorallocate($bg, 255, 255, 255);
-                imagefill($bg, 0, 0, $white);
-                imagecopy($bg, $im, 0, 0, 0, 0, $w, $h);
-                imagejpeg($bg, $jpgPath, 85);
-                imagedestroy($bg);
-            }
-
             imagedestroy($im);
         } catch (\Throwable $e) {
             // Silently allow main file to stay if GD companion conversion encounters unusual formats

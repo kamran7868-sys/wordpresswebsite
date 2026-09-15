@@ -780,7 +780,7 @@
             @if(!empty($package->featured_image))
               <img src="{{ $package->featured_image }}" alt="{{ $package->title ?? 'Package' }}"
                    style="max-width: 100%; border-radius: 8px; border: 1px solid rgba(182, 153, 100, 0.35); box-shadow: 0 10px 30px rgba(0,0,0,0.3); max-height: 320px; object-fit: cover;"
-                   onerror="this.src='{{ asset('assets/media/ancient-egypt-pyramids-giza.jpg') }}'">
+                   onerror="this.src='{{ asset('assets/media/ancient-egypt-pyramids-giza.webp') }}'">
             @else
               <svg viewBox="0 0 440 280" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;">
                 <path d="M20 220 L120 70 L200 170 L310 50 L420 220 Z" fill="#2C4058" opacity="0.4" />
