@@ -18,9 +18,9 @@ class PageController extends Controller
      */
     public function home(): View
     {
-        $holidayPackages = Package::published()->category('holiday')->take(6)->get();
-        $cruisePackages = Package::published()->category('cruise')->take(4)->get();
-        $hotelPackages = Package::published()->category('hotel')->take(6)->get();
+        $holidayPackages = Package::published()->category('holiday')->latest()->get();
+        $cruisePackages = Package::published()->category('cruise')->latest()->get();
+        $hotelPackages = Package::published()->category('hotel')->latest()->get();
 
         return view('pages.home', compact('holidayPackages', 'cruisePackages', 'hotelPackages'));
     }
@@ -44,7 +44,7 @@ class PageController extends Controller
     /**
      * Handle incoming Contact Us form submissions.
      */
-    public function submitContact(Request $request): JsonResponse
+    public function submitContact(Request $request): mixed
     {
         $validated = $request->validate([
             'full_name' => 'required|string|max:150',
@@ -85,11 +85,29 @@ class PageController extends Controller
             Log::warning("Could not send admin contact notification email: " . $e->getMessage());
         }
 
-        return response()->json([
-            'status' => 'success',
+        // Return JSON response with redirect target for AJAX, or redirect for standard POST
+        if ($request->ajax() || $request->wantsJson()) {
+            return response()->json([
+                'status' => 'success',
+                'inquiry_id' => $inquiry->id,
+                'message' => 'Thank you! Your message has been received by Premium Global Expeditions.',
+                'redirect' => route('contact.success'),
+            ]);
+        }
+
+        return redirect()->route('contact.success')->with([
             'inquiry_id' => $inquiry->id,
-            'message' => 'Thank you! Your message has been received by Premium Global Expeditions. Our Canadian travel concierges will respond within 24 hours.',
+            'full_name' => $inquiry->full_name,
+            'subject' => $inquiry->subject,
         ]);
+    }
+
+    /**
+     * Display the Contact Form submission confirmation / Thank You page.
+     */
+    public function contactSuccess(): View
+    {
+        return view('pages.contact-success');
     }
 
     /**

@@ -258,14 +258,16 @@ textarea {
 
 .utility-bar-inner {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
+  gap: 0.75rem;
 }
 
 .utility-links {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.75rem;
   overflow-x: auto;
   scrollbar-width: none;

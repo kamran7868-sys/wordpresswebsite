@@ -208,15 +208,31 @@
         <div class="category-panel active" id="packages-panel">
 
           <!-- Sub-group filter dropdown -->
+          @php
+            $holidayRegions = [
+              'north-america' => 'North America — Canada',
+              'south-asia' => 'South Asia — Sri Lanka, Nepal',
+              'middle-east' => 'Middle East & North Africa — Egypt, Turkey',
+              'southeast-asia' => 'Southeast Asia — Vietnam, Thailand',
+              'europe' => 'Europe',
+            ];
+            foreach($holidayPackages as $p) {
+              if (!empty($p->region)) {
+                $rKey = strtolower($p->region);
+                if (!isset($holidayRegions[$rKey])) {
+                  $holidayRegions[$rKey] = ucwords(str_replace('-', ' ', $p->region));
+                }
+              }
+            }
+          @endphp
           <div class="subgroup-filter-nav" style="justify-content: center;">
             <label class="subgroup-filter-label" for="regionFilterSelect">Filter by Region:</label>
             <div class="select-dropdown-wrap">
               <select id="regionFilterSelect" class="subgroup-select-filter" aria-label="Filter packages by region">
                 <option value="all">All Regions</option>
-                <option value="north-america">North America — Canada</option>
-                <option value="south-asia">South Asia — Sri Lanka, Nepal</option>
-                <option value="middle-east">Middle East &amp; North Africa — Egypt, Turkey</option>
-                <option value="southeast-asia">Southeast Asia — Vietnam, Thailand</option>
+                @foreach($holidayRegions as $slug => $label)
+                  <option value="{{ $slug }}">{{ $label }}</option>
+                @endforeach
               </select>
               <svg class="select-arrow" viewBox="0 0 24 24">
                 <path d="M7 10l5 5 5-5z" />
@@ -228,8 +244,8 @@
             @forelse($holidayPackages as $pkg)
               <article class="card-item" data-group="{{ strtolower($pkg->region ?: 'all') }}">
                 <div class="card-img-wrap">
-                  <img src="{{ $pkg->featured_image ?: asset('assets/media/ancient-egypt-pyramids-giza.jpg') }}"
-                       alt="{{ $pkg->title }}" class="card-img" width="800" height="600" loading="lazy" decoding="async"
+                  <img src="{{ $pkg->optimized_image }}"
+                       alt="{{ $pkg->title }}" class="card-img" width="800" height="500" loading="lazy" decoding="async"
                        onerror="this.src='{{ asset('assets/media/ancient-egypt-pyramids-giza.jpg') }}'">
                   <span class="card-tag">{{ $pkg->country ?: 'Holiday' }}</span>
                 </div>
@@ -256,15 +272,31 @@
         <div class="category-panel" id="cruises-panel">
 
           <!-- Cruise filter dropdown -->
+          @php
+            $cruiseRegions = [
+              'north-america' => 'North America — Alaskan Cruise',
+              'middle-east' => 'Middle East — Nile River Cruise',
+              'southeast-asia' => 'Southeast Asia — Singapore & Spice Route',
+              'oceania' => 'Oceania — Australian Great Barrier Reef',
+              'europe' => 'Europe',
+            ];
+            foreach($cruisePackages as $p) {
+              if (!empty($p->region)) {
+                $rKey = strtolower($p->region);
+                if (!isset($cruiseRegions[$rKey])) {
+                  $cruiseRegions[$rKey] = ucwords(str_replace('-', ' ', $p->region));
+                }
+              }
+            }
+          @endphp
           <div class="subgroup-filter-nav" style="justify-content: center;">
             <label class="subgroup-filter-label" for="cruiseFilterSelect">Cruise Region:</label>
             <div class="select-dropdown-wrap">
               <select id="cruiseFilterSelect" class="subgroup-select-filter" aria-label="Filter cruises by region">
                 <option value="all">All Voyages</option>
-                <option value="alaska">Alaskan Cruise</option>
-                <option value="singapore">Singaporean Cruise</option>
-                <option value="nile">Nile Cruise</option>
-                <option value="australia">Australian Cruise</option>
+                @foreach($cruiseRegions as $slug => $label)
+                  <option value="{{ $slug }}">{{ $label }}</option>
+                @endforeach
               </select>
               <svg class="select-arrow" viewBox="0 0 24 24">
                 <path d="M7 10l5 5 5-5z" />
@@ -274,10 +306,10 @@
 
           <div class="cards-grid">
             @forelse($cruisePackages as $pkg)
-              <article class="card-item" data-group="{{ strtolower($pkg->region ?: 'all') }}">
+              <article class="card-item" data-group="{{ strtolower(trim(($pkg->region ?: '') . ' ' . Str::slug($pkg->country ?: '') . ' ' . Str::slug($pkg->title ?: ''))) }}">
                 <a href="{{ route('package.show', $pkg->slug) }}" class="card-img-wrap card-img-link" aria-label="View {{ $pkg->title }}">
-                  <img src="{{ $pkg->featured_image ?: asset('assets/media/alaskan-cruise-liner-fjords.jpg') }}"
-                       alt="{{ $pkg->title }}" class="card-img" width="1000" height="650" loading="lazy" decoding="async"
+                  <img src="{{ $pkg->optimized_image }}"
+                       alt="{{ $pkg->title }}" class="card-img" width="800" height="500" loading="lazy" decoding="async"
                        onerror="this.src='{{ asset('assets/media/alaskan-cruise-liner-fjords.jpg') }}'">
                   <span class="card-tag">{{ $pkg->country ?: 'Cruise' }}</span>
                 </a>
@@ -315,8 +347,7 @@
               </p>
               <div
                 style="font-size: 0.85rem; color: var(--color-gold); display: flex; flex-direction: column; gap: 0.75rem;">
-                <div>✓ Direct IATA &amp; Global Airline Contracting</div>
-                <div>✓ 24/7 Canadian Travel Support &amp; Flight Re-routing</div>
+                <div>✓ 24/7 Travel Support</div>
                 <div>✓ Flexible Fare Rules &amp; Special Group Fares</div>
               </div>
             </div>
@@ -350,14 +381,14 @@
                     <label>Trip Type <span class="req">*</span></label>
                     <select id="tripType" name="trip_type" required>
                       <option value="oneway">One-Way</option>
-                      <option value="roundtrip">Round Trip</option>
-                      <option value="multicity" selected>Multi-City / Bespoke Route</option>
+                      <option value="roundtrip" selected>Round Trip</option>
+                      <option value="multicity">Multi-City / Bespoke Route</option>
                     </select>
                   </div>
                 </div>
 
                 <!-- Simple route fields: shown for One-Way / Round Trip -->
-                <div id="simpleRoute" class="row" style="display:none;">
+                <div id="simpleRoute" class="row">
                   <div class="airport-autocomplete-wrap">
                     <label>Departure City / Airport <span class="req">*</span></label>
                     <input type="text" class="airport-input" name="dep_city" placeholder="e.g. YVR - Vancouver or Toronto" autocomplete="off" />
@@ -370,7 +401,7 @@
                   </div>
                 </div>
 
-                <div id="simpleDates" class="row" style="display:none;">
+                <div id="simpleDates" class="row">
                   <div>
                     <label>Departure Date <span class="req">*</span></label>
                     <input type="date" name="dep_date" />
@@ -382,7 +413,7 @@
                 </div>
 
                 <!-- Multi-city legs: shown for Multi-City / Bespoke Route -->
-                <div id="legsBlock" class="legs">
+                <div id="legsBlock" class="legs" style="display:none;">
                   <div class="legs-heading">
                     <span class="title">Flights</span>
                     <span class="hint">Add every leg of the trip, in order</span>
@@ -461,18 +492,33 @@
         <div class="category-panel" id="hotels-panel">
 
           <!-- Hotel filter dropdown -->
+          @php
+            $hotelCountries = [
+              'all' => 'All Luxury Properties',
+              'canada' => 'Canada',
+              'sri-lanka' => 'Sri Lanka',
+              'egypt' => 'Egypt',
+              'vietnam' => 'Vietnam',
+              'nepal' => 'Nepal',
+              'turkey' => 'Turkey',
+              'thailand' => 'Thailand',
+            ];
+            foreach($hotelPackages as $p) {
+              if (!empty($p->country)) {
+                $cSlug = strtolower(Str::slug($p->country));
+                if (!isset($hotelCountries[$cSlug])) {
+                  $hotelCountries[$cSlug] = $p->country;
+                }
+              }
+            }
+          @endphp
           <div class="subgroup-filter-nav" style="justify-content: center;">
             <label class="subgroup-filter-label" for="hotelFilterSelect">Hotel Destinations:</label>
             <div class="select-dropdown-wrap">
               <select id="hotelFilterSelect" class="subgroup-select-filter" aria-label="Filter hotels by destination">
-                <option value="all">All Luxury Properties</option>
-                <option value="canada">Canada</option>
-                <option value="sri-lanka">Sri Lanka</option>
-                <option value="egypt">Egypt</option>
-                <option value="vietnam">Vietnam</option>
-                <option value="nepal">Nepal</option>
-                <option value="turkey">Turkey</option>
-                <option value="thailand">Thailand</option>
+                @foreach($hotelCountries as $slug => $label)
+                  <option value="{{ $slug }}">{{ $label }}</option>
+                @endforeach
               </select>
               <svg class="select-arrow" viewBox="0 0 24 24">
                 <path d="M7 10l5 5 5-5z" />
@@ -482,10 +528,10 @@
 
           <div class="cards-grid">
             @forelse($hotelPackages as $pkg)
-              <article class="card-item" data-group="{{ strtolower(Str::slug($pkg->country ?: 'all')) }}">
+              <article class="card-item" data-group="{{ strtolower(trim(Str::slug($pkg->country ?: '') . ' ' . ($pkg->region ?: '') . ' ' . Str::slug($pkg->title ?: '')) ?: 'all') }}">
                 <a href="{{ route('stay-detail', $pkg->slug) }}" class="card-img-wrap card-img-link" aria-label="Reserve {{ $pkg->title }}">
-                  <img src="{{ $pkg->featured_image ?: asset('assets/media/fairmont-banff-springs-hotel.jpg') }}"
-                       alt="{{ $pkg->title }}" class="card-img" width="800" height="600" loading="lazy" decoding="async"
+                  <img src="{{ $pkg->optimized_image }}"
+                       alt="{{ $pkg->title }}" class="card-img" width="800" height="500" loading="lazy" decoding="async"
                        onerror="this.src='{{ asset('assets/media/fairmont-banff-springs-hotel.jpg') }}'">
                   <span class="card-tag">{{ $pkg->country ?: 'Hotel' }}</span>
                 </a>

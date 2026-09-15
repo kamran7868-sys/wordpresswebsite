@@ -15,14 +15,14 @@ class PackageController extends Controller
     {
         $region = $request->query('region');
 
-        $holidayQuery = Package::published()->category('holiday');
+        $holidayQuery = Package::published()->category('holiday')->latest();
         if ($region && $region !== 'all') {
             $holidayQuery->where('region', $region);
         }
         $holidayPackages = $holidayQuery->get();
 
-        $cruisePackages = Package::published()->category('cruise')->get();
-        $hotelPackages = Package::published()->category('hotel')->get();
+        $cruisePackages = Package::published()->category('cruise')->latest()->get();
+        $hotelPackages = Package::published()->category('hotel')->latest()->get();
 
         return view('packages.index', compact('holidayPackages', 'cruisePackages', 'hotelPackages', 'region'));
     }
@@ -39,11 +39,13 @@ class PackageController extends Controller
 
         if (!$package) {
             $package = Package::published()->where('slug', 'rocky-mountaineer-luxury-express')->first()
-                ?? Package::published()->first();
+                ?? Package::published()->category('holiday')->latest()->first()
+                ?? Package::published()->latest()->first();
         }
 
         $relatedPackages = Package::published()
             ->where('id', '!=', $package ? $package->id : 0)
+            ->latest()
             ->take(3)
             ->get();
 
@@ -62,11 +64,15 @@ class PackageController extends Controller
 
         if (!$package) {
             $package = Package::published()->where('slug', 'fairmont-banff-springs-castle')->first()
-                ?? Package::published()->where('category', 'hotel')->first()
-                ?? Package::published()->where('slug', 'rocky-mountaineer-luxury-express')->first();
+                ?? Package::published()->where('category', 'hotel')->latest()->first()
+                ?? Package::published()->latest()->first();
         }
 
-        $relatedStays = Package::published()->category('hotel')->where('id', '!=', $package ? $package->id : 0)->take(3)->get();
+        $relatedStays = Package::published()->category('hotel')
+            ->where('id', '!=', $package ? $package->id : 0)
+            ->latest()
+            ->take(3)
+            ->get();
 
         return view('packages.stay-detail', compact('package', 'relatedStays'));
     }
@@ -83,10 +89,15 @@ class PackageController extends Controller
 
         if (!$package) {
             $package = Package::published()->where('slug', 'inside-passage-glacier-voyage')->first()
-                ?? Package::published()->where('category', 'cruise')->first();
+                ?? Package::published()->where('category', 'cruise')->latest()->first()
+                ?? Package::published()->latest()->first();
         }
 
-        $relatedVoyages = Package::published()->category('cruise')->where('id', '!=', $package ? $package->id : 0)->take(3)->get();
+        $relatedVoyages = Package::published()->category('cruise')
+            ->where('id', '!=', $package ? $package->id : 0)
+            ->latest()
+            ->take(3)
+            ->get();
 
         return view('packages.voyage-detail', compact('package', 'relatedVoyages'));
     }

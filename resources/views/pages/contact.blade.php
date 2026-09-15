@@ -711,9 +711,9 @@
 
           <!-- RIGHT COLUMN: SUPPORTING CONTACT INFO CARD -->
           <div class="contact-sidebar-card">
-            <h3 class="sidebar-card-title">Canadian Travel Concierge</h3>
+            <h3 class="sidebar-card-title">Your Global Travel Concierge</h3>
             <p class="sidebar-card-subtitle">
-              Connected, knowledgeable, borderless reach. We bring global reach together with authentic local expertise.
+              Wherever your journey begins, our travel team brings together global connections and trusted local expertise to create seamless, personalized travel experiences worldwide.
             </p>
 
             <div class="info-list">
@@ -952,13 +952,7 @@ const contactForm = document.getElementById('pgeContactForm');
         return data;
       })
       .then((data) => {
-        if (modalOverlay) {
-          modalOverlay.classList.add('active');
-          document.body.style.overflow = 'hidden';
-        } else {
-          alert(data.message || 'Thank you! Your message has been sent to Premium Global Expeditions.');
-        }
-        contactForm.reset();
+        window.location.href = data.redirect || "{{ route('contact.success') }}";
       })
       .catch((err) => {
         if (err.errors) {

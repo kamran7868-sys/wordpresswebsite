@@ -40,7 +40,7 @@
         <span>Cruises</span>
       </a>
       <span class="utility-sep">|</span>
-      <a href="{{ route('home') }}#flight-inquiry-form" class="utility-link-item">
+      <a href="{{ route('contact') }}#contact-form-section" class="utility-link-item">
         <svg viewBox="0 0 24 24">
           <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.04 3H5.81l1.04-3zM19 17H5v-4h14v4z" />
         </svg>
@@ -48,6 +48,7 @@
       </a>
     </nav>
     <div class="utility-contact">
+      <span class="utility-contact-sep">|</span>
       <span class="utility-contact-item">
         <svg viewBox="0 0 24 24">
           <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
@@ -67,7 +68,10 @@
 
     <!-- LOGO -->
     <a href="{{ route('home') }}" class="brand-logo-wrap" aria-label="Premium Global Expeditions Home">
-      <img src="{{ asset('assets/pge-logo-full-dark.svg') }}" alt="Premium Global Expeditions Inc." class="brand-logo-img">
+      <picture>
+        <source srcset="{{ asset('assets/pge-official-logo-white.webp') }}" type="image/webp">
+        <img src="{{ asset('assets/pge-official-logo-white.png') }}" alt="Premium Global Expeditions Inc." class="brand-logo-img" width="324" height="54">
+      </picture>
     </a>
 
     <!-- MAIN NAVIGATION MENU -->
@@ -108,7 +112,7 @@
             <svg viewBox="0 0 24 24"><path d="M20 21c-1.39 0-2.78-.47-4-1.32-2.44 1.71-5.56 1.71-8 0C6.78 20.53 5.39 21 4 21H2v2h2c1.86 0 3.71-.58 5.27-1.72 2.75 1.99 6.72 1.99 9.47 0C20.29 22.42 22.14 23 24 23h2v-2h-2c-1.39 0-2.78-.47-4-1.32zM3.95 19H20l1.9-6H2.05l1.9 6zM13 4h-2v4h2V4z"/></svg>
             <span>Cruises</span>
           </a>
-          <a href="{{ route('home') }}#flight-inquiry-form" class="mobile-utility-item">
+          <a href="{{ route('contact') }}#contact-form-section" class="mobile-utility-item">
             <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.04 3H5.81l1.04-3zM19 17H5v-4h14v4z"/></svg>
             <span>Car Rentals</span>
           </a>

@@ -92,4 +92,31 @@ class Package extends Model
     {
         return $query->where('region', $region);
     }
+
+    /**
+     * Return the optimal WebP image URL if available, falling back to original featured_image.
+     */
+    public function getOptimizedImageAttribute(): string
+    {
+        $img = $this->featured_image;
+        if (empty($img)) {
+            return asset('assets/media/ancient-egypt-pyramids-giza.webp');
+        }
+
+        if (str_ends_with(strtolower($img), '.webp')) {
+            return $img;
+        }
+
+        // If it's a JPG/PNG, check if companion WebP exists
+        $webpCandidate = preg_replace('/\.(jpe?g|png)$/i', '.webp', $img);
+        if ($webpCandidate !== $img) {
+            $parsedPath = parse_url($webpCandidate, PHP_URL_PATH);
+            $localFile = public_path(ltrim($parsedPath, '/\\'));
+            if (file_exists($localFile)) {
+                return $webpCandidate;
+            }
+        }
+
+        return $img;
+    }
 }

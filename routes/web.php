@@ -22,6 +22,7 @@ Route::controller(PageController::class)->group(function () {
     Route::get('/about', 'about')->name('about');
     Route::get('/contact', 'contact')->name('contact');
     Route::post('/contact', 'submitContact')->name('contact.submit');
+    Route::get('/contact/thank-you', 'contactSuccess')->name('contact.success');
     Route::get('/register-dmc', 'registerDmc')->name('register-dmc');
     Route::post('/register-dmc', 'submitRegisterDmc')->name('register-dmc.submit');
 });

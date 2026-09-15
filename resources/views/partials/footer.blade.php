@@ -9,11 +9,14 @@
 
       <!-- COLUMN 1: BRAND LOGO & TAGLINE -->
       <div class="footer-brand-col">
-        <img src="{{ asset('assets/pge-logo-full-dark.svg') }}" alt="Premium Global Expeditions" class="footer-logo">
-        <div class="footer-tagline-script">Where Dreams Become A Reality</div>
-        <p class="footer-about-text">
-          Premium Global Expeditions Inc. is a registered Canadian tour operator providing bespoke global holidays,
-          flights, cruises, and luxury travel services.
+        <a href="{{ route('home') }}" aria-label="Premium Global Expeditions Home" style="display: inline-block;">
+          <picture>
+            <source srcset="{{ asset('assets/pge-official-logo-white.webp') }}" type="image/webp">
+            <img src="{{ asset('assets/pge-official-logo-white.png') }}" alt="Premium Global Expeditions Inc." class="footer-logo" width="324" height="54">
+          </picture>
+        </a>
+        <p class="footer-about-text" style="margin-top: 0.85rem;">
+          Premium Global Expeditions Inc. is a Canadian-incorporated tour operator specializing in bespoke global holidays, flights, cruises, and luxury travel experiences.
         </p>
         <div class="social-links">
           <!-- Facebook -->
@@ -88,7 +91,7 @@
     </div>
 
     <div class="footer-bottom">
-      <div>&copy; 2026 Premium Global Expeditions Inc. All rights reserved. Registered Canadian Tour Operator.</div>
+      <div>&copy; 2026 Premium Global Expeditions Inc. All Rights Reserved.</div>
     </div>
 
   </div>

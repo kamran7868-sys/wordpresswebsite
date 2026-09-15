@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Package;
+use App\Services\ImageOptimizer;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -73,23 +74,23 @@ class PackageController extends Controller
     }
 
     /**
-     * Store a newly created package in storage.
+     * Store a newly created package in storage with automated image optimization.
      */
     public function store(Request $request): RedirectResponse
     {
         $validated = $this->validatePackage($request);
 
-        // Process featured hero image
+        // Process featured hero image with automated WebP & compression optimization
         if ($request->hasFile('featured_image_file')) {
-            $path = $request->file('featured_image_file')->store('packages', 'public');
-            $validated['featured_image'] = Storage::url($path);
+            $optimized = ImageOptimizer::optimizeAndStore($request->file('featured_image_file'), 'packages');
+            $validated['featured_image'] = $optimized['url'];
         } elseif (!empty($request->input('featured_image_url'))) {
             $validated['featured_image'] = $request->input('featured_image_url');
         } else {
             $validated['featured_image'] = '/assets/logo-square-inc.png';
         }
 
-        // Process gallery images
+        // Process gallery images with automated WebP optimization
         $gallery = [];
         if ($request->has('existing_gallery') && is_array($request->input('existing_gallery'))) {
             $gallery = array_values(array_filter($request->input('existing_gallery')));
@@ -97,8 +98,8 @@ class PackageController extends Controller
         if ($request->hasFile('gallery_files')) {
             foreach ($request->file('gallery_files') as $file) {
                 if ($file->isValid()) {
-                    $path = $file->store('packages', 'public');
-                    $gallery[] = Storage::url($path);
+                    $optGallery = ImageOptimizer::optimizeAndStore($file, 'packages');
+                    $gallery[] = $optGallery['url'];
                 }
             }
         }
@@ -134,7 +135,7 @@ class PackageController extends Controller
     }
 
     /**
-     * Update the specified package in storage.
+     * Update the specified package in storage with automated image optimization.
      */
     public function update(Request $request, Package $package): RedirectResponse
     {
@@ -142,8 +143,11 @@ class PackageController extends Controller
 
         // Process hero image
         if ($request->hasFile('featured_image_file')) {
-            $path = $request->file('featured_image_file')->store('packages', 'public');
-            $validated['featured_image'] = Storage::url($path);
+            // Delete previously stored image if it was uploaded to storage
+            ImageOptimizer::deleteStoredImage($package->featured_image);
+
+            $optimized = ImageOptimizer::optimizeAndStore($request->file('featured_image_file'), 'packages');
+            $validated['featured_image'] = $optimized['url'];
         } elseif ($request->filled('featured_image_url')) {
             $validated['featured_image'] = $request->input('featured_image_url');
         }
@@ -156,8 +160,8 @@ class PackageController extends Controller
         if ($request->hasFile('gallery_files')) {
             foreach ($request->file('gallery_files') as $file) {
                 if ($file->isValid()) {
-                    $path = $file->store('packages', 'public');
-                    $gallery[] = Storage::url($path);
+                    $optGallery = ImageOptimizer::optimizeAndStore($file, 'packages');
+                    $gallery[] = $optGallery['url'];
                 }
             }
         }
@@ -189,6 +193,15 @@ class PackageController extends Controller
     public function destroy(Request $request, Package $package): JsonResponse|RedirectResponse
     {
         $title = $package->title;
+
+        // Clean up uploaded images if stored in public storage
+        ImageOptimizer::deleteStoredImage($package->featured_image);
+        if (is_array($package->gallery)) {
+            foreach ($package->gallery as $galleryImg) {
+                ImageOptimizer::deleteStoredImage($galleryImg);
+            }
+        }
+
         $package->delete();
 
         if ($request->wantsJson() || $request->ajax()) {
