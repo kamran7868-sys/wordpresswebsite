@@ -544,7 +544,6 @@ document.addEventListener('DOMContentLoaded', () => {
               dropdown.classList.add('active');
               return;
             }
-            const fragment = document.createDocumentFragment();
             data.forEach(item => {
               const div = document.createElement('div');
               div.className = 'airport-item';
@@ -575,9 +574,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 input.title = displayVal;
                 dropdown.classList.remove('active');
               });
-              fragment.appendChild(div);
+              dropdown.appendChild(div);
             });
-            dropdown.appendChild(fragment);
             dropdown.classList.add('active');
           })
           .catch(err => console.error('Airport search error:', err));

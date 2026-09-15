@@ -39,11 +39,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- ASSET & HERO LCP PRELOADS -->
-  <link rel="preload" href="{{ asset('assets/pge-official-logo-white.webp') }}" as="image" type="image/webp" fetchpriority="high">
-  <link rel="preload" href="{{ asset('assets/media/canadian-rockies-banff-lake-hero.webp') }}" as="image" type="image/webp" fetchpriority="high">
-  <link rel="preload" href="{{ asset('css/brand.min.css') }}?v=20260915v8" as="style">
-  <link rel="preload" href="{{ asset('js/brand.js') }}?v=20260915v5" as="script">
+  <!-- ASSET PRELOADS -->
+  <link rel="preload" href="{{ asset('css/brand.min.css') }}?v=20260915v7" as="style">
+  <link rel="preload" href="{{ asset('js/brand.js') }}?v=20260915v4" as="script">
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap">
 
   <!-- GOOGLE FONTS (Non-render-blocking) -->
@@ -72,11 +70,8 @@
     .hero-section { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--color-dark-navy); }
   </style>
 
-  <!-- MASTER BRAND STYLESHEET (MINIFIED & NON-BLOCKING FOR MOBILE FCP) -->
-  <link rel="stylesheet" href="{{ asset('css/brand.min.css') }}?v=20260915v8" media="print" onload="this.media='all'">
-  <noscript>
-    <link rel="stylesheet" href="{{ asset('css/brand.min.css') }}?v=20260915v8">
-  </noscript>
+  <!-- MASTER BRAND STYLESHEET (MINIFIED) -->
+  <link rel="stylesheet" href="{{ asset('css/brand.min.css') }}?v=20260915v7">
 
   @stack('styles')
   @yield('extra_css')
