@@ -13,30 +13,39 @@
       <!-- BACKGROUND SLIDER TRACK -->
       <div class="hero-slider-track">
 
-        <!-- Slide 1: Canadian Rockies -->
+        <!-- Slide 1: Tropical Island Luxury Retreat -->
         <div class="hero-slide active">
           <picture>
-            <source srcset="{{ asset('assets/media/canadian-rockies-banff-lake-hero.webp') }}" type="image/webp">
-            <img src="{{ asset('assets/media/canadian-rockies-banff-lake-hero.jpg') }}"
-              alt="Majestic Canadian Rockies and Banff Emerald Lake panoramic view" class="hero-slide-bg" width="1920" height="1080" fetchpriority="high" decoding="sync">
+            <source srcset="{{ asset('assets/media/hero-tropical-island-expedition.jpg') }}" type="image/jpeg">
+            <img src="{{ asset('assets/media/hero-tropical-island-expedition.jpg') }}"
+              alt="Luxury infinity pool overlooking tropical island karst waters" class="hero-slide-bg" width="1920" height="1080" fetchpriority="high" decoding="sync">
           </picture>
         </div>
 
-        <!-- Slide 2: Nile River Cruise, Egypt -->
+        <!-- Slide 2: Luxury Cruise Sunset Deck -->
         <div class="hero-slide">
           <picture>
-            <source srcset="{{ asset('assets/media/ancient-egypt-nile-sunset-hero.webp') }}" type="image/webp">
-            <img src="{{ asset('assets/media/ancient-egypt-nile-sunset-hero.jpg') }}"
-              alt="Ancient Egyptian Nile luxury expedition sunset view" class="hero-slide-bg" width="1920" height="1080" loading="lazy" decoding="async">
+            <source srcset="{{ asset('assets/media/hero-luxury-cruise-sunset.jpg') }}" type="image/jpeg">
+            <img src="{{ asset('assets/media/hero-luxury-cruise-sunset.jpg') }}"
+              alt="Luxury cruise ocean view deck at sunset" class="hero-slide-bg" width="1920" height="1080" loading="lazy" decoding="async">
           </picture>
         </div>
 
-        <!-- Slide 3: Sri Lanka & Southeast Asia Coastal Retreat -->
+        <!-- Slide 3: Canadian Waterfront City Skyline Sunset -->
         <div class="hero-slide">
           <picture>
-            <source srcset="{{ asset('assets/media/tropical-coastal-sanctuary-hero.webp') }}" type="image/webp">
-            <img src="{{ asset('assets/media/tropical-coastal-sanctuary-hero.jpg') }}"
-              alt="Pristine tropical coastal sanctuary with turquoise waters" class="hero-slide-bg" width="1920" height="1080" loading="lazy" decoding="async">
+            <source srcset="{{ asset('assets/media/hero-toronto-skyline-sunset.jpg') }}" type="image/jpeg">
+            <img src="{{ asset('assets/media/hero-toronto-skyline-sunset.jpg') }}"
+              alt="Family enjoying sunset view of Canadian city skyline" class="hero-slide-bg" width="1920" height="1080" loading="lazy" decoding="async">
+          </picture>
+        </div>
+
+        <!-- Slide 4: Sigiriya Mountain Panoramic View -->
+        <div class="hero-slide">
+          <picture>
+            <source srcset="{{ asset('assets/media/hero-sigiriya-mountain-sunset.jpg') }}" type="image/jpeg">
+            <img src="{{ asset('assets/media/hero-sigiriya-mountain-sunset.jpg') }}"
+              alt="Panoramic Sigiriya mountain vista expedition view" class="hero-slide-bg" width="1920" height="1080" loading="lazy" decoding="async">
           </picture>
         </div>
 
@@ -66,6 +75,7 @@
           <button class="dot-btn active" aria-label="Go to slide 1"></button>
           <button class="dot-btn" aria-label="Go to slide 2"></button>
           <button class="dot-btn" aria-label="Go to slide 3"></button>
+          <button class="dot-btn" aria-label="Go to slide 4"></button>
         </div>
 
         <button class="hero-nav-arrow" id="heroNextBtn" aria-label="Next Slide">
