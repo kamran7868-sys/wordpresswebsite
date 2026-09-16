@@ -3,6 +3,45 @@
 @section('title', 'Luxury Canadian Travel Company | Premium Global Expeditions')
 @section('meta_description', 'Bespoke journeys with Premium Global Expeditions, a luxury Canadian travel company curating custom holidays, cruises, flights, and 5-star stays.')
 
+@push('styles')
+<style>
+  .hero-actions {
+    margin-top: 1.25rem;
+    display: flex;
+    justify-content: center;
+  }
+  .hero-actions .btn-primary {
+    padding: 0.65rem 1.5rem !important;
+    font-size: 0.82rem !important;
+    letter-spacing: 1px !important;
+    font-weight: 600 !important;
+    border-radius: 6px !important;
+    width: auto !important;
+    min-height: auto !important;
+    margin: 0 auto !important;
+    box-shadow: 0 4px 14px rgba(182, 153, 100, 0.3) !important;
+    white-space: nowrap !important;
+  }
+  @media (max-width: 767px) {
+    .hero-actions {
+      margin-top: 0.85rem;
+      width: 100%;
+    }
+    .hero-actions .btn-primary {
+      padding: 0.55rem 1.2rem !important;
+      font-size: 0.75rem !important;
+      letter-spacing: 0.75px !important;
+      width: auto !important;
+      max-width: 88% !important;
+      min-height: 38px !important;
+      display: inline-flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+  }
+</style>
+@endpush
+
 @section('content')
 <!-- ==========================================================================
          SECTION 3: HERO SECTION (CINEMATIC CAROUSEL)
