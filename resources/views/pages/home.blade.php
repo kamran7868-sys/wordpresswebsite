@@ -5,6 +5,32 @@
 
 @push('styles')
 <style>
+  /* Ensure hero background image & overlay cover 100% of the hero section on all screen sizes */
+  .hero-section {
+    position: relative !important;
+  }
+  .hero-slider-track,
+  .hero-slide,
+  .hero-slide picture,
+  .hero-slide-bg,
+  .hero-overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .hero-slide picture {
+    display: block !important;
+  }
+  .hero-slide-bg {
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+  }
+
   .hero-actions {
     margin-top: 1.25rem;
     display: flex;
@@ -23,6 +49,10 @@
     white-space: nowrap !important;
   }
   @media (max-width: 767px) {
+    .hero-section {
+      min-height: 500px !important;
+      padding: 4.5rem 0 3.5rem !important;
+    }
     .hero-actions {
       margin-top: 0.85rem;
       width: 100%;
