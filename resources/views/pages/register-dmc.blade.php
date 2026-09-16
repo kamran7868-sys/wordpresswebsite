@@ -1015,12 +1015,10 @@
                 <label for="dmcDetails" class="dmc-label">Additional details</label>
                 <textarea id="dmcDetails" name="details" class="dmc-textarea" rows="4"
                   placeholder="Regions covered, notable partners, capacity, anything else worth knowing"></textarea>
-              </div>
-
-              <!-- SUBMIT BUTTON -->
+              </div>              <!-- SUBMIT BUTTON -->
               <div class="dmc-form-actions">
                 <button type="submit" class="btn-dmc-submit" id="dmcSubmitBtn">
-                  Submit registration
+                  <span>Submit registration</span>
                 </button>
               </div>
 
@@ -1094,7 +1092,7 @@
             <div class="dmc-why-icon-box">
               <svg viewBox="0 0 24 24">
                 <path
-                  d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 3s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+                  d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
               </svg>
             </div>
             <h3 class="dmc-why-card-title">Long-Term Partnership Focus</h3>
@@ -1125,14 +1123,31 @@
         </div>
       </div>
     </section>
+
+    <!-- ==========================================================================
+         DMC REGISTRATION SUCCESS MODAL POPUP
+         ========================================================================== -->
+    <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalFeedbackTitle">
+      <div class="modal-card">
+        <span class="section-tagline" style="color: var(--color-gold-dark); font-size: 1.5rem;">Registration Received</span>
+        <div class="modal-title" id="modalFeedbackTitle" style="font-family: var(--font-display); font-size: 2rem; color: var(--color-navy); margin-bottom: 0.75rem; font-weight: 600;">
+          Thank You for Partnering with PGE!
+        </div>
+        <p id="modalFeedbackMessage" style="font-size: 0.95rem; color: var(--color-slate); line-height: 1.6; margin-bottom: 1.75rem;">
+          Thank you! Your DMC partnership application has been received by Premium Global Expeditions. Our global partnerships division will review your credentials and contact you within 2 business days.
+        </p>
+        <button type="button" class="btn-primary" id="modalCloseBtn" data-close-modal>Return to Site</button>
+      </div>
+    </div>
 @endsection
 
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-const dmcForm = document.getElementById('pgeDmcForm');
+  const dmcForm = document.getElementById('pgeDmcForm');
   const modalOverlay = document.getElementById('modalOverlay');
   const modalCloseBtn = document.getElementById('modalCloseBtn');
+  const submitBtn = document.getElementById('dmcSubmitBtn');
 
   if (!dmcForm) return;
 
@@ -1144,6 +1159,7 @@ const dmcForm = document.getElementById('pgeDmcForm');
   const countryInput = document.getElementById('dmcCountry');
   const yearsInput = document.getElementById('dmcYears');
   const websiteInput = document.getElementById('dmcWebsite');
+  const detailsInput = document.getElementById('dmcDetails');
   const serviceCheckboxes = document.querySelectorAll('input[name="services[]"]');
   const servicesError = document.getElementById('dmcServicesError');
 
@@ -1151,6 +1167,41 @@ const dmcForm = document.getElementById('pgeDmcForm');
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegex = /^[\d\s\+\-\(\)]{7,20}$/;
   const urlRegex = /^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/i;
+
+  /**
+   * Modal control functions
+   */
+  const openModal = () => {
+    if (modalOverlay) {
+      modalOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  const closeModal = () => {
+    if (modalOverlay) {
+      modalOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  };
+
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener('click', closeModal);
+  }
+
+  if (modalOverlay) {
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) {
+        closeModal();
+      }
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('active')) {
+      closeModal();
+    }
+  });
 
   /**
    * Helper: Show Error Message
@@ -1284,8 +1335,11 @@ const dmcForm = document.getElementById('pgeDmcForm');
     }
 
     // 8. Validate Services Offered (At least one required)
-    const anyChecked = Array.from(serviceCheckboxes).some(cb => cb.checked);
-    if (!anyChecked) {
+    const selectedServices = Array.from(serviceCheckboxes)
+      .filter(cb => cb.checked)
+      .map(cb => cb.value);
+
+    if (selectedServices.length === 0) {
       if (servicesError) {
         servicesError.textContent = 'Please select at least one service offered';
         servicesError.classList.add('visible');
@@ -1307,7 +1361,79 @@ const dmcForm = document.getElementById('pgeDmcForm');
           behavior: 'smooth'
         });
       }
+      return;
     }
+
+    // Prepare payload
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+    const payload = {
+      companyName: companyNameInput.value.trim(),
+      contactPerson: contactPersonInput.value.trim(),
+      email: emailInput.value.trim(),
+      phone: phoneInput.value.trim(),
+      country: countryInput.value.trim(),
+      yearsInOperation: yearsInput.value.trim(),
+      website: websiteInput.value.trim(),
+      services: selectedServices,
+      details: detailsInput ? detailsInput.value.trim() : ''
+    };
+
+    const originalBtnContent = submitBtn ? submitBtn.innerHTML : '';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.7';
+      submitBtn.innerHTML = '<span>Submitting...</span>';
+    }
+
+    fetch('{{ route("register-dmc.submit") }}', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-CSRF-TOKEN': csrfToken
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(async (res) => {
+      const data = await res.json();
+      if (!res.ok) {
+        throw data;
+      }
+      return data;
+    })
+    .then((data) => {
+      openModal();
+      dmcForm.reset();
+      serviceCheckboxes.forEach(cb => {
+        const parentLabel = cb.closest('.dmc-checkbox-item');
+        if (parentLabel) parentLabel.classList.remove('checked');
+      });
+    })
+    .catch((err) => {
+      if (err && err.errors) {
+        if (err.errors.companyName) showError(companyNameInput, 'dmcCompanyNameError', err.errors.companyName[0]);
+        if (err.errors.contactPerson) showError(contactPersonInput, 'dmcContactPersonError', err.errors.contactPerson[0]);
+        if (err.errors.email) showError(emailInput, 'dmcEmailError', err.errors.email[0]);
+        if (err.errors.phone) showError(phoneInput, 'dmcPhoneError', err.errors.phone[0]);
+        if (err.errors.country) showError(countryInput, 'dmcCountryError', err.errors.country[0]);
+        if (err.errors.yearsInOperation) showError(yearsInput, 'dmcYearsError', err.errors.yearsInOperation[0]);
+        if (err.errors.website) showError(websiteInput, 'dmcWebsiteError', err.errors.website[0]);
+        if (err.errors.services && servicesError) {
+          servicesError.textContent = err.errors.services[0];
+          servicesError.classList.add('visible');
+        }
+      } else {
+        alert((err && err.message) ? err.message : 'An error occurred while submitting your DMC registration. Please try again.');
+      }
+    })
+    .finally(() => {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = '1';
+        submitBtn.innerHTML = originalBtnContent;
+      }
+    });
   });
 });
 </script>
