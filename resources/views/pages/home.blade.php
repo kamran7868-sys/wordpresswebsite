@@ -55,7 +55,7 @@
         <!-- Slide 1: Tropical Island Luxury Retreat -->
         <div class="hero-slide active">
           <picture>
-            <source srcset="{{ asset('assets/media/hero-tropical-island-expedition.jpg') }}" type="image/jpeg">
+            <source srcset="{{ asset('assets/media/hero-tropical-island-expedition.webp') }}" type="image/webp">
             <img src="{{ asset('assets/media/hero-tropical-island-expedition.jpg') }}"
               alt="Luxury infinity pool overlooking tropical island karst waters" class="hero-slide-bg" width="1920" height="1080" fetchpriority="high" decoding="sync">
           </picture>
@@ -64,7 +64,7 @@
         <!-- Slide 2: Luxury Cruise Sunset Deck -->
         <div class="hero-slide">
           <picture>
-            <source srcset="{{ asset('assets/media/hero-luxury-cruise-sunset.jpg') }}" type="image/jpeg">
+            <source srcset="{{ asset('assets/media/hero-luxury-cruise-sunset.webp') }}" type="image/webp">
             <img src="{{ asset('assets/media/hero-luxury-cruise-sunset.jpg') }}"
               alt="Luxury cruise ocean view deck at sunset" class="hero-slide-bg" width="1920" height="1080" loading="lazy" decoding="async">
           </picture>
@@ -73,7 +73,7 @@
         <!-- Slide 3: Canadian Waterfront City Skyline Sunset -->
         <div class="hero-slide">
           <picture>
-            <source srcset="{{ asset('assets/media/hero-toronto-skyline-sunset.jpg') }}" type="image/jpeg">
+            <source srcset="{{ asset('assets/media/hero-toronto-skyline-sunset.webp') }}" type="image/webp">
             <img src="{{ asset('assets/media/hero-toronto-skyline-sunset.jpg') }}"
               alt="Family enjoying sunset view of Canadian city skyline" class="hero-slide-bg" width="1920" height="1080" loading="lazy" decoding="async">
           </picture>
@@ -82,7 +82,7 @@
         <!-- Slide 4: Sigiriya Mountain Panoramic View -->
         <div class="hero-slide">
           <picture>
-            <source srcset="{{ asset('assets/media/hero-sigiriya-mountain-sunset.jpg') }}" type="image/jpeg">
+            <source srcset="{{ asset('assets/media/hero-sigiriya-mountain-sunset.webp') }}" type="image/webp">
             <img src="{{ asset('assets/media/hero-sigiriya-mountain-sunset.jpg') }}"
               alt="Panoramic Sigiriya mountain vista expedition view" class="hero-slide-bg" width="1920" height="1080" loading="lazy" decoding="async">
           </picture>

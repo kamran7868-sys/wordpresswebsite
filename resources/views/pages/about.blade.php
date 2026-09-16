@@ -701,7 +701,7 @@
           <div class="about-intro-media">
             <div class="media-frame">
               <picture>
-                <source srcset="{{ asset('assets/media/about-cappadocia-hot-air-balloon.jpg') }}" type="image/jpeg">
+                <source srcset="{{ asset('assets/media/about-cappadocia-hot-air-balloon.webp') }}" type="image/webp">
                 <img src="{{ asset('assets/media/about-cappadocia-hot-air-balloon.jpg') }}"
                   alt="Couple experiencing bespoke global travel in Cappadocia with hot air balloons" width="1200" height="800" loading="lazy" decoding="async">
               </picture>

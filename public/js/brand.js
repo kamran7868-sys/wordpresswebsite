@@ -274,8 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const catSection = document.getElementById('travel-categories');
         if (catSection) {
           const headerOffset = 100;
-          const elementPosition = catSection.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + (window.pageYOffset || window.scrollY) - headerOffset;
+          const offsetPosition = catSection.offsetTop - headerOffset;
           window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
         }
       });

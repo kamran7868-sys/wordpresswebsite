@@ -40,7 +40,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- ASSET PRELOADS -->
-  <link rel="preload" href="{{ asset('assets/media/hero-tropical-island-expedition.jpg') }}" as="image" type="image/jpeg" fetchpriority="high">
+  <link rel="preload" href="{{ asset('assets/media/hero-tropical-island-expedition.webp') }}" as="image" type="image/webp" fetchpriority="high">
   <link rel="preload" href="{{ asset('css/brand.min.css') }}?v=20260915v8" as="style">
   <link rel="preload" href="{{ asset('js/brand.js') }}?v=20260915v4" as="script">
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap">
