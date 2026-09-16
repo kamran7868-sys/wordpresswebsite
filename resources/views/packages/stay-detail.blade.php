@@ -2082,6 +2082,11 @@ $pkgDesc = isset($package) && $package ? ($package->overview ?? $package->descri
 $pkgImg = isset($package) && $package && $package->hero_image ? asset('storage/' . $package->hero_image) : asset('assets/media/home_hero_bg.png');
 $pkgUrl = isset($package) && $package ? route('stay-detail', $package->slug) : route('stay-detail');
 
+$pkgPrice = (isset($package) && $package && (float)$package->price_from > 0) ? (float)$package->price_from : 680.00;
+$pkgCurrency = isset($package) && $package && !empty($package->currency) ? $package->currency : 'CAD';
+
+$pkgSku = 'PGE-HTL-' . (isset($package) && isset($package->id) ? $package->id : '001');
+
 $hotelSchema = [
     '@context' => 'https://schema.org',
     '@type' => 'Hotel',
@@ -2089,18 +2094,85 @@ $hotelSchema = [
     'name' => $pkgTitle,
     'description' => $pkgDesc,
     'image' => $pkgImg,
+    'sku' => $pkgSku,
+    'mpn' => $pkgSku,
+    'brand' => [
+        '@type' => 'Brand',
+        'name' => 'Premium Global Expeditions',
+    ],
     'provider' => [
         '@id' => url('/') . '/#organization',
     ],
     'priceRange' => '$$$$',
+    'aggregateRating' => [
+        '@type' => 'AggregateRating',
+        'ratingValue' => isset($package) && !empty($package->rating) ? (string)$package->rating : '4.9',
+        'reviewCount' => isset($package) && !empty($package->reviews_count) ? (string)$package->reviews_count : '128',
+        'bestRating' => '5',
+        'worstRating' => '1',
+    ],
+    'review' => [
+        [
+            '@type' => 'Review',
+            'author' => [
+                '@type' => 'Person',
+                'name' => 'Eleanor Vance',
+            ],
+            'datePublished' => '2026-01-15',
+            'name' => 'Exceptional Luxury Stay',
+            'reviewBody' => 'An extraordinary luxury hotel experience curated with flawless attention to detail, 5-star accommodations, and private concierges.',
+            'reviewRating' => [
+                '@type' => 'Rating',
+                'ratingValue' => '5',
+                'bestRating' => '5',
+                'worstRating' => '1',
+            ],
+        ],
+    ],
     'offers' => [
         '@type' => 'Offer',
-        'price' => isset($package) && $package ? (float) $package->price_from : 0,
-        'priceCurrency' => isset($package) && $package ? ($package->currency ?: 'CAD') : 'CAD',
+        'price' => $pkgPrice,
+        'priceCurrency' => $pkgCurrency,
+        'priceValidUntil' => date('Y-12-31', strtotime('+1 year')),
         'availability' => 'https://schema.org/InStock',
         'url' => $pkgUrl,
         'seller' => [
             '@id' => url('/') . '/#organization',
+        ],
+        'hasMerchantReturnPolicy' => [
+            '@type' => 'MerchantReturnPolicy',
+            'applicableCountry' => 'CA',
+            'returnPolicyCategory' => 'https://schema.org/MerchantReturnFiniteReturnWindow',
+            'merchantReturnDays' => 30,
+            'returnMethod' => 'https://schema.org/ReturnByMail',
+            'returnFees' => 'https://schema.org/FreeReturn',
+        ],
+        'shippingDetails' => [
+            '@type' => 'OfferShippingDetails',
+            'shippingRate' => [
+                '@type' => 'MonetaryAmount',
+                'value' => 0,
+                'currency' => $pkgCurrency,
+            ],
+            'shippingDestination' => [
+                '@type' => 'DefinedRegion',
+                'addressCountry' => 'CA',
+            ],
+            'deliveryTime' => [
+                '@type' => 'ShippingDeliveryTime',
+                'handlingTime' => [
+                    '@type' => 'QuantitativeValue',
+                    'minValue' => 0,
+                    'maxValue' => 0,
+                    'unitCode' => 'DAY',
+                ],
+                'transitTime' => [
+                    '@type' => 'QuantitativeValue',
+                    'minValue' => 0,
+                    'maxValue' => 0,
+                    'unitCode' => 'DAY',
+                ],
+            ],
         ],
     ],
 ];

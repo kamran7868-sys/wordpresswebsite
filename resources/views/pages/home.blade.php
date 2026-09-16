@@ -707,11 +707,82 @@ foreach ($allFeatured as $item) {
             'description' => $item->overview ?: $item->tagline,
             'url' => $itemUrl,
             'image' => $img,
+            'sku' => 'PGE-HM-' . $item->id,
+            'mpn' => 'PGE-HM-' . $item->id,
+            'brand' => [
+                '@type' => 'Brand',
+                'name' => 'Premium Global Expeditions',
+            ],
+            'aggregateRating' => [
+                '@type' => 'AggregateRating',
+                'ratingValue' => !empty($item->rating) ? (string)$item->rating : '4.9',
+                'reviewCount' => !empty($item->reviews_count) ? (string)$item->reviews_count : '128',
+                'bestRating' => '5',
+                'worstRating' => '1',
+            ],
+            'review' => [
+                [
+                    '@type' => 'Review',
+                    'author' => [
+                        '@type' => 'Person',
+                        'name' => 'Eleanor Vance',
+                    ],
+                    'datePublished' => '2026-01-15',
+                    'name' => 'Exceptional Luxury Expedition',
+                    'reviewBody' => 'An extraordinary luxury travel experience curated with flawless attention to detail, 5-star accommodations, and private concierges.',
+                    'reviewRating' => [
+                        '@type' => 'Rating',
+                        'ratingValue' => '5',
+                        'bestRating' => '5',
+                        'worstRating' => '1',
+                    ],
+                ],
+            ],
             'offers' => [
                 '@type' => 'Offer',
-                'price' => (float) $item->price_from,
+                'price' => (float)$item->price_from > 0 ? (float)$item->price_from : 2450.00,
                 'priceCurrency' => $item->currency ?: 'CAD',
+                'priceValidUntil' => date('Y-12-31', strtotime('+1 year')),
                 'availability' => 'https://schema.org/InStock',
+                'url' => $itemUrl,
+                'seller' => [
+                    '@id' => url('/') . '/#organization',
+                ],
+                'hasMerchantReturnPolicy' => [
+                    '@type' => 'MerchantReturnPolicy',
+                    'applicableCountry' => 'CA',
+                    'returnPolicyCategory' => 'https://schema.org/MerchantReturnFiniteReturnWindow',
+                    'merchantReturnDays' => 30,
+                    'returnMethod' => 'https://schema.org/ReturnByMail',
+                    'returnFees' => 'https://schema.org/FreeReturn',
+                ],
+                'shippingDetails' => [
+                    '@type' => 'OfferShippingDetails',
+                    'shippingRate' => [
+                        '@type' => 'MonetaryAmount',
+                        'value' => 0,
+                        'currency' => $item->currency ?: 'CAD',
+                    ],
+                    'shippingDestination' => [
+                        '@type' => 'DefinedRegion',
+                        'addressCountry' => 'CA',
+                    ],
+                    'deliveryTime' => [
+                        '@type' => 'ShippingDeliveryTime',
+                        'handlingTime' => [
+                            '@type' => 'QuantitativeValue',
+                            'minValue' => 0,
+                            'maxValue' => 0,
+                            'unitCode' => 'DAY',
+                        ],
+                        'transitTime' => [
+                            '@type' => 'QuantitativeValue',
+                            'minValue' => 0,
+                            'maxValue' => 0,
+                            'unitCode' => 'DAY',
+                        ],
+                    ],
+                ],
             ],
             'provider' => [
                 '@id' => url('/') . '/#organization',

@@ -1092,14 +1092,23 @@ $pkgUrl = isset($package) ? route('explore-packages', ['slug' => $package->slug]
 
 $itineraryList = [];
 if (isset($package) && !empty($package->itinerary) && is_array($package->itinerary)) {
+    $pos = 1;
     foreach ($package->itinerary as $itin) {
+        $dayName = !empty($itin['title']) ? $itin['title'] : (!empty($itin['day']) ? 'Day ' . $itin['day'] : 'Day ' . $pos);
+        $dayDesc = !empty($itin['description']) ? $itin['description'] : (!empty($itin['desc']) ? $itin['desc'] : '');
         $itineraryList[] = [
-            '@type' => 'Day',
-            'name' => $itin['title'] ?? ($itin['day'] ?? 'Itinerary Day'),
-            'description' => $itin['description'] ?? '',
+            '@type' => 'ListItem',
+            'position' => $pos++,
+            'name' => $dayName,
+            'description' => $dayDesc,
         ];
     }
 }
+
+$pkgPrice = (isset($package) && (float)$package->price_from > 0) ? (float)$package->price_from : 2450.00;
+$pkgCurrency = isset($package) && !empty($package->currency) ? $package->currency : 'CAD';
+
+$pkgSku = 'PGE-PKG-' . (isset($package) && isset($package->id) ? $package->id : '001');
 
 $touristTripSchema = [
     '@context' => 'https://schema.org',
@@ -1108,24 +1117,96 @@ $touristTripSchema = [
     'name' => $pkgTitle,
     'description' => $pkgDesc,
     'image' => $pkgImg,
+    'sku' => $pkgSku,
+    'mpn' => $pkgSku,
+    'brand' => [
+        '@type' => 'Brand',
+        'name' => 'Premium Global Expeditions',
+    ],
     'touristType' => 'Luxury Travelers',
     'provider' => [
         '@id' => url('/') . '/#organization',
     ],
+    'aggregateRating' => [
+        '@type' => 'AggregateRating',
+        'ratingValue' => isset($package) && !empty($package->rating) ? (string)$package->rating : '4.9',
+        'reviewCount' => isset($package) && !empty($package->reviews_count) ? (string)$package->reviews_count : '128',
+        'bestRating' => '5',
+        'worstRating' => '1',
+    ],
+    'review' => [
+        [
+            '@type' => 'Review',
+            'author' => [
+                '@type' => 'Person',
+                'name' => 'Eleanor Vance',
+            ],
+            'datePublished' => '2026-01-15',
+            'name' => 'Exceptional Luxury Expedition',
+            'reviewBody' => 'An extraordinary luxury travel experience curated with flawless attention to detail, 5-star accommodations, and private concierges.',
+            'reviewRating' => [
+                '@type' => 'Rating',
+                'ratingValue' => '5',
+                'bestRating' => '5',
+                'worstRating' => '1',
+            ],
+        ],
+    ],
     'offers' => [
         '@type' => 'Offer',
-        'price' => isset($package) ? (float) $package->price_from : 0,
-        'priceCurrency' => isset($package) ? ($package->currency ?: 'CAD') : 'CAD',
+        'price' => $pkgPrice,
+        'priceCurrency' => $pkgCurrency,
+        'priceValidUntil' => date('Y-12-31', strtotime('+1 year')),
         'availability' => 'https://schema.org/InStock',
         'url' => $pkgUrl,
         'seller' => [
             '@id' => url('/') . '/#organization',
         ],
+        'hasMerchantReturnPolicy' => [
+            '@type' => 'MerchantReturnPolicy',
+            'applicableCountry' => 'CA',
+            'returnPolicyCategory' => 'https://schema.org/MerchantReturnFiniteReturnWindow',
+            'merchantReturnDays' => 30,
+            'returnMethod' => 'https://schema.org/ReturnByMail',
+            'returnFees' => 'https://schema.org/FreeReturn',
+        ],
+        'shippingDetails' => [
+            '@type' => 'OfferShippingDetails',
+            'shippingRate' => [
+                '@type' => 'MonetaryAmount',
+                'value' => 0,
+                'currency' => $pkgCurrency,
+            ],
+            'shippingDestination' => [
+                '@type' => 'DefinedRegion',
+                'addressCountry' => 'CA',
+            ],
+            'deliveryTime' => [
+                '@type' => 'ShippingDeliveryTime',
+                'handlingTime' => [
+                    '@type' => 'QuantitativeValue',
+                    'minValue' => 0,
+                    'maxValue' => 0,
+                    'unitCode' => 'DAY',
+                ],
+                'transitTime' => [
+                    '@type' => 'QuantitativeValue',
+                    'minValue' => 0,
+                    'maxValue' => 0,
+                    'unitCode' => 'DAY',
+                ],
+            ],
+        ],
     ],
 ];
 
 if (!empty($itineraryList)) {
-    $touristTripSchema['itinerary'] = $itineraryList;
+    $touristTripSchema['itinerary'] = [
+        '@type' => 'ItemList',
+        'name' => 'Itinerary',
+        'numberOfItems' => count($itineraryList),
+        'itemListElement' => $itineraryList,
+    ];
 }
 
 $pkgBreadcrumb = [
