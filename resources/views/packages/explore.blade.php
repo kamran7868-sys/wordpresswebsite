@@ -1156,6 +1156,7 @@ $touristTripSchema = [
         '@type' => 'Offer',
         'price' => $pkgPrice,
         'priceCurrency' => $pkgCurrency,
+        'validFrom' => date('Y-01-01'),
         'priceValidUntil' => date('Y-12-31', strtotime('+1 year')),
         'availability' => 'https://schema.org/InStock',
         'url' => $pkgUrl,

@@ -31,48 +31,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://premiumglobalexp.com/voyage-detail/great-barrier-reef-southern-ocean</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://premiumglobalexp.com/stay-detail/fairmont-banff-springs-castle</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://premiumglobalexp.com/stay-detail/amangalla-historic-fortress-estate</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://premiumglobalexp.com/stay-detail/four-seasons-nile-plaza-sanctuary</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://premiumglobalexp.com/stay-detail/the-ritz-carlton-istanbul-bosphorus</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://premiumglobalexp.com/stay-detail/intercontinental-danang-sun-peninsula</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://premiumglobalexp.com/stay-detail/katikies-santorini-cliffside-retreat</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://premiumglobalexp.com/explore-packages/rocky-mountaineer-luxury-express</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -122,6 +80,48 @@
   </url>
   <url>
     <loc>https://premiumglobalexp.com/voyage-detail/pharaohs-river-expedition-nile</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://premiumglobalexp.com/voyage-detail/great-barrier-reef-southern-ocean</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://premiumglobalexp.com/stay-detail/fairmont-banff-springs-castle</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://premiumglobalexp.com/stay-detail/amangalla-historic-fortress-estate</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://premiumglobalexp.com/stay-detail/four-seasons-nile-plaza-sanctuary</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://premiumglobalexp.com/stay-detail/the-ritz-carlton-istanbul-bosphorus</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://premiumglobalexp.com/stay-detail/intercontinental-danang-sun-peninsula</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://premiumglobalexp.com/stay-detail/katikies-santorini-cliffside-retreat</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>

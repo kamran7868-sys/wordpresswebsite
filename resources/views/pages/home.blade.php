@@ -744,6 +744,7 @@ foreach ($allFeatured as $item) {
                 '@type' => 'Offer',
                 'price' => (float)$item->price_from > 0 ? (float)$item->price_from : 2450.00,
                 'priceCurrency' => $item->currency ?: 'CAD',
+                'validFrom' => date('Y-01-01'),
                 'priceValidUntil' => date('Y-12-31', strtotime('+1 year')),
                 'availability' => 'https://schema.org/InStock',
                 'url' => $itemUrl,

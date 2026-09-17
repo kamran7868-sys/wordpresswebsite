@@ -1326,6 +1326,7 @@ foreach ($allCatalog as $pkg) {
                 '@type' => 'Offer',
                 'price' => (float)$pkg->price_from > 0 ? (float)$pkg->price_from : 2450.00,
                 'priceCurrency' => $pkg->currency ?: 'CAD',
+                'validFrom' => date('Y-01-01'),
                 'priceValidUntil' => date('Y-12-31', strtotime('+1 year')),
                 'availability' => 'https://schema.org/InStock',
                 'url' => $pUrl,
