@@ -2089,7 +2089,7 @@ $pkgSku = 'PGE-HTL-' . (isset($package) && isset($package->id) ? $package->id : 
 
 $hotelSchema = [
     '@context' => 'https://schema.org',
-    '@type' => 'Hotel',
+    '@type' => ['Hotel', 'Product'],
     '@id' => $pkgUrl . '#hotel',
     'name' => $pkgTitle,
     'description' => $pkgDesc,

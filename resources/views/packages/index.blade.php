@@ -1286,7 +1286,7 @@ foreach ($allCatalog as $pkg) {
         '@type' => 'ListItem',
         'position' => $pos++,
         'item' => [
-            '@type' => $pkg->category === 'hotel' ? 'Hotel' : ($pkg->category === 'cruise' ? 'TouristTrip' : 'TouristTrip'),
+            '@type' => $pkg->category === 'hotel' ? ['Hotel', 'Product'] : ['Product', 'TouristTrip'],
             'name' => $pkg->title,
             'description' => $pkg->overview ?: $pkg->tagline,
             'url' => $pUrl,
