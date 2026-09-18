@@ -327,9 +327,9 @@ class MvcRoutesTest extends TestCase
             '/contact' => ['ContactPage', 'BreadcrumbList'],
             '/register-dmc' => ['WebPage', 'BreadcrumbList'],
             '/packages' => ['CollectionPage', 'ItemList', 'BreadcrumbList'],
-            '/explore-packages' => ['TouristTrip', 'BreadcrumbList'],
-            '/stay-detail' => ['Hotel', 'BreadcrumbList'],
-            '/voyage-detail' => ['TouristTrip', 'BreadcrumbList'],
+            '/explore-packages' => ['Product', 'BreadcrumbList'],
+            '/stay-detail' => ['Product', 'BreadcrumbList'],
+            '/voyage-detail' => ['Product', 'BreadcrumbList'],
         ];
 
         foreach ($pages as $uri => $expectedTypes) {

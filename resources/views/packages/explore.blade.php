@@ -1112,7 +1112,7 @@ $pkgSku = 'PGE-PKG-' . (isset($package) && isset($package->id) ? $package->id : 
 
 $touristTripSchema = [
     '@context' => 'https://schema.org',
-    '@type' => ['Product', 'TouristTrip'],
+    '@type' => 'Product',
     '@id' => $pkgUrl . '#trip',
     'name' => $pkgTitle,
     'description' => $pkgDesc,

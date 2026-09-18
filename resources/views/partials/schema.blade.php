@@ -1,7 +1,7 @@
 @php
 $orgSchema = [
     '@context' => 'https://schema.org',
-    '@type' => ['TravelAgency', 'Organization'],
+    '@type' => 'TravelAgency',
     '@id' => url('/') . '/#organization',
     'name' => 'Premium Global Expeditions',
     'legalName' => 'Premium Global Expeditions Inc.',

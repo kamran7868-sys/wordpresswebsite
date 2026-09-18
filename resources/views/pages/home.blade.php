@@ -698,7 +698,7 @@ foreach ($allFeatured as $item) {
 
     $img = $item->featured_image ? (str_starts_with($item->featured_image, 'http') ? $item->featured_image : asset($item->featured_image)) : asset('assets/pge-logo-full-light.svg');
 
-    $itemType = $item->category === 'hotel' ? ['Hotel', 'Product'] : ['Product', 'TouristTrip'];
+    $itemType = 'Product';
 
     $homeItemList[] = [
         '@type' => 'ListItem',
