@@ -779,7 +779,7 @@
             <div class="map-frame-wrapper">
               <iframe
                 title="PGE Toronto Location Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d184552.57289587422!2d-79.51814144365313!3d43.71815566276852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b342980d40785%3A0xa1c50058b4b248a0!2sToronto%2C%20ON%2C%20Canada!5e0!3m2!1sen!2s!4v1710000000000!5m2!1sen!2s"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=-79.5200%2C43.6000%2C-79.2500%2C43.7800&amp;layer=mapnik&amp;marker=43.6532%2C-79.3832"
                 width="100%"
                 height="100%"
                 style="border:0;"
