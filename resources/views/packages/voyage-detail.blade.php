@@ -919,7 +919,7 @@
                   <p class="day-desc">
                     Guided sightseeing across Stanley Park's ancient cedars, the Capilano Suspension Bridge, and the artisan stalls of Granville Island.
                   </p>
-                  <div class="day-meta">OVERNIGHT: VANCOUVER &middot; B</div>
+                  <div class="day-meta">OVERNIGHT: VANCOUVER &middot; Breakfast</div>
                 </div>
               </article>
 
@@ -937,7 +937,7 @@
                   <p class="day-desc">
                     Board the Rocky Mountaineer in GoldLeaf Service. Glass-dome views trace the Fraser Canyon and Thompson River, with a la carte dining on board.
                   </p>
-                  <div class="day-meta">OVERNIGHT: KAMLOOPS &middot; B / L</div>
+                  <div class="day-meta">OVERNIGHT: KAMLOOPS &middot; Breakfast / Lunch</div>
                 </div>
               </article>
 
@@ -955,7 +955,7 @@
                   <p class="day-desc">
                     Continue over the Continental Divide and through Kicking Horse Pass, with the Rockies' snow-capped peaks framed by your private dome coach.
                   </p>
-                  <div class="day-meta">OVERNIGHT: BANFF &middot; B / L</div>
+                  <div class="day-meta">OVERNIGHT: BANFF &middot; Breakfast / Lunch</div>
                 </div>
               </article>
 
@@ -973,7 +973,7 @@
                   <p class="day-desc">
                     A guided day exploring Banff Gondola's summit views and the glacier-fed, turquoise waters of Lake Louise.
                   </p>
-                  <div class="day-meta">OVERNIGHT: BANFF &middot; B</div>
+                  <div class="day-meta">OVERNIGHT: BANFF &middot; Breakfast</div>
                 </div>
               </article>
 
@@ -991,7 +991,7 @@
                   <p class="day-desc">
                     A leisure day with an optional excursion to Moraine Lake's Valley of the Ten Peaks, or time to explore Banff Avenue at your own pace.
                   </p>
-                  <div class="day-meta">OVERNIGHT: BANFF &middot; B</div>
+                  <div class="day-meta">OVERNIGHT: BANFF &middot; Breakfast</div>
                 </div>
               </article>
 
@@ -1009,7 +1009,7 @@
                   <p class="day-desc">
                     A scenic drive along the Bow Valley Parkway, arriving into Calgary with the afternoon free to explore the city.
                   </p>
-                  <div class="day-meta">OVERNIGHT: CALGARY &middot; B</div>
+                  <div class="day-meta">OVERNIGHT: CALGARY &middot; Breakfast</div>
                 </div>
               </article>
 

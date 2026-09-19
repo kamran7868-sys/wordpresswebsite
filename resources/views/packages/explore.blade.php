@@ -886,7 +886,18 @@
                             LOCATION: {{ strtoupper($day['location']) }}
                           @endif
                           @if(!empty($day['meals']))
-                            &middot; {{ is_array($day['meals']) ? implode(' / ', $day['meals']) : $day['meals'] }}
+                            @php
+                              $mealMap = ['B' => 'Breakfast', 'L' => 'Lunch', 'D' => 'Dinner'];
+                              $rawMeals = $day['meals'];
+                              if (is_string($rawMeals)) {
+                                  $rawMeals = preg_split('/[\s,\/]+/', $rawMeals, -1, PREG_SPLIT_NO_EMPTY);
+                              }
+                              $formattedMeals = array_map(function($m) use ($mealMap) {
+                                  $upper = strtoupper(trim($m));
+                                  return $mealMap[$upper] ?? $m;
+                              }, (array)$rawMeals);
+                            @endphp
+                            &middot; {{ implode(' / ', $formattedMeals) }}
                           @endif
                         </div>
                       @endif
