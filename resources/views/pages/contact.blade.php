@@ -4,6 +4,7 @@
 @section('meta_description', 'Contact the Canadian travel concierge at Premium Global Expeditions for personalized holiday packages, business class flights, and luxury cruises.')
 
 @push('styles')
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <style>
 /* ==========================================================================
    PREMIUM GLOBAL EXPEDITIONS INC. (PGE) — CONTACT PAGE STYLESHEET
@@ -777,14 +778,7 @@
 
             <!-- Styled Map Frame -->
             <div class="map-frame-wrapper">
-              <iframe
-                title="PGE Toronto Location Map"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=-79.5200%2C43.6000%2C-79.2500%2C43.7800&amp;layer=mapnik&amp;marker=43.6532%2C-79.3832"
-                width="100%"
-                height="100%"
-                style="border:0;"
-                allowfullscreen=""
-                loading="lazy"></iframe>
+              <div id="contactMap" style="width:100%; height:100%;"></div>
             </div>
 
           </div>
@@ -1101,5 +1095,22 @@ $contactBreadcrumb = [
 </script>
 <script type="application/ld+json">
 {!! json_encode($contactBreadcrumb, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) !!}
+</script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (document.getElementById('contactMap')) {
+      var map = L.map('contactMap', {
+        zoomControl: false,
+        attributionControl: false
+      }).setView([43.6532, -79.3832], 12);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19
+      }).addTo(map);
+
+      L.marker([43.6532, -79.3832]).addTo(map);
+    }
+  });
 </script>
 @endpush
