@@ -180,8 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    heroContainer?.addEventListener('mouseenter', stopAutoSlide);
-    heroContainer?.addEventListener('mouseleave', startAutoSlide);
+    // Continuous 3-second auto-slides for hero background images
 
     let touchStartX = 0;
     let touchEndX = 0;

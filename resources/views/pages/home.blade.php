@@ -9,8 +9,35 @@
   .hero-section {
     position: relative !important;
   }
-  .hero-slider-track,
-  .hero-slide,
+  .hero-slider-track {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .hero-slide {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.8s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    transform: scale(1.05) !important;
+    z-index: 1 !important;
+  }
+  .hero-slide.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: scale(1) !important;
+    z-index: 2 !important;
+  }
   .hero-slide picture,
   .hero-slide-bg,
   .hero-overlay {
