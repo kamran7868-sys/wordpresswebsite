@@ -778,7 +778,7 @@
             <!-- Styled Map Frame -->
             <div class="map-frame-wrapper">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d184552.572161726!2d-79.51814144177572!3d43.71815566276856!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b342980d4777f%3A0x8acd111f67f00a6c!2sToronto%2C%20ON%2C%20Canada!5e0!3m2!1sen!2s" 
+                src="https://maps.google.com/maps?q=Toronto%2C%20ON%2C%20Canada&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" 
                 width="100%" 
                 height="100%" 
                 style="border:0;" 
