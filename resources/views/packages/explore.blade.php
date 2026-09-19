@@ -1112,99 +1112,16 @@ if (isset($package) && !empty($package->itinerary) && is_array($package->itinera
     }
 }
 
-$pkgPrice = (isset($package) && (float)$package->price_from > 0) ? (float)$package->price_from : 2450.00;
-$pkgCurrency = isset($package) && !empty($package->currency) ? $package->currency : 'CAD';
-
-$pkgSku = 'PGE-PKG-' . (isset($package) && isset($package->id) ? $package->id : '001');
-
 $touristTripSchema = [
     '@context' => 'https://schema.org',
-    '@type' => 'Product',
+    '@type' => 'TouristTrip',
     '@id' => $pkgUrl . '#trip',
     'name' => $pkgTitle,
     'description' => $pkgDesc,
     'image' => $pkgImg,
-    'sku' => $pkgSku,
-    'mpn' => $pkgSku,
-    'brand' => [
-        '@type' => 'Brand',
-        'name' => 'Premium Global Expeditions',
-    ],
     'touristType' => 'Luxury Travelers',
     'provider' => [
         '@id' => url('/') . '/#organization',
-    ],
-    'aggregateRating' => [
-        '@type' => 'AggregateRating',
-        'ratingValue' => isset($package) && !empty($package->rating) ? (string)$package->rating : '4.9',
-        'reviewCount' => isset($package) && !empty($package->reviews_count) ? (string)$package->reviews_count : '128',
-        'bestRating' => '5',
-        'worstRating' => '1',
-    ],
-    'review' => [
-        [
-            '@type' => 'Review',
-            'author' => [
-                '@type' => 'Person',
-                'name' => 'Eleanor Vance',
-            ],
-            'datePublished' => '2026-01-15',
-            'name' => 'Exceptional Luxury Expedition',
-            'reviewBody' => 'An extraordinary luxury travel experience curated with flawless attention to detail, 5-star accommodations, and private concierges.',
-            'reviewRating' => [
-                '@type' => 'Rating',
-                'ratingValue' => '5',
-                'bestRating' => '5',
-                'worstRating' => '1',
-            ],
-        ],
-    ],
-    'offers' => [
-        '@type' => 'Offer',
-        'price' => $pkgPrice,
-        'priceCurrency' => $pkgCurrency,
-        'validFrom' => date('Y-01-01'),
-        'priceValidUntil' => date('Y-12-31', strtotime('+1 year')),
-        'availability' => 'https://schema.org/InStock',
-        'url' => $pkgUrl,
-        'seller' => [
-            '@id' => url('/') . '/#organization',
-        ],
-        'hasMerchantReturnPolicy' => [
-            '@type' => 'MerchantReturnPolicy',
-            'applicableCountry' => 'CA',
-            'returnPolicyCategory' => 'https://schema.org/MerchantReturnFiniteReturnWindow',
-            'merchantReturnDays' => 30,
-            'returnMethod' => 'https://schema.org/ReturnByMail',
-            'returnFees' => 'https://schema.org/FreeReturn',
-        ],
-        'shippingDetails' => [
-            '@type' => 'OfferShippingDetails',
-            'shippingRate' => [
-                '@type' => 'MonetaryAmount',
-                'value' => 0,
-                'currency' => $pkgCurrency,
-            ],
-            'shippingDestination' => [
-                '@type' => 'DefinedRegion',
-                'addressCountry' => 'CA',
-            ],
-            'deliveryTime' => [
-                '@type' => 'ShippingDeliveryTime',
-                'handlingTime' => [
-                    '@type' => 'QuantitativeValue',
-                    'minValue' => 0,
-                    'maxValue' => 0,
-                    'unitCode' => 'DAY',
-                ],
-                'transitTime' => [
-                    '@type' => 'QuantitativeValue',
-                    'minValue' => 0,
-                    'maxValue' => 0,
-                    'unitCode' => 'DAY',
-                ],
-            ],
-        ],
     ],
 ];
 
