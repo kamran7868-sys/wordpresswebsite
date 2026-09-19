@@ -3,6 +3,10 @@
 @section('title', 'Luxury Canadian Travel Company | Premium Global Expeditions')
 @section('meta_description', 'Bespoke journeys with Premium Global Expeditions, a luxury Canadian travel company curating custom holidays, cruises, flights, and 5-star stays.')
 
+@push('preloads')
+  <link rel="preload" href="{{ asset('assets/media/hero-tropical-island-expedition.webp') }}" as="image" type="image/webp" fetchpriority="high">
+@endpush
+
 @push('styles')
 <style>
   /* Ensure hero background image & overlay cover 100% of the hero section on all screen sizes */
