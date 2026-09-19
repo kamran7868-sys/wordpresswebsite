@@ -1033,10 +1033,7 @@
 
             </div>
 
-            <!-- FOOTNOTE -->
-            <p class="itinerary-footnote">
-              B &mdash; Breakfast &nbsp;|&nbsp; L &mdash; Lunch &nbsp;|&nbsp; D &mdash; Dinner. Itinerary is subject to change based on rail schedules and local conditions.
-            </p>
+
           </div>
 
           <!-- ==================================================================
