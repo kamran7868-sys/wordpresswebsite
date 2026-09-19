@@ -47,10 +47,14 @@
     }
 
     /* Header Logo & Navigation Responsiveness */
+    .header-inner {
+      padding: 0 0.5rem !important;
+      gap: 0.35rem !important;
+    }
     .brand-logo-wrap {
       display: flex !important;
       align-items: center !important;
-      max-width: 55% !important;
+      max-width: 48% !important;
       flex-shrink: 1 !important;
       min-width: 0 !important;
     }
@@ -60,33 +64,85 @@
       width: 100% !important;
     }
     .brand-logo-img {
-      height: 40px !important;
-      max-width: 185px !important;
+      height: 36px !important;
+      max-width: 160px !important;
       width: auto !important;
       object-fit: contain !important;
     }
+    .nav-actions {
+      display: flex !important;
+      align-items: center !important;
+      gap: 0.35rem !important;
+      flex-shrink: 0 !important;
+    }
     .header-nav-action-btn {
-      padding: 0.45rem 0.75rem !important;
-      font-size: 0.72rem !important;
-      letter-spacing: 0.3px !important;
-      min-height: 38px !important;
+      padding: 0.38rem 0.55rem !important;
+      font-size: 0.68rem !important;
+      letter-spacing: 0.2px !important;
+      min-height: 36px !important;
       white-space: nowrap !important;
+      flex-shrink: 0 !important;
+    }
+    .mobile-toggle {
+      width: 38px !important;
+      height: 38px !important;
+      min-width: 38px !important;
+      min-height: 38px !important;
+      flex-shrink: 0 !important;
     }
   }
 
-  @media (max-width: 380px) {
+  @media (max-width: 420px) {
+    .header-inner {
+      padding: 0 0.35rem !important;
+      gap: 0.25rem !important;
+    }
+    .brand-logo-wrap {
+      max-width: 45% !important;
+    }
     .brand-logo-img {
-      height: 34px !important;
-      max-width: 155px !important;
+      height: 32px !important;
+      max-width: 135px !important;
+    }
+    .nav-actions {
+      gap: 0.25rem !important;
     }
     .header-nav-action-btn {
-      padding: 0.35rem 0.55rem !important;
-      font-size: 0.64rem !important;
+      padding: 0.3rem 0.45rem !important;
+      font-size: 0.62rem !important;
       min-height: 34px !important;
+      letter-spacing: 0.1px !important;
     }
+    .mobile-toggle {
+      width: 36px !important;
+      height: 36px !important;
+      min-width: 36px !important;
+      min-height: 36px !important;
+    }
+  }
+
+  @media (max-width: 340px) {
     .header-inner {
-      padding: 0 0.5rem !important;
-      gap: 0.4rem !important;
+      padding: 0 0.2rem !important;
+      gap: 0.2rem !important;
+    }
+    .brand-logo-wrap {
+      max-width: 42% !important;
+    }
+    .brand-logo-img {
+      height: 28px !important;
+      max-width: 115px !important;
+    }
+    .header-nav-action-btn {
+      padding: 0.25rem 0.35rem !important;
+      font-size: 0.58rem !important;
+      min-height: 32px !important;
+    }
+    .mobile-toggle {
+      width: 34px !important;
+      height: 34px !important;
+      min-width: 34px !important;
+      min-height: 34px !important;
     }
   }
 </style>
