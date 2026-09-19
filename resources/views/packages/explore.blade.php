@@ -882,22 +882,53 @@
                       <p class="day-desc">{{ $day['description'] ?? '' }}</p>
                       @if(!empty($day['location']) || !empty($day['meals']))
                         <div class="day-meta">
-                          @if(!empty($day['location']))
-                            LOCATION: {{ strtoupper($day['location']) }}
+                          @php
+                            $mealMap = ['B' => 'Breakfast', 'L' => 'Lunch', 'D' => 'Dinner'];
+                            $rawLoc = $day['location'] ?? '';
+                            $rawMeals = $day['meals'] ?? [];
+                            $extractedMeals = [];
+
+                            if (!empty($rawLoc) && is_string($rawLoc)) {
+                                if (preg_match('/^(.*?)\s*(?:[\-\&·•]\s*)?\b([BLD](?:\s*[\/,\&]\s*[BLD])*)\s*$/i', $rawLoc, $matches)) {
+                                    $locName = trim($matches[1]);
+                                    $mealCodes = preg_split('/[\s,\/,\&]+/', strtoupper($matches[2]), -1, PREG_SPLIT_NO_EMPTY);
+                                    $validCodes = array_filter($mealCodes, fn($c) => in_array($c, ['B', 'L', 'D']));
+                                    if (!empty($validCodes)) {
+                                        $rawLoc = $locName;
+                                        $extractedMeals = array_merge($extractedMeals, $validCodes);
+                                    }
+                                }
+                            }
+
+                            if (is_string($rawMeals)) {
+                                $rawMeals = preg_split('/[\s,\/,\&]+/', $rawMeals, -1, PREG_SPLIT_NO_EMPTY);
+                            }
+
+                            foreach ((array)$rawMeals as $m) {
+                                $upper = strtoupper(trim($m));
+                                if (isset($mealMap[$upper])) {
+                                    $extractedMeals[] = $upper;
+                                } elseif (!empty($m)) {
+                                    $extractedMeals[] = $m;
+                                }
+                            }
+
+                            $formattedMeals = [];
+                            foreach ($extractedMeals as $m) {
+                                $upper = strtoupper(trim($m));
+                                $label = $mealMap[$upper] ?? $m;
+                                if (!in_array($label, $formattedMeals)) {
+                                    $formattedMeals[] = $label;
+                                }
+                            }
+                          @endphp
+
+                          @if(!empty($rawLoc))
+                            LOCATION: {{ strtoupper($rawLoc) }}
                           @endif
-                          @if(!empty($day['meals']))
-                            @php
-                              $mealMap = ['B' => 'Breakfast', 'L' => 'Lunch', 'D' => 'Dinner'];
-                              $rawMeals = $day['meals'];
-                              if (is_string($rawMeals)) {
-                                  $rawMeals = preg_split('/[\s,\/]+/', $rawMeals, -1, PREG_SPLIT_NO_EMPTY);
-                              }
-                              $formattedMeals = array_map(function($m) use ($mealMap) {
-                                  $upper = strtoupper(trim($m));
-                                  return $mealMap[$upper] ?? $m;
-                              }, (array)$rawMeals);
-                            @endphp
-                            &middot; {{ implode(' / ', $formattedMeals) }}
+
+                          @if(!empty($formattedMeals))
+                            @if(!empty($rawLoc)) &middot; @endif {{ implode(' / ', $formattedMeals) }}
                           @endif
                         </div>
                       @endif
