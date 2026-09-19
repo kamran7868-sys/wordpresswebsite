@@ -457,7 +457,7 @@
 
   .user-name {
     font-weight: 700;
-    color: var(--pge-navy);
+    color: #1E293B !important;
     font-size: 0.85rem;
   }
 
@@ -888,7 +888,7 @@
                   {{ $initials }}
                 </div>
                 <div>
-                  <div class="user-name">{{ $inquiry->full_name }}</div>
+                  <div class="user-name" style="color: #1E293B !important;">{{ $inquiry->full_name }}</div>
                   <div class="user-meta">{{ $inquiry->email }}</div>
                 </div>
               </div>
@@ -981,7 +981,7 @@
                     {{ $contactInitials }}
                   </div>
                   <div>
-                    <div class="user-name" style="font-size: 0.82rem;">
+                    <div class="user-name" style="font-size: 0.82rem; color: #1E293B !important;">
                       @if($c->status === 'unread')
                         <span class="unread-indicator" title="Unread inquiry"></span>
                       @endif
@@ -1061,7 +1061,7 @@
                     {{ $dmcInitials }}
                   </div>
                   <div>
-                    <div class="user-name" style="font-size: 0.82rem;">{{ $dmc->company_name }}</div>
+                    <div class="user-name" style="font-size: 0.82rem; color: #1E293B !important;">{{ $dmc->company_name }}</div>
                     <div class="user-meta">{{ $dmc->contact_person }}</div>
                   </div>
                 </div>

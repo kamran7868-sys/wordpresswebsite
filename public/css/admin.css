@@ -238,11 +238,21 @@ body.admin-body-wrap {
   flex-grow: 1;
 }
 
-.user-name {
+.sidebar-footer .user-name {
   color: #FFFFFF !important;
   font-size: 0.88rem !important;
   font-weight: 700 !important;
   line-height: 1.3 !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-name {
+  color: #1E293B !important;
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.3;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
