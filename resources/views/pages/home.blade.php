@@ -119,6 +119,25 @@
       align-items: center !important;
     }
   }
+
+  /* Ensure Section 4 "Your Journey Begins Here" image text shows complete & uncropped on mobile */
+  @media (max-width: 991px) {
+    .intro-main-img {
+      height: auto !important;
+      max-height: none !important;
+      object-fit: contain !important;
+      width: 100% !important;
+    }
+    .intro-floating-card {
+      position: relative !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      margin-top: 0.75rem !important;
+      margin-left: 0 !important;
+      max-width: 100% !important;
+      padding: 1.15rem !important;
+    }
+  }
 </style>
 @endpush
 

@@ -2060,7 +2060,8 @@ img, picture, video, canvas, svg {
   }
 
   .intro-main-img {
-    height: 360px;
+    height: auto;
+    object-fit: contain;
   }
 
   .flight-inquiry-container {
@@ -2404,16 +2405,17 @@ img, picture, video, canvas, svg {
   }
 
   .intro-main-img {
-    height: 280px;
+    height: auto;
+    object-fit: contain;
   }
 
   .intro-floating-card {
     position: relative;
     bottom: 0;
     left: 0;
-    margin-top: -1.5rem;
-    margin-left: 0.75rem;
-    max-width: 240px;
+    margin-top: 0.75rem;
+    margin-left: 0;
+    max-width: 100%;
     padding: 1.15rem;
   }
 
