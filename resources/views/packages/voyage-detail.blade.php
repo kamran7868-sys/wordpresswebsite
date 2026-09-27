@@ -772,7 +772,7 @@
 
             <!-- ACTION BUTTONS -->
             <div class="package-hero-actions">
-              <a href="{{ route('contact') }}?subject={{ urlencode($package->title ?? 'Cruise Voyage') }}" class="btn-primary">REQUEST THIS VOYAGE</a>
+              <a href="{{ route('cruise-inquiry', ['voyage' => $package->title ?? '', 'region' => $package->region ?? '']) }}" class="btn-primary">REQUEST THIS VOYAGE</a>
               <a href="#itinerary-section" class="btn-secondary-outline">VIEW FULL ITINERARY</a>
             </div>
 

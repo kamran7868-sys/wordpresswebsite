@@ -38,7 +38,15 @@
       </a>
     </li>
 
-    <!-- 4. Contact Messages -->
+    <!-- 4. Cruise Inquiries -->
+    <li>
+      <a href="{{ route('admin.cruise-inquiries.index') }}" class="nav-link {{ request()->routeIs('admin.cruise-inquiries*') ? 'active' : '' }}">
+        <svg viewBox="0 0 24 24"><path d="M20 21c-1.39 0-2.78-.47-4-1.32-2.44 1.71-5.56 1.71-8 0C6.78 20.53 5.39 21 4 21H2v2h2c1.86 0 3.71-.58 5.27-1.72 2.75 1.99 6.72 1.99 9.47 0C20.29 22.42 22.14 23 24 23h2v-2h-2c-1.39 0-2.78-.47-4-1.32zM3.95 19H20l1.9-6H2.05l1.9 6zM13 4h-2v4h2V4z"/></svg>
+        Cruise Inquiries
+      </a>
+    </li>
+
+    <!-- 5. Contact Messages -->
     <li>
       <a href="{{ route('admin.contacts.index') }}" class="nav-link {{ request()->routeIs('admin.contacts*') ? 'active' : '' }}">
         <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>

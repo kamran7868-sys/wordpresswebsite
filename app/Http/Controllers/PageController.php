@@ -159,4 +159,12 @@ class PageController extends Controller
             'message' => 'Thank you! Your DMC partnership application has been received by Premium Global Expeditions. Our global partnerships division will review your credentials and contact you within 2 business days.',
         ]);
     }
+
+    /**
+     * Display the Cruise Inquiry page.
+     */
+    public function cruiseInquiry(): View
+    {
+        return view('pages.cruise-inquiry');
+    }
 }

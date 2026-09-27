@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ContactInquiry;
+use App\Models\CruiseInquiry;
 use App\Models\DmcRegistration;
 use App\Models\FlightInquiry;
 use App\Models\Package;
@@ -24,19 +25,23 @@ class DashboardController extends Controller
         ];
 
         $pendingFlightsCount = FlightInquiry::where('status', 'pending')->count();
+        $unreadCruiseCount = CruiseInquiry::where('status', 'unread')->count();
         $unreadContactsCount = ContactInquiry::where('status', 'unread')->count();
         $pendingDmcCount = DmcRegistration::where('status', 'pending_review')->count();
 
         $recentFlights = FlightInquiry::latest()->take(5)->get();
+        $recentCruises = CruiseInquiry::latest()->take(5)->get();
         $recentContacts = ContactInquiry::latest()->take(5)->get();
         $recentDmcs = DmcRegistration::latest()->take(5)->get();
 
         return view('admin.dashboard', compact(
             'packageStats',
             'pendingFlightsCount',
+            'unreadCruiseCount',
             'unreadContactsCount',
             'pendingDmcCount',
             'recentFlights',
+            'recentCruises',
             'recentContacts',
             'recentDmcs'
         ));

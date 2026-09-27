@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
+use App\Http\Controllers\Admin\CruiseInquiryController as AdminCruiseInquiryController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\DmcController as AdminDmcController;
 use App\Http\Controllers\Admin\InquiryController as AdminInquiryController;
@@ -25,6 +26,8 @@ Route::controller(PageController::class)->group(function () {
     Route::get('/contact/thank-you', 'contactSuccess')->name('contact.success');
     Route::get('/register-dmc', 'registerDmc')->name('register-dmc');
     Route::post('/register-dmc', 'submitRegisterDmc')->name('register-dmc.submit');
+    Route::get('/cruise-inquiry', 'cruiseInquiry')->name('cruise-inquiry');
+    Route::post('/cruise-inquiry', [InquiryController::class, 'cruiseInquirySubmit'])->name('cruise-inquiry.submit');
 });
 
 /*
@@ -124,5 +127,13 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/{dmc}', 'show')->name('show');
         Route::patch('/{dmc}', 'update')->name('update');
+    });
+
+    // Module 6 — Cruise Inquiries
+    Route::prefix('cruise-inquiries')->name('cruise-inquiries.')->controller(AdminCruiseInquiryController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/{cruiseInquiry}', 'show')->name('show');
+        Route::patch('/{cruiseInquiry}', 'update')->name('update');
+        Route::post('/{cruiseInquiry}/reply', 'reply')->name('reply');
     });
 });
