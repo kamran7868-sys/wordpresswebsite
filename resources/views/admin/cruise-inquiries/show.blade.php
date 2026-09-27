@@ -242,9 +242,9 @@
       <svg style="width: 20px; height: 20px; fill: var(--pge-gold);" viewBox="0 0 24 24">
         <path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"/>
       </svg>
-      <span id="cruiseReplyHeading">{{ $cruiseInquiry->admin_reply ? 'Send Follow-up / Additional Reply' : 'Send Official Reply to Client' }}</span>
+      <span id="cruiseReplyHeading">{{ $cruiseInquiry->admin_reply ? 'Send Follow-up / Additional Reply' : 'Send Official Quotation &amp; Reply' }}</span>
     </div>
-    <span style="font-size: 0.78rem; color: #64748B; font-weight: 500;">
+    <span style="font-size: 0.95rem; color: #64748B; font-weight: 500;">
       To: <strong>{{ $cruiseInquiry->full_name }}</strong> &lt;{{ $cruiseInquiry->email }}&gt;
     </span>
   </div>
@@ -257,7 +257,7 @@
   @if (isset($errors) && $errors->any())
     <div class="toast toast-error" style="position: static; margin-bottom: 1.25rem;">
       <strong>Please correct the following errors:</strong>
-      <ul style="margin-top: 0.5rem; padding-left: 1.25rem;">
+      <ul style="margin: 0.5rem 0 0 1.25rem; padding: 0;">
         @foreach ($errors->all() as $error)
           <li>{{ $error }}</li>
         @endforeach
@@ -268,30 +268,98 @@
   <form action="{{ route('admin.cruise-inquiries.reply', $cruiseInquiry->id) }}" method="POST" id="cruiseReplyForm">
     @csrf
 
-    <div class="form-group" style="margin-bottom: 1.25rem;">
-      <label for="reply_subject" class="form-label" style="font-size: 0.85rem; font-weight: 700; color: var(--pge-navy);">
-        Email Subject Line <span style="color: #EF4444;">*</span>
-      </label>
-      <input type="text" name="reply_subject" id="reply_subject" class="form-control" value="{{ old('reply_subject', $defaultSubject) }}" required style="font-weight: 600;">
-    </div>
+    <div style="display: flex; flex-direction: column; gap: 1.25rem;">
 
-    <div class="form-group" style="margin-bottom: 1.25rem;">
-      <label for="reply_message" class="form-label" style="font-size: 0.85rem; font-weight: 700; color: var(--pge-navy);">
-        Reply / Proposal Message <span style="color: #EF4444;">*</span>
-      </label>
-      <textarea name="reply_message" id="reply_message" rows="8" class="form-control" required style="line-height: 1.6; font-size: 0.93rem;">{{ old('reply_message', $defaultBody) }}</textarea>
-    </div>
+      <!-- SUBJECT & STATUS ROW -->
+      <div style="display: grid; grid-template-columns: 1fr 220px; gap: 1rem;">
+        <div class="form-group" style="margin-bottom: 0;">
+          <label for="reply_subject" class="detail-field-label" style="display: block; margin-bottom: 0.45rem;">
+            Email Subject Line
+          </label>
+          <input type="text"
+                 name="reply_subject"
+                 id="reply_subject"
+                 class="form-control"
+                 value="{{ old('reply_subject', $defaultSubject) }}"
+                 required
+                 style="width: 100%; padding: 0.65rem 0.95rem; border: 1px solid var(--pge-cloud-mist); border-radius: 6px; font-size: 0.88rem;">
+        </div>
 
-    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding-top: 0.5rem; border-top: 1px solid var(--pge-cloud-mist);">
-      <span style="font-size: 0.78rem; color: #64748B;">
-        Submitting will dispatch the response directly to <strong>{{ $cruiseInquiry->email }}</strong> and update inquiry status to <strong>Replied</strong>.
-      </span>
-      <button type="submit" class="btn btn-primary" id="cruiseReplySubmitBtn">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="margin-right: 0.35rem;">
-          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-        </svg>
-        Send Reply to Client
-      </button>
+        <div class="form-group" style="margin-bottom: 0;">
+          <label for="target_status" class="detail-field-label" style="display: block; margin-bottom: 0.45rem;">
+            Update Status To
+          </label>
+          <select name="target_status" id="target_status" class="form-select" style="width: 100%; padding: 0.65rem 0.95rem; border: 1px solid var(--pge-cloud-mist); border-radius: 6px; font-size: 0.88rem;">
+            <option value="replied" {{ in_array($cruiseInquiry->status, ['replied', 'unread']) ? 'selected' : '' }}>Replied</option>
+            <option value="in_progress" {{ $cruiseInquiry->status === 'in_progress' ? 'selected' : '' }}>In Progress</option>
+            <option value="archived" {{ $cruiseInquiry->status === 'archived' ? 'selected' : '' }}>Archived</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- MESSAGE BODY -->
+      <div class="form-group" style="margin-bottom: 0;">
+        <label for="reply_message" class="detail-field-label" style="display: block; margin-bottom: 0.45rem;">
+          Quotation / Reply Message Content
+        </label>
+        <textarea name="reply_message"
+                  id="reply_message"
+                  rows="9"
+                  class="form-control"
+                  required
+                  placeholder="Type your cruise quotation and notes to {{ $cruiseInquiry->full_name }} here..."
+                  style="width: 100%; padding: 0.85rem 1rem; border: 1px solid var(--pge-cloud-mist); border-radius: 6px; font-size: 0.88rem; font-family: var(--font-ui); line-height: 1.6; resize: vertical;">{{ old('reply_message', $defaultBody) }}</textarea>
+      </div>
+
+      <!-- ACTIONS BAR -->
+      <div style="display: flex; flex-direction: column; gap: 1rem; padding-top: 1rem; border-top: 1px solid var(--pge-cloud-mist);">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+          <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+
+            <button type="submit" id="cruiseReplySubmitBtn" class="btn btn-primary" style="padding: 0.75rem 1.6rem; font-weight: 700;">
+              <svg id="cruiseReplySubmitIcon" style="width: 16px; height: 16px; fill: currentColor;" viewBox="0 0 24 24">
+                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+              </svg>
+              <span id="cruiseReplySubmitText">Send Reply &amp; Update Status</span>
+            </button>
+
+            <div style="display: inline-flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+              <button type="button" id="cruiseBtnOpenGmail" class="btn btn-outline" style="padding: 0.7rem 1rem; border-color: #EA4335; color: #C5221F; background: #FFF;">
+                <svg style="width: 16px; height: 16px; fill: #EA4335;" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                <span>Open in Gmail</span>
+              </button>
+
+              <button type="button" id="cruiseBtnOpenOutlook" class="btn btn-outline" style="padding: 0.7rem 1rem; border-color: #0078D4; color: #0078D4; background: #FFF;">
+                <svg style="width: 16px; height: 16px; fill: #0078D4;" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                <span>Open in Outlook Web</span>
+              </button>
+
+              <button type="button" id="cruiseBtnOpenMailto" class="btn btn-outline" style="padding: 0.7rem 1rem;">
+                <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+                <span>Desktop Mail App</span>
+              </button>
+
+              <button type="button" id="cruiseBtnCopyQuote" class="btn btn-outline" style="padding: 0.7rem 1rem;">
+                <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span id="cruiseBtnCopyQuoteText">Copy Quotation</span>
+              </button>
+            </div>
+          </div>
+
+          <span style="font-size: 0.78rem; color: #64748B;">
+            Recipient: <strong style="color: var(--pge-navy);">{{ $cruiseInquiry->email }}</strong>
+          </span>
+        </div>
+
+        <div style="background-color: #F8FAFC; border: 1px dashed var(--pge-cloud-mist); border-radius: 6px; padding: 0.75rem 1rem; font-size: 0.76rem; color: #64748B; line-height: 1.55;">
+          💡 <strong>How to use these options:</strong><br>
+          &bull; <strong>Send Reply &amp; Update Status:</strong> Saves the reply to the CRM database, updates inquiry status, and dispatches the email via the PGE system mailer.<br>
+          &bull; <strong>Open in Gmail / Outlook Web:</strong> Directly opens a compose tab in your web browser with the recipient (<code>{{ $cruiseInquiry->email }}</code>), subject, and the current message text from the box above ready to send from your personal or business email.<br>
+          &bull; <strong>Desktop Mail App:</strong> Opens your computer's default email client (Microsoft Outlook, Apple Mail, etc.).<br>
+          &bull; <strong>Copy Quotation:</strong> 1-click copies the full reply text to your clipboard so you can paste it into WhatsApp, Slack, or any email window.
+        </div>
+      </div>
+
     </div>
   </form>
 </div>
@@ -300,74 +368,116 @@
 
 @section('extra_js')
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  const replyForm = document.getElementById('cruiseReplyForm');
-  if (replyForm) {
-    replyForm.addEventListener('submit', function (e) {
+document.addEventListener('DOMContentLoaded', () => {
+  const recipientEmail = @json($cruiseInquiry->email);
+  const form          = document.getElementById('cruiseReplyForm');
+  const subjectInput  = document.getElementById('reply_subject');
+  const messageInput  = document.getElementById('reply_message');
+  const statusSelect  = document.getElementById('target_status');
+  const submitBtn     = document.getElementById('cruiseReplySubmitBtn');
+  const submitText    = document.getElementById('cruiseReplySubmitText');
+  const submitIcon    = document.getElementById('cruiseReplySubmitIcon');
+
+  const getSubject = () => (subjectInput?.value || '').trim();
+  const getMessage = () => (messageInput?.value || '').trim();
+
+  document.getElementById('cruiseBtnOpenGmail')?.addEventListener('click', () => {
+    const url = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(recipientEmail)}&su=${encodeURIComponent(getSubject())}&body=${encodeURIComponent(getMessage())}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+    if (typeof showAdminToast === 'function') showAdminToast('Opened Gmail compose in a new tab.', 'success');
+  });
+
+  document.getElementById('cruiseBtnOpenOutlook')?.addEventListener('click', () => {
+    const url = `https://outlook.live.com/mail/0/deeplink/compose?to=${encodeURIComponent(recipientEmail)}&subject=${encodeURIComponent(getSubject())}&body=${encodeURIComponent(getMessage())}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+    if (typeof showAdminToast === 'function') showAdminToast('Opened Outlook Web compose in a new tab.', 'success');
+  });
+
+  document.getElementById('cruiseBtnOpenMailto')?.addEventListener('click', () => {
+    window.location.href = `mailto:${recipientEmail}?subject=${encodeURIComponent(getSubject())}&body=${encodeURIComponent(getMessage())}`;
+  });
+
+  const btnCopyText = document.getElementById('cruiseBtnCopyQuoteText');
+  function onCopySuccess() {
+    if (btnCopyText) {
+      const orig = btnCopyText.textContent;
+      btnCopyText.textContent = '✓ Copied!';
+      setTimeout(() => { btnCopyText.textContent = orig; }, 2500);
+    }
+    if (typeof showAdminToast === 'function') showAdminToast('✓ Copied to clipboard!', 'success');
+  }
+  function fallbackCopy(text) {
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.left = '-9999px';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    try { document.execCommand('copy'); onCopySuccess(); }
+    catch { alert('Could not copy automatically. Please copy manually.'); }
+    document.body.removeChild(ta);
+  }
+  document.getElementById('cruiseBtnCopyQuote')?.addEventListener('click', () => {
+    const fullText = `To: ${recipientEmail}\nSubject: ${getSubject()}\n\n${getMessage()}`;
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(fullText).then(onCopySuccess).catch(() => fallbackCopy(fullText));
+    } else { fallbackCopy(fullText); }
+  });
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const submitBtn = document.getElementById('cruiseReplySubmitBtn');
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = 'Sending Reply...';
+      const subject = getSubject(), message = getMessage();
+      if (!subject || !message) {
+        if (typeof showAdminToast === 'function') showAdminToast('Please fill out both the subject and message body.', 'error');
+        return;
       }
+      submitBtn.disabled = true;
+      const origText = submitText.innerHTML;
+      submitText.innerHTML = 'Sending &amp; Recording...';
+      submitIcon.style.animation = 'pgeSpin 0.9s linear infinite';
 
-      const formData = new FormData(replyForm);
-
-      fetch(replyForm.action, {
-        method: 'POST',
-        headers: {
-          'X-Requested-With': 'XMLHttpRequest',
-          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-          'Accept': 'application/json'
-        },
-        body: formData
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (data.status === 'success') {
-          // Update Status Badge
-          const badge = document.getElementById('cruiseInquiryStatusBadge');
-          if (badge) {
-            badge.className = 'status-badge status-replied';
-            badge.textContent = 'replied';
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '' },
+          body: JSON.stringify({ reply_subject: subject, reply_message: message, target_status: statusSelect?.value || 'replied' })
+        });
+        const data = await res.json();
+        if (res.ok && data.status === 'success') {
+          if (typeof showAdminToast === 'function') showAdminToast(data.message || 'Reply sent successfully!', 'success');
+          const topBadge = document.getElementById('cruiseInquiryStatusBadge');
+          if (topBadge && data.inquiry_status) {
+            if (typeof updateBadgeElement === 'function') updateBadgeElement(topBadge, data.inquiry_status);
+            else topBadge.textContent = data.inquiry_status;
           }
-          const statusSelect = document.getElementById('status_select');
-          if (statusSelect) {
-            statusSelect.value = 'replied';
+          const hdr = document.getElementById('status_select');
+          if (hdr && data.inquiry_status) hdr.value = data.inquiry_status;
+          const hCard = document.getElementById('cruiseReplyHistoryCard');
+          const hText = document.getElementById('cruiseRepliedAtText');
+          const hBody = document.getElementById('cruiseReplyMessageBody');
+          if (hCard && hBody) {
+            hCard.style.display = 'block';
+            if (hText) hText.textContent = `Sent on ${data.replied_at || 'Just now'} (Just now)`;
+            hBody.textContent = data.admin_reply;
           }
-
-          // Show History Card
-          const historyCard = document.getElementById('cruiseReplyHistoryCard');
-          const replyBody = document.getElementById('cruiseReplyMessageBody');
-          const timeText = document.getElementById('cruiseRepliedAtText');
           const heading = document.getElementById('cruiseReplyHeading');
-
-          if (historyCard && replyBody) {
-            replyBody.textContent = data.admin_reply;
-            if (timeText) timeText.textContent = 'Sent on ' + data.replied_at;
-            historyCard.style.display = 'block';
-          }
-          if (heading) {
-            heading.textContent = 'Send Follow-up / Additional Reply';
-          }
-
-          alert(data.message || 'Reply sent successfully!');
+          if (heading) heading.textContent = 'Send Follow-up / Additional Reply';
         } else {
-          alert(data.message || 'Could not send reply. Please try again.');
+          const errMsg = data.message || (data.errors ? Object.values(data.errors).flat().join(' ') : 'Failed to send reply.');
+          if (typeof showAdminToast === 'function') showAdminToast(errMsg, 'error');
+          else alert(errMsg);
         }
-      })
-      .catch(err => {
-        console.error(err);
-        alert('An error occurred while sending the reply.');
-      })
-      .finally(() => {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="margin-right: 0.35rem;"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg> Send Reply to Client';
-        }
-      });
+      } catch (err) {
+        console.error('AJAX failed, falling back to standard submit:', err);
+        form.submit();
+      } finally {
+        submitBtn.disabled = false;
+        submitText.innerHTML = origText;
+        submitIcon.style.animation = '';
+      }
     });
   }
 });
 </script>
+<style>
+@keyframes pgeSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+</style>
 @endsection

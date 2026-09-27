@@ -479,6 +479,37 @@
   </div>
 
 </div>
+
+<!-- ==========================================================================
+     THANK YOU MODAL — shown after successful cruise inquiry submission
+     (same design as the contact page modal)
+     ========================================================================== -->
+<div class="modal-overlay" id="cruiseModalOverlay" role="dialog" aria-modal="true" aria-labelledby="cruiseModalTitle">
+  <div class="modal-card" style="position: relative;">
+    <!-- Close icon button top-right -->
+    <button type="button" class="modal-close-icon" id="cruiseModalCloseX" aria-label="Close modal" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; color: #94A3B8; cursor: pointer; line-height: 1;">&#x2715;</button>
+
+    <!-- Gold circular checkmark badge -->
+    <div style="width: 70px; height: 70px; margin: 0 auto 1.25rem; background: linear-gradient(135deg, #FAF7F0 0%, #F5EDDC 100%); border: 2px solid var(--color-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(182, 153, 100, 0.25);">
+      <svg viewBox="0 0 24 24" style="width: 38px; height: 38px; fill: none; stroke: var(--color-gold); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+      </svg>
+    </div>
+
+    <span class="section-tagline" style="color: var(--color-gold-dark); font-size: 1.1rem; display: block; margin-bottom: 0.25rem;">Inquiry Received</span>
+    <div class="modal-title" id="cruiseModalTitle" style="font-family: var(--font-display); font-size: 1.8rem; color: var(--color-navy); margin-bottom: 0.5rem; font-weight: 600;">
+      Thank You for Reaching Out!
+    </div>
+    <p class="modal-subtitle-script" style="font-family: 'Alex Brush', cursive; color: var(--color-gold); font-size: 1.5rem; margin: 0 0 1rem;">
+      Where Dreams Become A Reality
+    </p>
+    <p style="font-size: 0.95rem; color: var(--color-slate); line-height: 1.6; margin-bottom: 1.75rem;">
+      Your message has been received by our Canadian travel concierges. We will review your travel preferences and connect with you within <strong>24 hours</strong>.
+    </p>
+    <button type="button" class="btn-primary" id="cruiseModalCloseBtn" style="width: 100%;">Return to Site</button>
+  </div>
+</div>
 @endsection
 
 @push('scripts')
@@ -542,6 +573,35 @@
       sync();
     });
 
+    // Modal open / close helpers
+    const cruiseModal = document.getElementById('cruiseModalOverlay');
+    const cruiseModalCloseBtn = document.getElementById('cruiseModalCloseBtn');
+    const cruiseModalCloseX = document.getElementById('cruiseModalCloseX');
+
+    function openCruiseModal() {
+      if (cruiseModal) {
+        cruiseModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    function closeCruiseModal() {
+      if (cruiseModal) {
+        cruiseModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    if (cruiseModalCloseBtn) cruiseModalCloseBtn.addEventListener('click', closeCruiseModal);
+    if (cruiseModalCloseX)   cruiseModalCloseX.addEventListener('click', closeCruiseModal);
+    if (cruiseModal) {
+      cruiseModal.addEventListener('click', (e) => {
+        if (e.target === cruiseModal) closeCruiseModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && cruiseModal.classList.contains('active')) closeCruiseModal();
+      });
+    }
+
     // Form submit listener with AJAX backend integration
     const cruiseForm = document.getElementById('cruiseForm');
     if (cruiseForm) {
@@ -567,7 +627,8 @@
         .then(res => res.json())
         .then(data => {
           if (data.status === 'success') {
-            alert(data.message || 'Thank you! Your cruise inquiry has been submitted successfully.');
+            // Show the thank-you modal (same as contact page)
+            openCruiseModal();
             cruiseForm.reset();
             renderTravellers();
             document.querySelectorAll('select').forEach(sel => sel.dispatchEvent(new Event('change')));
