@@ -1904,38 +1904,7 @@
                 </ul>
               </div>
 
-              <!-- SIDEBAR CARD B: DECORATIVE EDITORIAL GRAPHIC PANEL (EXACT MEDIA 1788768752725 VECTOR) -->
-              <div class="sidebar-graphic-panel">
-                <svg class="sidebar-graphic-svg" viewBox="0 0 380 200" fill="none" xmlns="http://www.w3.org/2000/svg"
-                  preserveAspectRatio="none">
-                  <!-- Deep Midnight Sky Background -->
-                  <rect width="380" height="200" fill="#1C2335" />
 
-                  <!-- Mountain Ridge (Gold Line Art) -->
-                  <path d="M-10 145 L70 65 L150 145 L245 55 L320 140 L380 85 L400 145" stroke="#B69964"
-                    stroke-width="2" stroke-linejoin="round" />
-
-                  <!-- Mountain Snow Caps -->
-                  <polygon points="70,65 77,78 63,78" fill="#F7F4ED" />
-                  <polygon points="245,55 253,70 237,70" fill="#F7F4ED" />
-
-                  <!-- Golden Sun/Moon Semicircle Resting in Valley on Horizon -->
-                  <path d="M152 145 A20 20 0 0 1 192 145 Z" fill="#C2A46C" />
-
-                  <!-- Foreground Dark Ground Bar -->
-                  <rect x="0" y="145" width="380" height="55" fill="#141826" />
-                  <line x1="0" y1="145" x2="380" y2="145" stroke="#B69964" stroke-width="1" opacity="0.35" />
-
-                  <!-- Pine Tree Silhouettes (Left Foreground) -->
-                  <polygon points="32,126 37,145 27,145" fill="#1B2234" />
-                  <polygon points="48,118 54,145 42,145" fill="#1B2234" />
-
-                  <!-- Pine Tree Silhouettes (Right Foreground) -->
-                  <polygon points="305,124 311,145 299,145" fill="#1B2234" />
-                  <polygon points="324,116 331,145 317,145" fill="#1B2234" />
-                  <polygon points="340,128 345,145 335,145" fill="#1B2234" />
-                </svg>
-              </div>
 
               <!-- SIDEBAR CARD C: PACKAGE INCLUDES -->
               <div class="sidebar-card includes-card">
@@ -1999,49 +1968,7 @@
                 </ul>
               </div>
 
-              <!-- SIDEBAR CARD D: MINIMAL 2x2 DECORATIVE GRAPHICS GRID -->
-              <div class="sidebar-graphics-grid">
 
-                <!-- MINI CARD 1: MOUNTAINS -->
-                <div class="mini-graphic-card">
-                  <svg class="mini-graphic-svg" viewBox="0 0 100 50" fill="none">
-                    <path d="M10 45 L35 15 L55 35 L75 10 L95 45 Z" stroke="#B69964" stroke-width="1.5" />
-                    <polygon points="35,15 39,22 31,22" fill="#F7F4ED" opacity="0.8" />
-                    <polygon points="75,10 80,18 70,18" fill="#F7F4ED" opacity="0.8" />
-                  </svg>
-                </div>
-
-                <!-- MINI CARD 2: TRAIN SILHOUETTE -->
-                <div class="mini-graphic-card">
-                  <svg class="mini-graphic-svg" viewBox="0 0 100 50" fill="none">
-                    <rect x="10" y="15" width="80" height="20" rx="4" stroke="#B69964" stroke-width="1.5"
-                      fill="#121525" />
-                    <rect x="18" y="20" width="10" height="8" rx="1" fill="#B69964" />
-                    <rect x="33" y="20" width="10" height="8" rx="1" fill="#B69964" />
-                    <rect x="48" y="20" width="10" height="8" rx="1" fill="#B69964" />
-                    <rect x="63" y="20" width="10" height="8" rx="1" fill="#B69964" />
-                  </svg>
-                </div>
-
-                <!-- MINI CARD 3: ZIGZAG TRACK -->
-                <div class="mini-graphic-card">
-                  <svg class="mini-graphic-svg" viewBox="0 0 100 50" fill="none">
-                    <path d="M10 40 L35 25 L60 35 L90 10" stroke="#B69964" stroke-width="2" />
-                    <line x1="10" y1="45" x2="90" y2="45" stroke="#2C4058" stroke-width="1.5" />
-                  </svg>
-                </div>
-
-                <!-- MINI CARD 4: VERTICAL BAR LINES -->
-                <div class="mini-graphic-card">
-                  <svg class="mini-graphic-svg" viewBox="0 0 100 50" fill="none">
-                    <line x1="20" y1="40" x2="20" y2="15" stroke="#2C4058" stroke-width="3" />
-                    <line x1="40" y1="40" x2="40" y2="10" stroke="#B69964" stroke-width="3" />
-                    <line x1="60" y1="40" x2="60" y2="25" stroke="#2C4058" stroke-width="3" />
-                    <line x1="80" y1="40" x2="80" y2="18" stroke="#B69964" stroke-width="3" />
-                  </svg>
-                </div>
-
-              </div>
 
             </div>
           </div>

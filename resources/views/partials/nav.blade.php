@@ -211,8 +211,8 @@
     <!-- LOGO -->
     <a href="{{ route('home') }}" class="brand-logo-wrap" aria-label="Premium Global Expeditions Home">
       <picture>
-        <source srcset="{{ asset('assets/pge-official-logo-white.webp') }}" type="image/webp">
-        <img src="{{ asset('assets/pge-official-logo-white.png') }}" alt="Premium Global Expeditions Inc." class="brand-logo-img" width="324" height="54">
+        <source srcset="{{ asset('assets/pge-official-logo-white.webp') }}" type="image/webp" width="324" height="54">
+        <img src="{{ asset('assets/pge-official-logo-white.png') }}" alt="Premium Global Expeditions Inc." class="brand-logo-img" width="324" height="54" fetchpriority="high">
       </picture>
     </a>
 

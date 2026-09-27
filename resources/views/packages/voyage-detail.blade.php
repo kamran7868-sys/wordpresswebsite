@@ -1091,24 +1091,7 @@
                 </ul>
               </div>
 
-              <!-- SIDEBAR CARD B: DECORATIVE MOUNTAIN GRAPHIC PANEL -->
-              <div class="sidebar-graphic-panel">
-                <svg class="sidebar-graphic-svg" viewBox="0 0 280 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Golden Sun behind Mountain Peaks -->
-                  <circle cx="70" cy="110" r="30" fill="#B69964" opacity="0.85" />
-                  <!-- Sharp Vector Line-Art Peaks -->
-                  <path d="M10 140 L70 70 L140 140" stroke="#B69964" stroke-width="2" />
-                  <path d="M70 70 L78 86 L62 86 Z" fill="#F7F4ED" />
-                  
-                  <path d="M80 140 L160 50 L240 140" stroke="#B69964" stroke-width="2" />
-                  <path d="M160 50 L170 70 L150 70 Z" fill="#F7F4ED" />
-                  
-                  <path d="M180 140 L230 85 L280 140" stroke="#B69964" stroke-width="1.5" />
-                  
-                  <!-- Ground Line -->
-                  <line x1="0" y1="139" x2="280" y2="139" stroke="#B69964" stroke-width="2" />
-                </svg>
-              </div>
+
 
               <!-- SIDEBAR CARD C: PACKAGE INCLUDES (Travel Sand Background) -->
               <div class="sidebar-card includes-card">
@@ -1173,52 +1156,7 @@
                 </ul>
               </div>
 
-              <!-- SIDEBAR CARD D: MINIMAL 2x2 DECORATIVE GRAPHICS GRID -->
-              <div class="sidebar-graphics-grid">
-                <div class="mini-graphic-card" title="Alpine Peaks with Snow Caps">
-                  <svg class="mini-graphic-svg" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15 70 L45 25 L75 70" stroke="#B69964" stroke-width="2" />
-                    <path d="M45 25 L53 38 L37 38 Z" fill="#F7F4ED" />
-                    <path d="M45 25 L45 38" stroke="#252E47" stroke-width="1" />
-                    <path d="M55 70 L85 18 L115 70" stroke="#B69964" stroke-width="2" />
-                    <path d="M85 18 L94 33 L76 33 Z" fill="#F7F4ED" />
-                    <path d="M85 18 L85 33" stroke="#252E47" stroke-width="1" />
-                    <path d="M45 25 L45 18 L52 21.5 L45 25" fill="#F7F4ED" stroke="#B69964" stroke-width="1" />
-                    <path d="M85 18 L85 11 L92 14.5 L85 18" fill="#F7F4ED" stroke="#B69964" stroke-width="1" />
-                    <line x1="5" y1="70" x2="115" y2="70" stroke="#B69964" stroke-width="2" />
-                  </svg>
-                </div>
-                <div class="mini-graphic-card" title="Luxury Train Carriage">
-                  <svg class="mini-graphic-svg" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="15" y="28" width="90" height="28" rx="6" fill="#121525" stroke="#B69964" stroke-width="2" />
-                    <rect x="23" y="34" width="10" height="10" rx="1.5" fill="#B69964" opacity="0.85" />
-                    <rect x="37" y="34" width="10" height="10" rx="1.5" fill="#B69964" opacity="0.85" />
-                    <rect x="51" y="34" width="10" height="10" rx="1.5" fill="#B69964" opacity="0.85" />
-                    <rect x="65" y="34" width="10" height="10" rx="1.5" fill="#B69964" opacity="0.85" />
-                    <rect x="79" y="34" width="10" height="10" rx="1.5" fill="#B69964" opacity="0.85" />
-                    <circle cx="35" cy="59" r="4" fill="#B69964" />
-                    <circle cx="85" cy="59" r="4" fill="#B69964" />
-                    <line x1="10" y1="63" x2="110" y2="63" stroke="#B69964" stroke-width="2" />
-                  </svg>
-                </div>
-                <div class="mini-graphic-card" title="Geometric Peaks">
-                  <svg class="mini-graphic-svg" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 60 L40 25 L70 60 L100 25 L115 60" stroke="#B69964" stroke-width="2" />
-                    <path d="M25 60 L55 35 L85 60" stroke="#B69964" stroke-width="1.5" stroke-dasharray="3 3" />
-                    <line x1="5" y1="60" x2="115" y2="60" stroke="#B69964" stroke-width="2" />
-                  </svg>
-                </div>
-                <div class="mini-graphic-card" title="Vertical Forest Lines">
-                  <svg class="mini-graphic-svg" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <line x1="25" y1="20" x2="25" y2="65" stroke="#B69964" stroke-width="2" />
-                    <line x1="45" y1="30" x2="45" y2="65" stroke="#B69964" stroke-width="2" />
-                    <line x1="65" y1="15" x2="65" y2="65" stroke="#B69964" stroke-width="2" />
-                    <line x1="85" y1="25" x2="85" y2="65" stroke="#B69964" stroke-width="2" />
-                    <line x1="105" y1="35" x2="105" y2="65" stroke="#B69964" stroke-width="1.5" />
-                    <line x1="10" y1="65" x2="115" y2="65" stroke="#B69964" stroke-width="2" />
-                  </svg>
-                </div>
-              </div>
+
 
             </div>
           </div>

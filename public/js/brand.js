@@ -42,7 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   window.addEventListener('scroll', handleScrollState, { passive: true });
-  updateScrollState();
+  // Defer initial read to after first paint to avoid forced reflow on load
+  requestAnimationFrame(() => { updateScrollState(); });
 
   backToTopBtn?.addEventListener('click', () => {
     window.scrollTo({
