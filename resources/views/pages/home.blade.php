@@ -303,7 +303,7 @@
         <div class="stats-grid">
 
           <div class="stat-item">
-            <div class="stat-number" data-target="150" data-count="150" data-suffix="+">0+</div>
+            <div class="stat-number" data-target="35" data-count="35" data-suffix="+">0+</div>
             <div class="stat-label">DMC Partners</div>
           </div>
 
@@ -313,7 +313,7 @@
           </div>
 
           <div class="stat-item">
-            <div class="stat-number" data-target="12500" data-count="12500" data-suffix="+" data-format="comma">0+</div>
+            <div class="stat-number" data-target="150" data-count="150" data-suffix="+" data-format="comma">0+</div>
             <div class="stat-label">Happy Travellers</div>
           </div>
 

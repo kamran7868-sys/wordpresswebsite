@@ -22,3 +22,11 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# cPanel / hosting generated files
+.ftpquota
+.hcflag
+.litespeed_flag
+error_log
+.well-known/
+public/.well-known/
