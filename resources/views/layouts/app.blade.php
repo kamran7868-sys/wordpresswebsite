@@ -40,6 +40,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- ASSET PRELOADS -->
+  <link rel="preload" href="{{ asset('css/brand.min.css') }}?v=20261010v1" as="style">
   <link rel="preload" href="{{ asset('js/brand.js') }}?v=20260915v4" as="script">
   @stack('preloads')
 
@@ -82,6 +83,11 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
     body { font-family: var(--font-body); background-color: var(--color-dark-navy); color: var(--color-white); line-height: 1.6; }
+    svg { max-width: 100%; }
+    .utility-link-item svg, .utility-contact-item svg { width: 13px; height: 13px; fill: var(--color-gold); }
+    @media (min-width: 768px) {
+      .nav-menu-mobile-action, .nav-menu-mobile-utility { display: none !important; }
+    }
     .main-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; width: 100%; background: transparent; transition: all 0.3s ease; }
     .hero-section { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--color-dark-navy); }
     .hero-slider-track { position: absolute; inset: 0; z-index: 1; }
@@ -95,9 +101,8 @@
     .btn-primary { display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #C5A880 0%, #B69964 100%); color: var(--color-dark-navy); font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; padding: 0.9rem 2.2rem; border-radius: 4px; text-decoration: none; transition: all 0.3s ease; }
   </style>
 
-  <!-- MASTER BRAND STYLESHEET (MINIFIED) — Non-render-blocking -->
-  <link rel="stylesheet" href="{{ asset('css/brand.min.css') }}?v=20260915v8" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="{{ asset('css/brand.min.css') }}?v=20260915v8"></noscript>
+  <!-- MASTER BRAND STYLESHEET (MINIFIED) -->
+  <link rel="stylesheet" href="{{ asset('css/brand.min.css') }}?v=20261010v1">
 
   @stack('styles')
   @yield('extra_css')
